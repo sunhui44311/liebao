@@ -1,0 +1,153 @@
+page {
+  background-color: #F6F7F9;
+}
+
+#core {
+
+  .head-back {
+    position: absolute;
+    background-color: #FC7200;
+    height: 340upx;
+    left: 0;
+    right: 0;
+  }
+
+  .user-core {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    padding: 24upx;
+
+    .nav {
+      padding-top: 30upx;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 22upx;
+
+      .title {
+        font-size: 42upx;
+        font-weight: 600;
+        color: #FFFFFF;
+
+      }
+
+      .icon {
+        width: 35upx;
+        height: 44upx;
+      }
+    }
+
+    .user-box {
+      background: #FFFFFF;
+      border-radius: 16upx;
+      padding: 40upx 30upx;
+
+      .user-info {
+        display: flex;
+        margin-bottom: 50upx;
+
+        .head {
+          margin-right: 20upx;
+
+          .img {
+            width: 100upx;
+            height: 100upx;
+            border-radius: 50%;
+          }
+        }
+
+        .info {
+          padding-top: 10upx;
+          flex: 1;
+
+          .name {
+            font-size: 34upx;
+            font-weight: 600;
+            color: #0D1E40;
+            margin-bottom: 16upx;
+            display: flex;
+
+            .label {
+              background: #FC7200;
+              border-radius: 17upx;
+              padding: 6upx 17upx;
+              width: 42px;
+              font-size: 22upx;
+              font-weight: 400;
+              color: #FFFFFF;
+              margin-left: 21upx;
+
+            }
+
+          }
+
+          .qm {
+            font-size: 24upx;
+            font-weight: 400;
+            color: #9EA7B7;
+
+          }
+        }
+
+        .icon {
+          display: flex;
+          align-items: center;
+
+          .img {
+            width: 13upx;
+            height: 22upx;
+          }
+        }
+      }
+
+      .wallet {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .total {
+          .title {
+            font-size: 24upx;
+            font-weight: 400;
+            color: #9EA7B7;
+            margin-bottom: 15upx;
+
+          }
+
+          .num {
+            font-size: 60upx;
+            font-weight: bold;
+            color: #FC7200;
+
+          }
+        }
+
+        .recharge {
+          position: relative;
+          .btn {
+            background-color: #462BF7;
+            border-radius: 28upx;
+            font-size: 26upx;
+            font-weight: 500;
+            color: #FFFFFF;
+            padding: 15upx 32upx;
+          }
+          .icon{
+            width: 90upx;
+            height: 34upx;
+            position: absolute;
+            top: -15px;
+            left: 50%;
+          }
+        }
+      }
+
+
+    }
+  }
+}
+
+#core /deep/ {}
