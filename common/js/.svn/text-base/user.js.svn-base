@@ -1,0 +1,15 @@
+export default {
+    user:{
+		orgId:'',
+        id:'',
+		openId:'oDZYD1jVTpfv3_tGTrmMKHSTaQAA',
+		appId:'ih',
+		code:1,
+		compId:'',
+		custId:'',
+		isLogin:false
+    },
+    setUser(data){
+        this.user = Object.assign({},this.user,data) 
+    }
+}

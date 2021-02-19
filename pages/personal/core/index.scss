@@ -3,7 +3,6 @@ page {
 }
 
 #core {
-
   .head-back {
     position: absolute;
     background-color: #FC7200;
@@ -145,9 +144,67 @@ page {
         }
       }
 
-
     }
   }
+}
+
+.menu-list{
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	margin-top: 250px;
+	margin-left: 12px;
+	margin-right: 12px;
+	position: absolute;
+	background-color: white;
+	width: calc(100% - 24px);
+	padding: 12px 0px;
+	border-radius: 5px;
+}
+
+.menu-item{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	image{
+		width: 30px;
+		height: 30px;
+	}
+}
+
+.seting{
+	position: absolute;
+	margin-top: 330px;
+	margin-left: 12px;
+	margin-right: 12px;
+	width: calc(100% - 24px);
+	border-radius: 5px;
+	background-color: white;
+	padding: 17px 0px;
+}
+
+.seting-tlt{
+	color: #222222;
+	font-size: 15px;
+	margin-left: 21px;
+}
+.seting-list{
+	display: flex;
+	justify-content: flex-start;
+	flex-wrap: wrap;
+}
+.seting-item{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 25%;
+	margin-top: 25px;
+	image{
+		width: 25px;
+		height: 25px;
+	}
 }
 
 #core /deep/ {}

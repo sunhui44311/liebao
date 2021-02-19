@@ -1,0 +1,44 @@
+/* @font-face {
+	font-family: uniicons;
+	font-weight: normal;
+	font-style: normal;
+} */
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+.container{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background-color: #f8f8f8
+}
+
+.paddingBottom{
+	padding-bottom: 128upx;
+}
+
+body {
+  font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.15;
+  color: #303133;
+  background-color: #fff;
+}
+
+.clearfix:before,
+.clearfix:after {
+  content: " ";
+  display: table;
+}
+.clearfix:after {
+  clear: both;
+}
+
+img {
+  vertical-align: middle;
+  max-width: 100%;
+}

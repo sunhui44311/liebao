@@ -20,12 +20,54 @@
 			"style": {
 				"navigationStyle": "custom"
 			}
+		},
+		{
+			"path": "pages/wallet/account",
+			"style": {
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/wallet/index",
+			"style": {
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/coupon/index",
+			"style": {
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/wallet/transactionDetail",
+			"style": {
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/personal/messageList",
+			"style": {
+				"navigationBarTitleText":"消息中心"
+			}
+		},
+		{
+			"path": "pages/shop/shopList",
+			"style": {
+				"navigationBarTitleText":"门店管理"
+			}
+		},
+		{
+			"path": "pages/shop/addShop",
+			"style": {
+				"navigationBarTitleText":"新增门店"
+			}
 		}
 	],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uni-app",
-		"navigationBarBackgroundColor": "#F8F8F8",
+		"navigationBarBackgroundColor": "#FFFFFF",
 		"backgroundColor": "#F8F8F8"
 	},
 	"tabBar": {

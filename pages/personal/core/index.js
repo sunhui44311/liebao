@@ -12,6 +12,23 @@ export default {
         async update() {
             // const res = await this.$http.post('', {});
         },
+		wallet(){
+			uni.navigateTo({
+				url:'/pages/wallet/account'
+			})
+		},
+		message_Click(){
+			uni.navigateTo({
+				url:"/pages/personal/messageList"
+			})
+		},
+		menu_Click(type){
+			if(type==1){
+				uni.navigateTo({
+					url:'/pages/shop/shopList'
+				})
+			}
+		}
     },
     // 计算属性
     computed: {},

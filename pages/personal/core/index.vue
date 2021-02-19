@@ -4,7 +4,7 @@
     <view class="user-core">
       <view class="nav">
         <view class="title">我的</view>
-        <image src="~static/image/nl.png" class="icon"></image>
+        <image src="~static/image/nl.png" @click.stop="message_Click" class="icon"></image>
       </view>
       <view class="user-box">
         <view class="user-info">
@@ -23,7 +23,7 @@
           </view>
         </view>
         <view class="wallet">
-          <view class="total">
+          <view class="total" @click.stop="wallet">
             <view class="title"> 钱包余额 </view>
             <view class="num"> 0.00 </view>
           </view>
@@ -36,6 +36,64 @@
         </view>
       </view>
     </view>
+	<view class="menu-list">
+		<view class="menu-item" @click.stop="menu_Click(1)">
+			<image src="../../../static/image/mendian@2x.png"></image>
+			<view>门店管理</view>
+		</view>
+		<view class="menu-item">
+			<image src="../../../static/image/waimai@2x.png"></image>
+			<view>绑定外卖平台</view>
+		</view>
+		<view class="menu-item">
+			<image src="../../../static/image/peisong@2x.png"></image>
+			<view>绑定配送平台</view>
+		</view>
+		<view class="menu-item">
+			<image src="../../../static/image/shezhi@2x.png"></image>
+			<view>保底设置</view>
+		</view>
+	</view>
+	<view class="seting">
+		<view>
+			<view class="seting-tlt">外卖设置</view>
+			<view></view>
+		</view>
+		<view class="seting-list">
+			<view class="seting-item">
+				<image src="../../../static/image/yijianfadan@2x.png"></image>
+				<view>一键发单</view>
+			</view>
+			<view class="seting-item">
+				<image src="../../../static/image/xiadanshezhi@2x.png"></image>
+				<view>下单设置</view>
+			</view>
+			<view class="seting-item">
+				<image src="../../../static/image/xianshishezhi@2x.png"></image>
+				<view>显示设置</view>
+			</view>
+			<view class="seting-item">
+				<image src="../../../static/image/zhanghaoshezhi@2x.png"></image>
+				<view>账号设置</view>
+			</view>
+			<view class="seting-item">
+				<image src="../../../static/image/zidongjiedan@2x.png"></image>
+				<view>自动接单</view>
+			</view>
+			<view class="seting-item">
+				<image src="../../../static/image/zidongdayin@2x.png"></image>
+				<view>自动打印</view>
+			</view>
+			<view class="seting-item">
+				<image src="../../../static/image/zidongpeisong@2x.png"></image>
+				<view>自动配送</view>
+			</view>
+			<view class="seting-item">
+				<image src="../../../static/image/zidongtongbu@2x.png"></image>
+				<view>自动同步</view>
+			</view>
+		</view>
+	</view>
   </view>
 </template>
 <script src="./index.js"></script>
