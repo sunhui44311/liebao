@@ -32,6 +32,13 @@
 				<input placeholder="请填写手机号" />
 			</view>
 		</view>
+		<view class="section">
+			<view class="nav">
+				<image src="../../static/image/id_num@2x.png"></image>
+				<text>联系人</text>
+			</view>
+			<view></view>
+		</view>
 	</view>
 </template>
 
