@@ -110,6 +110,12 @@
 			"style": {
 				"navigationBarTitleText": "新增账号"
 			}
+		},
+		{
+			"path": "pages/visit/index",
+			"style": {
+				"navigationBarTitleText": "邀请好友赚现金"
+			}
 		}
 	],
 	"globalStyle": {

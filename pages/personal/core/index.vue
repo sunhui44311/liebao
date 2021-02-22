@@ -94,7 +94,7 @@
 			</view>
 		</view>
 	</view>
-	<view class="visit">
+	<view class="visit" @click="visit">
 		<image class="visit-logo" src="../../../static/image/visit@2x.png"></image>
 		<view class="visit-title">邀请好友赚钱</view>
 		<view class="right">
@@ -120,7 +120,7 @@
 				<image src="../../../static/image/changyongdizhi@2x.png"></image>
 				<view>常用地址</view>
 			</view>
-			<view class="seting-item" @click.stop="setting(4)">
+			<view class="seting-item" @click.stop="tool(4)">
 				<image src="../../../static/image/yaoqinghaoyou@2x.png"></image>
 				<view>邀请好友</view>
 			</view>
@@ -232,6 +232,18 @@
 				else if(type==4){
 					uni.navigateTo({
 						url:'/pages/deliverySettings/accountManager'
+					})
+				}
+			},
+			visit(){
+				uni.navigateTo({
+					url:'/pages/visit/index'
+				})
+			},
+			tool(type){
+				if(type==4){
+					uni.navigateTo({
+						url:'/pages/visit/index'
 					})
 				}
 			}
