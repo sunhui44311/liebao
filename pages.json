@@ -86,6 +86,12 @@
 			"style": {
 				"navigationBarTitleText":"绑定外卖平台"
 			}
+		},
+		{
+			"path": "pages/city/choice/index",
+			"style": {
+				"navigationBarTitleText": "城市选择"
+			}
 		}
 	],
 	"globalStyle": {

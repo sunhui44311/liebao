@@ -1,0 +1,20 @@
+#choice {
+	.list-cell {
+		display: flex;
+		box-sizing: border-box;
+		width: 100%;
+		padding: 10px 24rpx;
+		overflow: hidden;
+		color: #323233;
+		font-size: 28upx;
+		line-height: 24px;
+		background-color: #fff;
+		border-bottom: 1px solid #EEEEEE;
+
+		&:last-child {
+			border-bottom: none;
+		}
+	}
+}
+
+#choice /deep/ {}

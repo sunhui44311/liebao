@@ -1,6 +1,12 @@
+const area = require('@/plugins/area.json');
 export default {
     data() {
-        return {};
+        return {
+            scrollTop: 0,
+            indexList: ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U",
+                "V", "W", "X", "Y", "Z"
+            ],
+        };
     },
     methods: {
         // 用于初始化一些数据
@@ -11,11 +17,16 @@ export default {
         async update() {
             // const res = await this.$http.post('', {});
         },
-        go(url) {
-            uni.navigateTo({
-                url: url
-            });
+        screen(item) {
+            let obj = area.cityList.find(e => e.idx == item)
+            if (typeof obj != 'undefined') {
+                return obj.cities
+            }
+            return []
         }
+    },
+    onPageScroll(e) {
+        this.scrollTop = e.scrollTop;
     },
     // 计算属性
     computed: {},

@@ -8,7 +8,7 @@
     /* 5+App特有相关 */
     "app-plus" : {
         "usingComponents" : true,
-		"nvueStyleCompiler" : "uni-app",
+        "nvueStyleCompiler" : "uni-app",
         "compilerVersion" : 3,
         "splashscreen" : {
             "alwaysShowBeforeRender" : true,
@@ -17,7 +17,9 @@
             "delay" : 0
         },
         /* 模块配置 */
-        "modules" : {},
+        "modules" : {
+            "Maps" : {}
+        },
         /* 应用发布信息 */
         "distribute" : {
             /* android打包配置 */
@@ -43,7 +45,14 @@
             /* ios打包配置 */
             "ios" : {},
             /* SDK配置 */
-            "sdkConfigs" : {}
+            "sdkConfigs" : {
+                "maps" : {
+                    "amap" : {
+                        "appkey_ios" : "9209fc5b5e244dc22cfe8c007c1262ff",
+                        "appkey_android" : "5b145cc49187d784042e5887d2e19ee7"
+                    }
+                }
+            }
         }
     },
     /* 快应用特有相关 */
@@ -65,7 +74,7 @@
     "mp-toutiao" : {
         "usingComponents" : true
     },
-    "uniStatistics": {  
-        "enable": false
+    "uniStatistics" : {
+        "enable" : false
     }
 }

@@ -1,11 +1,6 @@
 <template>
   <view id="home">
-    <map
-      class="map"
-      :latitude="latitude"
-      :longitude="longitude"
-      :markers="covers"
-    >
+    <map class="map">
       <cover-view class="notice">
         <cover-view class="box">
           <cover-image class="img" src="~static/image/notice.png"></cover-image>
@@ -14,7 +9,7 @@
       </cover-view>
       <cover-view class="home-box">
         <cover-view class="region">
-          <cover-view class="city">
+          <cover-view class="city" @click="go(`/pages/city/choice/index`)">
             <cover-image
               class="img"
               src="~static/image/dibiao.png"
@@ -35,14 +30,14 @@
         <cover-view class="sfj-info">
           <cover-view class="tab-box">
             <cover-view class="tab">
-              <caver-view class="title activ">帮我送</caver-view>
+              <cover-view class="title activ">帮我送</cover-view>
               <cover-image
                 class="icon"
                 src="~static/image/tab-icon.png"
               ></cover-image>
             </cover-view>
             <cover-view class="tab">
-              <caver-view class="title">帮我取</caver-view></cover-view
+              <cover-view class="title">帮我取</cover-view></cover-view
             >
           </cover-view>
           <cover-view class="send">
