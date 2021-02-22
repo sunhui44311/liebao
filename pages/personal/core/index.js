@@ -30,6 +30,11 @@ export default {
 			}
 			else if(type==2){
 				uni.navigateTo({
+					url:'/pages/delivery/bindPlatformList'
+				})
+			}
+			else if(type==3){
+				uni.navigateTo({
 					url:'/pages/delivery/bindPlatform'
 				})
 			}

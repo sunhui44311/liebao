@@ -7,12 +7,12 @@
 					<image class="owner-logo" src="../../static/image/dada@2x.png"></image>
 					<view class="owner-info">
 						<view class="owner-tlt">达达</view>
-						<view>商户编号</view>
-						<view>配送门店</view>
+						<view class="owner-sub-info">商户编号</view>
+						<view class="owner-sub-info">配送门店</view>
 					</view>
 					<view class="bind">解绑</view>
 				</view>
-				<view>
+				<view class="tip">
 					<text>开启后商家下单时首选该账号平台为配送平台</text>
 					<u-switch></u-switch>
 				</view>
@@ -61,6 +61,7 @@
 		padding: 12px 6px;
 		background-color: white;
 		margin-bottom: 10px;
+		border-radius: 7px;
 		.owner-logo{
 			width: 60px;
 			height: 60px;
@@ -76,6 +77,18 @@
 		.owner-tlt{
 			color: #0D1C40;
 			font-size: 17px;
+		}
+		.owner-sub-info{
+			color: #4E565F;
+			font-size: 12px;
+		}
+		.tip{
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			color: #9FA7B6;
+			font-size: 12px;
+			margin-top: 5px;
 		}
 	}
 	

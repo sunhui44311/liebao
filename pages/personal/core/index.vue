@@ -45,7 +45,7 @@
 			<image src="../../../static/image/waimai@2x.png"></image>
 			<view>绑定外卖平台</view>
 		</view>
-		<view class="menu-item">
+		<view class="menu-item" @click.stop="menu_Click(3)">
 			<image src="../../../static/image/peisong@2x.png"></image>
 			<view>绑定配送平台</view>
 		</view>

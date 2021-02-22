@@ -78,6 +78,12 @@
 		{
 			"path": "pages/delivery/bindPlatform",
 			"style": {
+				"navigationBarTitleText":"自运力绑定"
+			}
+		},
+		{
+			"path": "pages/delivery/bindPlatformList",
+			"style": {
 				"navigationBarTitleText":"绑定外卖平台"
 			}
 		}
