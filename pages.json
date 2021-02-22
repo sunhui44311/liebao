@@ -74,6 +74,12 @@
 			"style": {
 				"navigationBarTitleText":"保底配送"
 			}
+		},
+		{
+			"path": "pages/delivery/bindPlatform",
+			"style": {
+				"navigationBarTitleText":"绑定外卖平台"
+			}
 		}
 	],
 	"globalStyle": {

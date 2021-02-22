@@ -28,6 +28,11 @@ export default {
 					url:'/pages/shop/shopList'
 				})
 			}
+			else if(type==2){
+				uni.navigateTo({
+					url:'/pages/delivery/bindPlatform'
+				})
+			}
 			else if(type==4){
 				uni.navigateTo({
 					url:'/pages/delivery/guaranteedDelivery'
