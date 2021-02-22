@@ -97,9 +97,75 @@
 	<show-setting ref='showSetting'></show-setting>
   </view>
 </template>
-<script src="./index.js">
-	
+<script>
+	import showSetting from '../../deliverySettings/showSetting.vue'
+	export default{
+		name: 'core',
+		components:{
+			showSetting
+		},
+		data() {
+		    return {};
+		},
+		methods: {
+		    // 用于初始化一些数据
+		    init() {
+		        this.update();
+		    },
+		    // 用于更新一些数据
+		    async update() {
+		        // const res = await this.$http.post('', {});
+		    },
+			wallet(){
+				uni.navigateTo({
+					url:'/pages/wallet/account'
+				})
+			},
+			message_Click(){
+				uni.navigateTo({
+					url:"/pages/personal/messageList"
+				})
+			},
+			menu_Click(type){
+				if(type==1){
+					uni.navigateTo({
+						url:'/pages/shop/shopList'
+					})
+				}
+				else if(type==2){
+					uni.navigateTo({
+						url:'/pages/delivery/bindPlatformList'
+					})
+				}
+				else if(type==3){
+					uni.navigateTo({
+						url:'/pages/delivery/bindPlatform'
+					})
+				}
+				else if(type==4){
+					uni.navigateTo({
+						url:'/pages/delivery/guaranteedDelivery'
+					})
+				}
+			},
+			setting(type){
+				if(type==2){
+					uni.navigateTo({
+						url:'/pages/deliverySettings/takeoutSetting'
+					})
+				}
+				else if(type==3){
+					this.$refs['showSetting'].init()
+				}
+				else if(type==4){
+					uni.navigateTo({
+						url:'/pages/deliverySettings/accountManager'
+					})
+				}
+			}
+		},
+	}
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 @import "index.scss";
 </style>

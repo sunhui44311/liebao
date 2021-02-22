@@ -16,11 +16,25 @@
 			</view>
 		</view>
 		<view class="bottom"></view>
-		<view class="save">新增门店账号</view>
+		<view class="save" @click.stop="add">新增门店账号</view>
 	</view>
 </template>
 
 <script>
+	export default{
+		data(){
+			return{
+				
+			}
+		},
+		methods:{
+			add(){
+				uni.navigateTo({
+					url:'/pages/deliverySettings/addAccount'
+				})
+			}
+		}
+	}
 </script>
 
 <style lang="scss">
