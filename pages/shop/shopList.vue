@@ -1,6 +1,6 @@
 <template>
 	<view class="content">
-		<view class="cell">
+		<view class="cell" @click.stop="shop_Act">
 			<view class="header">
 				<view class="num">
 					<view>门店编号：10091</view>
@@ -38,6 +38,11 @@
 			add(){
 				uni.navigateTo({
 					url:'/pages/shop/addShop'
+				})
+			},
+			shop_Act(){
+				uni.navigateTo({
+					url:'/pages/shop/shopInfo'
 				})
 			}
 		}

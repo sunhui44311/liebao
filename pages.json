@@ -62,6 +62,18 @@
 			"style": {
 				"navigationBarTitleText":"新增门店"
 			}
+		},
+		{
+			"path": "pages/shop/shopInfo",
+			"style": {
+				"navigationBarTitleText":"门店详情"
+			}
+		},
+		{
+			"path": "pages/delivery/guaranteedDelivery",
+			"style": {
+				"navigationBarTitleText":"保底配送"
+			}
 		}
 	],
 	"globalStyle": {

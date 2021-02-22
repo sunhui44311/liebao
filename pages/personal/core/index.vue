@@ -49,7 +49,7 @@
 			<image src="../../../static/image/peisong@2x.png"></image>
 			<view>绑定配送平台</view>
 		</view>
-		<view class="menu-item">
+		<view class="menu-item" @click.stop="menu_Click(4)">
 			<image src="../../../static/image/shezhi@2x.png"></image>
 			<view>保底设置</view>
 		</view>
