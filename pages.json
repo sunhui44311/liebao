@@ -48,31 +48,37 @@
 		{
 			"path": "pages/personal/messageList",
 			"style": {
-				"navigationBarTitleText": "消息中心"
+				"navigationBarTitleText":"消息中心"
 			}
 		},
 		{
 			"path": "pages/shop/shopList",
 			"style": {
-				"navigationBarTitleText": "门店管理"
+				"navigationBarTitleText":"门店管理"
 			}
 		},
 		{
 			"path": "pages/shop/addShop",
 			"style": {
-				"navigationBarTitleText": "新增门店"
+				"navigationBarTitleText":"新增门店"
 			}
 		},
 		{
 			"path": "pages/shop/shopInfo",
 			"style": {
-				"navigationBarTitleText": "门店详情"
+				"navigationBarTitleText":"门店详情"
 			}
 		},
 		{
 			"path": "pages/delivery/guaranteedDelivery",
 			"style": {
-				"navigationBarTitleText": "保底配送"
+				"navigationBarTitleText":"保底配送"
+			}
+		},
+		{
+			"path": "pages/delivery/bindPlatform",
+			"style": {
+				"navigationBarTitleText":"绑定外卖平台"
 			}
 		},
 		{

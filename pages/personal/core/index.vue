@@ -41,7 +41,7 @@
 			<image src="../../../static/image/mendian@2x.png"></image>
 			<view>门店管理</view>
 		</view>
-		<view class="menu-item">
+		<view class="menu-item" @click.stop="menu_Click(2)">
 			<image src="../../../static/image/waimai@2x.png"></image>
 			<view>绑定外卖平台</view>
 		</view>
