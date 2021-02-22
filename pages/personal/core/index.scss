@@ -4,7 +4,6 @@ page {
 
 #core {
   .head-back {
-    position: absolute;
     background-color: #FC7200;
     height: 340upx;
     left: 0;
@@ -152,10 +151,10 @@ page {
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
-	margin-top: 250px;
+	position: relative;
+	margin-top: 85px;
 	margin-left: 12px;
 	margin-right: 12px;
-	position: absolute;
 	background-color: white;
 	width: calc(100% - 24px);
 	padding: 12px 0px;
@@ -174,8 +173,7 @@ page {
 }
 
 .seting{
-	position: absolute;
-	margin-top: 330px;
+	margin-top: 10px;
 	margin-left: 12px;
 	margin-right: 12px;
 	width: calc(100% - 24px);
@@ -204,6 +202,43 @@ page {
 	image{
 		width: 25px;
 		height: 25px;
+	}
+}
+
+/*邀请*/
+.visit{
+	display: flex;
+	margin-top: 20px;
+	width: calc(100% - 25px);
+	justify-content: space-between;
+	align-items: center;
+	padding: 12.5px 12.5px;
+	margin: 12px;
+	border-radius: 5px;
+	background-color: white;
+	.visit-logo{
+		width: 25px;
+		height: 25px;
+	}
+}
+.visit-title{
+	color: #222222;
+	font-size: 14px;
+	flex: 1;
+	margin-left: 8px;
+}
+.right{
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	image{
+		width: 5px;
+		height: 9px;
+	}
+	.tip{
+		color: #F43542;
+		font-size: 12px;
+		margin-right: 10px;
 	}
 }
 
