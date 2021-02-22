@@ -1,5 +1,9 @@
+import showSetting from '../../deliverySettings/showSetting.vue'
 export default {
     name: 'core',
+	components:{
+		showSetting
+	},
     data() {
         return {};
     },
@@ -41,6 +45,21 @@ export default {
 			else if(type==4){
 				uni.navigateTo({
 					url:'/pages/delivery/guaranteedDelivery'
+				})
+			}
+		},
+		setting(type){
+			if(type==2){
+				uni.navigateTo({
+					url:'/pages/deliverySettings/takeoutSetting'
+				})
+			}
+			else if(type==3){
+				this.$refs['showSetting'].init()
+			}
+			else if(type==4){
+				uni.navigateTo({
+					url:'/pages/deliverySettings/accountManager'
 				})
 			}
 		}

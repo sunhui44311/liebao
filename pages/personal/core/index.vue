@@ -60,19 +60,19 @@
 			<view></view>
 		</view>
 		<view class="seting-list">
-			<view class="seting-item">
+			<view class="seting-item" @click.stop="setting(1)">
 				<image src="../../../static/image/yijianfadan@2x.png"></image>
 				<view>一键发单</view>
 			</view>
-			<view class="seting-item">
+			<view class="seting-item" @click.stop="setting(2)">
 				<image src="../../../static/image/xiadanshezhi@2x.png"></image>
 				<view>下单设置</view>
 			</view>
-			<view class="seting-item">
+			<view class="seting-item" @click.stop="setting(3)">
 				<image src="../../../static/image/xianshishezhi@2x.png"></image>
 				<view>显示设置</view>
 			</view>
-			<view class="seting-item">
+			<view class="seting-item" @click.stop="setting(4)">
 				<image src="../../../static/image/zhanghaoshezhi@2x.png"></image>
 				<view>账号设置</view>
 			</view>
@@ -94,9 +94,12 @@
 			</view>
 		</view>
 	</view>
+	<show-setting ref='showSetting'></show-setting>
   </view>
 </template>
-<script src="./index.js"></script>
+<script src="./index.js">
+	
+</script>
 <style lang="scss" scoped>
 @import "index.scss";
 </style>
