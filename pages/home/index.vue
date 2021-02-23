@@ -1,6 +1,11 @@
 <template>
   <view id="home">
-    <map class="map">
+    <map
+      class="map"
+      :style="{
+        height: windowHeight ? `${windowHeight}px` : '100%',
+      }"
+    >
       <cover-view class="notice">
         <cover-view class="box">
           <cover-image class="img" src="~static/image/notice.png"></cover-image>

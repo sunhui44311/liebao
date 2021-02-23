@@ -8,7 +8,6 @@
 			let naviBarHeight=44
 			const res = uni.getSystemInfoSync()
 			const system = res.platform
-			console.log(res)
 			statusBarHeight = res.statusBarHeight
 			if (system === 'android') {
 			titleHeight = (48 + statusBarHeight)
