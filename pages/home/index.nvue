@@ -1,7 +1,12 @@
 <template>
   <view id="home">
-    <map class="map">
-      <!-- <cover-view class="notice">
+    <map
+      class="map"
+      :style="{
+        height: windowHeight ? `${windowHeight}px` : '100%',
+      }"
+    >
+      <cover-view class="notice">
         <cover-view class="box">
           <cover-image class="img" src="~static/image/notice.png"></cover-image>
           附近有8位骑手，预计1分钟内接单
@@ -65,7 +70,7 @@
         <cover-view class="distribution">
           <cover-view class="title">邀请好友得现金，好友充值赚现金</cover-view>
         </cover-view>
-      </cover-view> -->
+      </cover-view>
     </map>
 	<view class="box">
 		<view>111</view>

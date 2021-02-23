@@ -1,10 +1,14 @@
+import globalData from '@/common/js/globalData.js'
 export default {
     data() {
-        return {};
+        return {
+            windowHeight: 0
+        };
     },
     methods: {
         // 用于初始化一些数据
         init() {
+            this.windowHeight = globalData.windowHeight - 50
             this.update();
         },
         // 用于更新一些数据
