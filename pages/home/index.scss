@@ -5,10 +5,12 @@ page {
 #home {
    height: 100%;
 
-   .map {
-      width: 100%;
-   }
 }
+
+.map {
+	   width: 375px;
+      height: 500px;
+   }
 
 .notice {
    padding: 0 22upx 0 22upx;
