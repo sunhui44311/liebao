@@ -1,7 +1,25 @@
 export default {
-    name: 'list',
     data() {
-        return {};
+        return {
+            list: [{
+                name: '待接单',
+                count: 2
+            }, {
+                name: '待取货'
+            }, {
+                name: '配送中',
+                count: 2
+
+            }, {
+                name: '已完成',
+            }, {
+                name: '已取消',
+            }, {
+                name: '待支付',
+            }],
+            current: 0,
+            swiperCurrent: 0
+        };
     },
     methods: {
         // 用于初始化一些数据
@@ -12,6 +30,22 @@ export default {
         async update() {
             // const res = await this.$http.post('', {});
         },
+        tabsChange(index) {
+            this.swiperCurrent = index;
+        },
+        transition(e) {
+            let dx = e.detail.dx;
+            this.$refs.uTabs.setDx(dx);
+        },
+        animationfinish(e) {
+            let current = e.detail.current;
+            this.$refs.uTabs.setFinishCurrent(current);
+            this.swiperCurrent = current;
+            this.current = current;
+        },
+        onreachBottom() {
+
+        }
     },
     // 计算属性
     computed: {},

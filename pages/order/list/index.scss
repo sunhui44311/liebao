@@ -1,4 +1,139 @@
+page {
+  background-color: #F6F7F9;
+  height: 100%;
+}
+
 #list {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  .nav {
+    display: flex;
+    padding: 50upx 30upx 20upx 30upx;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #fff;
+
+    .title {
+      font-size: 42upx;
+      font-weight: 600;
+      color: #0D1C40;
+    }
+
+    .icon {
+      width: 32upx;
+      height: 32upx;
+    }
+  }
+}
+
+.order-list {
+  padding: 20upx;
+}
+
+.order {
+  background-color: #FFFFFF;
+  border-radius: 12upx 12upx 12upx 12upx;
+  padding: 20upx;
+
+  .head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20upx;
+
+    .title {
+      font-size: 28upx;
+      font-weight: 400;
+      color: #4D5660;
+
+    }
+
+    .state {
+      font-size: 26upx;
+      font-weight: 400;
+      color: #FA6F06;
+
+    }
+  }
+
+  .order-info {
+    .piece-info {
+      padding: 20upx 30upx;
+      background-color: rgba(245, 245, 247, .4);
+      border-radius: 12upx;
+      margin-bottom: 20upx;
+
+      .sou {
+        margin-bottom: 40upx;
+      }
+
+      .sou,
+      .fa {
+        display: flex;
+      }
+
+      .icon-box {
+        margin-right: 20upx;
+
+        .icon {
+          width: 40upx;
+          height: 40upx;
+        }
+      }
+
+      .user-info {
+        .address {
+          font-size: 26upx;
+          font-weight: 400;
+          color: #0D1C40;
+          margin-bottom: 25upx;
+        }
+
+        .user-name {
+          margin-right: 30upx;
+        }
+
+        .user-name,
+        .phone {
+          font-size: 24upx;
+          font-weight: 400;
+          color: #0D1C40;
+        }
+      }
+
+
+    }
+
+    .operation {
+      display: flex;
+      align-items: center;
+
+      .time {
+        font-size: 26upx;
+        font-weight: 400;
+        color: #4D5660;
+        flex: 1;
+      }
+
+      .btn-box {
+        .btn {
+          margin-right: 20upx;
+
+          &:last-child {
+            margin-right: 0;
+          }
+        }
+      }
+    }
+    .news{
+      display: flex
+      .icon{
+        
+      }
+    }
+  }
 }
 
 #list /deep/ {}
