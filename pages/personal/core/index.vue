@@ -189,13 +189,20 @@
 		        // const res = await this.$http.post('', {});
 		    },
 			wallet(){
-				uni.navigateTo({
-					url:'/pages/wallet/account'
-				})
+				// uni.navigateTo({
+				// 	url:'/pages/wallet/account'
+				// })
+				this.login()
 			},
 			message_Click(){
 				uni.navigateTo({
 					url:"/pages/personal/messageList"
+				})
+			},
+			
+			login(){
+				uni.navigateTo({
+					url:'/pages/login/loginHome'
 				})
 			},
 			menu_Click(type){

@@ -24,6 +24,8 @@
 			globalData.windowHeight=res.windowHeight
 			globalData.windowWidth=res.windowWidth
 			globalData.iphoneX=res.screenHeight>=812?true:false
+			console.log(11111)
+			console.log(globalData)
 		},
 		onShow: function() {
 			console.log('App Show')

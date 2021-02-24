@@ -116,6 +116,25 @@
 			"style": {
 				"navigationBarTitleText": "邀请好友赚现金"
 			}
+		},
+		{
+			"path": "pages/login/login",
+			"style": {
+				"navigationBarTitleText": "登录",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/login/loginHome",
+			"style": {
+				"navigationBarTitleText": ""
+			}
+		},
+		{
+			"path": "pages/login/forgetPwd",
+			"style": {
+				"navigationBarTitleText": "重置密码"
+			}
 		}
 	],
 	"globalStyle": {
