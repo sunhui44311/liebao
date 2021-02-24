@@ -135,6 +135,48 @@
 			"style": {
 				"navigationBarTitleText": "重置密码"
 			}
+		},
+		{
+			"path": "pages/myTool/loudspeakerList",
+			"style": {
+				"navigationBarTitleText": "语音播报"
+			}
+		},
+		{
+			"path": "pages/myTool/addLoudspeaker",
+			"style": {
+				"navigationBarTitleText": "添加云音响"
+			}
+		},
+		{
+			"path": "pages/myTool/printList",
+			"style": {
+				"navigationBarTitleText": "小票打印"
+			}
+		},
+		{
+			"path": "pages/myTool/addPrint",
+			"style": {
+				"navigationBarTitleText": "新增打印机"
+			}
+		},
+		{
+			"path": "pages/myTool/addressList",
+			"style": {
+				"navigationBarTitleText": "常用地址"
+			}
+		},
+		{
+			"path": "pages/myTool/addAddress",
+			"style": {
+				"navigationBarTitleText": "新增地址"
+			}
+		},
+		{
+			"path": "pages/myTool/customerCenter",
+			"style": {
+				"navigationBarTitleText": "客服中心"
+			}
 		}
 	],
 	"globalStyle": {
