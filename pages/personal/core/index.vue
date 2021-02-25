@@ -273,6 +273,21 @@
 						url:'/pages/myTool/customerCenter'
 					})
 				}
+				else if(type==6){
+					uni.navigateTo({
+						url:'/pages/myTool/feedback'
+					})
+				}
+				else if(type==7){
+					uni.navigateTo({
+						url:'/pages/myTool/joinPartner'
+					})
+				}
+				else if(type==8){
+					uni.navigateTo({
+						url:'/pages/myTool/setting'
+					})
+				}
 			}
 		},
 	}
