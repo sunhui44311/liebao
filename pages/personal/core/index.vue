@@ -4,20 +4,27 @@
     <view class="user-core">
       <view class="nav">
         <view class="title">我的</view>
-        <image src="~static/image/nl.png" @click.stop="message_Click" class="icon"></image>
+        <image
+          src="~static/image/nl.png"
+          @click.stop="message_Click"
+          class="icon"
+        ></image>
       </view>
       <view class="user-box">
         <view class="user-info">
-          <view class="head">
+          <!-- <view class="head">
             <image
               src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fc-ssl.duitang.com%2Fuploads%2Fitem%2F202006%2F07%2F20200607222012_lwusd.thumb.400_0.jpeg&refer=http%3A%2F%2Fc-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1616221777&t=7ee684e6ab371150ee6573252602e74a"
               class="img"
             ></image>
-          </view>
-          <view class="info">
+          </view> -->
+          <!-- <view class="info">
             <view class="name">猎豹科技 <view class="label">商家</view></view>
             <view class="qm">欢迎你，来到猎豹Ai商家版</view>
-          </view>
+          </view> -->
+          <view class="no-sign" @click="go('/pages/login/loginHome')"
+            >请登录</view
+          >
           <view class="icon">
             <image src="~static/image/fj2.png" class="img"></image>
           </view>
@@ -295,8 +302,13 @@
 						url:'/pages/statics/shopStatistics'
 					})
 				}
-			}
-		},
+			},
+			    go(url) {
+			      uni.navigateTo({
+			        url: url,
+			      });
+			    },
+		}
 	}
 </script>
 <style lang="scss">
