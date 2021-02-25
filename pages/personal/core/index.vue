@@ -22,7 +22,9 @@
             <view class="name">猎豹科技 <view class="label">商家</view></view>
             <view class="qm">欢迎你，来到猎豹Ai商家版</view>
           </view> -->
-          <view class="no-sign" @click="go('/pages/login/loginHome')">请登录</view>
+          <view class="no-sign" @click="go('/pages/login/loginHome')"
+            >请登录</view
+          >
           <view class="icon">
             <image src="~static/image/fj2.png" class="img"></image>
           </view>
@@ -270,6 +272,18 @@ export default {
       } else if (type == 5) {
         uni.navigateTo({
           url: "/pages/myTool/customerCenter",
+        });
+      } else if (type == 6) {
+        uni.navigateTo({
+          url: "/pages/myTool/feedback",
+        });
+      } else if (type == 7) {
+        uni.navigateTo({
+          url: "/pages/myTool/joinPartner",
+        });
+      } else if (type == 8) {
+        uni.navigateTo({
+          url: "/pages/myTool/setting",
         });
       }
     },

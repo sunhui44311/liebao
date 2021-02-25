@@ -177,6 +177,36 @@
 			"style": {
 				"navigationBarTitleText": "客服中心"
 			}
+		},
+		{
+			"path": "pages/myTool/feedback",
+			"style": {
+				"navigationBarTitleText": "意见反馈"
+			}
+		},
+		{
+			"path": "pages/myTool/joinPartner",
+			"style": {
+				"navigationBarTitleText": "加盟合作"
+			}
+		},
+		{
+			"path": "pages/myTool/setting",
+			"style": {
+				"navigationBarTitleText": "系统设置"
+			}
+		},
+		{
+			"path": "pages/myTool/modifyPwd",
+			"style": {
+				"navigationBarTitleText": ""
+			}
+		},
+		{
+			"path": "pages/myTool/aboutUs",
+			"style": {
+				"navigationBarTitleText": "关于我们"
+			}
 		}
 	],
 	"globalStyle": {
