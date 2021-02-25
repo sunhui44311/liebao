@@ -1,0 +1,208 @@
+<template>
+	<view>
+		<map :style="{height: windowHeight+'px',width:windowWidth+'px'}"></map>
+		<view class="notice" :style="{'top':statusH+'px'}">
+			<image class="icon" src="../../static/image/notice.png"></image>
+			<text class="notice-content">附件有8位骑手，预计1分钟内接单</text>
+		</view>
+		<scroll-view class="footer" scroll-y="true" :show-scrollbar="false" @scroll="scroll" :style="{width:windowWidth-20+'px',height:scrollTop+250+'px'}">
+			<view class="controls">
+				<view class="control-left">
+					<image class="control-left-icon" src="../../static/image/dibiao.png"></image>
+					<text style="color: #0D1C40;font-size: 12px;">苏州市</text>
+					<image class="control-arrow" src="../../static/image/dibiao2.png"></image>
+				</view>
+				<view class="control-right">
+					<image class="locaiton" src="../../static/image/dinwei.png"></image>
+				</view>
+			</view>
+			<view>
+				<view class="input-box">
+					<view class="input-bar">
+						<view class="tab">
+							<text class="tab-name">帮我送</text>
+							<image class="tab-icon" src="../../static/image/tab-icon.png"></image>
+						</view>
+						<view class="tab" style="margin-left: 43upx;">
+							<text class="tab-name">帮我送</text>
+							<image class="tab-icon" src="../../static/image/tab-icon.png"></image>
+						</view>
+					</view>
+					<view class="input-section">
+						<image class="dot" src="../../static/image/fj.png"></image>
+						<view class="input-content">
+							<text class="address">纳米科技园</text>
+							<text style="color: #9EA7B7;font-size: 13px;">点击完善发件信息</text>
+						</view>
+						<image class="section-arrow" src="../../static/image/fj2.png"></image>
+					</view>
+					<view class="input-section input-bg">
+						<image class="dot" src="../../static/image/dot-orage@2x.png"></image>
+						<text class="input-txt">点击完善发件信息</text>
+					</view>
+				</view>
+				<image class="section" :style="{width: windowWidth-20+'px'}" src="../../static/image/visit-friend@2x.png"></image>
+				<image class="section" :style="{width: windowWidth-20+'px'}" src="../../static/image/visit-friend@2x.png"></image>
+			</view>
+		</scroll-view>
+	</view>
+</template>
+<script src="./index.js">
+</script>
+<style lang="scss" scoped>
+// @import "index.scss";
+.notice{
+	position: fixed;
+	background-color: white;
+	height: 35px;
+	left: 10px;
+	right: 10px;
+	border-radius: 35px;
+	padding-left: 12px;
+	// padding-top: 8px;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: center;
+	color: #888888;
+}
+.icon{
+	width: 18px;
+	height: 18px;
+}
+.notice-content{
+	color: #888888;
+	font-size: 24upx;
+	margin-left: 6px;
+}
+
+.footer{
+	position: absolute;
+	bottom: 0px;
+	height: 250px;
+	margin: 0px 10px;
+}
+
+.controls{
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.control-left{
+	height: 33px;
+	width: 84px;
+	flex-direction: row;
+	justify-content: space-between;;
+	align-items: center;
+	background-color: white;
+	border-radius: 10px;
+	padding: 0px 7px;
+}
+.control-left-icon{
+	width: 21upx;
+	height: 26upx;
+	margin-right:4px;
+}
+	
+.control-arrow{
+	width: 12upx;
+	height: 8upx;
+}
+
+.control-right{
+	background-color: white;
+	border-radius: 10px;
+	width: 66upx;
+	height: 66upx;
+}
+.locaiton{
+	margin-top: 15upx;
+	margin-left: 15upx;
+	width: 35upx;
+	height: 35upx;
+}
+
+.input-box{
+	background-color: white;
+	margin-top: 25upx;
+	border-bottom-left-radius: 25upx;
+	border-bottom-right-radius: 25upx;
+	border-top-left-radius: 25upx;
+	border-top-right-radius: 25upx;
+	padding: 34upx 28upx;
+}
+.input-bar{
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: center;
+}
+.tab{
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+.tab-name{
+	color: #0D1C40;
+	font-size: 15px;
+}
+.tab-icon{
+	width: 45upx;
+	height: 6upx;
+}
+
+.input-section{
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	height: 100upx;
+	margin-top: 20upx;
+	padding-left: 25upx;
+}
+
+.input-content{
+	flex: 1;
+	margin-left: 21upx;
+}
+
+.dot{
+	width: 16upx;
+	height: 16upx;
+}
+
+.address{
+	color: #0D1C40;
+	font-size: 14px;
+}
+
+.section-arrow{
+	width: 10upx;
+	height: 22upx;
+}
+
+.input-bg{
+	background-color: #F5F5F7;
+	border-radius: 24upx;
+}
+
+.input-txt{
+	color: #9EA7B7;
+	font-size: 14px;
+	flex: 1;
+	text-align: left;
+	margin-left: 20upx;
+}
+
+.section{
+	height: 240upx;
+}
+
+.box{
+	background-color: red;
+	position: absolute;
+	height: 300px;
+	width: 300px;
+	top: -150px;
+	left: 20px;
+	right: 20px;
+}
+</style>

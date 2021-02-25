@@ -108,15 +108,15 @@
 			<view></view>
 		</view>
 		<view class="seting-list">
-			<view class="seting-item" @click.stop="setting(1)">
+			<view class="seting-item" @click.stop="tool(1)">
 				<image src="../../../static/image/yuyinbobao@2x.png"></image>
 				<view>语音播报</view>
 			</view>
-			<view class="seting-item" @click.stop="setting(2)">
+			<view class="seting-item" @click.stop="tool(2)">
 				<image src="../../../static/image/xiaopiaodayin@2x.png"></image>
 				<view>小票打印</view>
 			</view>
-			<view class="seting-item" @click.stop="setting(3)">
+			<view class="seting-item" @click.stop="tool(3)">
 				<image src="../../../static/image/changyongdizhi@2x.png"></image>
 				<view>常用地址</view>
 			</view>
@@ -124,19 +124,19 @@
 				<image src="../../../static/image/yaoqinghaoyou@2x.png"></image>
 				<view>邀请好友</view>
 			</view>
-			<view class="seting-item">
+			<view class="seting-item" @click.stop="tool(5)">
 				<image src="../../../static/image/kefu@2x.png"></image>
 				<view>联系客服</view>
 			</view>
-			<view class="seting-item">
+			<view class="seting-item" @click.stop="tool(6)">
 				<image src="../../../static/image/yijianfankui@2x.png"></image>
 				<view>意见反馈</view>
 			</view>
-			<view class="seting-item">
+			<view class="seting-item" @click.stop="tool(7)">
 				<image src="../../../static/image/zhaoshangjiameng@2x.png"></image>
 				<view>招商加盟</view>
 			</view>
-			<view class="seting-item">
+			<view class="seting-item" @click.stop="tool(8)">
 				<image src="../../../static/image/xitongshezhi@2x.png"></image>
 				<view>系统设置</view>
 			</view>
@@ -189,13 +189,20 @@
 		        // const res = await this.$http.post('', {});
 		    },
 			wallet(){
-				uni.navigateTo({
-					url:'/pages/wallet/account'
-				})
+				// uni.navigateTo({
+				// 	url:'/pages/wallet/account'
+				// })
+				this.login()
 			},
 			message_Click(){
 				uni.navigateTo({
 					url:"/pages/personal/messageList"
+				})
+			},
+			
+			login(){
+				uni.navigateTo({
+					url:'/pages/login/loginHome'
 				})
 			},
 			menu_Click(type){
@@ -241,9 +248,29 @@
 				})
 			},
 			tool(type){
-				if(type==4){
+				if(type==1){
+					uni.navigateTo({
+						url:'/pages/myTool/loudspeakerList'
+					})
+				}
+				else if(type==2){
+					uni.navigateTo({
+						url:'/pages/myTool/printList'
+					})
+				}
+				else if(type==3){
+					uni.navigateTo({
+						url:'/pages/myTool/addressList'
+					})
+				}
+				else if(type==4){
 					uni.navigateTo({
 						url:'/pages/visit/index'
+					})
+				}
+				else if(type==5){
+					uni.navigateTo({
+						url:'/pages/myTool/customerCenter'
 					})
 				}
 			}

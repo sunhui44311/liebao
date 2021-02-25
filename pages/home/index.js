@@ -2,15 +2,50 @@ import globalData from '@/common/js/globalData.js'
 export default {
     data() {
         return {
-            windowHeight: 0
+            windowHeight: 500,
+			windowWidth:375,
+			statusH:0,
+			scrollTop:0
         };
     },
     methods: {
         // 用于初始化一些数据
         init() {
-            this.windowHeight = globalData.windowHeight - 50
+			console.log(2222)
+			console.log(globalData)
+			let titleHeight=64
+			let statusBarHeight=22
+			let naviBarHeight=44
+			const res = uni.getSystemInfoSync()
+			const system = res.platform
+			statusBarHeight = res.statusBarHeight
+			if (system === 'android') {
+			titleHeight = (48 + statusBarHeight)
+			} else if (system === 'ios') {
+			titleHeight = (44 + statusBarHeight)
+			}
+			else if(system==='devtools'){
+				titleHeight = (44 + statusBarHeight)
+			}
+			naviBarHeight=titleHeight-statusBarHeight
+			globalData.statusBarHeight=statusBarHeight
+			globalData.naviBarHeight=naviBarHeight
+			globalData.titleHeight=titleHeight
+			globalData.windowHeight=res.windowHeight
+			globalData.windowWidth=res.windowWidth
+			globalData.iphoneX=res.screenHeight>=812?true:false
+            this.windowHeight = globalData.windowHeight
+			this.windowWidth=globalData.windowWidth
+			this.statusH=globalData.statusBarHeight
+			console.log(this.windowHeight)
             this.update();
         },
+		
+		scroll(e){
+			console.log(e)
+			this.scrollTop = e.detail.scrollTop+60
+			console.log(this.scrollTop)
+		},
         // 用于更新一些数据
         async update() {
             // const res = await this.$http.post('', {});

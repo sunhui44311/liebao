@@ -2,19 +2,18 @@ page {
    height: 100%;
 }
 
-#home {
-   height: 100%;
-
-   .map {
-      width: 100%;
-   }
-}
-
 .notice {
    padding: 0 22upx 0 22upx;
    margin-top: 50upx;
+}
 
-   .box {
+.img {
+         margin-right: 20upx;
+         width: 32upx;
+         height: 32upx;
+      }
+
+ .box {
       background: #FEFEFE;
       border-radius: 24upx;
       padding: 22upx;
@@ -22,15 +21,7 @@ page {
       font-size: 24upx;
       font-weight: 400;
       color: #888888;
-
-      .img {
-         margin-right: 20upx;
-         width: 32upx;
-         height: 32upx;
-      }
-
-   }
-}
+	  }
 
 .home-box {
    height: 560upx;
