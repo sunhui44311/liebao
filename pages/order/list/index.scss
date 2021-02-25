@@ -109,6 +109,7 @@ page {
     .operation {
       display: flex;
       align-items: center;
+      margin-bottom: 20upx;
 
       .time {
         font-size: 26upx;
@@ -127,10 +128,34 @@ page {
         }
       }
     }
-    .news{
-      display: flex
-      .icon{
-        
+
+    .news {
+      display: flex;
+      align-items: center;
+
+      .icon {
+        width: 52upx;
+        height: 52upx;
+      }
+
+      .text {
+        font-size: 24upx;
+        font-weight: 400;
+        color: #4D5660;
+        flex: 1;
+      }
+
+      .price {
+        font-size: 38upx;
+        font-weight: bold;
+        color: #FA6F06;
+        display: flex;
+        align-items: baseline;
+
+        .label {
+          font-size: 28upx;
+          margin-right: 6upx;
+        }
       }
     }
   }
