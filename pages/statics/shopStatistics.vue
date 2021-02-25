@@ -23,21 +23,21 @@
 					</view>
 					<view class="list-item">
 						<view class="item">
-							<image src="../../static/image/statics-order@2x.png"></image>
+							<image src="../../static/image/statics-money@2x.png"></image>
 							<text>外卖收入</text>
 						</view>
 						<view class="num">0.0</view>
 					</view>
 					<view class="list-item">
 						<view class="item">
-							<image src="../../static/image/statics-order@2x.png"></image>
+							<image src="../../static/image/statics-tui@2x.png"></image>
 							<text>外卖退单</text>
 						</view>
 						<view class="num">0.0</view>
 					</view>
 					<view class="list-item">
 						<view class="item">
-							<image src="../../static/image/statics-order@2x.png"></image>
+							<image src="../../static/image/statics-shiji@2x.png"></image>
 							<text>外卖实收</text>
 						</view>
 						<view class="num" style="color: #DD7E42;">0.0</view>
@@ -57,21 +57,21 @@
 					</view>
 					<view class="list-item">
 						<view class="item">
-							<image src="../../static/image/statics-order@2x.png"></image>
+							<image src="../../static/image/statics-money@2x.png"></image>
 							<text>配送支出</text>
 						</view>
 						<view class="num">0.0</view>
 					</view>
 					<view class="list-item">
 						<view class="item">
-							<image src="../../static/image/statics-order@2x.png"></image>
+							<image src="../../static/image/statics-tui@2x.png"></image>
 							<text>配送退款</text>
 						</view>
 						<view class="num">0.0</view>
 					</view>
 					<view class="list-item">
 						<view class="item">
-							<image src="../../static/image/statics-order@2x.png"></image>
+							<image src="../../static/image/statics-shiji@2x.png"></image>
 							<text>配送实收</text>
 						</view>
 						<view class="num" style="color: #DD7E42;">0.0</view>
@@ -91,21 +91,21 @@
 					</view>
 					<view class="list-item">
 						<view class="item">
-							<image src="../../static/image/statics-order@2x.png"></image>
+							<image src="../../static/image/statics-money@2x.png"></image>
 							<text>支付收款</text>
 						</view>
 						<view class="num">0.0</view>
 					</view>
 					<view class="list-item">
 						<view class="item">
-							<image src="../../static/image/statics-order@2x.png"></image>
+							<image src="../../static/image/statics-tui@2x.png"></image>
 							<text>支付退款</text>
 						</view>
 						<view class="num">0.0</view>
 					</view>
 					<view class="list-item">
 						<view class="item">
-							<image src="../../static/image/statics-order@2x.png"></image>
+							<image src="../../static/image/statics-shiji@2x.png"></image>
 							<text>支付实收</text>
 						</view>
 						<view class="num" style="color: #DD7E42;">0.0</view>

@@ -219,6 +219,18 @@
 			"style": {
 				"navigationBarTitleText": "门店统计"
 			}
+		},
+		{
+			"path": "pages/statics/deliveryStatistics",
+			"style": {
+				"navigationBarTitleText": "配送统计"
+			}
+		},
+		{
+			"path": "pages/statics/takeoutStatistics",
+			"style": {
+				"navigationBarTitleText": "外卖统计"
+			}
 		}
 	],
 	"globalStyle": {

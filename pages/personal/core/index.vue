@@ -302,6 +302,16 @@
 						url:'/pages/statics/shopStatistics'
 					})
 				}
+				else if(type==3){
+					uni.navigateTo({
+						url:'/pages/statics/deliveryStatistics'
+					})
+				}
+				else if(type==2){
+					uni.navigateTo({
+						url:'/pages/statics/takeoutStatistics'
+					})
+				}
 			},
 			    go(url) {
 			      uni.navigateTo({
