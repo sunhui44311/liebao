@@ -10,12 +10,12 @@ function request(params, isGetTonken) {
 		header: {
 			'session': uni.getStorageSync('session'),
 			// 'content-type': params.method == "GET" ? 'application/x-www-form-urlencoded' : 'application/json;charset=utf-8',
-			'Content-type': 'application/json;charset=utf-8',
+			'Content-type': 'application/x-www-form-urlencoded',
 		},
 		method: params.method == undefined ? "POST" : params.method,
 		dataType: 'json',
 		responseType: params.responseType == undefined ? 'text' : params.responseType,
-		success: function(res) {
+		success: function (res) {
 			if (res.statusCode == 200) {
 				//如果有定义了params.callBack，则调用 params.callBack(res.data)
 				if (params.callBack) {
@@ -42,7 +42,7 @@ function request(params, isGetTonken) {
 				}
 			}
 		},
-		fail: function(err) {
+		fail: function (err) {
 			uni.hideLoading();
 			uni.showToast({
 				title: "服务器出了点小差",
@@ -60,7 +60,7 @@ function uploadImage(params) {
 		header: {
 			"Content-Type": "multipart/form-data"
 		},
-		success: function(res) {
+		success: function (res) {
 			console.log(res);
 			if (res.statusCode == 200) {
 				console.log(121212)
@@ -88,7 +88,7 @@ function uploadImage(params) {
 				}
 			}
 		},
-		fail: function(err) {
+		fail: function (err) {
 			uni.hideLoading();
 			uni.showToast({
 				title: "服务器出了点小差",

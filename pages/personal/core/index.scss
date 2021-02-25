@@ -125,6 +125,7 @@ page {
 
         .recharge {
           position: relative;
+
           .btn {
             background-color: #462BF7;
             border-radius: 28upx;
@@ -133,7 +134,8 @@ page {
             color: #FFFFFF;
             padding: 15upx 32upx;
           }
-          .icon{
+
+          .icon {
             width: 90upx;
             height: 34upx;
             position: absolute;
@@ -147,99 +149,115 @@ page {
   }
 }
 
-.menu-list{
-	display: flex;
-	justify-content: space-around;
-	align-items: center;
-	position: relative;
-	margin-top: 85px;
-	margin-left: 12px;
-	margin-right: 12px;
-	background-color: white;
-	width: calc(100% - 24px);
-	padding: 12px 0px;
-	border-radius: 5px;
+.no-sign {
+  font-size: 52upx;
+  flex: 1;
+  padding-top: 20upx;
+  color: #FC7200;
 }
 
-.menu-item{
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	image{
-		width: 30px;
-		height: 30px;
-	}
+.menu-list {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: relative;
+  margin-top: 85px;
+  margin-left: 12px;
+  margin-right: 12px;
+  background-color: white;
+  width: calc(100% - 24px);
+  padding: 12px 0px;
+  border-radius: 5px;
 }
 
-.seting{
-	margin-top: 10px;
-	margin-left: 12px;
-	margin-right: 12px;
-	width: calc(100% - 24px);
-	border-radius: 5px;
-	background-color: white;
-	padding: 17px 0px;
+.menu-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  image {
+    width: 30px;
+    height: 30px;
+  }
 }
 
-.seting-tlt{
-	color: #222222;
-	font-size: 15px;
-	margin-left: 21px;
+.seting {
+  margin-top: 10px;
+  margin-left: 12px;
+  margin-right: 12px;
+  width: calc(100% - 24px);
+  border-radius: 5px;
+  background-color: white;
+  padding: 17px 0px;
 }
-.seting-list{
-	display: flex;
-	justify-content: flex-start;
-	flex-wrap: wrap;
+
+.seting-tlt {
+  color: #222222;
+  font-size: 15px;
+  margin-left: 21px;
 }
-.seting-item{
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	width: 25%;
-	margin-top: 25px;
-	image{
-		width: 25px;
-		height: 25px;
-	}
+
+.seting-list {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+.seting-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 25%;
+  margin-top: 25px;
+
+  image {
+    width: 25px;
+    height: 25px;
+  }
 }
 
 /*邀请*/
-.visit{
-	display: flex;
-	margin-top: 20px;
-	width: calc(100% - 25px);
-	justify-content: space-between;
-	align-items: center;
-	padding: 12.5px 12.5px;
-	margin: 12px;
-	border-radius: 5px;
-	background-color: white;
-	.visit-logo{
-		width: 25px;
-		height: 25px;
-	}
+.visit {
+  display: flex;
+  margin-top: 20px;
+  width: calc(100% - 25px);
+  justify-content: space-between;
+  align-items: center;
+  padding: 12.5px 12.5px;
+  margin: 12px;
+  border-radius: 5px;
+  background-color: white;
+
+  .visit-logo {
+    width: 25px;
+    height: 25px;
+  }
 }
-.visit-title{
-	color: #222222;
-	font-size: 14px;
-	flex: 1;
-	margin-left: 8px;
+
+.visit-title {
+  color: #222222;
+  font-size: 14px;
+  flex: 1;
+  margin-left: 8px;
 }
-.right{
-	display: flex;
-	justify-content: flex-start;
-	align-items: center;
-	image{
-		width: 5px;
-		height: 9px;
-	}
-	.tip{
-		color: #F43542;
-		font-size: 12px;
-		margin-right: 10px;
-	}
+
+.right {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  image {
+    width: 5px;
+    height: 9px;
+  }
+
+  .tip {
+    color: #F43542;
+    font-size: 12px;
+    margin-right: 10px;
+  }
 }
 
 #core /deep/ {}
