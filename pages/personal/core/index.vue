@@ -148,19 +148,19 @@
 			<view></view>
 		</view>
 		<view class="seting-list">
-			<view class="seting-item" @click.stop="setting(1)">
+			<view class="seting-item" @click.stop="statics(1)">
 				<image src="../../../static/image/mendiantongji@2x.png"></image>
 				<view>门店统计</view>
 			</view>
-			<view class="seting-item" @click.stop="setting(2)">
+			<view class="seting-item" @click.stop="statics(2)">
 				<image src="../../../static/image/waimaitongji@2x.png"></image>
 				<view>外卖统计</view>
 			</view>
-			<view class="seting-item" @click.stop="setting(3)">
+			<view class="seting-item" @click.stop="statics(3)">
 				<image src="../../../static/image/peisongtongji@2x.png"></image>
 				<view>配送统计</view>
 			</view>
-			<view class="seting-item" @click.stop="setting(4)">
+			<view class="seting-item" @click.stop="statics(4)">
 				<image src="../../../static/image/zhifutongji@2x.png"></image>
 				<view>支付统计</view>
 			</view>
@@ -286,6 +286,13 @@
 				else if(type==8){
 					uni.navigateTo({
 						url:'/pages/myTool/setting'
+					})
+				}
+			},
+			statics(type){
+				if(type==1){
+					uni.navigateTo({
+						url:'/pages/statics/shopStatistics'
 					})
 				}
 			}

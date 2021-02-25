@@ -207,6 +207,18 @@
 			"style": {
 				"navigationBarTitleText": "关于我们"
 			}
+		},
+		{
+			"path": "pages/myTool/privatePolicy",
+			"style": {
+				"navigationBarTitleText": "用户协议与隐私政策"
+			}
+		},
+		{
+			"path": "pages/statics/shopStatistics",
+			"style": {
+				"navigationBarTitleText": "门店统计"
+			}
 		}
 	],
 	"globalStyle": {

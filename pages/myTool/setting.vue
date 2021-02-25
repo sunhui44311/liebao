@@ -56,6 +56,11 @@
 						url:'/pages/myTool/aboutUs'
 					})
 				}
+				else if(type==4){
+					uni.navigateTo({
+						url:'/pages/myTool/privatePolicy'
+					})
+				}
 			}
 		}
 	}
