@@ -8,7 +8,7 @@ function request(params, isGetTonken) {
 		url: config.domain + params.url, //接口请求地址
 		data: param,
 		header: {
-			'session': uni.getStorageSync('session'),
+			'token': uni.getStorageSync('token'),
 			// 'content-type': params.method == "GET" ? 'application/x-www-form-urlencoded' : 'application/json;charset=utf-8',
 			'Content-type': 'application/x-www-form-urlencoded',
 		},
