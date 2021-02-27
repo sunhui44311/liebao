@@ -237,6 +237,12 @@
 			"style": {
 				"navigationBarTitleText": "支付统计"
 			}
+		},
+		{
+			"path": "pages/order/deliveryOrderDetail",
+			"style": {
+				"navigationBarTitleText": "订单详情"
+			}
 		}
 	],
 	"globalStyle": {

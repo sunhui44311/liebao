@@ -22,7 +22,7 @@
       <swiper-item v-for="(item, index) in list" :key="index">
         <scroll-view scroll-y @scrolltolower="onreachBottom">
           <view class="order-list">
-            <view class="order">
+            <view class="order" @click.stop="order_Click">
               <view class="head">
                 <view class="title">订单编号：#00001</view>
                 <view class="state">{{ item.name }}</view>

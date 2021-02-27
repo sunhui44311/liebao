@@ -1,0 +1,183 @@
+<template>
+	<view v-if="show">
+		<view class="bg" @touchstart="handletouchstart">
+		</view>
+		<div class="pop">
+			<view class="pop-nav">
+				<view class="close" @click.stop="close">
+					<image class="close-img" src="../../static/image/delete.png"></image>
+				</view>
+				<text class="pop-tlt">订单状态</text>
+				<text class="confirm" @click.stop="close">确定</text>
+			</view>
+			<view>
+				<view class="cell">
+					<view class="cell-left">
+						<view class="firstLine"></view>
+						<text class="dot"></text>
+						<text class="cell-tlt">订单创建</text>
+					</view>
+					<text class="cell-tlt">12:00</text>
+				</view>
+				<view class="cell">
+					<view class="cell-left">
+						<view class="line"></view>
+						<text class="dot"></text>
+						<text class="cell-tlt">待支付</text>
+					</view>
+					<text class="cell-tlt">12:00</text>
+				</view>
+				<view class="cell">
+					<view class="cell-left">
+						<view class="lastLine"></view>
+						<text class="last-dot"></text>
+						<text class="cell-tlt">订单已取消</text>
+					</view>
+					<text class="cell-tlt">12:00</text>
+				</view>
+			</view>
+		</div>
+	</view>
+</template>
+
+<script>
+	export default {
+		data(){
+			return{
+				show:false
+			}
+		},
+		methods:{
+			init(){
+				this.show=true
+			},
+			close(){
+				this.show=false
+			},
+			handletouchstart(){
+				this.show=false
+			}
+		}
+	}
+</script>
+
+<style>
+	.box{
+		padding: 0px 33px;
+		background-color: white;
+	}
+	.pop{
+		position: fixed;
+		left: 0px;
+		right: 0px;
+		bottom: 0px;
+		height: 192px;
+		background-color: white;
+		border-top-left-radius: 13px;
+		border-top-right-radius: 13px;
+	}
+	.bg{
+		position: fixed;
+		left: 0px;
+		right: 0px;
+		bottom: 0px;
+		top: 0px;
+		background-color: #000000;
+		opacity: 0.5;
+	}
+	.pop-nav{
+		flex-direction: row;
+		justify-content: center;
+		align-items: center;
+		padding: 12px 32px;
+		position: relative;
+	}
+	.pop-tlt{
+		color: #0D1C40;
+		font-size: 15px;
+		text-align: center;
+		font-weight: bold;
+	}
+	.confirm{
+		position: absolute;
+		right: 23px;
+		color: #FA6F06;
+		font-size: 14px;
+	}
+	.close{
+		width: 40px;
+		height: 40px;
+		position: absolute;
+		left: 32px;
+	}
+	.close-img{
+		width: 12px;
+		height: 12px;
+	}
+	.cell{
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+		padding: 0px 23px 0px 33px;
+		height: 40px;
+		line-height: 40px;
+		position: relative;
+	}
+	.cell-left{
+		flex-direction: row;
+		justify-content: flex-start;
+		align-items: center;
+	}
+	.dot{
+		width: 7px;
+		height: 7px;
+		border-radius: 7px;
+		background-color: #CCCCCC;
+		margin-right: 20px;
+		z-index:9999;
+	}
+	.last-dot{
+		background-color: #FA6F06;
+		width: 7px;
+		height: 7px;
+		border-radius: 7px;
+		margin-right: 20px;
+		z-index:9999;
+	}
+	.line{
+		background-color: #EEEEEE;
+		width: 1px;
+		height: 40px;
+		position: absolute;
+		left: 3px;
+		top: -10px;
+		z-index:99;
+	}
+	.firstLine{
+		background-color: #EEEEEE;
+		width: 1px;
+		height: 20px;
+		position: absolute;
+		left: 3px;
+		top: 10px;
+		z-index:99;
+	}
+	.lastLine{
+		background-color: #EEEEEE;
+		width: 1px;
+		height: 20px;
+		position: absolute;
+		left: 3px;
+		top: -10px;
+		z-index:99;
+	}
+	.cell-tlt{
+		color: #4D5660;
+		font-size: 14px;
+	}
+	.cell-money{
+		color: #101E3E;
+		font-size: 15px;
+		font-weight: bold;
+	}
+</style>
