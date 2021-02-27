@@ -231,6 +231,12 @@
 			"style": {
 				"navigationBarTitleText": "外卖统计"
 			}
+		},
+		{
+			"path": "pages/statics/payStatistics",
+			"style": {
+				"navigationBarTitleText": "支付统计"
+			}
 		}
 	],
 	"globalStyle": {

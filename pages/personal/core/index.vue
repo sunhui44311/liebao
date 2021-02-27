@@ -312,6 +312,11 @@
 						url:'/pages/statics/takeoutStatistics'
 					})
 				}
+				else if(type==4){
+					uni.navigateTo({
+						url:'/pages/statics/payStatistics'
+					})
+				}
 			},
 			    go(url) {
 			      uni.navigateTo({
