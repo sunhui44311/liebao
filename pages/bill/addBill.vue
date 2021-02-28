@@ -1,0 +1,210 @@
+<template>
+	<view class="box">
+		<view class="section">
+			<view class="cell" @click.stop="choiceAddress">
+				<image class="icon" src="../../static/image/bill-location@2x.png"></image>
+				<view class="cell-content">苏州工业油漆</view>
+				<image class="arrow" src="../../static/image/fj2.png"></image>
+				<view class="line"></view>
+			</view>
+			<view class="cell">
+				<image class="icon" src="../../static/image/bill_flower@2x.png"></image>
+				<input class="cell-content" placeholder="楼层、单元、门牌号(选填)"/>
+				<view class="line"></view>
+			</view>
+			<view class="cell">
+				<image class="icon" src="../../static/image/bill-contact@2x.png"></image>
+				<input class="cell-content" placeholder="姓名(必填)"/>
+				<view class="contact">通讯录</view>
+				<view class="line"></view>
+			</view>
+			<view class="cell">
+				<image class="icon" src="../../static/image/bill-tel@2x.png"></image>
+				<input class="cell-content" placeholder="手机号(必填)"/>
+				<view class="verticl-line"></view>
+				<input class="cell-content" style="flex: 0.5;" placeholder="分手机号(选填)"/>
+			</view>
+		</view>
+		<view class="section">
+			<view class="header">
+				<view class="header-left">
+					<image src="../../static/image/vertical-line@2x.png"></image>
+					<view>历史地址</view>
+				</view>
+				<view class="header-right">
+					<text>清空</text>
+					<image src="../../static/image/clear@2x.png"></image>
+				</view>
+			</view>
+			<view class="address-cell">
+				<image class="address-icon" src="../../static/image/history_addr@2x.png"></image>
+				<view>
+					<view>上海安慧里1区88号楼1单元州001</view>
+					<view class="address-contact">
+						<text>闪先生</text>
+						<text>18362766707</text>
+					</view>
+				</view>
+			</view>
+			<view class="address-cell">
+				<image class="address-icon" src="../../static/image/history_addr@2x.png"></image>
+				<view>
+					<view>上海安慧里1区88号楼1单元州001</view>
+					<view class="address-contact">
+						<text>闪先生</text>
+						<text>18362766707</text>
+					</view>
+				</view>
+			</view>
+		</view>
+		<view class="btn" @click.stop="addBill">确定</view>
+	</view>
+</template>
+
+<script>
+	export default{
+		data(){
+			return{
+				
+			}
+		},
+		methods:{
+			choiceAddress(){
+				uni.navigateTo({
+					url:'/pages/bill/choiceAddress'
+				})
+			},
+			addBill(){
+				uni.navigateTo({
+					url:'/pages/bill/receiptBill'
+				})
+			}
+		}
+	}
+</script>
+
+<style lang="scss">
+	page{
+		background-color: #F6F7F9;
+	}
+	.box{
+		padding: 10px;
+	}
+	.section{
+		background-color: white;
+		padding: 0px 24px 0px 10px;
+		border-radius: 6px;
+		margin-bottom: 10px;
+	}
+	.cell{
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		height: 48px;
+		position: relative;
+		.icon{
+			width: 36upx;
+			height: 36upx;
+			margin-right: 27upx;
+		}
+		.cell-content{
+			flex: 1;
+			color: #0D1C40;
+			font-size: 14px;
+		}
+		.arrow{
+			width: 10upx;
+			height: 22upx;
+		}
+		.line{
+			position: absolute;
+			bottom: 0px;
+			right: 0px;
+			left: 30px;
+			height: 1px;
+			background-color: #EEEEEE;
+		}
+	}
+	.verticl-line{
+		width: 1px;
+		height: 20px;
+		background-color: #EEEEEE;
+		margin-right: 20px;
+	}
+	.contact{
+		border: solid 1px #F96E06;
+		height: 22px;
+		line-height: 22px;
+		width: 55px;
+		border-radius: 11px;
+		color: #FA6F06;
+		font-size: 13px;
+		text-align: center;
+	}
+	.header{
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		height: 40px;
+		.header-left{
+			display: flex;
+			justify-content: flex-start;
+			align-items: center;
+			image{
+				width: 6upx;
+				height: 29upx;
+				margin-right: 5px;
+			}
+			view{
+				color: #0D1C40;
+				font-size: 15px;
+			}
+		}
+		.header-right{
+			display: flex;
+			justify-content: flex-end;
+			align-items: center;
+			color: #9EA7B7;
+			font-size: 13px;
+			image{
+				width: 30upx;
+				height: 30upx;
+				margin-left: 4px;
+			}
+		}
+	}
+	
+	.address-cell{
+		display: flex;
+		justify-content: flex-start;
+		align-items: center;
+		color: #0D1C40;
+		font-size: 13px;
+		padding-bottom: 10px;
+		.address-icon{
+			width: 36upx;
+			height: 36upx;
+			margin-right: 12px;
+		}
+		.address-contact{
+			color: #0D1C40;
+			font-size: 12px;
+			margin-top: 8px;
+		}
+	}
+	.btn{
+		position: fixed;
+		bottom: 22px;
+		left: 45;
+		width: calc(100% - 85px);
+		background-color: #E95008;
+		height: 45px;
+		line-height: 45px;
+		text-align: center;
+		color: white;
+		border-radius: 45px;
+		left: 50%;
+		transform: translateX(-50%);
+		font-size: 15px;
+	}
+</style>

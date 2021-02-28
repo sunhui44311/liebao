@@ -135,7 +135,6 @@
 				}
 			},
 			showDetail(){
-				console.log(2222)
 				this.$refs['priceDetail'].init()
 			},
 			status_Click(){

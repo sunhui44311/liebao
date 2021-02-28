@@ -1,0 +1,87 @@
+<template>
+	<div>
+		<map :style="{'width':mapWidth+'px','height':mapHeight+'px'}"></map>
+		<view class="footer">
+			<text class="tip">请确认发件地址是否准确，如不准确可拖动地图进行调整</text>
+			<view class="content">
+				<text class="addr">苏州纳米科技园</text>
+				<view class="detail">
+					<image class="detail-icon" src="../../static/image/location@2x.png"></image>
+					<text class="detail-info">苏州工业园区若水路388号</text>
+				</view>
+				<text class="btn">确认地址</text>
+			</view>
+		</view>
+	</div>
+</template>
+
+<script>
+	export default {
+		data(){
+			return{
+				mapWidth:0,
+				mapHeight:0
+			}
+		},
+		onLoad() {
+			const res = uni.getSystemInfoSync();
+			this.mapWidth=res.windowWidth;
+			this.mapHeight=res.windowHeight-186;
+		},
+		methods:{
+			
+		}
+	}
+</script>
+
+<style>
+	.footer{
+		position: relative;
+		margin-top: -30px;
+		height: 186px;
+		background-color: white;
+		border-top-left-radius: 20px;
+		border-top-right-radius: 20px;
+	}
+	.tip{
+		background-color: #FFFFEA;
+		font-size: 12px;
+		color: #E95008;
+		height: 30px;
+		line-height: 30px;
+		border-top-left-radius: 20px;
+		border-top-right-radius: 20px;
+		text-align: center;
+	}
+	.content{
+		padding: 20px;
+	}
+	.addr{
+		color: #0D1C40;
+		font-size:15px;
+	}
+	.detail{
+		flex-direction: row;
+		justify-content: flex-start;
+		margin-top: 12px;
+	}
+	.detail-icon{
+		width: 15px;
+		height: 15px;
+		margin-right: 5px;
+	}
+	.detail-info{
+		color: #9FA7B6;
+		font-size: 12px;
+	}
+	.btn{
+		background-color: #E95008;
+		color: white;
+		font-size: 16px;
+		height: 45px;
+		line-height: 45px;
+		text-align: center;
+		border-radius: 45px;
+		margin-top: 30px;
+	}
+</style>
