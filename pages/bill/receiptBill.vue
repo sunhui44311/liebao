@@ -9,7 +9,7 @@
 				<text class="name">闪先生</text>
 				<text class="tel">18362766707</text>
 			</view>
-			
+
 			<view class="start" style="margin-top: 20px;">
 				<text class="start-tlt" style="background-color: #1087FE;">收</text>
 				<text class="start-address">上海安慧里1区88号楼1单元州001</text>
@@ -33,7 +33,7 @@
 				<view class="line"></view>
 			</view>
 			<view class="cell">
-				<view class="cell-left">
+				<view class="cell-left" @click.stop="menu(2)">
 					<image class="icon" src="../../static/image/time@2x.png"></image>
 					<text>取件时间</text>
 				</view>
@@ -54,55 +54,137 @@
 				</view>
 			</view>
 		</view>
-		<view class="btn">立即计价</view>
+		<view class="btn" @click.stop="eveluatePrice">立即计价</view>
 		<good-info-input ref="goodInfoInput"></good-info-input>
+		<submit-bill ref="submitBill"></submit-bill>
+		<u-select v-model="show" mode="mutil-column-auto" :list="dateList" @confirm="confirm"></u-select>
 	</view>
 </template>
 
 <script>
 	import goodInfoInput from './goodInfoInput.vue'
-	export default{
-		components:{
-			goodInfoInput
+	import submitBill from './submitBill.vue'
+	export default {
+		components: {
+			goodInfoInput,
+			submitBill
 		},
-		data(){
-			return{
-				
+		data() {
+			return {
+				dateList:[],
+				show:false
 			}
 		},
-		methods:{
-			menu(index){
-				if(index==1){
-					this.$refs['goodInfoInput'].init()
+		onLoad() {
+			Date.prototype.Format = function(fmt) {
+				var o = {
+					"M+": this.getMonth() + 1, //月份
+					"d+": this.getDate(), //日
+					"h+": this.getHours(), //小时
+					"m+": this.getMinutes(), //分
+					"s+": this.getSeconds(), //秒
+					"q+": Math.floor((this.getMonth() + 3) / 3), //季度
+					"S": this.getMilliseconds() //毫秒
+				};
+				if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+				for (var k in o)
+					if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" +
+						o[k]).substr(("" + o[k]).length)));
+				return fmt;
+			}
+			var endTime;
+			for(var i=0;i<15;i++){
+				var date = new Date();
+				if(i==0){
+					let dic={
+						label:'今天',
+						value:'今天',
+						children:[{
+							label:'立即取件',
+							value:'立即取件'
+						}].concat(this.getHoursList(date.getHours()+1))
+					}
+					this.dateList.push(dic)
 				}
-				else if(index==3){
+				else if(i==1){
+					let dic={
+						label:'明天',
+						value:'明天',
+						children:this.getHoursList(1)
+					}
+					this.dateList.push(dic)
+					
+				}
+				else{
+					date.setDate(date.getDate()+i)
+					endTime = date.Format("yyyy-MM-dd");
+					let dic={
+						label:endTime,
+						value:endTime,
+						children:this.getHoursList(1)
+					}
+					this.dateList.push(dic)
+				}
+			}
+			
+			console.log(this.dateList)
+		},
+		
+		methods: {
+			menu(index) {
+				if (index == 1) {
+					this.$refs['goodInfoInput'].init()
+				} else if (index == 2) {
+					this.show=true
+				} else if (index == 3) {
 					uni.navigateTo({
-						url:'/pages/bill/billRemark'
+						url: '/pages/bill/billRemark'
 					})
 				}
+			},
+			getHoursList(index){
+				var list=[]
+				for(var i=index;i<=24;i++){
+					var dic={
+						label:i+'时',
+						value:i
+					}
+					list.push(dic)
+				}
+				return list
+			},
+			confirm(e){
+				console.log(e)
+			},
+			eveluatePrice(){
+				this.$refs['submitBill'].init()
 			}
 		}
 	}
 </script>
 
 <style lang="scss">
-	page{
+	page {
 		background-color: #F6F7F9;
 	}
-	.box{
+
+	.box {
 		padding: 10px;
 	}
-	.section{
+
+	.section {
 		position: relative;
 		background-color: white;
 		padding: 40upx 20upx;
 		border-radius: 6px;
 	}
-	.start{
+
+	.start {
 		flex-direction: row;
 		justify-content: flex-start;
 	}
-	.start-tlt{
+
+	.start-tlt {
 		display: inline-block;
 		width: 20px;
 		height: 20px;
@@ -114,24 +196,29 @@
 		margin-right: 10px;
 		font-size: 11px;
 	}
-	.contact{
+
+	.contact {
 		margin-left: 30px;
 		margin-top: 8px;
 	}
-	.start-address{
+
+	.start-address {
 		color: #0D1C40;
 		font-size: 13px;
 	}
-	.name{
+
+	.name {
 		color: #0D1C40;
 		font-size: 12px;
 	}
-	.tel{
+
+	.tel {
 		color: #0D1C40;
 		font-size: 12px;
 		margin-left: 16px;
 	}
-	.exchange{
+
+	.exchange {
 		position: absolute;
 		width: 36upx;
 		height: 36upx;
@@ -139,43 +226,49 @@
 		top: 50%;
 		transform: translateY(-50%);
 	}
-	
-	.section1{
+
+	.section1 {
 		margin-top: 10px;
 		background-color: white;
 		border-radius: 6px;
 	}
-	.cell{
+
+	.cell {
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
 		padding: 0px 40upx 0px 10px;
 		height: 49px;
 		position: relative;
-		.cell-left{
+
+		.cell-left {
 			display: flex;
 			justify-content: flex-start;
 			align-items: center;
 			color: #9EA7B7;
 			font-size: 14px;
-			.icon{
+
+			.icon {
 				width: 36upx;
 				height: 36upx;
 				margin-right: 12px;
 			}
 		}
-		.cell-right{
+
+		.cell-right {
 			flex: 1;
 			display: flex;
 			justify-content: flex-end;
 			align-items: center;
-			image{
+
+			image {
 				width: 24upx;
 				height: 24upx;
 			}
 		}
 	}
-	.line{
+
+	.line {
 		position: absolute;
 		bottom: 0px;
 		left: 40px;
@@ -183,7 +276,8 @@
 		background-color: #EEEEEE;
 		height: 1px;
 	}
-	.btn{
+
+	.btn {
 		position: fixed;
 		bottom: 22px;
 		background-color: #E95008;

@@ -1,11 +1,11 @@
 <template>
 	<view>
-		<u-navbar :is-back="true" :is-fixed="true" :border-bottom="false" title-size="36" back-icon-color="#FFFFFF" title-color="#FFFFFF" title="我的钱包" :background="{background:'#FC720000'}">
+		<u-navbar :is-back="true" :is-fixed="true" :border-bottom="false" title-size="36" back-icon-color="#FFFFFF" title-color="#FFFFFF" title="我的钱包" :background="{background:navBarbgColor}">
 		</u-navbar>
-		<view class="header">
+		<view class="header" :style="{'margin-top':-navHeight+''}">
 			<view class="money">
 				<view class="header-tlt">账户余额</view>
-				<view class="total">20.0</view>
+				<view class="total">{{userInfo.totalAmount}}</view>
 			</view>
 		</view>
 		<view class="menu">
@@ -36,13 +36,47 @@
 </template>
 
 <script>
+	import globalData from '@/common/js/globalData.js'
+	var _self
 	export default{
 		data(){
 			return{
-				
+				currentPage:1,
+				navBarbgColor:'#FC720000',
+				navHeight:64,
+				userInfo:{}
 			}
 		},
+		onLoad() {
+			_self=this
+			this.getUserInfo()
+			this.navHeight=globalData.naviBarHeight
+		},
 		methods:{
+			onPageScroll: function(Object) {
+			  let alpha=Object.scrollTop/globalData.naviBarHeight
+			  if(alpha>=1){
+				  this.navBarbgColor='#FC7200FF'
+			  }
+			  else{
+				  this.navBarbgColor='#FC720000'
+			  }
+			},
+			
+			/*获取用户信息*/
+			getUserInfo(){
+				let params={
+					url:'app/member/detail',
+					method:'get',
+					data:{},
+					callBack:function(res){
+						console.log(res)
+						_self.userInfo=res.data
+					}
+				}
+				this.$http.request(params)
+			},
+			
 			recharge_Click(){
 				uni.navigateTo({
 					url:'/pages/wallet/index'
@@ -63,6 +97,9 @@
 </script>
 
 <style lang="scss">
+	page{
+		background-color: #F6F7F9;
+	}
 	.header{
 		margin-top: -64px;
 		height: 166px;

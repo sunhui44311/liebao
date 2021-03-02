@@ -3,7 +3,7 @@
 		<image class="logo" src="../../static/image/logo@2x.png"></image>
 		<view class="phone">138****1234</view>
 		<view class="tip" style="margin-top: 10px;">中国移动提供认证服务</view>
-		<view class="btn" style="margin-top: 32px;">一键登录</view>
+		<view class="btn" style="margin-top: 32px;" @click.stop="loginPhone">一键登录</view>
 		<view class="btn other" @click.stop="login">使用其他手机号</view>
 		<view class="footer">
 			<image src="../../static/image/weixuanzhong@2x.png"></image>
@@ -24,13 +24,71 @@
 	export default{
 		data(){
 			return{
-				
+				access_token:'',
+				openid:'',
+				phoneNumber:''
 			}
 		},
 		methods:{
 			login(){
 				uni.navigateTo({
 					url:'/pages/login/login'
+				})
+			},
+			/*一键登录*/
+			loginPhone(){
+				uni.login({
+					provider: 'univerify',
+					univerifyStyle: {
+						"backgroundColor": "#ffffff",
+						"icon":{
+							"path": "/static/image/logo@2x.png"
+						},
+						"phoneNum":{
+							"color": "#0D1C40",
+							"fontSize": "22"
+						},
+						"slogan":{
+							"color": "#8a8b90",
+							"fontSize": "12"
+						},
+						"authButton":{
+							"normalColor": "#3479f5",
+							"highlightColor": "#2861c5",
+							"disabledColor": "#73aaf5",
+							"textColor": "#ffffff",
+							"title": "本机号码一键登录"
+						},
+						"privacyTerms":{
+							"defaultCheckBoxState": "true",
+							"textColor": "#8a8b90",
+							"termsColor": "#1d4788",
+							"prefix": "我已阅读并同意",
+							"suffix": "并使用本机号码登录",
+							"fontSize": "12",
+							privacyItems:[
+								{
+									"url": "https://",
+									"title": "用户服务协议"
+								}
+							]
+						}
+					},
+					success(res){
+						this.openid = res.authResult.openid;
+					    this.access_token = res.authResult.access_token;
+						uniCloud.callFunction({
+							name: 'login',
+							data: {
+								access_token: this.access_token, // 客户端一键登录接口返回的access_token
+								openid: this.openid ,// 客户端一键登录接口返回的openid
+								}
+						}).tnen(res=>{
+							this.phoneNumber=res.result.data.phoneNumber;
+						}).catch(err=>{
+							
+						})
+					}
 				})
 			}
 		}

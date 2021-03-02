@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<u-navbar :is-back="true" :is-fixed="true" :border-bottom="false" title-size="36" back-icon-color="#FFFFFF" title-color="#FFFFFF" title="我的钱包" :background="{background:'#FC720000'}">
+		<u-navbar :is-back="true" :is-fixed="true" :border-bottom="false" title-size="36" back-icon-color="#FFFFFF" title-color="#FFFFFF" title="账户充值" :background="{background:'#FC720000'}">
 		</u-navbar>
 		<view class="header">
 			<view class="account">

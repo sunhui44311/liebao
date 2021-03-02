@@ -31,12 +31,45 @@
 				},{
 					name:'退款'
 				}],
-				current: 0
+				current: 0,
+				hasMore:true,
+				showLoading:true,
+				currentPage:1,
+				dataList:[]
 			}
+		},
+		onLoad() {
+			this.getDataList()
 		},
 		methods: {
 			change(index){
 				this.current=index
+			},
+			getDataList(){
+				var params={
+					url:'app/member/balance/logs',
+					method:'get',
+					data:{
+						pageNum:this.currentPage,
+						pageSize:10
+					},
+					callBack:function(res){
+						console.log(res)
+						uni.stopPullDownRefresh();
+						_self.showLoading=false
+						let list=null;
+						if(_self.currentPage==1){
+							list=[];
+						}
+						else{
+							list=_self.dataList;
+						}
+						_self.currentPage++;
+						_self.hasMore = parseInt(res.data.totalPages) > parseInt(res.data.pageNum) ? true : false;
+						_self.dataList =list.concat(res.data.data);
+					}
+				}
+				this.$http.request(params)
 			}
 		}
 	}

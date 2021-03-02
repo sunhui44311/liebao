@@ -80,6 +80,7 @@ export default {
           type: 1,
         },
         callBack: (res) => {
+			console.log(res)
           this.show = false;
           this.count = 59;
           this.timer = setInterval(() => {

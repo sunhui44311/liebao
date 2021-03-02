@@ -12,17 +12,17 @@
       </view>
       <view class="user-box">
         <view class="user-info">
-          <!-- <view class="head">
-            <image
-              src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fc-ssl.duitang.com%2Fuploads%2Fitem%2F202006%2F07%2F20200607222012_lwusd.thumb.400_0.jpeg&refer=http%3A%2F%2Fc-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1616221777&t=7ee684e6ab371150ee6573252602e74a"
-              class="img"
-            ></image>
-          </view> -->
-          <!-- <view class="info">
-            <view class="name">猎豹科技 <view class="label">商家</view></view>
-            <view class="qm">欢迎你，来到猎豹Ai商家版</view>
-          </view> -->
-          <view class="no-sign" @click="go('/pages/login/loginHome')"
+		  <view class="head" v-if="isLogin">
+		    <image
+		      :src="userInfo.avatar?userInfo.avatar:'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fc-ssl.duitang.com%2Fuploads%2Fitem%2F202006%2F07%2F20200607222012_lwusd.thumb.400_0.jpeg&refer=http%3A%2F%2Fc-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1616221777&t=7ee684e6ab371150ee6573252602e74a'"
+		      class="img"
+		    ></image>
+		  </view>
+		  <view class="info" v-if="isLogin">
+		    <view class="name">{{userInfo.nickname}}<view class="label">{{userInfo.memberType==1?'个人':'商家'}}</view></view>
+		    <view class="qm">欢迎你，来到猎豹Ai{{userInfo.memberType==1?'个人':'商家'}}版</view>
+		  </view>
+          <view v-if="!isLogin" class="no-sign" @click="go('/pages/login/loginHome')"
             >请登录</view
           >
           <view class="icon">
@@ -32,7 +32,7 @@
         <view class="wallet">
           <view class="total" @click.stop="wallet">
             <view class="title"> 钱包余额 </view>
-            <view class="num"> 0.00 </view>
+            <view class="num">{{userInfo.totalAmount}}</view>
           </view>
           <view class="recharge">
             <div class="btn">
@@ -67,7 +67,11 @@
 			<view></view>
 		</view>
 		<view class="seting-list">
-			<view class="seting-item" @click.stop="setting(1)">
+			<view class="seting-item" @click.stop="setting(0)" v-if="userInfo.memberType==1">
+				<image src="../../../static/image/yijianfadan@2x.png"></image>
+				<view>申请为商家</view>
+			</view>
+			<view class="seting-item" @click.stop="setting(1)" v-if="userInfo.memberType==2">
 				<image src="../../../static/image/yijianfadan@2x.png"></image>
 				<view>一键发单</view>
 			</view>
@@ -178,13 +182,22 @@
 </template>
 <script>
 	import showSetting from '../../deliverySettings/showSetting.vue'
+	var _self
 	export default{
 		name: 'core',
 		components:{
 			showSetting
 		},
 		data() {
-		    return {};
+		    return {
+				isLogin:false,
+				userInfo:{}
+			};
+		},
+		onLoad() {
+			_self=this
+			this.isLogin=uni.getStorageSync('session')?true:false
+			this.getUserInfo()
 		},
 		methods: {
 		    // 用于初始化一些数据
@@ -193,13 +206,14 @@
 		    },
 		    // 用于更新一些数据
 		    async update() {
-		        // const res = await this.$http.post('', {});
+
 		    },
 			wallet(){
-				// uni.navigateTo({
-				// 	url:'/pages/wallet/account'
-				// })
-				this.login()
+				this.login(()=>{
+					uni.navigateTo({
+						url:'/pages/wallet/account'
+					})
+				})
 			},
 			message_Click(){
 				uni.navigateTo({
@@ -207,10 +221,29 @@
 				})
 			},
 			
-			login(){
-				uni.navigateTo({
-					url:'/pages/login/loginHome'
-				})
+			/*获取用户信息*/
+			getUserInfo(){
+				let params={
+					url:'app/member/detail',
+					method:'get',
+					data:{},
+					callBack:function(res){
+						console.log(res)
+						_self.userInfo=res.data
+					}
+				}
+				this.$http.request(params)
+			},
+			
+			login(callback){
+				if(!this.isLogin){
+					uni.navigateTo({
+						url:'/pages/login/loginHome'
+					})
+				}
+				else{
+					callback()
+				}
 			},
 			menu_Click(type){
 				if(type==1){
@@ -235,7 +268,12 @@
 				}
 			},
 			setting(type){
-				if(type==2){
+				if(type==0){
+					uni.navigateTo({
+						url:'/pages/deliverySettings/applyForBusiness'
+					})
+				}
+				else if(type==2){
 					uni.navigateTo({
 						url:'/pages/deliverySettings/takeoutSetting'
 					})
