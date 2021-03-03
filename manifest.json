@@ -103,6 +103,14 @@
         },
         "usingComponents" : true
     },
+	"permission": {
+		"scope.userLocation": {
+			"desc": "猎豹AI需要获取您的当前位置"
+		},
+		"Contacts":{
+		    "description" : "通讯录，访问系统联系人"
+		}
+	},
     "mp-alipay" : {
         "usingComponents" : true
     },

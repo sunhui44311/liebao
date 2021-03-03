@@ -53,17 +53,20 @@ function request(params, isGetTonken) {
 }
 
 function uploadImage(params) {
+	console.log(params)
 	uni.uploadFile({
 		url: config.picDomain + params.url,
 		filePath: params.data.imageUrl,
 		name: params.data.name,
 		header: {
-			"Content-Type": "multipart/form-data"
+			"content-type": "multipart/form-data",
+			'token': uni.getStorageSync('session'),
 		},
 		success: function (res) {
 			console.log(res);
 			if (res.statusCode == 200) {
 				console.log(121212)
+				console.log(res)
 				//如果有定义了params.callBack，则调用 params.callBack(res.data)
 				if (params.callBack) {
 					params.callBack(res.data);
@@ -98,6 +101,29 @@ function uploadImage(params) {
 	})
 }
 
+function upload(params){
+	// const FormData = require('form-data');
+	let formData = new FormData();
+	formData.append('file', params.data.file);
+	uni.request({
+		url:config.picDomain + params.url,
+		data: formData,
+		method:'POST',
+		dataType: 'json',
+		header: {
+			'token': uni.getStorageSync('session'),
+			// 'content-type': params.method == "GET" ? 'application/x-www-form-urlencoded' : 'application/json;charset=utf-8',
+			'Content-type': 'multipart/form-data',
+		},
+		success: function (res){
+			console.log(res)
+		},
+		fail(err) {
+			console.log(err)
+		}
+	})
+}
+
 // 更新用户头像昵称
 function updateUserInfo(successBack) {
 	uni.getUserInfo({
@@ -123,3 +149,4 @@ function updateUserInfo(successBack) {
 exports.request = request;
 exports.updateUserInfo = updateUserInfo;
 exports.uploadImage = uploadImage;
+exports.upload=upload

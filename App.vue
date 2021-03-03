@@ -48,6 +48,12 @@
 </script>
 
 <style lang="scss">
+	uni-page-head{
+			display: none;
+	}
+		page {
+	    background-color: #f8f8f8;
+	}
 	/* 注意要写在第一行，同时给style标签加入lang="scss"属性 */
 	@import "uview-ui/index.scss";
 </style>

@@ -12,7 +12,7 @@
       </view>
       <view class="user-box">
         <view class="user-info">
-		  <view class="head" v-if="isLogin">
+		  <view class="head" v-if="isLogin" @click.stop="showActionSheet=true">
 		    <image
 		      :src="userInfo.avatar?userInfo.avatar:'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fc-ssl.duitang.com%2Fuploads%2Fitem%2F202006%2F07%2F20200607222012_lwusd.thumb.400_0.jpeg&refer=http%3A%2F%2Fc-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1616221777&t=7ee684e6ab371150ee6573252602e74a'"
 		      class="img"
@@ -178,6 +178,7 @@
 		</view>
 	</view>
 	<show-setting ref='showSetting'></show-setting>
+	<u-action-sheet :list="actionSheetList" v-model="showActionSheet" @click="click" :cancel-btn="true"></u-action-sheet>
   </view>
 </template>
 <script>
@@ -190,8 +191,21 @@
 		},
 		data() {
 		    return {
+				showActionSheet:false,
 				isLogin:false,
-				userInfo:{}
+				userInfo:{},
+				actionSheetList:[
+					{
+						text: '拍照',
+						color: '#0D1C40',
+						fontSize: 30
+					},
+					{
+						text: '从相册选取',
+						color: '#0D1C40',
+						fontSize: 30
+					}
+				]
 			};
 		},
 		onLoad() {
@@ -361,6 +375,26 @@
 			        url: url,
 			      });
 			    },
+				click(index){
+					uni.chooseImage({
+						count:1,
+						sourceType:[index==0?'camera':'album'],
+						success:(res)=>{
+							console.log(res)
+							let params={
+								url:'app/common/upload',
+								data:{
+									imageUrl:res.tempFilePaths[0],
+									name:'file'
+								},
+								callBack:function(response){
+									console.log(response)
+								}
+							}
+							_self.$http.uploadImage(params)
+						}
+					})
+				}
 		}
 	}
 </script>

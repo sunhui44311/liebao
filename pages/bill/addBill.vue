@@ -3,26 +3,26 @@
 		<view class="section">
 			<view class="cell" @click.stop="choiceAddress">
 				<image class="icon" src="../../static/image/bill-location@2x.png"></image>
-				<view class="cell-content">苏州工业油漆</view>
+				<view class="cell-content">{{startAddress}}</view>
 				<image class="arrow" src="../../static/image/fj2.png"></image>
 				<view class="line"></view>
 			</view>
 			<view class="cell">
 				<image class="icon" src="../../static/image/bill_flower@2x.png"></image>
-				<input class="cell-content" placeholder="楼层、单元、门牌号(选填)"/>
+				<input class="cell-content" placeholder="楼层、单元、门牌号(选填)" />
 				<view class="line"></view>
 			</view>
 			<view class="cell">
 				<image class="icon" src="../../static/image/bill-contact@2x.png"></image>
-				<input class="cell-content" placeholder="姓名(必填)"/>
-				<view class="contact">通讯录</view>
+				<input class="cell-content" placeholder="姓名(必填)" />
+				<view class="contact" @click.stop="getContacts">通讯录</view>
 				<view class="line"></view>
 			</view>
 			<view class="cell">
 				<image class="icon" src="../../static/image/bill-tel@2x.png"></image>
-				<input class="cell-content" placeholder="手机号(必填)"/>
+				<input class="cell-content" placeholder="手机号(必填)" />
 				<view class="verticl-line"></view>
-				<input class="cell-content" style="flex: 0.5;" placeholder="分手机号(选填)"/>
+				<input class="cell-content" style="flex: 0.5;" placeholder="分手机号(选填)" />
 			</view>
 		</view>
 		<view class="section">
@@ -62,61 +62,145 @@
 </template>
 
 <script>
-	export default{
-		data(){
-			return{
-				
+	import { nativeCommon } from '@/common/js/nativeCommon.js'
+	export default {
+		data() {
+			return {
+				startAddress: '',
+				contacts:[],
+				longitude:0,
+				latitude:0
 			}
 		},
-		methods:{
-			choiceAddress(){
+		onLoad(options) {
+			console.log(options)
+			this.longitude=options.longitude
+			this.latitude=options.latitude
+			this.getDetailAddress(options.longitude, options.latitude)
+		},
+		methods: {
+			choiceAddress() {
 				uni.navigateTo({
-					url:'/pages/bill/choiceAddress'
+					url: `/pages/bill/choiceAddress?longitude`
 				})
 			},
-			addBill(){
+			addBill() {
 				uni.navigateTo({
-					url:'/pages/bill/receiptBill'
+					url: '/pages/bill/receiptBill'
 				})
+			},
+			getDetailAddress(longitude, latitude) {
+				let that = this
+				let params = {
+					key: '5ae8644771ef9abf9cfb3ea23b1df6ca',
+					location: `${longitude},${latitude}`,
+					extensions: 'all'
+				}
+				uni.request({
+					url: 'https://restapi.amap.com/v3/geocode/regeo',
+					method: 'GET',
+					data: params,
+					dataType: 'json',
+					success({
+						data
+					}) {
+						let addressComponent = data.regeocode.addressComponent
+						let aois = data.regeocode.aois.length > 0 ? data.regeocode.aois[0] : ''
+						let aoi = aois ? aois.name : ''
+						that.startAddress = addressComponent.streetNumber.street + addressComponent.streetNumber.number + aoi
+					}
+				})
+			},
+			
+			getContacts: function() {
+				let that=this
+				// #ifdef APP-PLUS
+				nativeCommon.contacts.getContact(function callBack(name, phoneNumber){
+				that.address.name = name;
+				that.address.mobile = phoneNumber.replace(/\s|-+/g,"");
+				});
+				// #endif
+				
+				// var that = this
+				// // 获取通讯录对象  
+				// plus.contacts.getAddressBook(plus.contacts.ADDRESSBOOK_PHONE, function(addressbook) {
+				// 	uni.showToast({
+				// 		title: '获取通讯录对象成功',
+				// 		duration: 2000
+				// 	})
+				// 	console.log('获取通讯录对象成功')
+				// 	console.log(addressbook)
+				// 	// 查找联系人  
+				// 	addressbook.find(["displayName", "phoneNumbers"], function(contacts) {
+				// 		uni.showToast({
+				// 			title: '获取联系人成功',
+				// 			duration: 2000
+				// 		})
+				// 		console.log('获取联系人成功')
+				// 		console.log(contacts)
+				// 		console.log(JSON.stringify(contacts))
+				// 		// console.log(contacts)
+				// 		// that.list = contacts
+				// 	}, function() {
+				// 		uni.showToast({
+				// 			title: '获取联系人失败',
+				// 			duration: 2000
+				// 		})
+				// 	}, {
+				// 		multiple: true
+				// 	});
+				// }, function(e) {
+				// 	uni.showToast({
+				// 		title: '获取通讯录对象失败:' + e.message,
+				// 		duration: 2000
+				// 	})
+				// });
 			}
 		}
 	}
 </script>
 
 <style lang="scss">
-	page{
+	page {
 		background-color: #F6F7F9;
 	}
-	.box{
+
+	.box {
 		padding: 10px;
 	}
-	.section{
+
+	.section {
 		background-color: white;
 		padding: 0px 24px 0px 10px;
 		border-radius: 6px;
 		margin-bottom: 10px;
 	}
-	.cell{
+
+	.cell {
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
 		height: 48px;
 		position: relative;
-		.icon{
+
+		.icon {
 			width: 36upx;
 			height: 36upx;
 			margin-right: 27upx;
 		}
-		.cell-content{
+
+		.cell-content {
 			flex: 1;
 			color: #0D1C40;
 			font-size: 14px;
 		}
-		.arrow{
+
+		.arrow {
 			width: 10upx;
 			height: 22upx;
 		}
-		.line{
+
+		.line {
 			position: absolute;
 			bottom: 0px;
 			right: 0px;
@@ -125,13 +209,15 @@
 			background-color: #EEEEEE;
 		}
 	}
-	.verticl-line{
+
+	.verticl-line {
 		width: 1px;
 		height: 20px;
 		background-color: #EEEEEE;
 		margin-right: 20px;
 	}
-	.contact{
+
+	.contact {
 		border: solid 1px #F96E06;
 		height: 22px;
 		line-height: 22px;
@@ -141,58 +227,67 @@
 		font-size: 13px;
 		text-align: center;
 	}
-	.header{
+
+	.header {
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
 		height: 40px;
-		.header-left{
+
+		.header-left {
 			display: flex;
 			justify-content: flex-start;
 			align-items: center;
-			image{
+
+			image {
 				width: 6upx;
 				height: 29upx;
 				margin-right: 5px;
 			}
-			view{
+
+			view {
 				color: #0D1C40;
 				font-size: 15px;
 			}
 		}
-		.header-right{
+
+		.header-right {
 			display: flex;
 			justify-content: flex-end;
 			align-items: center;
 			color: #9EA7B7;
 			font-size: 13px;
-			image{
+
+			image {
 				width: 30upx;
 				height: 30upx;
 				margin-left: 4px;
 			}
 		}
 	}
-	
-	.address-cell{
+
+	.address-cell {
 		display: flex;
 		justify-content: flex-start;
 		align-items: center;
 		color: #0D1C40;
 		font-size: 13px;
 		padding-bottom: 10px;
-		.address-icon{
+
+		.address-icon {
 			width: 36upx;
 			height: 36upx;
 			margin-right: 12px;
 		}
-		.address-contact{
+
+		.address-contact {
 			color: #0D1C40;
 			font-size: 12px;
 			margin-top: 8px;
 		}
 	}
-	.btn{
+
+	.btn {
 		position: fixed;
 		bottom: 22px;
 		left: 45;

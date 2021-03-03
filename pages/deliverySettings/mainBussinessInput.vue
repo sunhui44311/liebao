@@ -4,13 +4,13 @@
 			<view class="content">
 				<view class="pop-nav">
 					<image src="../../static/image/delete.png"></image>
-					<view class="pop-tlt">物品信息</view>
+					<view class="pop-tlt">主营业务</view>
 					<view class="confirm">确定</view>
 				</view>
 				<scroll-view scroll-y="true" style="height: 300rpx;">
 					<view class="minute-list">
 						<view :class="['minute',index%3==2?'item-right':'']" :style="{'width':itemWidth+'px'}" v-for="(item,index) in goods" :key="index">
-							{{item.label}}
+							{{item.name}}
 						</view>
 					</view>
 				</scroll-view>
@@ -27,38 +27,29 @@
 				show:false,
 				itemWidth:0,
 				weight:1,
-				goods:[
-					{
-						label:'文件证件',
-						value:1
-					},
-					{
-						label:'生活用品',
-						value:2
-					},
-					{
-						label:'电子数码',
-						value:3
-					},
-					{
-						label:'蛋糕甜品',
-						value:5
-					},
-					{
-						label:'食品酒水',
-						value:8
-					},
-					{
-						label:'水果生鲜',
-						value:10
-					}
-				]
+				goods:[]
 			}
 		},
 		methods:{
 			init(){
 				this.show=true
 				this.itemWidth=(globalData.windowWidth-105)/3.0
+				this.getBusinessCategoryList()
+			},
+			getBusinessCategoryList(){
+				var _self=this
+				var params={
+					url:'app/merchant/category',
+					method:'get',
+					data:{},
+					callBack:function(res){
+						console.log(res)
+						if(res.code==200){
+							_self.goods=res.data
+						}
+					}
+				}
+				this.$http.request(params)
 			}
 		}
 	}

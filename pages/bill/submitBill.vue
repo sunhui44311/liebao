@@ -81,12 +81,22 @@
 					</view>
 				</view>
 				<view class="footer">
-					<view class="xiaofei">
-						<view class="xiaofei-tlt">加小费</view>
-						<view class="xiaofei-right">
-							<text class="xiaofei-unit">¥</text>
-							<text class="xiaofei-price">1</text>
-							<image src="../../static/image/enter@2x.png"></image>
+					<view class="menu-list">
+						<view class="xiaofei" style="padding-right: 100px;" @click.stop="showAmount=true">
+							<view class="xiaofei-tlt">加小费</view>
+							<view class="xiaofei-right">
+								<text class="xiaofei-unit">¥</text>
+								<text class="xiaofei-price">1</text>
+								<image src="../../static/image/enter@2x.png"></image>
+							</view>
+						</view>
+						<view class="xiaofei" @click.stop="showCoupon">
+							<view class="xiaofei-tlt">优惠券</view>
+							<view class="xiaofei-right">
+								<text class="xiaofei-unit">¥</text>
+								<text class="xiaofei-price">1</text>
+								<image src="../../static/image/enter@2x.png"></image>
+							</view>
 						</view>
 					</view>
 					<view class="btns">
@@ -96,19 +106,71 @@
 				</view>
 			</view>
 		</u-popup>
+		<u-popup mode="bottom" v-model="showAmount" border-radius="26">
+			<view class="content">
+				<view class="pop-nav">
+					<image src="../../static/image/delete.png"></image>
+					<view class="pop-tlt">加小费</view>
+					<view class="confirm">确定</view>
+				</view>
+				<scroll-view scroll-y="true" style="height: 300rpx;">
+					<view class="minute-list">
+						<view class="minute" v-for="(item,index) in amounts" :key="index">
+							{{item.label}}
+						</view>
+					</view>
+					<input class="pop-input" placeholder="其他金额" />
+				</scroll-view>
+			</view>
+		</u-popup>
+		<select-coupon-pop ref="selectCouponPop"></select-coupon-pop>
 	</view>
 </template>
 
 <script>
+	import selectCouponPop from './selectCouponPop.vue'
 	export default{
+		components:{
+			selectCouponPop
+		},
 		data(){
 			return{
-				show:false
+				show:false,
+				showAmount:false,
+				amounts:[
+					{
+						label:'1元',
+						value:1
+					},
+					{
+						label:'2元',
+						value:2
+					},
+					{
+						label:'3元',
+						value:3
+					},
+					{
+						label:'5元',
+						value:5
+					},
+					{
+						label:'8元',
+						value:8
+					},
+					{
+						label:'10元',
+						value:10
+					}
+				]
 			}
 		},
 		methods:{
 			init(){
 				this.show=true
+			},
+			showCoupon(){
+				this.$refs['selectCouponPop'].init()
 			}
 		}
 	}
@@ -130,7 +192,7 @@
 		background-color: white;
 	}
 	.content{
-		background-color: #F6F7F9;
+		background-color: #F6F7F960;
 	}
 	.juhe-box{
 		position: relative;
@@ -280,10 +342,16 @@
 		box-shadow: 0px 6px 10px 0px rgba(238, 238, 238, 0.4);
 		padding: 42upx 48upx;
 	}
+	.menu-list{
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
 	.xiaofei{
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
+		flex: 1;
 		.xiaofei-tlt{
 			color: #0D1C40;
 			font-size: 14px;
@@ -311,6 +379,7 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
+		margin-top: 25px;
 	}
 	.btn-cancel{
 		height: 45px;
@@ -333,5 +402,54 @@
 		font-size: 16px;
 		text-align: center;
 		margin-left: 48upx;
+	}
+	
+	.pop-nav{
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 12px 32px;
+		image{
+			width: 12px;
+			height:12px;
+		}
+	}
+	
+	.pop-tlt{
+		color: #0D1C40;
+		font-size: 15px;
+		font-weight: bold;
+	}
+	
+	.confirm{
+		color: #FA6F06;
+		font-size: 14px;
+	}
+	
+	.minute-list{
+		display: flex;
+		justify-content: flex-start;
+		flex-wrap: wrap;
+		padding: 0px 37px;
+		.minute{
+			width: 90px;
+			height: 30px;
+			line-height: 30px;
+			border-radius: 15px;
+			color: #0D1C40;
+			font-size: 13px;
+			border: solid 1px #9EA7B7;
+			text-align: center;
+			margin-right: 15px;
+			margin-bottom: 17px;
+		}
+	}
+	.pop-input{
+		text-align: center;
+		margin: 5px 38px;
+		border: solid 1px #9EA7B7;
+		height: 35px;
+		line-height: 35px;
+		border-radius: 35px;
 	}
 </style>

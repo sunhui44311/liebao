@@ -1,6 +1,7 @@
 <template>
 	<view>
-		<map :style="{height: windowHeight+'px',width:windowWidth+'px'}"></map>
+		<map id="map" :style="{height: windowHeight+'px',width:windowWidth+'px'}" :latitude="centerPoint.latitude" :longitude="centerPoint.longitude" :scale="scale" @regionchange="onregionchange"></map>
+		<image class="center" :style="{'top':centerOffTop+'px','left':centerLeft+'px'}" src="../../static/image/center-location@2x.png"></image>
 		<view class="notice" :style="{'top':statusH+'px'}">
 			<image class="icon" src="../../static/image/notice.png"></image>
 			<text class="notice-content">附件有8位骑手，预计1分钟内接单</text>
@@ -9,29 +10,29 @@
 			<view class="controls">
 				<view class="control-left" @click.stop="choiceCity">
 					<image class="control-left-icon" src="../../static/image/dibiao.png"></image>
-					<text style="color: #0D1C40;font-size: 12px;">苏州市</text>
+					<text style="color: #0D1C40;font-size: 12px;width: 50px;lines: 1;text-overflow:ellipsis">{{city}}</text>
 					<image class="control-arrow" src="../../static/image/dibiao2.png"></image>
 				</view>
-				<view class="control-right">
+				<view class="control-right" @click.stop="backCenter">
 					<image class="locaiton" src="../../static/image/dinwei.png"></image>
 				</view>
 			</view>
 			<view>
 				<view class="input-box">
 					<view class="input-bar">
-						<view class="tab">
-							<text class="tab-name">帮我送</text>
-							<image class="tab-icon" src="../../static/image/tab-icon.png"></image>
+						<view class="tab" @click.stop="tabIndex=0">
+							<text :class="tabIndex==0?'active-tab':'inactive-tab'">帮我送</text>
+							<image v-if="tabIndex==0?true:false" class="tab-icon" src="../../static/image/tab-icon.png"></image>
 						</view>
-						<view class="tab" style="margin-left: 43upx;">
-							<text class="tab-name">帮我送</text>
-							<image class="tab-icon" src="../../static/image/tab-icon.png"></image>
+						<view class="tab" style="margin-left: 43upx;" @click.stop="tabIndex=1">
+							<text :class="tabIndex==1?'active-tab':'inactive-tab'">帮我取</text>
+							<image v-if="tabIndex==1?true:false" class="tab-icon" src="../../static/image/tab-icon.png"></image>
 						</view>
 					</view>
 					<view class="input-section">
 						<image class="dot" src="../../static/image/fj.png"></image>
 						<view class="input-content" @click.stop="addBill">
-							<text class="address">纳米科技园</text>
+							<text class="address">{{startAddress}}</text>
 							<text style="color: #9EA7B7;font-size: 13px;">点击完善发件信息</text>
 						</view>
 						<image class="section-arrow" src="../../static/image/fj2.png"></image>
@@ -50,17 +51,41 @@
 
 <script>
 	import globalData from '@/common/js/globalData.js'
+	var _self
 	export default {
 		data(){
 			return{
 				windowHeight: 500,
 				windowWidth:375,
 				statusH:0,
-				scrollTop:0
+				scrollTop:0,
+				city:'上海市',
+				centerPoint:{
+					longitude:0,
+					latitude:0
+				},
+				userLocation:{
+					longitude:0,
+					latitude:0
+				},
+				centerLeft:0,
+				centerOffTop:0,
+				scale:18,
+				mapCtx:null,
+				tabIndex:0,
+				startAddress:'请稍后'
 			}
 		},
 		onLoad() {
+			_self=this
 			this.init()
+			this.mapCtx=uni.createMapContext('map',this)
+			uni.$on('selectCity',(data)=>{
+				_self.city=data.name
+				_self.centerPoint.latitude=data.latitude
+				_self.centerPoint.longitude=data.longitude
+				_self.reverseGeoCode(_self.centerPoint)
+			})
 		},
 		methods:{
 			init(){
@@ -88,8 +113,69 @@
 				this.windowHeight = globalData.windowHeight
 				this.windowWidth=globalData.windowWidth
 				this.statusH=globalData.statusBarHeight
-				console.log(this.windowHeight)
+				this.centerLeft=this.windowWidth/2.0-15
+				this.centerOffTop=this.windowHeight/2.0-30
+				this.location()
 			},
+			
+			onregionchange(e){
+				var that=this
+				this.mapCtx=uni.createMapContext('map',this)
+				this.mapCtx.getCenterLocation({
+					success:(res)=>{
+						console.log(res)
+						that.centerPoint.latitude=res.latitude
+						that.centerPoint.longitude=res.longitude
+						that.reverseGeoCode(that.centerPoint)
+					}
+				})
+			},
+			
+			location(){
+				uni.getLocation({
+					type: 'gcj02', //返回可以用于uni.openLocation的经纬度
+					geocode:true,
+					success: function(res) {
+						console.log(res)
+						const latitude = res.latitude;
+						const longitude = res.longitude;
+						_self.centerPoint.latitude=latitude
+						_self.centerPoint.longitude=longitude
+						_self.userLocation.latitude=latitude
+						_self.userLocation.longitude=longitude
+						console.log('当前位置的经度：' + longitude);
+						console.log('当前位置的纬度：' + latitude);
+						_self.reverseGeoCode(_self.centerPoint)
+					}
+				});
+			},
+			
+			reverseGeoCode(location){
+				this.getDetailAddress(location)
+			},
+			
+			getDetailAddress(location){
+				let that=this
+				let params={
+					key:'5ae8644771ef9abf9cfb3ea23b1df6ca',
+					location:`${location.longitude},${location.latitude}`,
+					extensions:'all'
+				}
+				uni.request({
+					url:'https://restapi.amap.com/v3/geocode/regeo',
+					method:'GET',
+					data:params,
+					dataType:'json',
+					success({data}) {
+						let addressComponent=data.regeocode.addressComponent
+						that.city=addressComponent.city.length==0?addressComponent.province:addressComponent.city
+						let aois=data.regeocode.aois.length>0?data.regeocode.aois[0]:''
+						let aoi=aois?aois.name:''
+						that.startAddress=addressComponent.streetNumber.street+addressComponent.streetNumber.number+aoi
+					}
+				})
+			},
+			
 			// scroll(e){
 			// 	console.log(e)
 			// 	this.scrollTop = e.detail.scrollTop+60
@@ -104,8 +190,16 @@
 			
 			addBill(){
 				uni.navigateTo({
-					url:'/pages/bill/addBill'
+					url:`/pages/bill/addBill?longitude=${this.centerPoint.longitude}&latitude=${this.centerPoint.latitude}`
 				})
+			},
+			/*回到中心点*/
+			backCenter(){
+				console.log(1111)
+				this.centerPoint.latitude=this.userLocation.latitude
+				this.centerPoint.longitude=this.userLocation.longitude
+
+				// this.mapCtx.setZoom(16)
 			}
 		}
 	}
@@ -202,7 +296,11 @@
 	justify-content: center;
 	align-items: center;
 }
-.tab-name{
+.inactive-tab{
+	color: #4D5660;
+	font-size: 15px;
+}
+.active-tab{
 	color: #0D1C40;
 	font-size: 15px;
 }
@@ -265,5 +363,10 @@
 	top: -150px;
 	left: 20px;
 	right: 20px;
+}
+.center{
+	position: absolute;
+	width: 30px;
+	height: 30px;
 }
 </style>

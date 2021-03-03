@@ -13,8 +13,11 @@ export default {
         init() {
             this.update();
         },
-		choiceCity(){
-			
+		click(i){
+			uni.$emit('selectCity',i)
+			uni.navigateBack({
+				delta:1
+			})
 		},
         // 用于更新一些数据
         async update() {

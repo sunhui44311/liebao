@@ -53,32 +53,19 @@
 					<input placeholder="请填写手机号" />
 				</view>
 			</view>
-			<view class="section">
-				<view class="nav">
-					<image src="../../static/image/id_num@2x.png"></image>
-					<text>联系人</text>
+			<view class="section upload-info">
+				<view class="tip">上传证照信息可获得更多优质运力</view>
+				<view class="nav id-num">
+					<image src="../../static/image/id-info@2x.png"></image>
+					<text>证件信息</text>
+					<text class="nav-tip">（身份证姓名需与联系人姓名一致）</text>
 				</view>
-				<view style="padding-bottom: 20px;">
-					<image class="upload" mode="aspectFit" src="../../static/image/upload@2x.png"></image>
-				</view>
-			</view>
-			<view class="section">
-				<view class="nav">
-					<image src="../../static/image/platform@2x.png"></image>
-					<text>运力平台</text>
-				</view>
-				<view style="margin-top: 10px;">
-					<view class="platform-cell">
-						<image class="logo" src="../../static/image/meituan@2x.png"></image>
-						<view style="flex: 1;">
-							<view class="platform-tlt">美团</view>
-							<view>
-								<image class="status-icon" src="../../static/image/access@2x.png"></image>
-								<text class="status-tlt">通过</text>
-							</view>
-						</view>
-						<view class="delete">删除</view>
+				<view class="id-imgs">
+					<view class="id-left">
+						<image class="id-back" src="../../static/image/id-font@2x.png"></image>
+						<image class="id-back" src="../../static/image/id-back@2x.png"></image>
 					</view>
+					<image class="id-right" src="../../static/image/business@2x.png"></image>
 				</view>
 			</view>
 		</view>
@@ -146,6 +133,7 @@
 		padding: 16px 12px 0px 12px;
 		border-radius: 6px;
 		margin-bottom: 10px;
+		overflow: hidden;
 	}
 
 	.item {
@@ -232,5 +220,46 @@
 	.item-arrow{
 		width: 24upx;
 		height: 24upx;
+	}
+	.tip{
+		background-color: #FFFFEA;
+		font-size: 12px;
+		height: 30px;
+		line-height: 30px;
+		color: #E95008;
+		text-align: center;
+		border-top-left-radius: 15px;
+		border-top-right-radius: 15px;
+		overflow: hidden;
+	}
+	.upload-info{
+		padding: 0px;
+		overflow: hidden;
+		border-top-left-radius: 15px;
+		border-top-right-radius: 15px;
+	}
+	.nav-tip{
+		color: #9FA7B6;
+		font-size: 13px;
+	}
+	.id-num{
+		padding: 30upx 23upx;
+	}
+	.id-imgs{
+		display: flex;
+		justify-content: space-between;
+		padding: 0px 30upx 30upx 30upx;
+		.id-left{
+			flex: 1;
+			.id-back{
+				height: 193upx;
+				width: 100%;
+			}
+		}
+		.id-right{
+			flex: 1;
+			height: 405upx;
+			margin-left: 20upx;
+		}
 	}
 </style>
