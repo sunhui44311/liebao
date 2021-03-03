@@ -3,22 +3,29 @@ export default {
         return {
             list: [{
                 name: '待接单',
-                count: 2
+                count: 2,
+                id: 1
             }, {
-                name: '待取货'
+                name: '待取货',
+                id: 2
             }, {
                 name: '配送中',
-                count: 2
-
+                count: 2,
+                id: 3
             }, {
                 name: '已完成',
+                id: 4
             }, {
                 name: '已取消',
+                id: '-1'
             }, {
                 name: '待支付',
+                id: 0
             }],
             current: 0,
-            swiperCurrent: 0
+            swiperCurrent: 0,
+            pageNum: 1,
+            pageSize: 10
         };
     },
     methods: {
@@ -29,6 +36,23 @@ export default {
         // 用于更新一些数据
         async update() {
             // const res = await this.$http.post('', {});
+            let params = {
+                url: "app/order/list",
+                method: "GET",
+                data: {
+                    status: 1,
+                    pageNum: this.pageNum,
+                    pageSize: this.pageSize
+                },
+                callBack: (res) => {
+                    console.warn(res);
+                    uni.hideLoading();
+                },
+            };
+            uni.showLoading({
+                title: "加载中",
+            });
+            this.$http.request(params);
         },
         tabsChange(index) {
             this.swiperCurrent = index;
