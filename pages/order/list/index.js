@@ -33,6 +33,12 @@ export default {
         init() {
             this.update();
         },
+		
+		order_Click(){
+			uni.navigateTo({
+				url:'/pages/order/deliveryOrderDetail'
+			})
+		},
         // 用于更新一些数据
         async update() {
             // const res = await this.$http.post('', {});

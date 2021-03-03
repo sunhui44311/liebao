@@ -4,9 +4,15 @@
 	},
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 		{
-			"path": "pages/home/index",
+			"path": "pages/home/home",
 			"style": {
 				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/city/choice/index",
+			"style": {
+				"navigationBarTitleText":"城市选择"
 			}
 		},
 		{
@@ -219,6 +225,60 @@
 			"style": {
 				"navigationBarTitleText": "门店统计"
 			}
+		},
+		{
+			"path": "pages/statics/deliveryStatistics",
+			"style": {
+				"navigationBarTitleText": "配送统计"
+			}
+		},
+		{
+			"path": "pages/statics/takeoutStatistics",
+			"style": {
+				"navigationBarTitleText": "外卖统计"
+			}
+		},
+		{
+			"path": "pages/statics/payStatistics",
+			"style": {
+				"navigationBarTitleText": "支付统计"
+			}
+		},
+		{
+			"path": "pages/order/deliveryOrderDetail",
+			"style": {
+				"navigationBarTitleText": "订单详情"
+			}
+		},
+		{
+			"path": "pages/bill/addBill",
+			"style": {
+				"navigationBarTitleText": "发单信息"
+			}
+		},
+		{
+			"path": "pages/bill/choiceAddress",
+			"style": {
+				"navigationBarTitleText": "位置选择"
+			}
+		},
+		{
+			"path": "pages/bill/choiceMapAddress",
+			"style": {
+				"navigationBarTitleText": "选择发件地址"
+			}
+		},
+		{
+			"path": "pages/bill/receiptBill",
+			"style": {
+				"navigationBarTitleText": "发单"
+			}
+		},
+		{
+			"path": "pages/bill/billRemark",
+			"style": {
+				"navigationBarTitleText": "订单备注"
+			}
 		}
 	],
 	"globalStyle": {
@@ -234,7 +294,7 @@
 		"backgroundColor": "#ffffff",
 		"list": [
 			{
-				"pagePath": "pages/home/index",
+				"pagePath": "pages/home/home",
 				"iconPath": "static/image/home.png",
 				"selectedIconPath": "static/image/home_HL.png",
 				"text": "首页"

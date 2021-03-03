@@ -1,0 +1,364 @@
+<template>
+	<view>
+		<map :style="{'width':mapWidth+'px','height':mapHeight+'px'}"></map>
+		<scroll-view class="container" scroll-y="true" :style="{'width':mapWidth+'px'}">
+			<view>
+				<view class="section">
+					<view class="status" @click.stop="status_Click">
+						<text style="color: #0D1C40;font-size: 16px;">待支付</text>
+						<image class="status-arrow" src="../../static/image/fj2.png"></image>
+					</view>
+					<view class="time">
+						<text class="time-tlt">剩余支付时间</text>
+						<text class="time-content">49:56</text>
+					</view>
+					<view class="btns">
+						<text class="btn" @tap="menu(1)">取消订单</text>
+						<text class="btn">再来一单</text>
+						<text class="btn">立即支付</text>
+					</view>
+					<view class="rider">
+						<view class="rider-header">
+							<image class="header-img" src="../../static/image/visit-bg@2x.png"></image>
+							<text class="rider-name">何师傅</text>
+						</view>
+						<image class="rider-tel" src="../../static/image/tel@2x.png"></image>
+					</view>
+				</view>
+				
+				<view class="section" style="margin-top: 10px;">
+					<text class="tip">此订单由闪送平台配送，如有订单相关问题可致电下方客服</text>
+					<view class="platform">
+						<image class="platform-logo" src="../../static/image/order-meituan-order@2x.png"></image>
+						<view class="platform-info">
+							<text class="platform-name">美团001</text>
+							<view class="platform-tel-box">
+								<text class="platform-tel-tlt">客服电话</text>
+								<text class="platform-tel">400-612-6688</text>
+							</view>
+						</view>
+					</view>
+				</view>
+				
+				<view class="section" style="margin-top: 10px;">
+					<view class="start">
+						<text class="start-tlt">发</text>
+						<text class="start-address">上海安慧里1区88号楼1单元州001</text>
+					</view>
+					<view class="start contact">
+						<text class="name">闪先生</text>
+						<text class="tel">18362766707</text>
+					</view>
+					
+					<view class="start" style="margin-top: 20px;">
+						<text class="start-tlt" style="background-color: #1087FE;">收</text>
+						<text class="start-address">上海安慧里1区88号楼1单元州001</text>
+					</view>
+					<view class="start contact">
+						<text class="name">闪先生</text>
+						<text class="tel">18362766707</text>
+					</view>
+				</view>
+				<view class="section1" style="margin-top: 10px;">
+					<view class="nav">
+						<text class="order-tlt">订单信息</text>
+					</view>
+					<view class="cell">
+						<text class="cell-tlt">订单编号</text>
+						<view class="cell-right">
+							<text class="cell-content">12510987356</text>
+							<text class="copy">复制</text>
+						</view>
+					</view>
+					<view class="cell">
+						<text class="cell-tlt">订单距离</text>
+						<text class="cell-content">10.00KM</text>
+					</view>
+					<view class="cell">
+						<text class="cell-tlt">物品重量</text>
+						<text class="cell-content">1KG</text>
+					</view>
+					<view class="cell">
+						<text class="cell-tlt">物品重量</text>
+						<text class="cell-content">1KG</text>
+					</view>
+					<view class="cell">
+						<text class="cell-tlt">物品类型</text>
+						<text class="cell-content">文件证件</text>
+					</view>
+					<view class="cell">
+						<text class="cell-tlt">取件时间</text>
+						<text class="cell-content">立即取件</text>
+					</view>
+					<view class="cell">
+						<text class="cell-tlt">订单总价</text>
+						<view class="cell-right" @tap="showDetail">
+							<text class="cell-content" style="color: #FA6F06;font-size: 15px;">6.00元</text>
+							<text class="copy">明细</text>
+						</view>
+					</view>
+				</view>
+			</view>
+		</scroll-view>
+		<price-detail ref="priceDetail"></price-detail>
+		<cancel-order ref="cancelOrder"></cancel-order>
+		<order-status ref="orderStatus"></order-status>
+	</view>
+</template>
+
+<script>
+	import priceDetail from './orderPriceDetail.nvue'
+	import cancelOrder from './cancelOrder.nvue'
+	import orderStatus from './orderStatus.nvue'
+	export default{
+		components:{
+			priceDetail,
+			cancelOrder,
+			orderStatus
+		},
+		data(){
+			return{
+				mapWidth:0,
+				mapHeight:200,
+				screenH:0
+			}
+		},
+		onLoad() {
+			const res = uni.getSystemInfoSync();
+			this.mapWidth=res.windowWidth;
+			this.screenH=res.windowHeight+300;
+		},
+		methods:{
+			menu(index){
+				if(index==1){
+					this.$refs['cancelOrder'].open()
+				}
+			},
+			showDetail(){
+				this.$refs['priceDetail'].init()
+			},
+			status_Click(){
+				this.$refs['orderStatus'].init()
+			}
+		}
+	}
+</script>
+
+<style>
+	.container{
+		position: relative;
+		margin-top: -30px;
+		padding-bottom: 20px;
+	}
+	.section{
+		position: relative;
+		background-color: white;
+		margin-left: 10px;
+		margin-right: 10px;
+		padding: 40upx 20upx;
+		border-radius: 6px;
+	}
+	.status{
+		flex-direction: row;
+		justify-content: center;
+		align-items: center;
+	}
+	.status-arrow{
+		width: 10upx;
+		height: 21upx;
+		margin-left: 20upx;
+	}
+	.time{
+		flex-direction: row;
+		justify-content: center;
+		margin-top: 15px;
+	}
+	.time-tlt{
+		color: #4D5660;
+		font-size: 12px;
+	}
+	.time-content{
+		color: #FA6F06;
+		font-size: 13px;
+		margin-left: 8px;
+	}
+	.btns{
+		flex-direction: row;
+		justify-content: center;
+		align-items: center;
+		margin-top: 22px;
+		
+	}
+	.btn{
+		font-size: 13px;
+		color: #4D5660;
+		height: 29px;
+		width: 75px;
+		line-height: 29px;
+		text-align: center;
+		border-style: solid;
+		border-color: #DDDDDD;
+		border-width: 1px;
+		border-radius: 29px;
+		margin-right: 15px;
+	}
+	.start{
+		flex-direction: row;
+		justify-content: flex-start;
+	}
+	.start-tlt{
+		width: 20px;
+		height: 20px;
+		background-color: #FA6F06;
+		border-radius: 10px;
+		color: white;
+		line-height: 20px;
+		text-align: center;
+		margin-right: 10px;
+		font-size: 11px;
+	}
+	.contact{
+		margin-left: 30px;
+		margin-top: 8px;
+	}
+	.start-address{
+		color: #0D1C40;
+		font-size: 13px;
+	}
+	.name{
+		color: #0D1C40;
+		font-size: 12px;
+	}
+	.tel{
+		color: #0D1C40;
+		font-size: 12px;
+		margin-left: 16px;
+	}
+	
+	.section1{
+		position: relative;
+		background-color: white;
+		margin-top: -30px;
+		margin-left: 10px;
+		margin-right: 10px;
+		padding: 0upx 20upx;
+		border-radius: 6px;
+	}
+	
+	.nav{
+		border-bottom-color: #EEEEEE;
+		border-bottom-width: 1px;
+	}
+	.order-tlt{
+		color: #0D1C40;
+		font-size: 14px;
+		height: 42px;
+		line-height: 42px;
+	}
+	.cell{
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+	}
+	.cell-tlt{
+		color: #4D5660;
+		font-size: 13px;
+		height: 35px;
+		line-height: 35px;
+	}
+	.cell-right{
+		flex-direction: row;
+		justify-content: flex-end;
+		align-items: center;
+	}
+	.cell-content{
+		color: #0D1C40;
+		font-size: 13px;
+	}
+	.copy{
+		color: #E95008;
+		border-radius: 3px;
+		border-style: solid;
+		border-width: 1px;
+		border-color: #E95008;
+		color: #FA6F06;
+		font-size: 12px;
+		height: 16px;
+		line-height: 16px;
+		text-align: center;
+		width: 30px;
+		margin-left: 10px;
+	}
+	.rider{
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+		padding-top: 18px;
+		margin-top: 18px;
+		border-style: solid;
+		border-top-width: 1px;
+		border-top-color: #EEEEEE;
+	}
+	.rider-header{
+		flex-direction: row;
+		justify-content: flex-start;
+		align-items: center;
+	}
+	.header-img{
+		width: 22px;
+		height: 22px;
+		margin-right: 8px;
+		border-radius: 11px;
+	}
+	.rider-name{
+		color: #4D5660;
+		font-size: 14px;
+	}
+	.rider-tel{
+		width: 22px;
+		height: 22px;
+		margin-right: 20px;
+	}
+	
+	.tip{
+		color: #4D5660;
+		font-size: 12px;
+		padding-bottom: 12px;
+		border-style: solid;
+		border-bottom-color: #EEEEEE;
+		border-bottom-width: 1px;
+	}
+	.platform{
+		flex-direction: row;
+		justify-content: flex-start;
+		align-items: center;
+		margin-top: 20px;
+	}
+	.platform-logo{
+		width: 35px;
+		height: 35px;
+		border-radius: 35px;
+		margin-right: 10px;
+	}
+	.platform-info{
+		
+	}
+	.platform-name{
+		color: #333333;
+		font-size: 14px;
+	}
+	.platform-tel-box{
+		flex-direction: row;
+		justify-content: flex-start;
+		align-items: center;
+	}
+	.platform-tel-tlt{
+		color: #999999;
+		font-size: 12px;
+	}
+	.platform-tel{
+		color: #3C88F6;
+		font-size: 13px;
+		margin-left: 8px;
+	}
+</style>

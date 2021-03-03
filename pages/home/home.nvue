@@ -7,7 +7,7 @@
 		</view>
 		<scroll-view class="footer" scroll-y="true" :show-scrollbar="false" @scroll="scroll" :style="{width:windowWidth-20+'px',height:scrollTop+250+'px'}">
 			<view class="controls">
-				<view class="control-left">
+				<view class="control-left" @click.stop="choiceCity">
 					<image class="control-left-icon" src="../../static/image/dibiao.png"></image>
 					<text style="color: #0D1C40;font-size: 12px;">苏州市</text>
 					<image class="control-arrow" src="../../static/image/dibiao2.png"></image>
@@ -30,13 +30,13 @@
 					</view>
 					<view class="input-section">
 						<image class="dot" src="../../static/image/fj.png"></image>
-						<view class="input-content">
+						<view class="input-content" @click.stop="addBill">
 							<text class="address">纳米科技园</text>
 							<text style="color: #9EA7B7;font-size: 13px;">点击完善发件信息</text>
 						</view>
 						<image class="section-arrow" src="../../static/image/fj2.png"></image>
 					</view>
-					<view class="input-section input-bg">
+					<view class="input-section input-bg" @click.stop="choiceCity">
 						<image class="dot" src="../../static/image/dot-orage@2x.png"></image>
 						<text class="input-txt">点击完善发件信息</text>
 					</view>
@@ -47,10 +47,71 @@
 		</scroll-view>
 	</view>
 </template>
-<script src="./index.js">
+
+<script>
+	import globalData from '@/common/js/globalData.js'
+	export default {
+		data(){
+			return{
+				windowHeight: 500,
+				windowWidth:375,
+				statusH:0,
+				scrollTop:0
+			}
+		},
+		onLoad() {
+			this.init()
+		},
+		methods:{
+			init(){
+				let titleHeight=64
+				let statusBarHeight=22
+				let naviBarHeight=44
+				const res = uni.getSystemInfoSync()
+				const system = res.platform
+				statusBarHeight = res.statusBarHeight
+				if (system === 'android') {
+				titleHeight = (48 + statusBarHeight)
+				} else if (system === 'ios') {
+				titleHeight = (44 + statusBarHeight)
+				}
+				else if(system==='devtools'){
+					titleHeight = (44 + statusBarHeight)
+				}
+				naviBarHeight=titleHeight-statusBarHeight
+				globalData.statusBarHeight=statusBarHeight
+				globalData.naviBarHeight=naviBarHeight
+				globalData.titleHeight=titleHeight
+				globalData.windowHeight=res.windowHeight
+				globalData.windowWidth=res.windowWidth
+				globalData.iphoneX=res.screenHeight>=812?true:false
+				this.windowHeight = globalData.windowHeight
+				this.windowWidth=globalData.windowWidth
+				this.statusH=globalData.statusBarHeight
+				console.log(this.windowHeight)
+			},
+			// scroll(e){
+			// 	console.log(e)
+			// 	this.scrollTop = e.detail.scrollTop+60
+			// 	console.log(this.scrollTop)
+			// },
+			
+			choiceCity(){
+				uni.navigateTo({
+					url:'/pages/city/choice/index'
+				})
+			},
+			
+			addBill(){
+				uni.navigateTo({
+					url:'/pages/bill/addBill'
+				})
+			}
+		}
+	}
 </script>
-<style lang="scss" scoped>
-// @import "index.scss";
+
+<style>
 .notice{
 	position: fixed;
 	background-color: white;
