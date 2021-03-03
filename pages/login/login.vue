@@ -117,7 +117,7 @@ export default {
             platform: globalData.platform == "ios" ? 2 : 1,
           },
           callBack: (res) => {
-            uni.setStorageSync("session", res.data.token);
+            uni.setStorageSync("token", res.data.token);
             uni.hideLoading();
             uni.navigateBack({
               delta: 2,
@@ -146,7 +146,7 @@ export default {
             platform: globalData.platform == "ios" ? 2 : 1,
           },
           callBack: (res) => {
-            uni.setStorageSync("session", res.data.token);
+            uni.setStorageSync("token", res.data.token);
             uni.hideLoading();
             uni.navigateBack({
               delta: 2,
