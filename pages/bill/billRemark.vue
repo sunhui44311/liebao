@@ -1,7 +1,7 @@
 <template>
 	<view>
-		<textarea class="txtarea" placeholder="可输入物品描述或送件要求。 如：易碎物品，请轻拿轻放"></textarea>
-		<view class="btn">完成</view>
+		<textarea class="txtarea" v-model="remark" placeholder="可输入物品描述或送件要求。 如：易碎物品，请轻拿轻放"></textarea>
+		<view class="btn" @click.stop="submit">完成</view>
 	</view>
 </template>
 
@@ -9,11 +9,21 @@
 	export default{
 		data(){
 			return{
-				
+				remark:''
 			}
 		},
 		methods:{
-			
+			submit(){
+			 let pages=getCurrentPages()
+			 console.log(pages.length)
+			 let curPage=pages[pages.length-2]
+			 console.log(1111)
+			 console.log(curPage)
+			 curPage.$vm.remarkInput(this.remark)
+			 uni.navigateBack({
+			 	delta:1
+			 })
+			}
 		}
 	}
 </script>

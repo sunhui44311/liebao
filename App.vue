@@ -1,6 +1,30 @@
 <script>
 	import globalData from "./common/js/globalData.js";
 	export default {
+		globalData:{
+			receiptAddress:{
+				city:'',
+				province:'',
+				address:'',
+				lat:0,
+				lng:0,
+				contact:'',
+				floor:'',
+				phone:'',
+				district:''
+			},
+			sendAddress:{
+				city:'',
+				province:'',
+				address:'',
+				lat:0,
+				lng:0,
+				contact:'',
+				floor:'',
+				phone:'',
+				district:''
+			}
+		},
 		onLaunch: function() {
 			console.log("App Launch");
 			let titleHeight = 64;
@@ -48,12 +72,6 @@
 </script>
 
 <style lang="scss">
-	uni-page-head{
-			display: none;
-	}
-		page {
-	    background-color: #f8f8f8;
-	}
 	/* 注意要写在第一行，同时给style标签加入lang="scss"属性 */
 	@import "uview-ui/index.scss";
 </style>

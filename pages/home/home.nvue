@@ -32,27 +32,31 @@
 					<view v-if="tabIndex==0">
 						<view class="input-section">
 							<image class="dot" src="../../static/image/fj.png"></image>
-							<view class="input-content" @click.stop="addBill">
+							<view class="input-content" @click.stop="addBill(1,1)">
 								<text class="address">{{startAddress}}</text>
-								<text style="color: #9EA7B7;font-size: 13px;">点击完善发件信息</text>
+								<text v-if="receiptName?false:true" style="color: #9EA7B7;font-size: 13px;">点击完善发件信息</text>
+								<view v-else class="contact">
+									<text class="contact-name">{{receiptName}}</text>
+									<text class="contact-phone">{{receiptPhone}}</text>
+								</view>
 							</view>
 							<image class="section-arrow" src="../../static/image/fj2.png"></image>
 						</view>
-						<view class="input-section input-bg" @click.stop="choiceCity">
+						<view class="input-section input-bg" @click.stop="perfectClick(1,2)">
 							<image class="dot" src="../../static/image/dot-orage@2x.png"></image>
 							<text class="input-txt">点击完善发件信息</text>
 						</view>
 					</view>
 					<view v-else>
-						<view class="input-section input-bg" @click.stop="choiceCity">
+						<view class="input-section input-bg" @click.stop="perfectClick(2,1)">
 							<image class="dot" src="../../static/image/dot-orage@2x.png"></image>
-							<text class="input-txt">点击完善发件信息</text>
+							<text class="input-txt">点击完善取件信息</text>
 						</view>
 						<view class="input-section">
 							<image class="dot" src="../../static/image/fj.png"></image>
-							<view class="input-content" @click.stop="addBill">
+							<view class="input-content" @click.stop="addBill(2,2)">
 								<text class="address">{{startAddress}}</text>
-								<text style="color: #9EA7B7;font-size: 13px;">点击完善发件信息</text>
+								<text style="color: #9EA7B7;font-size: 13px;">点击完善取件信息</text>
 							</view>
 							<image class="section-arrow" src="../../static/image/fj2.png"></image>
 						</view>
@@ -90,7 +94,9 @@
 				scale:16,
 				mapCtx:null,
 				tabIndex:0,
-				startAddress:'请稍后'
+				startAddress:'正在获取',
+				receiptName:null,
+				receiptPhone:null
 			}
 		},
 		onLoad() {
@@ -103,6 +109,10 @@
 				_self.centerPoint.longitude=data.longitude
 				_self.reverseGeoCode(_self.centerPoint)
 			})
+		},
+		onShow() {
+			this.receiptName=getApp({allowDefault: true}).globalData.sendAddress.contact
+			this.receiptPhone=getApp({allowDefault: true}).globalData.sendAddress.phone
 		},
 		methods:{
 			init(){
@@ -205,14 +215,33 @@
 				})
 			},
 			
-			addBill(){
+			addBill(tab,type){
 				uni.navigateTo({
-					url:`/pages/bill/addBill?longitude=${this.centerPoint.longitude}&latitude=${this.centerPoint.latitude}`
+					url:`/pages/bill/addBill?type=${type}&longitude=${this.centerPoint.longitude}&latitude=${this.centerPoint.latitude}`
 				})
 			},
+			
+			/*完善发件信息*/
+			perfectClick(tab,type){
+				if(type==2){
+					if(!this.receiptName){
+						uni.showToast({
+							title:'请完善发件信息',
+							icon:'none'
+						})
+						return
+					}
+					uni.navigateTo({
+						url:`/pages/bill/addBill?type=${type}&longitude=${this.centerPoint.longitude}&latitude=${this.centerPoint.latitude}`
+					})
+				}
+				else if(type==1){
+					
+				}
+			},
+			
 			/*回到中心点*/
 			backCenter(){
-				console.log(1111)
 				this.centerPoint.latitude=this.userLocation.latitude
 				this.centerPoint.longitude=this.userLocation.longitude
 
@@ -385,5 +414,19 @@
 	position: absolute;
 	width: 30px;
 	height: 30px;
+}
+.contact{
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: center;
+}
+.contact-name{
+	color: #9EA7B7;
+	font-size: 13px;
+}
+.contact-phone{
+	color: #9EA7B7;
+	font-size: 13px;
+	margin-left: 8px;
 }
 </style>

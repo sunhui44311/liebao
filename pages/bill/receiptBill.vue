@@ -3,22 +3,22 @@
 		<view class="section">
 			<view class="start">
 				<text class="start-tlt">发</text>
-				<text class="start-address">上海安慧里1区88号楼1单元州001</text>
+				<text class="start-address">{{sendAddress.address}}</text>
 			</view>
 			<view class="start contact">
-				<text class="name">闪先生</text>
-				<text class="tel">18362766707</text>
+				<text class="name">{{sendAddress.contact}}</text>
+				<text class="tel">{{sendAddress.phone}}</text>
 			</view>
 
 			<view class="start" style="margin-top: 20px;">
 				<text class="start-tlt" style="background-color: #1087FE;">收</text>
-				<text class="start-address">上海安慧里1区88号楼1单元州001</text>
+				<text class="start-address">{{receiptAddress.address}}</text>
 			</view>
 			<view class="start contact">
-				<text class="name">闪先生</text>
-				<text class="tel">18362766707</text>
+				<text class="name">{{receiptAddress.contact}}</text>
+				<text class="tel">{{receiptAddress.phone}}</text>
 			</view>
-			<image class="exchange" src="../../static/image/exchange@2x.png"></image>
+			<image class="exchange" src="../../static/image/exchange@2x.png" @click.stop="exchange"></image>
 		</view>
 		<view class="section1">
 			<view class="cell" @click.stop="menu(1)">
@@ -27,18 +27,20 @@
 					<text>物品信息</text>
 				</view>
 				<view class="cell-right">
-					<text>必填</text>
+					<text class="active-txt" v-if="selectProduct?true:false">{{selectProduct.name}}/{{weight}}KG</text>
+					<text class="bank" v-else>必填</text>
 					<image src="../../static/image/enter@2x.png"></image>
 				</view>
 				<view class="line"></view>
 			</view>
-			<view class="cell">
-				<view class="cell-left" @click.stop="menu(2)">
+			<view class="cell" @click.stop="menu(2)">
+				<view class="cell-left">
 					<image class="icon" src="../../static/image/time@2x.png"></image>
 					<text>取件时间</text>
 				</view>
 				<view class="cell-right">
-					<text>必填</text>
+					<text class="active-txt" v-if="formatter_time?true:false">{{formatter_time}}</text>
+					<text class="bank" v-else>必填</text>
 					<image src="../../static/image/enter@2x.png"></image>
 				</view>
 				<view class="line"></view>
@@ -49,13 +51,13 @@
 					<text>备注</text>
 				</view>
 				<view class="cell-right">
-					<text>选填</text>
+					<text :class="remark?'active-txt':'bank'">{{remark?remark:'选填'}}</text>
 					<image src="../../static/image/enter@2x.png"></image>
 				</view>
 			</view>
 		</view>
 		<view class="btn" @click.stop="eveluatePrice">立即计价</view>
-		<good-info-input ref="goodInfoInput"></good-info-input>
+		<good-info-input ref="goodInfoInput" @selectProduct="onSelectProdcut"></good-info-input>
 		<submit-bill ref="submitBill"></submit-bill>
 		<u-select v-model="show" mode="mutil-column-auto" :list="dateList" @confirm="confirm"></u-select>
 	</view>
@@ -72,10 +74,19 @@
 		data() {
 			return {
 				dateList:[],
-				show:false
+				show:false,
+				sendAddress:{},
+				receiptAddress:{},
+				selectProduct:null,
+				weight:1,
+				remark:'',
+				formatter_time:'',
+				selectTime:''
 			}
 		},
 		onLoad() {
+			this.receiptAddress=getApp({allowDefault: true}).globalData.receiptAddress,
+			this.sendAddress=getApp({allowDefault: true}).globalData.sendAddress
 			Date.prototype.Format = function(fmt) {
 				var o = {
 					"M+": this.getMonth() + 1, //月份
@@ -96,20 +107,24 @@
 			for(var i=0;i<15;i++){
 				var date = new Date();
 				if(i==0){
+					let nowDate=date.Format("yyyy-MM-dd")
+					let time=date.Format("hh:mm:ss")
 					let dic={
 						label:'今天',
-						value:'今天',
+						value:nowDate,
 						children:[{
 							label:'立即取件',
-							value:'立即取件'
+							value:time
 						}].concat(this.getHoursList(date.getHours()+1))
 					}
 					this.dateList.push(dic)
 				}
 				else if(i==1){
+					date.setDate(date.getDate()+1)
+					let today=date.Format("yyyy-MM-dd")
 					let dic={
 						label:'明天',
-						value:'明天',
+						value:today,
 						children:this.getHoursList(1)
 					}
 					this.dateList.push(dic)
@@ -126,8 +141,6 @@
 					this.dateList.push(dic)
 				}
 			}
-			
-			console.log(this.dateList)
 		},
 		
 		methods: {
@@ -142,12 +155,30 @@
 					})
 				}
 			},
+			
+			exchange(){
+				let tempObj=JSON.stringify(this.receiptAddress)
+				this.receiptAddress=JSON.parse(JSON.stringify(this.sendAddress))
+				this.sendAddress=JSON.parse(tempObj)
+			},
+			
+			onSelectProdcut(data){
+				console.log(data)
+				this.selectProduct=data.product
+				this.weight=data.weight
+			},
+			
+			remarkInput(remark){
+				this.remark=remark
+			},
+			
 			getHoursList(index){
 				var list=[]
 				for(var i=index;i<=24;i++){
+					let value=i<10?('0'+i):i
 					var dic={
 						label:i+'时',
-						value:i
+						value:value+':00:00'
 					}
 					list.push(dic)
 				}
@@ -155,8 +186,64 @@
 			},
 			confirm(e){
 				console.log(e)
+				let time=e[1].label
+				this.selectTime=`${e[0].value} ${e[1].value}`
+				this.formatter_time=time=='立即取件'?time:this.selectTime
 			},
 			eveluatePrice(){
+				if(!this.selectProduct){
+					uni.showToast({
+						title:'请选择商品信息',
+						icon:'none'
+					})
+					return
+				}
+				if(!this.selectTime){
+					uni.showToast({
+						title:'请选择取件时间',
+						icon:'none'
+					})
+					return
+				}
+				let sendAddressList=[]
+				let receiptAddressList=[]
+				if(uni.getStorageSync('sendAddressList')){
+					sendAddressList=JSON.parse(uni.getStorageSync('sendAddressList'))
+					console.log(1111)
+					console.log(sendAddressList)
+				}
+				sendAddressList.push(this.sendAddress)
+				
+				if(uni.getStorageSync('receiptAddressList')){
+					receiptAddressList=JSON.parse(uni.getStorageSync('receiptAddressList'))
+				}
+				receiptAddressList.push(this.receiptAddressStr)
+				
+				uni.setStorageSync('sendAddressList',JSON.stringify(sendAddressList))
+				uni.setStorageSync('receiptAddressList',JSON.stringify(receiptAddressList))
+				var params={
+					url:'app/order/valuation',
+					method:'POST',
+					data:{
+						productId:this.selectProduct.id,
+						sendAddress:this.sendAddress,
+						receiptAddress:this.receiptAddress,
+						takeTime:this.selectTime,
+						weight:this.weight
+					},
+					callBack:function(res){
+						uni.hideLoading()
+						console.log(res)
+						let sendAddressStr=JSON.stringify(this.sendAddress)
+						let receiptAddressStr=JSON.stringify(this.receiptAddress)
+						uni.setStorageSync('sendAddress',sendAddressStr)
+						uni.setStorageSync('receiptAddress',receiptAddressStr)
+					}
+				}
+				uni.showLoading({
+					title:'正在计算'
+				})
+				this.$http.request(params)
 				this.$refs['submitBill'].init()
 			}
 		}
@@ -290,5 +377,13 @@
 		left: 50%;
 		transform: translateX(-50%);
 		font-size: 16px;
+	}
+	.bank{
+		color: #9EA7B7;
+		font-size: 14px;
+	}
+	.active-txt{
+		color: #0D1C40;
+		font-size: 14px;
 	}
 </style>

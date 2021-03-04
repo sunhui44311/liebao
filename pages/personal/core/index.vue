@@ -210,8 +210,14 @@
 		},
 		onLoad() {
 			_self=this
-			this.isLogin=uni.getStorageSync('session')?true:false
+			this.isLogin=uni.getStorageSync('token')?true:false
 			this.getUserInfo()
+		},
+		onShow() {
+			this.isLogin=uni.getStorageSync('token')?true:false
+			if(this.isLogin){
+				this.getUserInfo()
+			}
 		},
 		methods: {
 		    // 用于初始化一些数据

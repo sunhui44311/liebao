@@ -3,24 +3,24 @@
 		<view class="section">
 			<view class="cell" @click.stop="choiceAddress">
 				<image class="icon" src="../../static/image/bill-location@2x.png"></image>
-				<view class="cell-content">{{startAddress}}</view>
+				<view :class="startAddress?'cell-content':'no-address'">{{startAddress?startAddress:'收件信息(必填)'}}</view>
 				<image class="arrow" src="../../static/image/fj2.png"></image>
 				<view class="line"></view>
 			</view>
-			<view class="cell">
+			<view class="cell" v-model="floor">
 				<image class="icon" src="../../static/image/bill_flower@2x.png"></image>
 				<input class="cell-content" placeholder="楼层、单元、门牌号(选填)" />
 				<view class="line"></view>
 			</view>
 			<view class="cell">
 				<image class="icon" src="../../static/image/bill-contact@2x.png"></image>
-				<input class="cell-content" placeholder="姓名(必填)" />
+				<input v-model="contact" class="cell-content" placeholder="姓名(必填)" />
 				<view class="contact" @click.stop="getContacts">通讯录</view>
 				<view class="line"></view>
 			</view>
 			<view class="cell">
 				<image class="icon" src="../../static/image/bill-tel@2x.png"></image>
-				<input class="cell-content" placeholder="手机号(必填)" />
+				<input v-model="phone" class="cell-content" placeholder="手机号(必填)" />
 				<view class="verticl-line"></view>
 				<input class="cell-content" style="flex: 0.5;" placeholder="分手机号(选填)" />
 			</view>
@@ -31,33 +31,23 @@
 					<image src="../../static/image/vertical-line@2x.png"></image>
 					<view>历史地址</view>
 				</view>
-				<view class="header-right">
+				<view class="header-right" @click.stop="clear">
 					<text>清空</text>
 					<image src="../../static/image/clear@2x.png"></image>
 				</view>
 			</view>
-			<view class="address-cell">
+			<view class="address-cell" v-for="(address,index) in historyAddressList" :key="index" @click.stop="selectHistoryAddress(address)">
 				<image class="address-icon" src="../../static/image/history_addr@2x.png"></image>
 				<view>
-					<view>上海安慧里1区88号楼1单元州001</view>
+					<view>{{address.address}}</view>
 					<view class="address-contact">
-						<text>闪先生</text>
-						<text>18362766707</text>
-					</view>
-				</view>
-			</view>
-			<view class="address-cell">
-				<image class="address-icon" src="../../static/image/history_addr@2x.png"></image>
-				<view>
-					<view>上海安慧里1区88号楼1单元州001</view>
-					<view class="address-contact">
-						<text>闪先生</text>
-						<text>18362766707</text>
+						<text>{{address.contact}}</text>
+						<text style="margin-left: 8px;">{{address.phone}}</text>
 					</view>
 				</view>
 			</view>
 		</view>
-		<view class="btn" @click.stop="addBill">确定</view>
+		<view class="btn" @click.stop="addAddress">确定</view>
 	</view>
 </template>
 
@@ -67,21 +57,39 @@
 		data() {
 			return {
 				startAddress: '',
+				contact:'',
+				phone:'',
+				floor:'',
 				contacts:[],
 				longitude:0,
 				latitude:0,
-				city:''
+				city:'',
+				province:'',
+				district:'',
+				type:1,
+				historyAddressList:[]
 			}
 		},
 		onLoad(options) {
 			let that=this
 			this.longitude=options.longitude
 			this.latitude=options.latitude
+			this.type=options.type
 			this.getDetailAddress(options.longitude, options.latitude)
 			uni.$on('selectAddress',(data)=>{
 				console.log(data)
 				that.startAddress=data.address
 			})
+		},
+		onShow() {
+			if(this.type==1){
+				this.historyAddressList=JSON.parse(uni.getStorageSync('sendAddressList'))
+			}
+			else{
+				this.historyAddressList=JSON.parse(uni.getStorageSync('receiptAddressList'))
+			}
+			console.log(this.historyAddressList)
+			
 		},
 		methods: {
 			choiceAddress() {
@@ -114,8 +122,91 @@
 						let aois = data.regeocode.aois.length > 0 ? data.regeocode.aois[0] : ''
 						let aoi = aois ? aois.name : ''
 						that.startAddress = addressComponent.streetNumber.street + addressComponent.streetNumber.number + aoi
+						that.startAddress=that.type==2?'':that.startAddress
+						that.province=addressComponent.province
+						that.city=addressComponent.city.length==0?addressComponent.province:addressComponent.city
+						that.district=addressComponent.district
 					}
 				})
+			},
+			
+			selectHistoryAddress(address){
+				this.province=address.province
+				this.city=address.city
+				this.district=address.district
+				this.startAddress=address.address
+				this.longitude=address.lng
+				this.latitude=address.lng
+				this.floor=address.floor
+				this.contact=address.contact
+				this.phone=address.phone
+			},
+			
+			clear(){
+				if(!this.historyAddressList||this.historyAddressList.length==0)return
+				uni.showModal({
+					title:'提示',
+					content:'确定要清楚历史地址',
+					success(res) {
+						if(res.confirm){
+							uni.removeStorageSync(this.type==1?'sendAddressList':'receiptAddressList')
+						}
+					}
+				})
+			},
+			
+			/*添加收获地址*/
+			addAddress(){
+				if(this.startAddress.length==0){
+					uni.showToast({
+						title:'地址不能为空',
+						icon:'none'
+					})
+					return
+				}
+				if(this.contact.length==0){
+					uni.showToast({
+						title:'姓名不能为空',
+						icon:'none'
+					})
+					return
+				}
+				if(this.phone.length==0){
+					uni.showToast({
+						title:'手机号不能为空',
+						icon:'none'
+					})
+					return
+				}
+				if(this.type==1){
+					getApp().globalData.sendAddress.province=this.province
+					getApp().globalData.sendAddress.city=this.city
+					getApp().globalData.sendAddress.district=this.district
+					getApp().globalData.sendAddress.address=this.startAddress
+					getApp().globalData.sendAddress.lng=this.longitude
+					getApp().globalData.sendAddress.lng=this.latitude
+					getApp().globalData.sendAddress.floor=this.floor
+					getApp().globalData.sendAddress.contact=this.contact
+					getApp().globalData.sendAddress.phone=this.phone
+					uni.navigateBack({
+						delta:1
+					})
+				}
+				else if(this.type==2){
+					getApp().globalData.receiptAddress.province=this.province
+					getApp().globalData.receiptAddress.city=this.city
+					getApp().globalData.receiptAddress.district=this.district
+					getApp().globalData.receiptAddress.address=this.startAddress
+					getApp().globalData.receiptAddress.lng=this.longitude
+					getApp().globalData.receiptAddress.lng=this.latitude
+					getApp().globalData.receiptAddress.floor=this.floor
+					getApp().globalData.receiptAddress.contact=this.contact
+					getApp().globalData.receiptAddress.phone=this.phone
+					uni.navigateTo({
+						url:'/pages/bill/receiptBill'
+					})
+					return
+				}
 			},
 			
 			getContacts: function() {
@@ -307,5 +398,10 @@
 		left: 50%;
 		transform: translateX(-50%);
 		font-size: 15px;
+	}
+	.no-address{
+		color: #9EA7B7;
+		font-size: 14px;
+		flex: 1;
 	}
 </style>

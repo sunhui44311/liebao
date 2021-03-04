@@ -1,0 +1,9 @@
+{ 
+	"applinks": { 
+		"apps": [], 
+		"details":[{
+			"appID": "93V7UQNGMU.com.ydd.liebaoAI",
+			"paths": [ "*" ] 
+		}] 
+	}
+ }
