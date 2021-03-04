@@ -29,19 +29,36 @@
 							<image v-if="tabIndex==1?true:false" class="tab-icon" src="../../static/image/tab-icon.png"></image>
 						</view>
 					</view>
-					<view class="input-section">
-						<image class="dot" src="../../static/image/fj.png"></image>
-						<view class="input-content" @click.stop="addBill">
-							<text class="address">{{startAddress}}</text>
-							<text style="color: #9EA7B7;font-size: 13px;">点击完善发件信息</text>
+					<view v-if="tabIndex==0">
+						<view class="input-section">
+							<image class="dot" src="../../static/image/fj.png"></image>
+							<view class="input-content" @click.stop="addBill">
+								<text class="address">{{startAddress}}</text>
+								<text style="color: #9EA7B7;font-size: 13px;">点击完善发件信息</text>
+							</view>
+							<image class="section-arrow" src="../../static/image/fj2.png"></image>
 						</view>
-						<image class="section-arrow" src="../../static/image/fj2.png"></image>
+						<view class="input-section input-bg" @click.stop="choiceCity">
+							<image class="dot" src="../../static/image/dot-orage@2x.png"></image>
+							<text class="input-txt">点击完善发件信息</text>
+						</view>
 					</view>
-					<view class="input-section input-bg" @click.stop="choiceCity">
-						<image class="dot" src="../../static/image/dot-orage@2x.png"></image>
-						<text class="input-txt">点击完善发件信息</text>
+					<view v-else>
+						<view class="input-section input-bg" @click.stop="choiceCity">
+							<image class="dot" src="../../static/image/dot-orage@2x.png"></image>
+							<text class="input-txt">点击完善发件信息</text>
+						</view>
+						<view class="input-section">
+							<image class="dot" src="../../static/image/fj.png"></image>
+							<view class="input-content" @click.stop="addBill">
+								<text class="address">{{startAddress}}</text>
+								<text style="color: #9EA7B7;font-size: 13px;">点击完善发件信息</text>
+							</view>
+							<image class="section-arrow" src="../../static/image/fj2.png"></image>
+						</view>
 					</view>
 				</view>
+				
 				<image class="section" :style="{width: windowWidth-20+'px'}" src="../../static/image/visit-friend@2x.png"></image>
 				<image class="section" :style="{width: windowWidth-20+'px'}" src="../../static/image/visit-friend@2x.png"></image>
 			</view>
@@ -70,7 +87,7 @@
 				},
 				centerLeft:0,
 				centerOffTop:0,
-				scale:18,
+				scale:16,
 				mapCtx:null,
 				tabIndex:0,
 				startAddress:'请稍后'

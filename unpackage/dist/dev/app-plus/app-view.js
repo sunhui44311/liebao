@@ -18788,9 +18788,19 @@ var render = function() {
         [
           _c(
             "v-uni-view",
-            { staticClass: _vm._$g(2, "sc"), attrs: { _i: 2 } },
+            {
+              staticClass: _vm._$g(2, "sc"),
+              attrs: { _i: 2 },
+              on: {
+                click: function($event) {
+                  return _vm.$handleViewEvent($event, { stop: true })
+                }
+              }
+            },
             [
-              _c("v-uni-text", { attrs: { _i: 3 } }, [_vm._v("苏州市")]),
+              _c("v-uni-text", { attrs: { _i: 3 } }, [
+                _vm._v(_vm._$g(3, "t0-0"))
+              ]),
               _c("v-uni-image", { attrs: { src: _vm._$g(4, "a-src"), _i: 4 } })
             ],
             1
@@ -18798,7 +18808,21 @@ var render = function() {
           _c(
             "v-uni-view",
             { staticClass: _vm._$g(5, "sc"), attrs: { _i: 5 } },
-            [_c("u-search", { attrs: { _i: 6 } })],
+            [
+              _c("u-search", {
+                attrs: { _i: 6 },
+                on: {
+                  change: function($event) {
+                    return _vm.$handleViewEvent($event)
+                  }
+                },
+                model: {
+                  value: _vm._$g(6, "v-model"),
+                  callback: function() {},
+                  expression: "keyword"
+                }
+              })
+            ],
             1
           )
         ],
@@ -18807,12 +18831,13 @@ var render = function() {
       _c(
         "v-uni-view",
         { staticClass: _vm._$g(7, "sc"), attrs: { _i: 7 } },
-        [
-          _c(
+        _vm._l(_vm._$g(8, "f"), function(poi, index, $20, $30) {
+          return _c(
             "v-uni-view",
             {
-              staticClass: _vm._$g(8, "sc"),
-              attrs: { _i: 8 },
+              key: poi,
+              staticClass: _vm._$g("8-" + $30, "sc"),
+              attrs: { _i: "8-" + $30 },
               on: {
                 click: function($event) {
                   return _vm.$handleViewEvent($event, { stop: true })
@@ -18821,86 +18846,33 @@ var render = function() {
             },
             [
               _c("v-uni-image", {
-                staticClass: _vm._$g(9, "sc"),
-                attrs: { src: _vm._$g(9, "a-src"), _i: 9 }
+                staticClass: _vm._$g("9-" + $30, "sc"),
+                attrs: { src: _vm._$g("9-" + $30, "a-src"), _i: "9-" + $30 }
               }),
               _c(
                 "v-uni-view",
-                { staticClass: _vm._$g(10, "sc"), attrs: { _i: 10 } },
+                {
+                  staticClass: _vm._$g("10-" + $30, "sc"),
+                  attrs: { _i: "10-" + $30 }
+                },
                 [
-                  _c("v-uni-view", { attrs: { _i: 11 } }, [
-                    _vm._v("苏州市纳米科技园")
+                  _c("v-uni-view", { attrs: { _i: "11-" + $30 } }, [
+                    _vm._v(_vm._$g("11-" + $30, "t0-0"))
                   ]),
-                  _c("v-uni-view", { attrs: { _i: 12 } }, [
-                    _vm._v("苏州工业园区若水路388号")
+                  _c("v-uni-view", { attrs: { _i: "12-" + $30 } }, [
+                    _vm._v(_vm._$g("12-" + $30, "t0-0"))
                   ])
                 ],
                 1
               ),
               _c("v-uni-view", {
-                staticClass: _vm._$g(13, "sc"),
-                attrs: { _i: 13 }
-              })
-            ],
-            1
-          ),
-          _c(
-            "v-uni-view",
-            { staticClass: _vm._$g(14, "sc"), attrs: { _i: 14 } },
-            [
-              _c("v-uni-image", {
-                staticClass: _vm._$g(15, "sc"),
-                attrs: { src: _vm._$g(15, "a-src"), _i: 15 }
-              }),
-              _c(
-                "v-uni-view",
-                { staticClass: _vm._$g(16, "sc"), attrs: { _i: 16 } },
-                [
-                  _c("v-uni-view", { attrs: { _i: 17 } }, [
-                    _vm._v("苏州市纳米科技园")
-                  ]),
-                  _c("v-uni-view", { attrs: { _i: 18 } }, [
-                    _vm._v("苏州工业园区若水路388号")
-                  ])
-                ],
-                1
-              ),
-              _c("v-uni-view", {
-                staticClass: _vm._$g(19, "sc"),
-                attrs: { _i: 19 }
-              })
-            ],
-            1
-          ),
-          _c(
-            "v-uni-view",
-            { staticClass: _vm._$g(20, "sc"), attrs: { _i: 20 } },
-            [
-              _c("v-uni-image", {
-                staticClass: _vm._$g(21, "sc"),
-                attrs: { src: _vm._$g(21, "a-src"), _i: 21 }
-              }),
-              _c(
-                "v-uni-view",
-                { staticClass: _vm._$g(22, "sc"), attrs: { _i: 22 } },
-                [
-                  _c("v-uni-view", { attrs: { _i: 23 } }, [
-                    _vm._v("苏州市纳米科技园")
-                  ]),
-                  _c("v-uni-view", { attrs: { _i: 24 } }, [
-                    _vm._v("苏州工业园区若水路388号")
-                  ])
-                ],
-                1
-              ),
-              _c("v-uni-view", {
-                staticClass: _vm._$g(25, "sc"),
-                attrs: { _i: 25 }
+                staticClass: _vm._$g("13-" + $30, "sc"),
+                attrs: { _i: "13-" + $30 }
               })
             ],
             1
           )
-        ],
+        }),
         1
       )
     ],
@@ -19289,7 +19261,7 @@ if(false) {}
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../../../../../Applications/HBuilderX.app/Contents/HBuilderX/plugins/uniapp-cli/node_modules/css-loader/dist/runtime/api.js */ 13);
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, "@charset \"UTF-8\";\n/**\n * 这里是uni-app内置的常用样式变量\n *\n * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量\n * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App\n *\n */\n/**\n * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能\n *\n * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件\n */\n/* 颜色变量 */\n/* 行为相关颜色 */\n/* 文字基本颜色 */\n/* 背景颜色 */\n/* 边框颜色 */\n/* 尺寸变量 */\n/* 文字尺寸 */\n/* 图片尺寸 */\n/* Border Radius */\n/* 水平间距 */\n/* 垂直间距 */\n/* 透明度 */\n/* 文章场景相关 */\nbody {\n  background-color: #F6F7F9;\n}\n.header {\n  background-color: white;\n  position: fixed;\n  top: 0px;\n  left: 0px;\n  right: 0px;\n  height: 50px;\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: flex;\n  -webkit-box-pack: justify;\n  -webkit-justify-content: space-between;\n          justify-content: space-between;\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n          align-items: center;\n  padding: 0px 20px;\n  z-index: 999;\n}\n.city {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: flex;\n  -webkit-box-pack: start;\n  -webkit-justify-content: flex-start;\n          justify-content: flex-start;\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n          align-items: center;\n  width: 60px;\n}\n.city uni-image {\n  width: 16upx;\n  height: 16upx;\n  margin-left: 16upx;\n}\n.search {\n  -webkit-box-flex: 1;\n  -webkit-flex: 1;\n          flex: 1;\n}\n.cell {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: flex;\n  -webkit-box-pack: start;\n  -webkit-justify-content: flex-start;\n          justify-content: flex-start;\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n          align-items: center;\n  padding: 15px 8px;\n  position: relative;\n}\n.box {\n  margin: 64px 10px 0px 10px;\n  background-color: white;\n  border-radius: 6px;\n}\n.location {\n  width: 36upx;\n  height: 36upx;\n  margin-right: 12px;\n}\n.info > uni-view:first-child {\n  color: #0D1C40;\n  font-size: 14px;\n}\n.info > uni-view:last-child {\n  color: #9FA7B6;\n  font-size: 12px;\n  margin-top: 6px;\n}\n.line {\n  position: absolute;\n  bottom: 0px;\n  height: 1px;\n  background-color: #EEEEEE;\n  left: 35px;\n  right: 30px;\n}\n", ""]);
+exports.push([module.i, "@charset \"UTF-8\";\n/**\n * 这里是uni-app内置的常用样式变量\n *\n * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量\n * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App\n *\n */\n/**\n * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能\n *\n * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件\n */\n/* 颜色变量 */\n/* 行为相关颜色 */\n/* 文字基本颜色 */\n/* 背景颜色 */\n/* 边框颜色 */\n/* 尺寸变量 */\n/* 文字尺寸 */\n/* 图片尺寸 */\n/* Border Radius */\n/* 水平间距 */\n/* 垂直间距 */\n/* 透明度 */\n/* 文章场景相关 */\nbody {\n  background-color: #F6F7F9;\n}\n.header {\n  background-color: white;\n  position: fixed;\n  top: 0px;\n  left: 0px;\n  right: 0px;\n  height: 50px;\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: flex;\n  -webkit-box-pack: justify;\n  -webkit-justify-content: space-between;\n          justify-content: space-between;\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n          align-items: center;\n  padding: 0px 20px;\n  z-index: 999;\n}\n.city {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: flex;\n  -webkit-box-pack: start;\n  -webkit-justify-content: flex-start;\n          justify-content: flex-start;\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n          align-items: center;\n  width: 60px;\n}\n.city uni-image {\n  width: 16upx;\n  height: 16upx;\n  margin-left: 16upx;\n}\n.search {\n  -webkit-box-flex: 1;\n  -webkit-flex: 1;\n          flex: 1;\n}\n.cell {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: flex;\n  -webkit-box-pack: start;\n  -webkit-justify-content: flex-start;\n          justify-content: flex-start;\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n          align-items: center;\n  padding: 15px 8px;\n  position: relative;\n}\n.box {\n  margin: 60px 10px 0px 10px;\n  background-color: white;\n  border-radius: 6px;\n}\n.location {\n  width: 36upx;\n  height: 36upx;\n  margin-right: 12px;\n}\n.info > uni-view:first-child {\n  color: #0D1C40;\n  font-size: 14px;\n}\n.info > uni-view:last-child {\n  color: #9FA7B6;\n  font-size: 12px;\n  margin-top: 6px;\n}\n.line {\n  position: absolute;\n  bottom: 0px;\n  height: 1px;\n  background-color: #EEEEEE;\n  left: 35px;\n  right: 30px;\n}\n", ""]);
 // Exports
 module.exports = exports;
 

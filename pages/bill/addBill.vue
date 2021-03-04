@@ -69,19 +69,24 @@
 				startAddress: '',
 				contacts:[],
 				longitude:0,
-				latitude:0
+				latitude:0,
+				city:''
 			}
 		},
 		onLoad(options) {
-			console.log(options)
+			let that=this
 			this.longitude=options.longitude
 			this.latitude=options.latitude
 			this.getDetailAddress(options.longitude, options.latitude)
+			uni.$on('selectAddress',(data)=>{
+				console.log(data)
+				that.startAddress=data.address
+			})
 		},
 		methods: {
 			choiceAddress() {
 				uni.navigateTo({
-					url: `/pages/bill/choiceAddress?longitude`
+					url: `/pages/bill/choiceAddress?longitude=${this.longitude}&latitude=${this.latitude}&city=${this.city}`
 				})
 			},
 			addBill() {
@@ -105,6 +110,7 @@
 						data
 					}) {
 						let addressComponent = data.regeocode.addressComponent
+						that.city=addressComponent.city.length==0?addressComponent.province:addressComponent.city
 						let aois = data.regeocode.aois.length > 0 ? data.regeocode.aois[0] : ''
 						let aoi = aois ? aois.name : ''
 						that.startAddress = addressComponent.streetNumber.street + addressComponent.streetNumber.number + aoi

@@ -1,15 +1,16 @@
 <template>
 	<div>
-		<map :style="{'width':mapWidth+'px','height':mapHeight+'px'}"></map>
+		<map id="map" :style="{'width':mapWidth+'px','height':mapHeight+'px'}" :latitude="centerPoint.latitude" :longitude="centerPoint.longitude" :scale="scale" @regionchange="onregionchange"></map>
+		<image class="center" :style="{'top':centerOffTop+'px','left':centerLeft+'px'}" src="../../static/image/center-location@2x.png"></image>
 		<view class="footer">
 			<text class="tip">请确认发件地址是否准确，如不准确可拖动地图进行调整</text>
 			<view class="content">
-				<text class="addr">苏州纳米科技园</text>
+				<text class="addr">{{poiName}}</text>
 				<view class="detail">
 					<image class="detail-icon" src="../../static/image/location@2x.png"></image>
-					<text class="detail-info">苏州工业园区若水路388号</text>
+					<text class="detail-info">{{formatted_address}}</text>
 				</view>
-				<text class="btn">确认地址</text>
+				<text class="btn" @click.stop="submit">确认地址</text>
 			</view>
 		</view>
 	</div>
@@ -20,16 +21,75 @@
 		data(){
 			return{
 				mapWidth:0,
-				mapHeight:0
+				mapHeight:0,
+				scale:16,
+				centerPoint:{
+					longitude:0,
+					latitude:0
+				},
+				centerLeft:0,
+				centerOffTop:0,
+				scale:16,
+				mapCtx:null,
+				formatted_address:'',
+				poiName:'',
+				poiModel:{}
 			}
 		},
-		onLoad() {
+		onLoad(options) {
+			var location=options.location
+			this.centerPoint.longitude=location.split(',')[0]
+			this.centerPoint.latitude=location.split(',')[1]
 			const res = uni.getSystemInfoSync();
 			this.mapWidth=res.windowWidth;
 			this.mapHeight=res.windowHeight-186;
+			this.centerLeft=this.mapWidth/2.0-15
+			this.centerOffTop=this.mapHeight/2.0-30
+			this.getDetailAddress(this.centerPoint)
 		},
 		methods:{
+			submit(){
+				uni.$emit('selectAddress',this.poiModel)
+				uni.navigateBack({
+					delta:2
+				})
+			},
+			onregionchange(e){
+				var that=this
+				this.mapCtx=uni.createMapContext('map',this)
+				this.mapCtx.getCenterLocation({
+					success:(res)=>{
+						console.log(res)
+						that.centerPoint.latitude=res.latitude
+						that.centerPoint.longitude=res.longitude
+						that.getDetailAddress(that.centerPoint)
+					}
+				})
+			},
 			
+			getDetailAddress(location){
+				let that=this
+				let params={
+					key:'5ae8644771ef9abf9cfb3ea23b1df6ca',
+					location:`${location.longitude},${location.latitude}`,
+					extensions:'all'
+				}
+				uni.request({
+					url:'https://restapi.amap.com/v3/geocode/regeo',
+					method:'GET',
+					data:params,
+					dataType:'json',
+					success({data}) {
+						console.log(data)
+						let addressComponent=data.regeocode.addressComponent
+						that.formatted_address=data.regeocode.formatted_address
+						// that.city=addressComponent.city.length==0?addressComponent.province:addressComponent.city
+						let aois=data.regeocode.aois.length>0?data.regeocode.aois[0]:''
+						that.poiName=aois?aois.name:''
+						that.poiModel.address=that.poiName
+					}
+				})
+			},
 		}
 	}
 </script>
@@ -83,5 +143,10 @@
 		text-align: center;
 		border-radius: 45px;
 		margin-top: 30px;
+	}
+	.center{
+		position: absolute;
+		width: 30px;
+		height: 30px;
 	}
 </style>
