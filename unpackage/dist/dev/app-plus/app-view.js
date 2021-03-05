@@ -3050,165 +3050,20 @@ var render = function() {
         ],
         1
       ),
-      _c(
-        "v-uni-view",
-        {
-          staticClass: _vm._$g(24, "sc"),
-          style: _vm._$g(24, "s"),
-          attrs: { _i: 24 }
-        },
-        [
-          _c(
+      _vm._$g(24, "i")
+        ? _c(
             "v-uni-view",
             {
-              staticClass: _vm._$g(25, "sc"),
-              attrs: { _i: 25 },
-              on: {
-                click: function($event) {
-                  return _vm.$handleViewEvent($event, { stop: true })
-                }
-              }
+              staticClass: _vm._$g(24, "sc"),
+              style: _vm._$g(24, "s"),
+              attrs: { _i: 24 }
             },
             [
-              _c("v-uni-image", {
-                attrs: { src: _vm._$g(26, "a-src"), _i: 26 }
-              }),
-              _c("v-uni-view", { attrs: { _i: 27 } }, [_vm._v("门店管理")])
-            ],
-            1
-          ),
-          _c(
-            "v-uni-view",
-            {
-              staticClass: _vm._$g(28, "sc"),
-              attrs: { _i: 28 },
-              on: {
-                click: function($event) {
-                  return _vm.$handleViewEvent($event, { stop: true })
-                }
-              }
-            },
-            [
-              _c("v-uni-image", {
-                attrs: { src: _vm._$g(29, "a-src"), _i: 29 }
-              }),
-              _c("v-uni-view", { attrs: { _i: 30 } }, [_vm._v("绑定外卖平台")])
-            ],
-            1
-          ),
-          _c(
-            "v-uni-view",
-            {
-              staticClass: _vm._$g(31, "sc"),
-              attrs: { _i: 31 },
-              on: {
-                click: function($event) {
-                  return _vm.$handleViewEvent($event, { stop: true })
-                }
-              }
-            },
-            [
-              _c("v-uni-image", {
-                attrs: { src: _vm._$g(32, "a-src"), _i: 32 }
-              }),
-              _c("v-uni-view", { attrs: { _i: 33 } }, [_vm._v("绑定配送平台")])
-            ],
-            1
-          ),
-          _c(
-            "v-uni-view",
-            {
-              staticClass: _vm._$g(34, "sc"),
-              attrs: { _i: 34 },
-              on: {
-                click: function($event) {
-                  return _vm.$handleViewEvent($event, { stop: true })
-                }
-              }
-            },
-            [
-              _c("v-uni-image", {
-                attrs: { src: _vm._$g(35, "a-src"), _i: 35 }
-              }),
-              _c("v-uni-view", { attrs: { _i: 36 } }, [_vm._v("保底设置")])
-            ],
-            1
-          )
-        ],
-        1
-      ),
-      _c(
-        "v-uni-view",
-        { staticClass: _vm._$g(37, "sc"), attrs: { _i: 37 } },
-        [
-          _c(
-            "v-uni-view",
-            { attrs: { _i: 38 } },
-            [
-              _c(
-                "v-uni-view",
-                { staticClass: _vm._$g(39, "sc"), attrs: { _i: 39 } },
-                [_vm._v("外卖设置")]
-              ),
-              _c("v-uni-view", { attrs: { _i: 40 } })
-            ],
-            1
-          ),
-          _c(
-            "v-uni-view",
-            { staticClass: _vm._$g(41, "sc"), attrs: { _i: 41 } },
-            [
-              _vm._$g(42, "i")
-                ? _c(
-                    "v-uni-view",
-                    {
-                      staticClass: _vm._$g(42, "sc"),
-                      attrs: { _i: 42 },
-                      on: {
-                        click: function($event) {
-                          return _vm.$handleViewEvent($event, { stop: true })
-                        }
-                      }
-                    },
-                    [
-                      _c("v-uni-image", {
-                        attrs: { src: _vm._$g(43, "a-src"), _i: 43 }
-                      }),
-                      _c("v-uni-view", { attrs: { _i: 44 } }, [
-                        _vm._v("申请为商家")
-                      ])
-                    ],
-                    1
-                  )
-                : _vm._e(),
-              _vm._$g(45, "i")
-                ? _c(
-                    "v-uni-view",
-                    {
-                      staticClass: _vm._$g(45, "sc"),
-                      attrs: { _i: 45 },
-                      on: {
-                        click: function($event) {
-                          return _vm.$handleViewEvent($event, { stop: true })
-                        }
-                      }
-                    },
-                    [
-                      _c("v-uni-image", {
-                        attrs: { src: _vm._$g(46, "a-src"), _i: 46 }
-                      }),
-                      _c("v-uni-view", { attrs: { _i: 47 } }, [
-                        _vm._v("一键发单")
-                      ])
-                    ],
-                    1
-                  )
-                : _vm._e(),
               _c(
                 "v-uni-view",
                 {
-                  staticClass: _vm._$g(48, "sc"),
-                  attrs: { _i: 48 },
+                  staticClass: _vm._$g(25, "sc"),
+                  attrs: { _i: 25 },
                   on: {
                     click: function($event) {
                       return _vm.$handleViewEvent($event, { stop: true })
@@ -3217,17 +3072,17 @@ var render = function() {
                 },
                 [
                   _c("v-uni-image", {
-                    attrs: { src: _vm._$g(49, "a-src"), _i: 49 }
+                    attrs: { src: _vm._$g(26, "a-src"), _i: 26 }
                   }),
-                  _c("v-uni-view", { attrs: { _i: 50 } }, [_vm._v("下单设置")])
+                  _c("v-uni-view", { attrs: { _i: 27 } }, [_vm._v("配送设置")])
                 ],
                 1
               ),
               _c(
                 "v-uni-view",
                 {
-                  staticClass: _vm._$g(51, "sc"),
-                  attrs: { _i: 51 },
+                  staticClass: _vm._$g(28, "sc"),
+                  attrs: { _i: 28 },
                   on: {
                     click: function($event) {
                       return _vm.$handleViewEvent($event, { stop: true })
@@ -3236,17 +3091,19 @@ var render = function() {
                 },
                 [
                   _c("v-uni-image", {
-                    attrs: { src: _vm._$g(52, "a-src"), _i: 52 }
+                    attrs: { src: _vm._$g(29, "a-src"), _i: 29 }
                   }),
-                  _c("v-uni-view", { attrs: { _i: 53 } }, [_vm._v("显示设置")])
+                  _c("v-uni-view", { attrs: { _i: 30 } }, [
+                    _vm._v("绑定配送平台")
+                  ])
                 ],
                 1
               ),
               _c(
                 "v-uni-view",
                 {
-                  staticClass: _vm._$g(54, "sc"),
-                  attrs: { _i: 54 },
+                  staticClass: _vm._$g(31, "sc"),
+                  attrs: { _i: 31 },
                   on: {
                     click: function($event) {
                       return _vm.$handleViewEvent($event, { stop: true })
@@ -3255,67 +3112,283 @@ var render = function() {
                 },
                 [
                   _c("v-uni-image", {
-                    attrs: { src: _vm._$g(55, "a-src"), _i: 55 }
+                    attrs: { src: _vm._$g(32, "a-src"), _i: 32 }
                   }),
-                  _c("v-uni-view", { attrs: { _i: 56 } }, [_vm._v("账号设置")])
-                ],
-                1
-              ),
-              _c(
-                "v-uni-view",
-                { staticClass: _vm._$g(57, "sc"), attrs: { _i: 57 } },
-                [
-                  _c("v-uni-image", {
-                    attrs: { src: _vm._$g(58, "a-src"), _i: 58 }
-                  }),
-                  _c("v-uni-view", { attrs: { _i: 59 } }, [_vm._v("自动接单")])
-                ],
-                1
-              ),
-              _c(
-                "v-uni-view",
-                { staticClass: _vm._$g(60, "sc"), attrs: { _i: 60 } },
-                [
-                  _c("v-uni-image", {
-                    attrs: { src: _vm._$g(61, "a-src"), _i: 61 }
-                  }),
-                  _c("v-uni-view", { attrs: { _i: 62 } }, [_vm._v("自动打印")])
-                ],
-                1
-              ),
-              _c(
-                "v-uni-view",
-                { staticClass: _vm._$g(63, "sc"), attrs: { _i: 63 } },
-                [
-                  _c("v-uni-image", {
-                    attrs: { src: _vm._$g(64, "a-src"), _i: 64 }
-                  }),
-                  _c("v-uni-view", { attrs: { _i: 65 } }, [_vm._v("自动配送")])
-                ],
-                1
-              ),
-              _c(
-                "v-uni-view",
-                { staticClass: _vm._$g(66, "sc"), attrs: { _i: 66 } },
-                [
-                  _c("v-uni-image", {
-                    attrs: { src: _vm._$g(67, "a-src"), _i: 67 }
-                  }),
-                  _c("v-uni-view", { attrs: { _i: 68 } }, [_vm._v("自动同步")])
+                  _c("v-uni-view", { attrs: { _i: 33 } }, [_vm._v("保底设置")])
                 ],
                 1
               )
             ],
             1
           )
-        ],
-        1
-      ),
+        : _vm._e(),
+      _vm._$g(34, "i")
+        ? _c(
+            "v-uni-view",
+            {
+              staticClass: _vm._$g(34, "sc"),
+              style: _vm._$g(34, "s"),
+              attrs: { _i: 34 }
+            },
+            [
+              _c(
+                "v-uni-view",
+                {
+                  staticClass: _vm._$g(35, "sc"),
+                  attrs: { _i: 35 },
+                  on: {
+                    click: function($event) {
+                      return _vm.$handleViewEvent($event, { stop: true })
+                    }
+                  }
+                },
+                [
+                  _c("v-uni-image", {
+                    attrs: { src: _vm._$g(36, "a-src"), _i: 36 }
+                  }),
+                  _c("v-uni-view", { attrs: { _i: 37 } }, [_vm._v("门店管理")])
+                ],
+                1
+              ),
+              _c(
+                "v-uni-view",
+                {
+                  staticClass: _vm._$g(38, "sc"),
+                  attrs: { _i: 38 },
+                  on: {
+                    click: function($event) {
+                      return _vm.$handleViewEvent($event, { stop: true })
+                    }
+                  }
+                },
+                [
+                  _c("v-uni-image", {
+                    attrs: { src: _vm._$g(39, "a-src"), _i: 39 }
+                  }),
+                  _c("v-uni-view", { attrs: { _i: 40 } }, [
+                    _vm._v("绑定外卖平台")
+                  ])
+                ],
+                1
+              ),
+              _c(
+                "v-uni-view",
+                {
+                  staticClass: _vm._$g(41, "sc"),
+                  attrs: { _i: 41 },
+                  on: {
+                    click: function($event) {
+                      return _vm.$handleViewEvent($event, { stop: true })
+                    }
+                  }
+                },
+                [
+                  _c("v-uni-image", {
+                    attrs: { src: _vm._$g(42, "a-src"), _i: 42 }
+                  }),
+                  _c("v-uni-view", { attrs: { _i: 43 } }, [
+                    _vm._v("绑定配送平台")
+                  ])
+                ],
+                1
+              ),
+              _c(
+                "v-uni-view",
+                {
+                  staticClass: _vm._$g(44, "sc"),
+                  attrs: { _i: 44 },
+                  on: {
+                    click: function($event) {
+                      return _vm.$handleViewEvent($event, { stop: true })
+                    }
+                  }
+                },
+                [
+                  _c("v-uni-image", {
+                    attrs: { src: _vm._$g(45, "a-src"), _i: 45 }
+                  }),
+                  _c("v-uni-view", { attrs: { _i: 46 } }, [_vm._v("保底设置")])
+                ],
+                1
+              )
+            ],
+            1
+          )
+        : _vm._e(),
+      _vm._$g(47, "i")
+        ? _c(
+            "v-uni-view",
+            { staticClass: _vm._$g(47, "sc"), attrs: { _i: 47 } },
+            [
+              _c(
+                "v-uni-view",
+                { attrs: { _i: 48 } },
+                [
+                  _c(
+                    "v-uni-view",
+                    { staticClass: _vm._$g(49, "sc"), attrs: { _i: 49 } },
+                    [_vm._v("外卖设置")]
+                  ),
+                  _c("v-uni-view", { attrs: { _i: 50 } })
+                ],
+                1
+              ),
+              _c(
+                "v-uni-view",
+                { staticClass: _vm._$g(51, "sc"), attrs: { _i: 51 } },
+                [
+                  _vm._$g(52, "i")
+                    ? _c(
+                        "v-uni-view",
+                        {
+                          staticClass: _vm._$g(52, "sc"),
+                          attrs: { _i: 52 },
+                          on: {
+                            click: function($event) {
+                              return _vm.$handleViewEvent($event, {
+                                stop: true
+                              })
+                            }
+                          }
+                        },
+                        [
+                          _c("v-uni-image", {
+                            attrs: { src: _vm._$g(53, "a-src"), _i: 53 }
+                          }),
+                          _c("v-uni-view", { attrs: { _i: 54 } }, [
+                            _vm._v("一键发单")
+                          ])
+                        ],
+                        1
+                      )
+                    : _vm._e(),
+                  _c(
+                    "v-uni-view",
+                    {
+                      staticClass: _vm._$g(55, "sc"),
+                      attrs: { _i: 55 },
+                      on: {
+                        click: function($event) {
+                          return _vm.$handleViewEvent($event, { stop: true })
+                        }
+                      }
+                    },
+                    [
+                      _c("v-uni-image", {
+                        attrs: { src: _vm._$g(56, "a-src"), _i: 56 }
+                      }),
+                      _c("v-uni-view", { attrs: { _i: 57 } }, [
+                        _vm._v("下单设置")
+                      ])
+                    ],
+                    1
+                  ),
+                  _c(
+                    "v-uni-view",
+                    {
+                      staticClass: _vm._$g(58, "sc"),
+                      attrs: { _i: 58 },
+                      on: {
+                        click: function($event) {
+                          return _vm.$handleViewEvent($event, { stop: true })
+                        }
+                      }
+                    },
+                    [
+                      _c("v-uni-image", {
+                        attrs: { src: _vm._$g(59, "a-src"), _i: 59 }
+                      }),
+                      _c("v-uni-view", { attrs: { _i: 60 } }, [
+                        _vm._v("显示设置")
+                      ])
+                    ],
+                    1
+                  ),
+                  _c(
+                    "v-uni-view",
+                    {
+                      staticClass: _vm._$g(61, "sc"),
+                      attrs: { _i: 61 },
+                      on: {
+                        click: function($event) {
+                          return _vm.$handleViewEvent($event, { stop: true })
+                        }
+                      }
+                    },
+                    [
+                      _c("v-uni-image", {
+                        attrs: { src: _vm._$g(62, "a-src"), _i: 62 }
+                      }),
+                      _c("v-uni-view", { attrs: { _i: 63 } }, [
+                        _vm._v("账号设置")
+                      ])
+                    ],
+                    1
+                  ),
+                  _c(
+                    "v-uni-view",
+                    { staticClass: _vm._$g(64, "sc"), attrs: { _i: 64 } },
+                    [
+                      _c("v-uni-image", {
+                        attrs: { src: _vm._$g(65, "a-src"), _i: 65 }
+                      }),
+                      _c("v-uni-view", { attrs: { _i: 66 } }, [
+                        _vm._v("自动接单")
+                      ])
+                    ],
+                    1
+                  ),
+                  _c(
+                    "v-uni-view",
+                    { staticClass: _vm._$g(67, "sc"), attrs: { _i: 67 } },
+                    [
+                      _c("v-uni-image", {
+                        attrs: { src: _vm._$g(68, "a-src"), _i: 68 }
+                      }),
+                      _c("v-uni-view", { attrs: { _i: 69 } }, [
+                        _vm._v("自动打印")
+                      ])
+                    ],
+                    1
+                  ),
+                  _c(
+                    "v-uni-view",
+                    { staticClass: _vm._$g(70, "sc"), attrs: { _i: 70 } },
+                    [
+                      _c("v-uni-image", {
+                        attrs: { src: _vm._$g(71, "a-src"), _i: 71 }
+                      }),
+                      _c("v-uni-view", { attrs: { _i: 72 } }, [
+                        _vm._v("自动配送")
+                      ])
+                    ],
+                    1
+                  ),
+                  _c(
+                    "v-uni-view",
+                    { staticClass: _vm._$g(73, "sc"), attrs: { _i: 73 } },
+                    [
+                      _c("v-uni-image", {
+                        attrs: { src: _vm._$g(74, "a-src"), _i: 74 }
+                      }),
+                      _c("v-uni-view", { attrs: { _i: 75 } }, [
+                        _vm._v("自动同步")
+                      ])
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          )
+        : _vm._e(),
       _c(
         "v-uni-view",
         {
-          staticClass: _vm._$g(69, "sc"),
-          attrs: { _i: 69 },
+          staticClass: _vm._$g(76, "sc"),
+          attrs: { _i: 76 },
           on: {
             click: function($event) {
               return _vm.$handleViewEvent($event)
@@ -3324,26 +3397,26 @@ var render = function() {
         },
         [
           _c("v-uni-image", {
-            staticClass: _vm._$g(70, "sc"),
-            attrs: { src: _vm._$g(70, "a-src"), _i: 70 }
+            staticClass: _vm._$g(77, "sc"),
+            attrs: { src: _vm._$g(77, "a-src"), _i: 77 }
           }),
           _c(
             "v-uni-view",
-            { staticClass: _vm._$g(71, "sc"), attrs: { _i: 71 } },
+            { staticClass: _vm._$g(78, "sc"), attrs: { _i: 78 } },
             [_vm._v("邀请好友赚钱")]
           ),
           _c(
             "v-uni-view",
-            { staticClass: _vm._$g(72, "sc"), attrs: { _i: 72 } },
+            { staticClass: _vm._$g(79, "sc"), attrs: { _i: 79 } },
             [
               _c(
                 "v-uni-text",
-                { staticClass: _vm._$g(73, "sc"), attrs: { _i: 73 } },
+                { staticClass: _vm._$g(80, "sc"), attrs: { _i: 80 } },
                 [_vm._v("多邀多得，上不封顶")]
               ),
               _c("v-uni-image", {
-                staticClass: _vm._$g(74, "sc"),
-                attrs: { src: _vm._$g(74, "a-src"), _i: 74 }
+                staticClass: _vm._$g(81, "sc"),
+                attrs: { src: _vm._$g(81, "a-src"), _i: 81 }
               })
             ],
             1
@@ -3353,30 +3426,122 @@ var render = function() {
       ),
       _c(
         "v-uni-view",
-        { staticClass: _vm._$g(75, "sc"), attrs: { _i: 75 } },
+        { staticClass: _vm._$g(82, "sc"), attrs: { _i: 82 } },
         [
           _c(
             "v-uni-view",
-            { attrs: { _i: 76 } },
+            { attrs: { _i: 83 } },
             [
               _c(
                 "v-uni-view",
-                { staticClass: _vm._$g(77, "sc"), attrs: { _i: 77 } },
+                { staticClass: _vm._$g(84, "sc"), attrs: { _i: 84 } },
                 [_vm._v("常用工具")]
               ),
-              _c("v-uni-view", { attrs: { _i: 78 } })
+              _c("v-uni-view", { attrs: { _i: 85 } })
             ],
             1
           ),
           _c(
             "v-uni-view",
-            { staticClass: _vm._$g(79, "sc"), attrs: { _i: 79 } },
+            { staticClass: _vm._$g(86, "sc"), attrs: { _i: 86 } },
             [
+              _vm._$g(87, "i")
+                ? _c(
+                    "v-uni-view",
+                    {
+                      staticClass: _vm._$g(87, "sc"),
+                      attrs: { _i: 87 },
+                      on: {
+                        click: function($event) {
+                          return _vm.$handleViewEvent($event, { stop: true })
+                        }
+                      }
+                    },
+                    [
+                      _c("v-uni-image", {
+                        attrs: { src: _vm._$g(88, "a-src"), _i: 88 }
+                      }),
+                      _c("v-uni-view", { attrs: { _i: 89 } }, [
+                        _vm._v("申请为商家")
+                      ])
+                    ],
+                    1
+                  )
+                : _vm._e(),
+              _vm._$g(90, "i")
+                ? _c(
+                    "v-uni-view",
+                    {
+                      staticClass: _vm._$g(90, "sc"),
+                      attrs: { _i: 90 },
+                      on: {
+                        click: function($event) {
+                          return _vm.$handleViewEvent($event, { stop: true })
+                        }
+                      }
+                    },
+                    [
+                      _c("v-uni-image", {
+                        attrs: { src: _vm._$g(91, "a-src"), _i: 91 }
+                      }),
+                      _c("v-uni-view", { attrs: { _i: 92 } }, [
+                        _vm._v("语音播报")
+                      ])
+                    ],
+                    1
+                  )
+                : _vm._e(),
+              _vm._$g(93, "i")
+                ? _c(
+                    "v-uni-view",
+                    {
+                      staticClass: _vm._$g(93, "sc"),
+                      attrs: { _i: 93 },
+                      on: {
+                        click: function($event) {
+                          return _vm.$handleViewEvent($event, { stop: true })
+                        }
+                      }
+                    },
+                    [
+                      _c("v-uni-image", {
+                        attrs: { src: _vm._$g(94, "a-src"), _i: 94 }
+                      }),
+                      _c("v-uni-view", { attrs: { _i: 95 } }, [
+                        _vm._v("小票打印")
+                      ])
+                    ],
+                    1
+                  )
+                : _vm._e(),
+              _vm._$g(96, "i")
+                ? _c(
+                    "v-uni-view",
+                    {
+                      staticClass: _vm._$g(96, "sc"),
+                      attrs: { _i: 96 },
+                      on: {
+                        click: function($event) {
+                          return _vm.$handleViewEvent($event, { stop: true })
+                        }
+                      }
+                    },
+                    [
+                      _c("v-uni-image", {
+                        attrs: { src: _vm._$g(97, "a-src"), _i: 97 }
+                      }),
+                      _c("v-uni-view", { attrs: { _i: 98 } }, [
+                        _vm._v("配送订单")
+                      ])
+                    ],
+                    1
+                  )
+                : _vm._e(),
               _c(
                 "v-uni-view",
                 {
-                  staticClass: _vm._$g(80, "sc"),
-                  attrs: { _i: 80 },
+                  staticClass: _vm._$g(99, "sc"),
+                  attrs: { _i: 99 },
                   on: {
                     click: function($event) {
                       return _vm.$handleViewEvent($event, { stop: true })
@@ -3385,17 +3550,17 @@ var render = function() {
                 },
                 [
                   _c("v-uni-image", {
-                    attrs: { src: _vm._$g(81, "a-src"), _i: 81 }
+                    attrs: { src: _vm._$g(100, "a-src"), _i: 100 }
                   }),
-                  _c("v-uni-view", { attrs: { _i: 82 } }, [_vm._v("语音播报")])
+                  _c("v-uni-view", { attrs: { _i: 101 } }, [_vm._v("常用地址")])
                 ],
                 1
               ),
               _c(
                 "v-uni-view",
                 {
-                  staticClass: _vm._$g(83, "sc"),
-                  attrs: { _i: 83 },
+                  staticClass: _vm._$g(102, "sc"),
+                  attrs: { _i: 102 },
                   on: {
                     click: function($event) {
                       return _vm.$handleViewEvent($event, { stop: true })
@@ -3404,17 +3569,17 @@ var render = function() {
                 },
                 [
                   _c("v-uni-image", {
-                    attrs: { src: _vm._$g(84, "a-src"), _i: 84 }
+                    attrs: { src: _vm._$g(103, "a-src"), _i: 103 }
                   }),
-                  _c("v-uni-view", { attrs: { _i: 85 } }, [_vm._v("小票打印")])
+                  _c("v-uni-view", { attrs: { _i: 104 } }, [_vm._v("邀请好友")])
                 ],
                 1
               ),
               _c(
                 "v-uni-view",
                 {
-                  staticClass: _vm._$g(86, "sc"),
-                  attrs: { _i: 86 },
+                  staticClass: _vm._$g(105, "sc"),
+                  attrs: { _i: 105 },
                   on: {
                     click: function($event) {
                       return _vm.$handleViewEvent($event, { stop: true })
@@ -3423,17 +3588,17 @@ var render = function() {
                 },
                 [
                   _c("v-uni-image", {
-                    attrs: { src: _vm._$g(87, "a-src"), _i: 87 }
+                    attrs: { src: _vm._$g(106, "a-src"), _i: 106 }
                   }),
-                  _c("v-uni-view", { attrs: { _i: 88 } }, [_vm._v("常用地址")])
+                  _c("v-uni-view", { attrs: { _i: 107 } }, [_vm._v("联系客服")])
                 ],
                 1
               ),
               _c(
                 "v-uni-view",
                 {
-                  staticClass: _vm._$g(89, "sc"),
-                  attrs: { _i: 89 },
+                  staticClass: _vm._$g(108, "sc"),
+                  attrs: { _i: 108 },
                   on: {
                     click: function($event) {
                       return _vm.$handleViewEvent($event, { stop: true })
@@ -3442,17 +3607,17 @@ var render = function() {
                 },
                 [
                   _c("v-uni-image", {
-                    attrs: { src: _vm._$g(90, "a-src"), _i: 90 }
+                    attrs: { src: _vm._$g(109, "a-src"), _i: 109 }
                   }),
-                  _c("v-uni-view", { attrs: { _i: 91 } }, [_vm._v("邀请好友")])
+                  _c("v-uni-view", { attrs: { _i: 110 } }, [_vm._v("意见反馈")])
                 ],
                 1
               ),
               _c(
                 "v-uni-view",
                 {
-                  staticClass: _vm._$g(92, "sc"),
-                  attrs: { _i: 92 },
+                  staticClass: _vm._$g(111, "sc"),
+                  attrs: { _i: 111 },
                   on: {
                     click: function($event) {
                       return _vm.$handleViewEvent($event, { stop: true })
@@ -3461,17 +3626,17 @@ var render = function() {
                 },
                 [
                   _c("v-uni-image", {
-                    attrs: { src: _vm._$g(93, "a-src"), _i: 93 }
+                    attrs: { src: _vm._$g(112, "a-src"), _i: 112 }
                   }),
-                  _c("v-uni-view", { attrs: { _i: 94 } }, [_vm._v("联系客服")])
+                  _c("v-uni-view", { attrs: { _i: 113 } }, [_vm._v("招商加盟")])
                 ],
                 1
               ),
               _c(
                 "v-uni-view",
                 {
-                  staticClass: _vm._$g(95, "sc"),
-                  attrs: { _i: 95 },
+                  staticClass: _vm._$g(114, "sc"),
+                  attrs: { _i: 114 },
                   on: {
                     click: function($event) {
                       return _vm.$handleViewEvent($event, { stop: true })
@@ -3480,47 +3645,9 @@ var render = function() {
                 },
                 [
                   _c("v-uni-image", {
-                    attrs: { src: _vm._$g(96, "a-src"), _i: 96 }
+                    attrs: { src: _vm._$g(115, "a-src"), _i: 115 }
                   }),
-                  _c("v-uni-view", { attrs: { _i: 97 } }, [_vm._v("意见反馈")])
-                ],
-                1
-              ),
-              _c(
-                "v-uni-view",
-                {
-                  staticClass: _vm._$g(98, "sc"),
-                  attrs: { _i: 98 },
-                  on: {
-                    click: function($event) {
-                      return _vm.$handleViewEvent($event, { stop: true })
-                    }
-                  }
-                },
-                [
-                  _c("v-uni-image", {
-                    attrs: { src: _vm._$g(99, "a-src"), _i: 99 }
-                  }),
-                  _c("v-uni-view", { attrs: { _i: 100 } }, [_vm._v("招商加盟")])
-                ],
-                1
-              ),
-              _c(
-                "v-uni-view",
-                {
-                  staticClass: _vm._$g(101, "sc"),
-                  attrs: { _i: 101 },
-                  on: {
-                    click: function($event) {
-                      return _vm.$handleViewEvent($event, { stop: true })
-                    }
-                  }
-                },
-                [
-                  _c("v-uni-image", {
-                    attrs: { src: _vm._$g(102, "a-src"), _i: 102 }
-                  }),
-                  _c("v-uni-view", { attrs: { _i: 103 } }, [_vm._v("系统设置")])
+                  _c("v-uni-view", { attrs: { _i: 116 } }, [_vm._v("系统设置")])
                 ],
                 1
               )
@@ -3530,123 +3657,133 @@ var render = function() {
         ],
         1
       ),
-      _c(
-        "v-uni-view",
-        {
-          staticClass: _vm._$g(104, "sc"),
-          staticStyle: { "margin-bottom": "10px" },
-          attrs: { _i: 104 }
-        },
-        [
-          _c(
+      _vm._$g(117, "i")
+        ? _c(
             "v-uni-view",
-            { attrs: { _i: 105 } },
+            {
+              staticClass: _vm._$g(117, "sc"),
+              staticStyle: { "margin-bottom": "10px" },
+              attrs: { _i: 117 }
+            },
             [
               _c(
                 "v-uni-view",
-                { staticClass: _vm._$g(106, "sc"), attrs: { _i: 106 } },
-                [_vm._v("常用工具")]
-              ),
-              _c("v-uni-view", { attrs: { _i: 107 } })
-            ],
-            1
-          ),
-          _c(
-            "v-uni-view",
-            { staticClass: _vm._$g(108, "sc"), attrs: { _i: 108 } },
-            [
-              _c(
-                "v-uni-view",
-                {
-                  staticClass: _vm._$g(109, "sc"),
-                  attrs: { _i: 109 },
-                  on: {
-                    click: function($event) {
-                      return _vm.$handleViewEvent($event, { stop: true })
-                    }
-                  }
-                },
+                { attrs: { _i: 118 } },
                 [
-                  _c("v-uni-image", {
-                    attrs: { src: _vm._$g(110, "a-src"), _i: 110 }
-                  }),
-                  _c("v-uni-view", { attrs: { _i: 111 } }, [_vm._v("门店统计")])
+                  _c(
+                    "v-uni-view",
+                    { staticClass: _vm._$g(119, "sc"), attrs: { _i: 119 } },
+                    [_vm._v("数据中心")]
+                  ),
+                  _c("v-uni-view", { attrs: { _i: 120 } })
                 ],
                 1
               ),
               _c(
                 "v-uni-view",
-                {
-                  staticClass: _vm._$g(112, "sc"),
-                  attrs: { _i: 112 },
-                  on: {
-                    click: function($event) {
-                      return _vm.$handleViewEvent($event, { stop: true })
-                    }
-                  }
-                },
+                { staticClass: _vm._$g(121, "sc"), attrs: { _i: 121 } },
                 [
-                  _c("v-uni-image", {
-                    attrs: { src: _vm._$g(113, "a-src"), _i: 113 }
-                  }),
-                  _c("v-uni-view", { attrs: { _i: 114 } }, [_vm._v("外卖统计")])
-                ],
-                1
-              ),
-              _c(
-                "v-uni-view",
-                {
-                  staticClass: _vm._$g(115, "sc"),
-                  attrs: { _i: 115 },
-                  on: {
-                    click: function($event) {
-                      return _vm.$handleViewEvent($event, { stop: true })
-                    }
-                  }
-                },
-                [
-                  _c("v-uni-image", {
-                    attrs: { src: _vm._$g(116, "a-src"), _i: 116 }
-                  }),
-                  _c("v-uni-view", { attrs: { _i: 117 } }, [_vm._v("配送统计")])
-                ],
-                1
-              ),
-              _c(
-                "v-uni-view",
-                {
-                  staticClass: _vm._$g(118, "sc"),
-                  attrs: { _i: 118 },
-                  on: {
-                    click: function($event) {
-                      return _vm.$handleViewEvent($event, { stop: true })
-                    }
-                  }
-                },
-                [
-                  _c("v-uni-image", {
-                    attrs: { src: _vm._$g(119, "a-src"), _i: 119 }
-                  }),
-                  _c("v-uni-view", { attrs: { _i: 120 } }, [_vm._v("支付统计")])
+                  _c(
+                    "v-uni-view",
+                    {
+                      staticClass: _vm._$g(122, "sc"),
+                      attrs: { _i: 122 },
+                      on: {
+                        click: function($event) {
+                          return _vm.$handleViewEvent($event, { stop: true })
+                        }
+                      }
+                    },
+                    [
+                      _c("v-uni-image", {
+                        attrs: { src: _vm._$g(123, "a-src"), _i: 123 }
+                      }),
+                      _c("v-uni-view", { attrs: { _i: 124 } }, [
+                        _vm._v("门店统计")
+                      ])
+                    ],
+                    1
+                  ),
+                  _c(
+                    "v-uni-view",
+                    {
+                      staticClass: _vm._$g(125, "sc"),
+                      attrs: { _i: 125 },
+                      on: {
+                        click: function($event) {
+                          return _vm.$handleViewEvent($event, { stop: true })
+                        }
+                      }
+                    },
+                    [
+                      _c("v-uni-image", {
+                        attrs: { src: _vm._$g(126, "a-src"), _i: 126 }
+                      }),
+                      _c("v-uni-view", { attrs: { _i: 127 } }, [
+                        _vm._v("外卖统计")
+                      ])
+                    ],
+                    1
+                  ),
+                  _c(
+                    "v-uni-view",
+                    {
+                      staticClass: _vm._$g(128, "sc"),
+                      attrs: { _i: 128 },
+                      on: {
+                        click: function($event) {
+                          return _vm.$handleViewEvent($event, { stop: true })
+                        }
+                      }
+                    },
+                    [
+                      _c("v-uni-image", {
+                        attrs: { src: _vm._$g(129, "a-src"), _i: 129 }
+                      }),
+                      _c("v-uni-view", { attrs: { _i: 130 } }, [
+                        _vm._v("配送统计")
+                      ])
+                    ],
+                    1
+                  ),
+                  _c(
+                    "v-uni-view",
+                    {
+                      staticClass: _vm._$g(131, "sc"),
+                      attrs: { _i: 131 },
+                      on: {
+                        click: function($event) {
+                          return _vm.$handleViewEvent($event, { stop: true })
+                        }
+                      }
+                    },
+                    [
+                      _c("v-uni-image", {
+                        attrs: { src: _vm._$g(132, "a-src"), _i: 132 }
+                      }),
+                      _c("v-uni-view", { attrs: { _i: 133 } }, [
+                        _vm._v("支付统计")
+                      ])
+                    ],
+                    1
+                  )
                 ],
                 1
               )
             ],
             1
           )
-        ],
-        1
-      ),
-      _c("show-setting", { ref: "showSetting", attrs: { _i: 121 } }),
+        : _vm._e(),
+      _c("show-setting", { ref: "showSetting", attrs: { _i: 134 } }),
       _c("u-action-sheet", {
-        attrs: { _i: 122 },
+        attrs: { _i: 135 },
         on: {
           click: function($event) {
             return _vm.$handleViewEvent($event)
           }
         },
         model: {
-          value: _vm._$g(122, "v-model"),
+          value: _vm._$g(135, "v-model"),
           callback: function() {},
           expression: "showActionSheet"
         }
@@ -5529,7 +5666,7 @@ if(false) {}
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../../../../../../Applications/HBuilderX.app/Contents/HBuilderX/plugins/uniapp-cli/node_modules/css-loader/dist/runtime/api.js */ 13);
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, "@charset \"UTF-8\";\n/**\n * 这里是uni-app内置的常用样式变量\n *\n * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量\n * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App\n *\n */\n/**\n * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能\n *\n * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件\n */\n/* 颜色变量 */\n/* 行为相关颜色 */\n/* 文字基本颜色 */\n/* 背景颜色 */\n/* 边框颜色 */\n/* 尺寸变量 */\n/* 文字尺寸 */\n/* 图片尺寸 */\n/* Border Radius */\n/* 水平间距 */\n/* 垂直间距 */\n/* 透明度 */\n/* 文章场景相关 */\nbody {\n  background-color: #F6F7F9;\n}\n#core .head-back {\n  background-color: #FC7200;\n  height: 340upx;\n  left: 0;\n  right: 0;\n}\n#core .user-core {\n  position: absolute;\n  left: 0;\n  right: 0;\n  top: 0;\n  bottom: 0;\n  padding: 24upx;\n}\n#core .user-core .nav {\n  padding-top: 30upx;\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: flex;\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n          align-items: center;\n  -webkit-box-pack: justify;\n  -webkit-justify-content: space-between;\n          justify-content: space-between;\n  margin-bottom: 22upx;\n}\n#core .user-core .nav .title {\n  font-size: 42upx;\n  font-weight: 600;\n  color: #FFFFFF;\n}\n#core .user-core .nav .icon {\n  width: 35upx;\n  height: 44upx;\n}\n#core .user-core .user-box {\n  background: #FFFFFF;\n  border-radius: 16upx;\n  padding: 40upx 30upx;\n}\n#core .user-core .user-box .user-info {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: flex;\n  margin-bottom: 50upx;\n}\n#core .user-core .user-box .user-info .head {\n  margin-right: 20upx;\n}\n#core .user-core .user-box .user-info .head .img {\n  width: 100upx;\n  height: 100upx;\n  border-radius: 50%;\n}\n#core .user-core .user-box .user-info .info {\n  padding-top: 10upx;\n  -webkit-box-flex: 1;\n  -webkit-flex: 1;\n          flex: 1;\n}\n#core .user-core .user-box .user-info .info .name {\n  font-size: 34upx;\n  font-weight: 600;\n  color: #0D1E40;\n  margin-bottom: 16upx;\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: flex;\n}\n#core .user-core .user-box .user-info .info .name .label {\n  background: #FC7200;\n  border-radius: 17upx;\n  padding: 6upx 17upx;\n  width: 42px;\n  font-size: 22upx;\n  font-weight: 400;\n  color: #FFFFFF;\n  margin-left: 21upx;\n}\n#core .user-core .user-box .user-info .info .qm {\n  font-size: 24upx;\n  font-weight: 400;\n  color: #9EA7B7;\n}\n#core .user-core .user-box .user-info .icon {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: flex;\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n          align-items: center;\n}\n#core .user-core .user-box .user-info .icon .img {\n  width: 13upx;\n  height: 22upx;\n}\n#core .user-core .user-box .wallet {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: flex;\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n          align-items: center;\n  -webkit-box-pack: justify;\n  -webkit-justify-content: space-between;\n          justify-content: space-between;\n}\n#core .user-core .user-box .wallet .total .title {\n  font-size: 24upx;\n  font-weight: 400;\n  color: #9EA7B7;\n  margin-bottom: 15upx;\n}\n#core .user-core .user-box .wallet .total .num {\n  font-size: 60upx;\n  font-weight: bold;\n  color: #FC7200;\n}\n#core .user-core .user-box .wallet .recharge {\n  position: relative;\n}\n#core .user-core .user-box .wallet .recharge .btn {\n  background-color: #462BF7;\n  border-radius: 28upx;\n  font-size: 26upx;\n  font-weight: 500;\n  color: #FFFFFF;\n  padding: 15upx 32upx;\n}\n#core .user-core .user-box .wallet .recharge .icon {\n  width: 90upx;\n  height: 34upx;\n  position: absolute;\n  top: -15px;\n  left: 50%;\n}\n.no-sign {\n  font-size: 52upx;\n  -webkit-box-flex: 1;\n  -webkit-flex: 1;\n          flex: 1;\n  padding-top: 20upx;\n  color: #FC7200;\n}\n.menu-list {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: flex;\n  -webkit-justify-content: space-around;\n          justify-content: space-around;\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n          align-items: center;\n  position: relative;\n  margin-top: 85px;\n  margin-left: 12px;\n  margin-right: 12px;\n  background-color: white;\n  width: calc(100% - 24px);\n  padding: 12px 0px;\n  border-radius: 5px;\n}\n.menu-item {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n  -webkit-flex-direction: column;\n          flex-direction: column;\n  -webkit-box-pack: center;\n  -webkit-justify-content: center;\n          justify-content: center;\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n          align-items: center;\n}\n.menu-item uni-image {\n  width: 30px;\n  height: 30px;\n}\n.seting {\n  margin-top: 10px;\n  margin-left: 12px;\n  margin-right: 12px;\n  width: calc(100% - 24px);\n  border-radius: 5px;\n  background-color: white;\n  padding: 17px 0px;\n}\n.seting-tlt {\n  color: #222222;\n  font-size: 15px;\n  margin-left: 21px;\n}\n.seting-list {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: flex;\n  -webkit-box-pack: start;\n  -webkit-justify-content: flex-start;\n          justify-content: flex-start;\n  -webkit-flex-wrap: wrap;\n          flex-wrap: wrap;\n}\n.seting-item {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n  -webkit-flex-direction: column;\n          flex-direction: column;\n  -webkit-box-pack: center;\n  -webkit-justify-content: center;\n          justify-content: center;\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n          align-items: center;\n  width: 25%;\n  margin-top: 25px;\n}\n.seting-item uni-image {\n  width: 25px;\n  height: 25px;\n}\n/*邀请*/\n.visit {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: flex;\n  margin-top: 20px;\n  width: calc(100% - 25px);\n  -webkit-box-pack: justify;\n  -webkit-justify-content: space-between;\n          justify-content: space-between;\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n          align-items: center;\n  padding: 12.5px 12.5px;\n  margin: 12px;\n  border-radius: 5px;\n  background-color: white;\n}\n.visit .visit-logo {\n  width: 25px;\n  height: 25px;\n}\n.visit-title {\n  color: #222222;\n  font-size: 14px;\n  -webkit-box-flex: 1;\n  -webkit-flex: 1;\n          flex: 1;\n  margin-left: 8px;\n}\n.right {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: flex;\n  -webkit-box-pack: start;\n  -webkit-justify-content: flex-start;\n          justify-content: flex-start;\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n          align-items: center;\n}\n.right uni-image {\n  width: 5px;\n  height: 9px;\n}\n.right .tip {\n  color: #F43542;\n  font-size: 12px;\n  margin-right: 10px;\n}\n", ""]);
+exports.push([module.i, "@charset \"UTF-8\";\n/**\n * 这里是uni-app内置的常用样式变量\n *\n * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量\n * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App\n *\n */\n/**\n * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能\n *\n * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件\n */\n/* 颜色变量 */\n/* 行为相关颜色 */\n/* 文字基本颜色 */\n/* 背景颜色 */\n/* 边框颜色 */\n/* 尺寸变量 */\n/* 文字尺寸 */\n/* 图片尺寸 */\n/* Border Radius */\n/* 水平间距 */\n/* 垂直间距 */\n/* 透明度 */\n/* 文章场景相关 */\nbody {\n  background-color: #F6F7F9;\n}\n#core .head-back {\n  background-color: #FC7200;\n  height: 340upx;\n  left: 0;\n  right: 0;\n}\n#core .user-core {\n  position: absolute;\n  left: 0;\n  right: 0;\n  top: 0;\n  bottom: 0;\n  padding: 24upx;\n}\n#core .user-core .nav {\n  padding-top: 30upx;\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: flex;\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n          align-items: center;\n  -webkit-box-pack: justify;\n  -webkit-justify-content: space-between;\n          justify-content: space-between;\n  margin-bottom: 22upx;\n}\n#core .user-core .nav .title {\n  font-size: 42upx;\n  font-weight: 600;\n  color: #FFFFFF;\n}\n#core .user-core .nav .icon {\n  width: 35upx;\n  height: 44upx;\n}\n#core .user-core .user-box {\n  background: #FFFFFF;\n  border-radius: 16upx;\n  padding: 40upx 30upx;\n}\n#core .user-core .user-box .user-info {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: flex;\n  margin-bottom: 50upx;\n}\n#core .user-core .user-box .user-info .head {\n  margin-right: 20upx;\n}\n#core .user-core .user-box .user-info .head .img {\n  width: 100upx;\n  height: 100upx;\n  border-radius: 50%;\n}\n#core .user-core .user-box .user-info .info {\n  padding-top: 10upx;\n  -webkit-box-flex: 1;\n  -webkit-flex: 1;\n          flex: 1;\n}\n#core .user-core .user-box .user-info .info .name {\n  font-size: 34upx;\n  font-weight: 600;\n  color: #0D1E40;\n  margin-bottom: 16upx;\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: flex;\n}\n#core .user-core .user-box .user-info .info .name .label {\n  background: #FC7200;\n  border-radius: 17upx;\n  padding: 6upx 17upx;\n  width: 42px;\n  font-size: 22upx;\n  font-weight: 400;\n  color: #FFFFFF;\n  margin-left: 21upx;\n}\n#core .user-core .user-box .user-info .info .qm {\n  font-size: 24upx;\n  font-weight: 400;\n  color: #9EA7B7;\n}\n#core .user-core .user-box .user-info .icon {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: flex;\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n          align-items: center;\n}\n#core .user-core .user-box .user-info .icon .img {\n  width: 13upx;\n  height: 22upx;\n}\n#core .user-core .user-box .wallet {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: flex;\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n          align-items: center;\n  -webkit-box-pack: justify;\n  -webkit-justify-content: space-between;\n          justify-content: space-between;\n}\n#core .user-core .user-box .wallet .total .title {\n  font-size: 24upx;\n  font-weight: 400;\n  color: #9EA7B7;\n  margin-bottom: 15upx;\n}\n#core .user-core .user-box .wallet .total .num {\n  font-size: 60upx;\n  font-weight: bold;\n  color: #FC7200;\n}\n#core .user-core .user-box .wallet .recharge {\n  position: relative;\n}\n#core .user-core .user-box .wallet .recharge .btn {\n  background-color: #462BF7;\n  border-radius: 28upx;\n  font-size: 26upx;\n  font-weight: 500;\n  color: #FFFFFF;\n  padding: 15upx 32upx;\n}\n#core .user-core .user-box .wallet .recharge .icon {\n  width: 90upx;\n  height: 34upx;\n  position: absolute;\n  top: -15px;\n  left: 50%;\n}\n.no-sign {\n  font-size: 52upx;\n  -webkit-box-flex: 1;\n  -webkit-flex: 1;\n          flex: 1;\n  padding-top: 20upx;\n  color: #FC7200;\n}\n.menu-list {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: flex;\n  -webkit-justify-content: space-around;\n          justify-content: space-around;\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n          align-items: center;\n  position: relative;\n  margin-top: 85px;\n  margin-left: 12px;\n  margin-right: 12px;\n  background-color: white;\n  width: calc(100% - 24px);\n  padding: 12px 0px;\n  border-radius: 5px;\n}\n.menu-item {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n  -webkit-flex-direction: column;\n          flex-direction: column;\n  -webkit-box-pack: center;\n  -webkit-justify-content: center;\n          justify-content: center;\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n          align-items: center;\n}\n.menu-item uni-image {\n  width: 30px;\n  height: 30px;\n}\n.seting {\n  margin-top: 10px;\n  margin-left: 12px;\n  margin-right: 12px;\n  width: calc(100% - 24px);\n  border-radius: 5px;\n  background-color: white;\n  padding: 17px 0px;\n}\n.seting-tlt {\n  color: #222222;\n  font-size: 15px;\n  margin-left: 21px;\n}\n.seting-list {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: flex;\n  -webkit-box-pack: start;\n  -webkit-justify-content: flex-start;\n          justify-content: flex-start;\n  -webkit-flex-wrap: wrap;\n          flex-wrap: wrap;\n}\n.seting-item {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n  -webkit-flex-direction: column;\n          flex-direction: column;\n  -webkit-box-pack: center;\n  -webkit-justify-content: center;\n          justify-content: center;\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n          align-items: center;\n  width: 25%;\n  margin-top: 25px;\n}\n.seting-item uni-image {\n  width: 25px;\n  height: 25px;\n}\n/*邀请*/\n.visit {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: flex;\n  margin-top: 20px;\n  width: calc(100% - 25px);\n  -webkit-box-pack: justify;\n  -webkit-justify-content: space-between;\n          justify-content: space-between;\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n          align-items: center;\n  padding: 12.5px 12.5px;\n  margin: 12px;\n  border-radius: 5px;\n  background-color: white;\n}\n.visit .visit-logo {\n  width: 25px;\n  height: 25px;\n}\n.visit-title {\n  color: #222222;\n  font-size: 14px;\n  -webkit-box-flex: 1;\n  -webkit-flex: 1;\n          flex: 1;\n  margin-left: 8px;\n}\n.right {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: flex;\n  -webkit-box-pack: start;\n  -webkit-justify-content: flex-start;\n          justify-content: flex-start;\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n          align-items: center;\n}\n.right uni-image {\n  width: 5px;\n  height: 9px;\n}\n.right .tip {\n  color: #F43542;\n  font-size: 12px;\n  margin-right: 10px;\n}\n.right .section-menu {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: flex;\n  -webkit-box-pack: start;\n  -webkit-justify-content: flex-start;\n          justify-content: flex-start;\n  padding-left: 20px;\n}\n.menu-section {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: flex;\n  -webkit-box-pack: start;\n  -webkit-justify-content: flex-start;\n          justify-content: flex-start;\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n          align-items: center;\n  padding-left: 20px;\n}\n.left-off {\n  margin-left: 25px;\n}\n", ""]);
 // Exports
 module.exports = exports;
 

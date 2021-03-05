@@ -43,8 +43,22 @@
         </view>
       </view>
     </view>
-	<view class="menu-list" :style="{'margin-top': (isLogin?98:85)+'px'}">
-		<view class="menu-item" @click.stop="menu_Click(1)">
+	<view v-if="userInfo.memberType==1?true:false" class="menu-list menu-section" :style="{'margin-top': (isLogin?98:85)+'px'}">
+		<view class="menu-item" @click.stop="menu_Click(5)">
+			<image src="../../../static/image/peisong-set@2x.png"></image>
+			<view>配送设置</view>
+		</view>
+		<view class="menu-item left-off" @click.stop="menu_Click(3)">
+			<image src="../../../static/image/peisong@2x.png"></image>
+			<view>绑定配送平台</view>
+		</view>
+		<view class="menu-item left-off" @click.stop="menu_Click(4)">
+			<image src="../../../static/image/shezhi@2x.png"></image>
+			<view>保底设置</view>
+		</view>
+	</view>
+	<view v-if="userInfo.memberType==1?false:true" class="menu-list" :style="{'margin-top': (isLogin?98:85)+'px'}">
+		<view class="menu-item left-off" @click.stop="menu_Click(1)">
 			<image src="../../../static/image/mendian@2x.png"></image>
 			<view>门店管理</view>
 		</view>
@@ -61,16 +75,12 @@
 			<view>保底设置</view>
 		</view>
 	</view>
-	<view class="seting">
+	<view class="seting" v-if="userInfo.memberType==1?false:true">
 		<view>
 			<view class="seting-tlt">外卖设置</view>
 			<view></view>
 		</view>
 		<view class="seting-list">
-			<view class="seting-item" @click.stop="setting(0)" v-if="userInfo.memberType==1">
-				<image src="../../../static/image/yijianfadan@2x.png"></image>
-				<view>申请为商家</view>
-			</view>
 			<view class="seting-item" @click.stop="setting(1)" v-if="userInfo.memberType==2">
 				<image src="../../../static/image/yijianfadan@2x.png"></image>
 				<view>一键发单</view>
@@ -119,13 +129,21 @@
 			<view></view>
 		</view>
 		<view class="seting-list">
-			<view class="seting-item" @click.stop="tool(1)">
+			<view class="seting-item" @click.stop="setting(0)" v-if="userInfo.memberType==1">
+				<image src="../../../static/image/yijianfadan@2x.png"></image>
+				<view>申请为商家</view>
+			</view>
+			<view class="seting-item" @click.stop="tool(1)" v-if="userInfo.memberType==1?false:true">
 				<image src="../../../static/image/yuyinbobao@2x.png"></image>
 				<view>语音播报</view>
 			</view>
-			<view class="seting-item" @click.stop="tool(2)">
+			<view class="seting-item" @click.stop="tool(2)" v-if="userInfo.memberType==1?false:true">
 				<image src="../../../static/image/xiaopiaodayin@2x.png"></image>
 				<view>小票打印</view>
+			</view>
+			<view class="seting-item" @click.stop="tool(9)" v-if="userInfo.memberType==1?true:false">
+				<image src="../../../static/image/xiadanshezhi@2x.png"></image>
+				<view>配送订单</view>
 			</view>
 			<view class="seting-item" @click.stop="tool(3)">
 				<image src="../../../static/image/changyongdizhi@2x.png"></image>
@@ -153,9 +171,9 @@
 			</view>
 		</view>
 	</view>
-	<view class="seting" style="margin-bottom: 10px;">
+	<view class="seting" style="margin-bottom: 10px;" v-if="userInfo.memberType==1?false:true">
 		<view>
-			<view class="seting-tlt">常用工具</view>
+			<view class="seting-tlt">数据中心</view>
 			<view></view>
 		</view>
 		<view class="seting-list">
@@ -432,4 +450,13 @@
 </script>
 <style lang="scss">
 @import "index.scss";
+.menu-section{
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	padding-left: 20px;
+}
+.left-off{
+	margin-left: 25px;
+}
 </style>

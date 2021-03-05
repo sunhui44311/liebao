@@ -258,6 +258,11 @@ page {
     font-size: 12px;
     margin-right: 10px;
   }
+  .section-menu{
+	  display: flex;
+	  justify-content: flex-start;
+	  padding-left: 20px;
+  }
 }
 
 #core /deep/ {}
