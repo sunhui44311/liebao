@@ -53,7 +53,6 @@ function request(params, isGetTonken) {
 }
 
 function uploadImage(params) {
-	console.log(params)
 	uni.uploadFile({
 		url: config.picDomain + params.url,
 		filePath: params.data.imageUrl,
@@ -63,10 +62,7 @@ function uploadImage(params) {
 			'token': uni.getStorageSync('session'),
 		},
 		success: function (res) {
-			console.log(res);
 			if (res.statusCode == 200) {
-				console.log(121212)
-				console.log(res)
 				//如果有定义了params.callBack，则调用 params.callBack(res.data)
 				if (params.callBack) {
 					params.callBack(res.data);

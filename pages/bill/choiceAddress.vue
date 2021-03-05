@@ -23,6 +23,7 @@
 </template>
 
 <script>
+	var _self
 	export default{
 		data(){
 			return{
@@ -34,11 +35,17 @@
 			}
 		},
 		onLoad(options) {
+			_self=this
 			this.longitude=options.longitude
 			this.latitude=options.latitude
 			this.city=options.city
 			console.log(options)
-			this.getAroundPoi()
+			if(this.city){
+				this.getAroundPoi()
+			}
+			else{
+				this.location()
+			}
 		},
 		methods:{
 			choiceAdress(poi){
@@ -95,7 +102,40 @@
 						that.poiList=res.data.pois
 					}
 				})
-			}
+			},
+			location(){
+				uni.getLocation({
+					type: 'gcj02', //返回可以用于uni.openLocation的经纬度
+					geocode:true,
+					success: function(res) {
+						const latitude = res.latitude;
+						const longitude = res.longitude;
+						_self.latitude=latitude
+						_self.longitude=longitude
+						_self.getDetailAddress(res)
+					}
+				})
+			},
+			
+			getDetailAddress(location){
+				let that=this
+				let params={
+					key:'5ae8644771ef9abf9cfb3ea23b1df6ca',
+					location:`${location.longitude},${location.latitude}`,
+					extensions:'all'
+				}
+				uni.request({
+					url:'https://restapi.amap.com/v3/geocode/regeo',
+					method:'GET',
+					data:params,
+					dataType:'json',
+					success({data}) {
+						let addressComponent=data.regeocode.addressComponent
+						that.city=addressComponent.city.length==0?addressComponent.province:addressComponent.city
+						that.getAroundPoi()
+					}
+				})
+			},
 		}
 	}
 </script>

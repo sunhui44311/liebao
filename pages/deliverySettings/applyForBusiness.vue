@@ -8,7 +8,7 @@
 				</view>
 				<view class="item">
 					<text>商家名称</text>
-					<input placeholder="请填写" />
+					<input v-model="dataForm.merchantName" placeholder="请填写" />
 				</view>
 				<view class="item">
 					<text>商户类型</text>
@@ -26,17 +26,19 @@
 				</view>
 				<view class="item" @click.stop="showMainPop">
 					<text>主营业务</text>
-					<text></text>
+					<text v-if="selectGood?true:false" class="active-input" style="color:#13203C;">{{selectGood.name}}</text>
+					<text v-else class="inactive-txt">点击选择</text>
 					<image class="item-arrow" src="../../static/image/enter@2x.png"></image>
 				</view>
-				<view class="item">
+				<view class="item" @click.stop="choiceAddress">
 					<text>门店地址</text>
-					<text></text>
+					<text class="active-input"  v-if="dataForm.address?true:false" style="color:#13203C;">{{dataForm.address}}</text>
+					<text class="inactive-txt" v-else>点击选择</text>
 					<image class="item-arrow" src="../../static/image/enter@2x.png"></image>
 				</view>
 				<view class="item">
 					<text>详细地址</text>
-					<input placeholder="请填写" />
+					<input v-model="dataForm.street" placeholder="请填写" />
 				</view>
 			</view>
 			<view class="section">
@@ -46,11 +48,11 @@
 				</view>
 				<view class="item">
 					<text>联系人姓名</text>
-					<input placeholder="请填写" />
+					<input v-model="dataForm.contactName" placeholder="请填写" />
 				</view>
 				<view class="item">
 					<text>联系人电话</text>
-					<input placeholder="请填写手机号" />
+					<input v-model="dataForm.mobile" placeholder="请填写手机号" />
 				</view>
 			</view>
 			<view class="section upload-info">
@@ -62,37 +64,222 @@
 				</view>
 				<view class="id-imgs">
 					<view class="id-left">
-						<image class="id-back" src="../../static/image/id-font@2x.png"></image>
-						<image class="id-back" src="../../static/image/id-back@2x.png"></image>
+						<image class="id-back" :src="dataForm.idcardFront?dataForm.idcardFront:'../../static/image/id-font@2x.png'" @click.stop="upload(1)"></image>
+						<image class="id-back" :src="dataForm.idcardBack?dataForm.idcardBack:'../../static/image/id-back@2x.png'" @click.stop="upload(2)"></image>
 					</view>
-					<image class="id-right" src="../../static/image/business@2x.png"></image>
+					<image class="id-right" :src="dataForm.bizLicense?dataForm.bizLicense:'../../static/image/business@2x.png'" @click.stop="upload(3)"></image>
 				</view>
 			</view>
 		</view>
 		<view class="bottom"></view>
-		<view class="save">删除门店</view>
-		<main-bussiness-input ref="mainBussinessInput"></main-bussiness-input>
+		<view class="save" @click.stop="save">保存</view>
+		<main-bussiness-input ref="mainBussinessInput" @selectGood="onSelectGood"></main-bussiness-input>
+		<u-action-sheet :list="actionSheetList" v-model="showActionSheet" @click="click" :cancel-btn="true"></u-action-sheet>
 	</view>
 </template>
 
 <script>
 	import mainBussinessInput from './mainBussinessInput.vue'
+	var _self
 	export default {
 		components:{
 			mainBussinessInput
 		},
 		data() {
 			return {
+				showActionSheet:false,
+				selectGood:null,
+				uploadIndex:1,
 				dataForm:{
+					categoryId:'',
+					merchantName:'',
 					licenseType:'1',
-					merchantType:'1'
-				}
+					merchantType:'1',
+					mobile:'',
+					contactName:'',
+					street:'',
+					address:'',
+					lat:'',
+					lng:'',
+					bizLicense:'',
+					idcardBack:'',
+					idcardFront:''
+				},
+				actionSheetList:[
+					{
+						text: '拍照',
+						color: '#0D1C40',
+						fontSize: 30
+					},
+					{
+						text: '从相册选取',
+						color: '#0D1C40',
+						fontSize: 30
+					}
+				]
 			}
+		},
+		onLoad() {
+			_self=this
+			uni.$on('selectAddress',(data)=>{
+				console.log(data)
+				_self.dataForm.address=data.address+data.street
+				_self.dataForm.lng=data.longitude
+				_self.dataForm.lat=data.latitude
+			})
+		},
+		onUnload() {
+			uni.$off('selectAddress')
 		},
 		methods: {
 			/*主营业务*/
 			showMainPop(){
 				this.$refs['mainBussinessInput'].init()
+			},
+			onSelectGood(data){
+				this.selectGood=data
+				this.categoryId=data.id
+			},
+			choiceAddress() {
+				uni.navigateTo({
+					url: `/pages/bill/choiceAddress`
+				})
+			},
+			
+			upload(index){
+				console.log(111)
+				this.uploadIndex=index
+				this.showActionSheet=true
+			},
+			
+			click(index){
+				uni.chooseImage({
+					count:1,
+					sourceType:[index==0?'camera':'album'],
+					success:(res)=>{
+						let params={
+							url:'app/common/upload',
+							data:{
+								imageUrl:res.tempFilePaths[0],
+								name:'file'
+							},
+							callBack:function(response){
+								let result=JSON.parse(response)
+								uni.hideLoading()
+								if(result.code===200){
+									uni.showToast({
+										title:'上传成功'
+									})
+									if(_self.uploadIndex==1){
+										_self.dataForm.idcardFront=result.data.url
+									}
+									else if(_self.uploadIndex==2){
+										_self.dataForm.idcardBack=result.data.url
+									}
+									else{
+										_self.dataForm.bizLicense=result.data.url
+									}
+								}
+							}
+						}
+						uni.showLoading({
+							title:'正在上传',
+							mask:true
+						})
+						_self.$http.uploadImage(params)
+					}
+				})
+			},
+			/*保存*/
+			save(){
+				if(!this.dataForm.merchantName){
+					uni.showToast({
+						title:'请输入商家名称',
+						icon:'none'
+					})
+					return
+				}
+				if(!this.dataForm.mobile){
+					uni.showToast({
+						title:'请输入联系人电话',
+						icon:'none'
+					})
+					return
+				}
+				if(!this.dataForm.contactName){
+					uni.showToast({
+						title:'请输入联系人姓名',
+						icon:'none'
+					})
+					return
+				}
+				if(!this.dataForm.address){
+					uni.showToast({
+						title:'请选择门店地址',
+						icon:'none'
+					})
+					return
+				}
+				if(!this.selectGood){
+					uni.showToast({
+						title:'请选择主营业务',
+						icon:'none'
+					})
+					return
+				}
+				if(!this.dataForm.address){
+					uni.showToast({
+						title:'请选择门店地址',
+						icon:'none'
+					})
+					return
+				}
+				if(!this.dataForm.bizLicense){
+					uni.showToast({
+						title:'请上传营业执照',
+						icon:'none'
+					})
+					return
+				}
+				if(!this.dataForm.idcardFront){
+					uni.showToast({
+						title:'请上传身份证正面',
+						icon:'none'
+					})
+					return
+				}
+				if(!this.dataForm.idcardBack){
+					uni.showToast({
+						title:'请上传身份证反面',
+						icon:'none'
+					})
+					return
+				}
+				var params={
+					url:'app/merchant/add',
+					method:'POST',
+					data:this.dataForm,
+					callBack:function(res){
+						uni.hideLoading()
+						console.log(res)
+						if(res.code==200){
+							uni.showToast({
+								title:'保存成功',
+								icon:'none'
+							})
+							setTimeout(()=>{
+								uni.navigateBack({
+									delta:1
+								})
+							},1000)
+						}
+					}
+				}
+				uni.showLoading({
+					title:'正在提交',
+					mask:true
+				})
+				this.$http.request(params)
 			}
 		}
 	}
@@ -261,5 +448,15 @@
 			height: 405upx;
 			margin-left: 20upx;
 		}
+	}
+	.active-input{
+		color: #13203C;
+		flex: 1;
+		text-align: right;
+	}
+	.inactive-txt{
+		color: #9EA7B7;
+		flex: 1;
+		text-align: right;
 	}
 </style>

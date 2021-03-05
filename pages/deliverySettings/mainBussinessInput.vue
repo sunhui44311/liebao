@@ -3,13 +3,13 @@
 		<u-popup mode="bottom" v-model="show" border-radius="26">
 			<view class="content">
 				<view class="pop-nav">
-					<image src="../../static/image/delete.png"></image>
+					<image src="../../static/image/delete.png" @click.stop="show=false"></image>
 					<view class="pop-tlt">主营业务</view>
-					<view class="confirm">确定</view>
+					<view class="confirm" @click.stop="confirm">确定</view>
 				</view>
 				<scroll-view scroll-y="true" style="height: 300rpx;">
 					<view class="minute-list">
-						<view :class="['minute',index%3==2?'item-right':'']" :style="{'width':itemWidth+'px'}" v-for="(item,index) in goods" :key="index">
+						<view :class="['minute',selectGood.id==item.id?'active':'',index%3==2?'item-right':'']" :style="{'width':itemWidth+'px'}" v-for="(item,index) in goods" :key="index" @click="selectGoodChange(item)">
 							{{item.name}}
 						</view>
 					</view>
@@ -26,8 +26,8 @@
 			return{
 				show:false,
 				itemWidth:0,
-				weight:1,
-				goods:[]
+				goods:[],
+				selectGood:{}
 			}
 		},
 		methods:{
@@ -43,19 +43,25 @@
 					method:'get',
 					data:{},
 					callBack:function(res){
-						console.log(res)
 						if(res.code==200){
 							_self.goods=res.data
 						}
 					}
 				}
 				this.$http.request(params)
+			},
+			selectGoodChange(good){
+				this.selectGood=good
+			},
+			confirm(){
+				this.show=false
+				this.$emit('selectGood',this.selectGood)
 			}
 		}
 	}
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 	.pop-nav{
 		display: flex;
 		justify-content: space-between;
@@ -115,5 +121,10 @@
 			color: #9FA7B6;
 			font-size: 13px;
 		}
+	}
+	.active{
+		color: #E95008;
+		border: solid 1px #E95008;
+		background-color: #FDEEE7;
 	}
 </style>

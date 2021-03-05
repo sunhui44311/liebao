@@ -209,7 +209,6 @@
 				let receiptAddressList=[]
 				if(uni.getStorageSync('sendAddressList')){
 					sendAddressList=JSON.parse(uni.getStorageSync('sendAddressList'))
-					console.log(1111)
 					console.log(sendAddressList)
 				}
 				sendAddressList.push(this.sendAddress)
@@ -217,10 +216,18 @@
 				if(uni.getStorageSync('receiptAddressList')){
 					receiptAddressList=JSON.parse(uni.getStorageSync('receiptAddressList'))
 				}
-				receiptAddressList.push(this.receiptAddressStr)
+				receiptAddressList.push(this.receiptAddress)
 				
 				uni.setStorageSync('sendAddressList',JSON.stringify(sendAddressList))
 				uni.setStorageSync('receiptAddressList',JSON.stringify(receiptAddressList))
+				console.log(this.selectTime)
+				console.log({
+						productId:this.selectProduct.id,
+						sendAddress:this.sendAddress,
+						receiptAddress:this.receiptAddress,
+						takeTime:this.selectTime,
+						weight:this.weight
+					})
 				var params={
 					url:'app/order/valuation',
 					method:'POST',

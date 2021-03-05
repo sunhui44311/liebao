@@ -14,6 +14,29 @@
 </template>
 
 <script>
+	export default{
+		data(){
+			return{
+				
+			}
+		},
+		onLoad() {
+			this.getExplain()
+		},
+		methods:{
+			getExplain(){
+				var params={
+					url:'app/common/explain',
+					method:'GET',
+					data:{type:1},
+					callBack:function(res){
+						console.log(res)
+					}
+				}
+				this.$http.request(params)
+			}
+		}
+	}
 </script>
 
 <style lang="scss" scoped>

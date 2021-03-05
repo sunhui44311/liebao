@@ -43,7 +43,7 @@
         </view>
       </view>
     </view>
-	<view class="menu-list">
+	<view class="menu-list" :style="{'margin-top': (isLogin?98:85)+'px'}">
 		<view class="menu-item" @click.stop="menu_Click(1)">
 			<image src="../../../static/image/mendian@2x.png"></image>
 			<view>门店管理</view>
@@ -386,7 +386,6 @@
 						count:1,
 						sourceType:[index==0?'camera':'album'],
 						success:(res)=>{
-							console.log(res)
 							let params={
 								url:'app/common/upload',
 								data:{
@@ -394,12 +393,39 @@
 									name:'file'
 								},
 								callBack:function(response){
-									console.log(response)
+									let result=JSON.parse(response)
+									uni.hideLoading()
+									console.log(result.data)
+									_self.updateUserInfo({avatar:result.data.url})
+									if(result.code===200){
+										console.log(1111)
+										_self.updateUserInfo({avatar:result.data.url})
+									}
 								}
 							}
+							uni.showLoading({
+								title:'正在上传',
+								mask:true
+							})
 							_self.$http.uploadImage(params)
 						}
 					})
+				},
+				
+				updateUserInfo(data){
+					console.log(data)
+					var params={
+						url:'app/member/edit/info',
+						method:'POST',
+						data:data,
+						callBack:function(res){
+							uni.showToast({
+								title:'修改成功'
+							})
+							_self.getUserInfo()
+						}
+					}
+					this.$http.request(params)
 				}
 		}
 	}

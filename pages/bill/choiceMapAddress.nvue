@@ -74,6 +74,8 @@
 					location:`${location.longitude},${location.latitude}`,
 					extensions:'all'
 				}
+				this.poiModel.longitude=location.longitude
+				this.poiModel.latitude=location.latitude
 				uni.request({
 					url:'https://restapi.amap.com/v3/geocode/regeo',
 					method:'GET',
@@ -87,6 +89,10 @@
 						let aois=data.regeocode.aois.length>0?data.regeocode.aois[0]:''
 						that.poiName=aois?aois.name:''
 						that.poiModel.address=that.poiName
+						that.poiModel.city=addressComponent.city.length==0?addressComponent.province:addressComponent.city
+						that.poiModel.province=addressComponent.province
+						that.poiModel.district=addressComponent.district
+						that.poiModel.street=addressComponent.streetNumber.street+addressComponent.streetNumber.number
 					}
 				})
 			},

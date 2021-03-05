@@ -31,8 +31,21 @@
 				
 			}
 		},
+		onLoad() {
+			this.getExplain()
+		},
 		methods:{
-			
+			getExplain(){
+				var params={
+					url:'app/common/explain',
+					method:'GET',
+					data:{type:3},
+					callBack:function(res){
+						console.log(res)
+					}
+				}
+				this.$http.request(params)
+			}
 		}
 	}
 </script>

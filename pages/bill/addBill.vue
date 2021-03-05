@@ -88,6 +88,7 @@
 			else{
 				this.historyAddressList=JSON.parse(uni.getStorageSync('receiptAddressList'))
 			}
+			console.log(1111)
 			console.log(this.historyAddressList)
 			
 		},
@@ -136,7 +137,7 @@
 				this.district=address.district
 				this.startAddress=address.address
 				this.longitude=address.lng
-				this.latitude=address.lng
+				this.latitude=address.lat
 				this.floor=address.floor
 				this.contact=address.contact
 				this.phone=address.phone
@@ -184,7 +185,7 @@
 					getApp().globalData.sendAddress.district=this.district
 					getApp().globalData.sendAddress.address=this.startAddress
 					getApp().globalData.sendAddress.lng=this.longitude
-					getApp().globalData.sendAddress.lng=this.latitude
+					getApp().globalData.sendAddress.lat=this.latitude
 					getApp().globalData.sendAddress.floor=this.floor
 					getApp().globalData.sendAddress.contact=this.contact
 					getApp().globalData.sendAddress.phone=this.phone
@@ -198,7 +199,7 @@
 					getApp().globalData.receiptAddress.district=this.district
 					getApp().globalData.receiptAddress.address=this.startAddress
 					getApp().globalData.receiptAddress.lng=this.longitude
-					getApp().globalData.receiptAddress.lng=this.latitude
+					getApp().globalData.receiptAddress.lat=this.latitude
 					getApp().globalData.receiptAddress.floor=this.floor
 					getApp().globalData.receiptAddress.contact=this.contact
 					getApp().globalData.receiptAddress.phone=this.phone
