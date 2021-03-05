@@ -1,7 +1,7 @@
 export default {
     data() {
         return {
-            list: [{
+            tabs: [{
                 name: '待接单',
                 count: 2,
                 id: 1
@@ -24,8 +24,13 @@ export default {
             }],
             current: 0,
             swiperCurrent: 0,
-            pageNum: 1,
-            pageSize: 10
+            orderStatus: 1,
+            wait: {
+                pageNum: 1,
+                pageSize: 10,
+                list: []
+            }
+
         };
     },
     methods: {
@@ -33,12 +38,12 @@ export default {
         init() {
             this.update();
         },
-		
-		order_Click(){
-			uni.navigateTo({
-				url:'/pages/order/deliveryOrderDetail'
-			})
-		},
+
+        order_Click() {
+            uni.navigateTo({
+                url: '/pages/order/deliveryOrderDetail'
+            })
+        },
         // 用于更新一些数据
         async update() {
             // const res = await this.$http.post('', {});
@@ -46,12 +51,15 @@ export default {
                 url: "app/order/list",
                 method: "GET",
                 data: {
-                    status: 1,
+                    status: this.orderStatus,
                     pageNum: this.pageNum,
                     pageSize: this.pageSize
                 },
                 callBack: (res) => {
-                    console.warn(res);
+                    if (this.orderStatus == 1) {
+                        this.wait.list = res.data.data
+                    }
+                    this.pageNum++
                     uni.hideLoading();
                 },
             };
@@ -69,13 +77,17 @@ export default {
         },
         animationfinish(e) {
             let current = e.detail.current;
+            this.orderStatus = this.tabs[e.detail.current].id
             this.$refs.uTabs.setFinishCurrent(current);
-            this.swiperCurrent = current;
             this.current = current;
+            this.update()
         },
         onreachBottom() {
 
         }
+    },
+    onShow() {
+        this.init();
     },
     // 计算属性
     computed: {},
@@ -87,7 +99,7 @@ export default {
     beforeMount() { },
     // el 被新创建的 vm.el 替换，并挂载到实例上去之后调用该钩子。
     mounted() {
-        this.init();
+
         this.$nextTick(() => { });
     },
     // 数据更新时调用，发生在虚拟 DOM 打补丁之前。

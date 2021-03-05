@@ -6,7 +6,7 @@
     </view>
     <u-tabs-swiper
       ref="uTabs"
-      :list="list"
+      :list="tabs"
       :current="current"
       @change="tabsChange"
       :is-scroll="true"
@@ -19,12 +19,12 @@
       @animationfinish="animationfinish"
       style="flex: 1"
     >
-      <swiper-item v-for="(item, index) in list" :key="index">
+      <swiper-item v-for="(item, index) in tabs" :key="index">
         <scroll-view scroll-y @scrolltolower="onreachBottom">
-          <view class="order-list">
+          <view class="order-list" v-if="current == 0">
             <view class="order" @click.stop="order_Click">
               <view class="head">
-                <view class="title">订单编号：#00001</view>
+                <view class="title">订单编号：#{{ swiperCurrent }}</view>
                 <view class="state">{{ item.name }}</view>
               </view>
               <view class="order-info">
