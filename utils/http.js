@@ -101,21 +101,21 @@ function uploadImage(params) {
 	})
 }
 
-function upload(params){
+function upload(params) {
 	// const FormData = require('form-data');
 	let formData = new FormData();
 	formData.append('file', params.data.file);
 	uni.request({
-		url:config.picDomain + params.url,
+		url: config.picDomain + params.url,
 		data: formData,
-		method:'POST',
+		method: 'POST',
 		dataType: 'json',
 		header: {
 			'token': uni.getStorageSync('session'),
 			// 'content-type': params.method == "GET" ? 'application/x-www-form-urlencoded' : 'application/json;charset=utf-8',
 			'Content-type': 'multipart/form-data',
 		},
-		success: function (res){
+		success: function (res) {
 			console.log(res)
 		},
 		fail(err) {
@@ -149,4 +149,4 @@ function updateUserInfo(successBack) {
 exports.request = request;
 exports.updateUserInfo = updateUserInfo;
 exports.uploadImage = uploadImage;
-exports.upload=upload
+exports.upload = upload
