@@ -124,8 +124,8 @@
 			uni.$on('selectAddress',(data)=>{
 				console.log(data)
 				_self.dataForm.address=data.address+data.street
-				_self.dataForm.lng=data.longitude
-				_self.dataForm.lat=data.latitude
+				_self.dataForm.lng=data.lng
+				_self.dataForm.lat=data.lat
 			})
 		},
 		onUnload() {
@@ -138,7 +138,7 @@
 			},
 			onSelectGood(data){
 				this.selectGood=data
-				this.categoryId=data.id
+				this.dataForm.categoryId=data.id
 			},
 			choiceAddress() {
 				uni.navigateTo({
@@ -255,6 +255,7 @@
 					})
 					return
 				}
+				console.log(this.dataForm)
 				var params={
 					url:'app/merchant/add',
 					method:'POST',

@@ -8,9 +8,9 @@
 				</view>
 				<view class="content">
 					<view class="item">
-						1、 优惠券只能在其有效期内使用，超过有效 期，优惠券自动作废；
+						{{data}}
 					</view>
-					<view class="item">
+					<!-- <view class="item">
 						2、优惠券不能转让，不能折现，不能退换；
 					</view>
 					<view class="item">
@@ -21,7 +21,7 @@
 					</view>
 					<view class="item">
 						6、优惠券在特殊节假日期间不可使用，包括 : 春节、214情人节、母亲节、农历七夕、 圣诞节、春节、情人节；
-					</view>
+					</view> -->
 				</view>
 			</view>
 		</u-popup>
@@ -32,12 +32,28 @@
 	export default{
 		data(){
 			return{
-				show:false
+				show:false,
+				data:''
 			}
 		},
 		methods:{
 			init(){
 				this.show=true
+				this.getCouponDes()
+			},
+			
+			getCouponDes(){
+				let that=this
+				var params={
+					url:'app/coupon/explain',
+					method:'GET',
+					data:{},
+					callBack:function(res){
+						console.log(res)
+						that.data=res.data
+					}
+				}
+				this.$http.request(params)
 			}
 		}
 	}

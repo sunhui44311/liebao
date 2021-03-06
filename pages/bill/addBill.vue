@@ -20,7 +20,7 @@
 			</view>
 			<view class="cell">
 				<image class="icon" src="../../static/image/bill-tel@2x.png"></image>
-				<input v-model="phone" class="cell-content" placeholder="手机号(必填)" />
+				<input v-model="phone" class="cell-content" type="number" maxlength="11" placeholder="手机号(必填)" />
 				<view class="verticl-line"></view>
 				<input class="cell-content" style="flex: 0.5;" placeholder="分手机号(选填)" />
 			</view>
@@ -47,6 +47,7 @@
 				</view>
 			</view>
 		</view>
+		<view class="bottom"></view>
 		<view class="btn" @click.stop="addAddress">确定</view>
 	</view>
 </template>
@@ -78,7 +79,9 @@
 			this.getDetailAddress(options.longitude, options.latitude)
 			uni.$on('selectAddress',(data)=>{
 				console.log(data)
-				that.startAddress=data.address
+				console.log()
+				that.selectHistoryAddress(data)
+				console.log(that.latitude)
 			})
 		},
 		onShow() {
@@ -88,9 +91,6 @@
 			else{
 				this.historyAddressList=JSON.parse(uni.getStorageSync('receiptAddressList'))
 			}
-			console.log(1111)
-			console.log(this.historyAddressList)
-			
 		},
 		methods: {
 			choiceAddress() {
@@ -145,12 +145,18 @@
 			
 			clear(){
 				if(!this.historyAddressList||this.historyAddressList.length==0)return
+				let that=this
 				uni.showModal({
 					title:'提示',
 					content:'确定要清楚历史地址',
 					success(res) {
 						if(res.confirm){
-							uni.removeStorageSync(this.type==1?'sendAddressList':'receiptAddressList')
+							uni.removeStorage({
+								key:that.type==1?'sendAddressList':'receiptAddressList',
+								success() {
+									that.historyAddressList=[]
+								}
+							})
 						}
 					}
 				})
@@ -404,5 +410,8 @@
 		color: #9EA7B7;
 		font-size: 14px;
 		flex: 1;
+	}
+	.bottom{
+		height: 60px;
 	}
 </style>
