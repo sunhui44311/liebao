@@ -19,9 +19,6 @@
         /* 模块配置 */
         "modules" : {
             "Maps" : {},
-            "OAuth" : {},
-            "Payment" : {},
-            "Share" : {},
             "Contacts" : {},
             "Geolocation" : {}
         },
@@ -65,11 +62,6 @@
                     }
                 },
                 "oauth" : {
-                    "weixin" : {
-                        "appid" : "",
-                        "appsecret" : "",
-                        "UniversalLinks" : ""
-                    },
                     "univerify" : {}
                 },
                 "payment" : {
@@ -89,7 +81,8 @@
                         "appkey_ios" : "9209fc5b5e244dc22cfe8c007c1262ff",
                         "appkey_android" : "5b145cc49187d784042e5887d2e19ee7"
                     }
-                }
+                },
+                "ad" : {}
             }
         }
     },
