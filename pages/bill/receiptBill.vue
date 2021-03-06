@@ -191,6 +191,7 @@
 				this.formatter_time=time=='立即取件'?time:this.selectTime
 			},
 			eveluatePrice(){
+				let that=this
 				if(!this.selectProduct){
 					uni.showToast({
 						title:'请选择商品信息',
@@ -205,11 +206,73 @@
 					})
 					return
 				}
+				
+				console.log(this.sendAddress)
+				console.log({
+						productId:this.selectProduct.id,
+						sendAddress:Object.assign(this.sendAddress,{
+							provinceName:this.sendAddress.province,
+							cityName:this.sendAddress.city,
+							districtName:this.sendAddress.district,
+							street:this.sendAddress.floor,
+							lat:this.sendAddress.lat+'',
+							lng:this.sendAddress.lng+'',
+						}),
+						receiptAddress:Object.assign(this.receiptAddress,{
+							provinceName:this.receiptAddress.province,
+							cityName:this.receiptAddress.city,
+							districtName:this.receiptAddress.district,
+							street:this.receiptAddress.floor,
+							lat:this.receiptAddress.lat+'',
+							lng:this.receiptAddress.lng+'',
+						}),
+						takeTime:this.selectTime,
+						weight:this.weight
+					})
+				var params={
+					url:'app/order/valuation',
+					method:'POST',
+					data:{
+						productId:this.selectProduct.id,
+						sendAddress:Object.assign(this.sendAddress,{
+							provinceName:this.sendAddress.province,
+							cityName:this.sendAddress.city,
+							districtName:this.sendAddress.district,
+							street:this.sendAddress.floor,
+							lat:this.sendAddress.lat+'',
+							lng:this.sendAddress.lng+'',
+						}),
+						receiptAddress:Object.assign(this.receiptAddress,{
+							provinceName:this.receiptAddress.province,
+							cityName:this.receiptAddress.city,
+							districtName:this.receiptAddress.district,
+							street:this.receiptAddress.floor,
+							lat:this.receiptAddress.lat+'',
+							lng:this.receiptAddress.lng+'',
+						}),
+						takeTime:this.selectTime,
+						weight:this.weight
+					},
+					callBack:function(res){
+						console.log(res)
+						uni.hideLoading()
+						if(res.code==200){
+							that.saveCache()
+							that.$refs['submitBill'].init()
+						}
+					}
+				}
+				uni.showLoading({
+					title:'正在计算'
+				})
+				this.$http.request(params)
+			},
+			
+			saveCache(){
 				let sendAddressList=[]
 				let receiptAddressList=[]
 				if(uni.getStorageSync('sendAddressList')){
 					sendAddressList=JSON.parse(uni.getStorageSync('sendAddressList'))
-					console.log(sendAddressList)
 				}
 				sendAddressList.push(this.sendAddress)
 				
@@ -220,38 +283,6 @@
 				
 				uni.setStorageSync('sendAddressList',JSON.stringify(sendAddressList))
 				uni.setStorageSync('receiptAddressList',JSON.stringify(receiptAddressList))
-				console.log(this.selectTime)
-				console.log({
-						productId:this.selectProduct.id,
-						sendAddress:this.sendAddress,
-						receiptAddress:this.receiptAddress,
-						takeTime:this.selectTime,
-						weight:this.weight
-					})
-				var params={
-					url:'app/order/valuation',
-					method:'POST',
-					data:{
-						productId:this.selectProduct.id,
-						sendAddress:this.sendAddress,
-						receiptAddress:this.receiptAddress,
-						takeTime:this.selectTime,
-						weight:this.weight
-					},
-					callBack:function(res){
-						uni.hideLoading()
-						console.log(res)
-						let sendAddressStr=JSON.stringify(this.sendAddress)
-						let receiptAddressStr=JSON.stringify(this.receiptAddress)
-						uni.setStorageSync('sendAddress',sendAddressStr)
-						uni.setStorageSync('receiptAddress',receiptAddressStr)
-					}
-				}
-				uni.showLoading({
-					title:'正在计算'
-				})
-				this.$http.request(params)
-				this.$refs['submitBill'].init()
 			}
 		}
 	}
@@ -392,5 +423,8 @@
 	.active-txt{
 		color: #0D1C40;
 		font-size: 14px;
+	}
+	.bottom{
+		height: 60px;
 	}
 </style>

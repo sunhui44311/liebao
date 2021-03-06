@@ -10,7 +10,7 @@ function request(params, isGetTonken) {
 		header: {
 			'token': uni.getStorageSync('token'),
 			// 'content-type': params.method == "GET" ? 'application/x-www-form-urlencoded' : 'application/json;charset=utf-8',
-			'Content-type': 'application/x-www-form-urlencoded',
+			'Content-type': 'application/x-www-form-urlencoded;charset=UTF-8',
 		},
 		method: params.method == undefined ? "POST" : params.method,
 		dataType: 'json',

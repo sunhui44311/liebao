@@ -7122,43 +7122,7 @@ var render = function() {
                   _c(
                     "v-uni-view",
                     { staticClass: _vm._$g(7, "sc"), attrs: { _i: 7 } },
-                    [
-                      _vm._v(
-                        "1、 优惠券只能在其有效期内使用，超过有效 期，优惠券自动作废；"
-                      )
-                    ]
-                  ),
-                  _c(
-                    "v-uni-view",
-                    { staticClass: _vm._$g(8, "sc"), attrs: { _i: 8 } },
-                    [_vm._v("2、优惠券不能转让，不能折现，不能退换；")]
-                  ),
-                  _c(
-                    "v-uni-view",
-                    { staticClass: _vm._$g(9, "sc"), attrs: { _i: 9 } },
-                    [
-                      _vm._v(
-                        "3、优惠券不能与其他官方优惠活动同时使用， 官方活动期间以官方活动为准；"
-                      )
-                    ]
-                  ),
-                  _c(
-                    "v-uni-view",
-                    { staticClass: _vm._$g(10, "sc"), attrs: { _i: 10 } },
-                    [
-                      _vm._v(
-                        "4、优惠券只折扣订单里程费，不包括溢价与 用户加价的折扣；"
-                      )
-                    ]
-                  ),
-                  _c(
-                    "v-uni-view",
-                    { staticClass: _vm._$g(11, "sc"), attrs: { _i: 11 } },
-                    [
-                      _vm._v(
-                        "6、优惠券在特殊节假日期间不可使用，包括 : 春节、214情人节、母亲节、农历七夕、 圣诞节、春节、情人节；"
-                      )
-                    ]
+                    [_vm._v(_vm._$g(7, "t0-0"))]
                   )
                 ],
                 1
@@ -18731,7 +18695,12 @@ var render = function() {
               }),
               _c("v-uni-input", {
                 staticClass: _vm._$g(18, "sc"),
-                attrs: { placeholder: "手机号(必填)", _i: 18 },
+                attrs: {
+                  type: "number",
+                  maxlength: "11",
+                  placeholder: "手机号(必填)",
+                  _i: 18
+                },
                 model: {
                   value: _vm._$g(18, "v-model"),
                   callback: function($$v) {
@@ -18852,11 +18821,12 @@ var render = function() {
         ],
         2
       ),
+      _c("v-uni-view", { staticClass: _vm._$g(36, "sc"), attrs: { _i: 36 } }),
       _c(
         "v-uni-view",
         {
-          staticClass: _vm._$g(36, "sc"),
-          attrs: { _i: 36 },
+          staticClass: _vm._$g(37, "sc"),
+          attrs: { _i: 37 },
           on: {
             click: function($event) {
               return _vm.$handleViewEvent($event, { stop: true })
@@ -18957,7 +18927,7 @@ if(false) {}
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../../../../../Applications/HBuilderX.app/Contents/HBuilderX/plugins/uniapp-cli/node_modules/css-loader/dist/runtime/api.js */ 13);
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, "@charset \"UTF-8\";\n/**\n * 这里是uni-app内置的常用样式变量\n *\n * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量\n * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App\n *\n */\n/**\n * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能\n *\n * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件\n */\n/* 颜色变量 */\n/* 行为相关颜色 */\n/* 文字基本颜色 */\n/* 背景颜色 */\n/* 边框颜色 */\n/* 尺寸变量 */\n/* 文字尺寸 */\n/* 图片尺寸 */\n/* Border Radius */\n/* 水平间距 */\n/* 垂直间距 */\n/* 透明度 */\n/* 文章场景相关 */\nbody {\n  background-color: #F6F7F9;\n}\n.box {\n  padding: 10px;\n}\n.section {\n  background-color: white;\n  padding: 0px 24px 0px 10px;\n  border-radius: 6px;\n  margin-bottom: 10px;\n}\n.cell {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: flex;\n  -webkit-box-pack: justify;\n  -webkit-justify-content: space-between;\n          justify-content: space-between;\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n          align-items: center;\n  height: 48px;\n  position: relative;\n}\n.cell .icon {\n  width: 36upx;\n  height: 36upx;\n  margin-right: 27upx;\n}\n.cell .cell-content {\n  -webkit-box-flex: 1;\n  -webkit-flex: 1;\n          flex: 1;\n  color: #0D1C40;\n  font-size: 14px;\n}\n.cell .arrow {\n  width: 10upx;\n  height: 22upx;\n}\n.cell .line {\n  position: absolute;\n  bottom: 0px;\n  right: 0px;\n  left: 30px;\n  height: 1px;\n  background-color: #EEEEEE;\n}\n.verticl-line {\n  width: 1px;\n  height: 20px;\n  background-color: #EEEEEE;\n  margin-right: 20px;\n}\n.contact {\n  border: solid 1px #F96E06;\n  height: 22px;\n  line-height: 22px;\n  width: 55px;\n  border-radius: 11px;\n  color: #FA6F06;\n  font-size: 13px;\n  text-align: center;\n}\n.header {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: flex;\n  -webkit-box-pack: justify;\n  -webkit-justify-content: space-between;\n          justify-content: space-between;\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n          align-items: center;\n  height: 40px;\n}\n.header .header-left {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: flex;\n  -webkit-box-pack: start;\n  -webkit-justify-content: flex-start;\n          justify-content: flex-start;\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n          align-items: center;\n}\n.header .header-left uni-image {\n  width: 6upx;\n  height: 29upx;\n  margin-right: 5px;\n}\n.header .header-left uni-view {\n  color: #0D1C40;\n  font-size: 15px;\n}\n.header .header-right {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: flex;\n  -webkit-box-pack: end;\n  -webkit-justify-content: flex-end;\n          justify-content: flex-end;\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n          align-items: center;\n  color: #9EA7B7;\n  font-size: 13px;\n}\n.header .header-right uni-image {\n  width: 30upx;\n  height: 30upx;\n  margin-left: 4px;\n}\n.address-cell {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: flex;\n  -webkit-box-pack: start;\n  -webkit-justify-content: flex-start;\n          justify-content: flex-start;\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n          align-items: center;\n  color: #0D1C40;\n  font-size: 13px;\n  padding-bottom: 10px;\n}\n.address-cell .address-icon {\n  width: 36upx;\n  height: 36upx;\n  margin-right: 12px;\n}\n.address-cell .address-contact {\n  color: #0D1C40;\n  font-size: 12px;\n  margin-top: 8px;\n}\n.btn {\n  position: fixed;\n  bottom: 22px;\n  left: 45;\n  width: calc(100% - 85px);\n  background-color: #E95008;\n  height: 45px;\n  line-height: 45px;\n  text-align: center;\n  color: white;\n  border-radius: 45px;\n  left: 50%;\n  -webkit-transform: translateX(-50%);\n          transform: translateX(-50%);\n  font-size: 15px;\n}\n.no-address {\n  color: #9EA7B7;\n  font-size: 14px;\n  -webkit-box-flex: 1;\n  -webkit-flex: 1;\n          flex: 1;\n}\n", ""]);
+exports.push([module.i, "@charset \"UTF-8\";\n/**\n * 这里是uni-app内置的常用样式变量\n *\n * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量\n * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App\n *\n */\n/**\n * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能\n *\n * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件\n */\n/* 颜色变量 */\n/* 行为相关颜色 */\n/* 文字基本颜色 */\n/* 背景颜色 */\n/* 边框颜色 */\n/* 尺寸变量 */\n/* 文字尺寸 */\n/* 图片尺寸 */\n/* Border Radius */\n/* 水平间距 */\n/* 垂直间距 */\n/* 透明度 */\n/* 文章场景相关 */\nbody {\n  background-color: #F6F7F9;\n}\n.box {\n  padding: 10px;\n}\n.section {\n  background-color: white;\n  padding: 0px 24px 0px 10px;\n  border-radius: 6px;\n  margin-bottom: 10px;\n}\n.cell {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: flex;\n  -webkit-box-pack: justify;\n  -webkit-justify-content: space-between;\n          justify-content: space-between;\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n          align-items: center;\n  height: 48px;\n  position: relative;\n}\n.cell .icon {\n  width: 36upx;\n  height: 36upx;\n  margin-right: 27upx;\n}\n.cell .cell-content {\n  -webkit-box-flex: 1;\n  -webkit-flex: 1;\n          flex: 1;\n  color: #0D1C40;\n  font-size: 14px;\n}\n.cell .arrow {\n  width: 10upx;\n  height: 22upx;\n}\n.cell .line {\n  position: absolute;\n  bottom: 0px;\n  right: 0px;\n  left: 30px;\n  height: 1px;\n  background-color: #EEEEEE;\n}\n.verticl-line {\n  width: 1px;\n  height: 20px;\n  background-color: #EEEEEE;\n  margin-right: 20px;\n}\n.contact {\n  border: solid 1px #F96E06;\n  height: 22px;\n  line-height: 22px;\n  width: 55px;\n  border-radius: 11px;\n  color: #FA6F06;\n  font-size: 13px;\n  text-align: center;\n}\n.header {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: flex;\n  -webkit-box-pack: justify;\n  -webkit-justify-content: space-between;\n          justify-content: space-between;\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n          align-items: center;\n  height: 40px;\n}\n.header .header-left {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: flex;\n  -webkit-box-pack: start;\n  -webkit-justify-content: flex-start;\n          justify-content: flex-start;\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n          align-items: center;\n}\n.header .header-left uni-image {\n  width: 6upx;\n  height: 29upx;\n  margin-right: 5px;\n}\n.header .header-left uni-view {\n  color: #0D1C40;\n  font-size: 15px;\n}\n.header .header-right {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: flex;\n  -webkit-box-pack: end;\n  -webkit-justify-content: flex-end;\n          justify-content: flex-end;\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n          align-items: center;\n  color: #9EA7B7;\n  font-size: 13px;\n}\n.header .header-right uni-image {\n  width: 30upx;\n  height: 30upx;\n  margin-left: 4px;\n}\n.address-cell {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: flex;\n  -webkit-box-pack: start;\n  -webkit-justify-content: flex-start;\n          justify-content: flex-start;\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n          align-items: center;\n  color: #0D1C40;\n  font-size: 13px;\n  padding-bottom: 10px;\n}\n.address-cell .address-icon {\n  width: 36upx;\n  height: 36upx;\n  margin-right: 12px;\n}\n.address-cell .address-contact {\n  color: #0D1C40;\n  font-size: 12px;\n  margin-top: 8px;\n}\n.btn {\n  position: fixed;\n  bottom: 22px;\n  left: 45;\n  width: calc(100% - 85px);\n  background-color: #E95008;\n  height: 45px;\n  line-height: 45px;\n  text-align: center;\n  color: white;\n  border-radius: 45px;\n  left: 50%;\n  -webkit-transform: translateX(-50%);\n          transform: translateX(-50%);\n  font-size: 15px;\n}\n.no-address {\n  color: #9EA7B7;\n  font-size: 14px;\n  -webkit-box-flex: 1;\n  -webkit-flex: 1;\n          flex: 1;\n}\n.bottom {\n  height: 60px;\n}\n", ""]);
 // Exports
 module.exports = exports;
 
@@ -22079,7 +22049,7 @@ if(false) {}
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../../../../../Applications/HBuilderX.app/Contents/HBuilderX/plugins/uniapp-cli/node_modules/css-loader/dist/runtime/api.js */ 13);
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, "@charset \"UTF-8\";\n/**\n * 这里是uni-app内置的常用样式变量\n *\n * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量\n * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App\n *\n */\n/**\n * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能\n *\n * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件\n */\n/* 颜色变量 */\n/* 行为相关颜色 */\n/* 文字基本颜色 */\n/* 背景颜色 */\n/* 边框颜色 */\n/* 尺寸变量 */\n/* 文字尺寸 */\n/* 图片尺寸 */\n/* Border Radius */\n/* 水平间距 */\n/* 垂直间距 */\n/* 透明度 */\n/* 文章场景相关 */\nbody {\n  background-color: #F6F7F9;\n}\n.box {\n  padding: 10px;\n}\n.section {\n  position: relative;\n  background-color: white;\n  padding: 40upx 20upx;\n  border-radius: 6px;\n}\n.start {\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n  -webkit-flex-direction: row;\n          flex-direction: row;\n  -webkit-box-pack: start;\n  -webkit-justify-content: flex-start;\n          justify-content: flex-start;\n}\n.start-tlt {\n  display: inline-block;\n  width: 20px;\n  height: 20px;\n  background-color: #FA6F06;\n  border-radius: 10px;\n  color: white;\n  line-height: 20px;\n  text-align: center;\n  margin-right: 10px;\n  font-size: 11px;\n}\n.contact {\n  margin-left: 30px;\n  margin-top: 8px;\n}\n.start-address {\n  color: #0D1C40;\n  font-size: 13px;\n}\n.name {\n  color: #0D1C40;\n  font-size: 12px;\n}\n.tel {\n  color: #0D1C40;\n  font-size: 12px;\n  margin-left: 16px;\n}\n.exchange {\n  position: absolute;\n  width: 36upx;\n  height: 36upx;\n  right: 36upx;\n  top: 50%;\n  -webkit-transform: translateY(-50%);\n          transform: translateY(-50%);\n}\n.section1 {\n  margin-top: 10px;\n  background-color: white;\n  border-radius: 6px;\n}\n.cell {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: flex;\n  -webkit-box-pack: justify;\n  -webkit-justify-content: space-between;\n          justify-content: space-between;\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n          align-items: center;\n  padding: 0px 40upx 0px 10px;\n  height: 49px;\n  position: relative;\n}\n.cell .cell-left {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: flex;\n  -webkit-box-pack: start;\n  -webkit-justify-content: flex-start;\n          justify-content: flex-start;\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n          align-items: center;\n  color: #9EA7B7;\n  font-size: 14px;\n}\n.cell .cell-left .icon {\n  width: 36upx;\n  height: 36upx;\n  margin-right: 12px;\n}\n.cell .cell-right {\n  -webkit-box-flex: 1;\n  -webkit-flex: 1;\n          flex: 1;\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: flex;\n  -webkit-box-pack: end;\n  -webkit-justify-content: flex-end;\n          justify-content: flex-end;\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n          align-items: center;\n}\n.cell .cell-right uni-image {\n  width: 24upx;\n  height: 24upx;\n}\n.line {\n  position: absolute;\n  bottom: 0px;\n  left: 40px;\n  right: 24px;\n  background-color: #EEEEEE;\n  height: 1px;\n}\n.btn {\n  position: fixed;\n  bottom: 22px;\n  background-color: #E95008;\n  height: 45px;\n  line-height: 45px;\n  border-radius: 45px;\n  text-align: center;\n  color: white;\n  width: calc(100% - 85px);\n  left: 50%;\n  -webkit-transform: translateX(-50%);\n          transform: translateX(-50%);\n  font-size: 16px;\n}\n.bank {\n  color: #9EA7B7;\n  font-size: 14px;\n}\n.active-txt {\n  color: #0D1C40;\n  font-size: 14px;\n}\n", ""]);
+exports.push([module.i, "@charset \"UTF-8\";\n/**\n * 这里是uni-app内置的常用样式变量\n *\n * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量\n * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App\n *\n */\n/**\n * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能\n *\n * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件\n */\n/* 颜色变量 */\n/* 行为相关颜色 */\n/* 文字基本颜色 */\n/* 背景颜色 */\n/* 边框颜色 */\n/* 尺寸变量 */\n/* 文字尺寸 */\n/* 图片尺寸 */\n/* Border Radius */\n/* 水平间距 */\n/* 垂直间距 */\n/* 透明度 */\n/* 文章场景相关 */\nbody {\n  background-color: #F6F7F9;\n}\n.box {\n  padding: 10px;\n}\n.section {\n  position: relative;\n  background-color: white;\n  padding: 40upx 20upx;\n  border-radius: 6px;\n}\n.start {\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n  -webkit-flex-direction: row;\n          flex-direction: row;\n  -webkit-box-pack: start;\n  -webkit-justify-content: flex-start;\n          justify-content: flex-start;\n}\n.start-tlt {\n  display: inline-block;\n  width: 20px;\n  height: 20px;\n  background-color: #FA6F06;\n  border-radius: 10px;\n  color: white;\n  line-height: 20px;\n  text-align: center;\n  margin-right: 10px;\n  font-size: 11px;\n}\n.contact {\n  margin-left: 30px;\n  margin-top: 8px;\n}\n.start-address {\n  color: #0D1C40;\n  font-size: 13px;\n}\n.name {\n  color: #0D1C40;\n  font-size: 12px;\n}\n.tel {\n  color: #0D1C40;\n  font-size: 12px;\n  margin-left: 16px;\n}\n.exchange {\n  position: absolute;\n  width: 36upx;\n  height: 36upx;\n  right: 36upx;\n  top: 50%;\n  -webkit-transform: translateY(-50%);\n          transform: translateY(-50%);\n}\n.section1 {\n  margin-top: 10px;\n  background-color: white;\n  border-radius: 6px;\n}\n.cell {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: flex;\n  -webkit-box-pack: justify;\n  -webkit-justify-content: space-between;\n          justify-content: space-between;\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n          align-items: center;\n  padding: 0px 40upx 0px 10px;\n  height: 49px;\n  position: relative;\n}\n.cell .cell-left {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: flex;\n  -webkit-box-pack: start;\n  -webkit-justify-content: flex-start;\n          justify-content: flex-start;\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n          align-items: center;\n  color: #9EA7B7;\n  font-size: 14px;\n}\n.cell .cell-left .icon {\n  width: 36upx;\n  height: 36upx;\n  margin-right: 12px;\n}\n.cell .cell-right {\n  -webkit-box-flex: 1;\n  -webkit-flex: 1;\n          flex: 1;\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: flex;\n  -webkit-box-pack: end;\n  -webkit-justify-content: flex-end;\n          justify-content: flex-end;\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n          align-items: center;\n}\n.cell .cell-right uni-image {\n  width: 24upx;\n  height: 24upx;\n}\n.line {\n  position: absolute;\n  bottom: 0px;\n  left: 40px;\n  right: 24px;\n  background-color: #EEEEEE;\n  height: 1px;\n}\n.btn {\n  position: fixed;\n  bottom: 22px;\n  background-color: #E95008;\n  height: 45px;\n  line-height: 45px;\n  border-radius: 45px;\n  text-align: center;\n  color: white;\n  width: calc(100% - 85px);\n  left: 50%;\n  -webkit-transform: translateX(-50%);\n          transform: translateX(-50%);\n  font-size: 16px;\n}\n.bank {\n  color: #9EA7B7;\n  font-size: 14px;\n}\n.active-txt {\n  color: #0D1C40;\n  font-size: 14px;\n}\n.bottom {\n  height: 60px;\n}\n", ""]);
 // Exports
 module.exports = exports;
 

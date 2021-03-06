@@ -74,8 +74,9 @@
 					location:`${location.longitude},${location.latitude}`,
 					extensions:'all'
 				}
-				this.poiModel.longitude=location.longitude
-				this.poiModel.latitude=location.latitude
+				this.poiModel.lng=location.longitude
+				this.poiModel.lat=location.latitude
+				console.log(location)
 				uni.request({
 					url:'https://restapi.amap.com/v3/geocode/regeo',
 					method:'GET',
