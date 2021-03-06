@@ -1,104 +1,113 @@
 <template>
-	<view v-if="show">
-		<view class="bg" @touchstart="handletouchstart">
-		</view>
-		<div class="pop">
-			<view class="pop-nav">
-				<text class="pop-tlt">显示设置</text>
-				<text class="confirm">确定</text>
-			</view>
-			<view>
-				<view class="cell">
-					<text class="cell-tlt">里程费</text>
-					<text class="cell-money">¥5.00</text>
-				</view>
-				<view class="cell">
-					<text class="cell-tlt">小费</text>
-					<text class="cell-money">¥5.00</text>
-				</view>
-				<view class="cell">
-					<text class="cell-tlt">合计</text>
-					<text class="cell-money" style="color: #FA6F06;">¥5.00</text>
-				</view>
-			</view>
-		</div>
-	</view>
+  <view v-if="show">
+    <view class="bg" @touchstart="handletouchstart"> </view>
+    <div class="pop">
+      <view class="pop-nav">
+        <text class="pop-tlt">显示设置</text>
+        <text class="confirm">确定</text>
+      </view>
+      <view>
+        <view class="cell">
+          <text class="cell-tlt">里程费</text>
+          <text class="cell-money">¥5.00</text>
+        </view>
+        <view class="cell">
+          <text class="cell-tlt">小费</text>
+          <text class="cell-money">¥{{ info.tipAmount }}</text>
+        </view>
+        <view class="cell">
+          <text class="cell-tlt">合计</text>
+          <text class="cell-money" style="color: #fa6f06"
+            >¥{{ info.totalAmount }}</text
+          >
+        </view>
+      </view>
+    </div>
+  </view>
 </template>
 
 <script>
-	export default {
-		data(){
-			return{
-				show:false
-			}
-		},
-		methods:{
-			init(){
-				this.show=true
-			},
-			handletouchstart(){
-				this.show=false
-			}
-		}
-	}
+export default {
+  data() {
+    return {
+      show: false,
+    };
+  },
+  props: {
+    info: {
+      type: Object,
+      default() {
+        return {};
+      },
+    },
+  },
+  methods: {
+    init() {
+      this.show = true;
+    },
+    handletouchstart() {
+      this.show = false;
+    },
+  },
+};
 </script>
 
 <style>
-	.box{
-		padding: 0px 33px;
-		background-color: white;
-	}
-	.pop{
-		position: fixed;
-		left: 0px;
-		right: 0px;
-		bottom: 0px;
-		height: 192px;
-		background-color: white;
-		border-top-left-radius: 13px;
-		border-top-right-radius: 13px;
-	}
-	.bg{
-		position: fixed;
-		left: 0px;
-		right: 0px;
-		bottom: 0px;
-		top: 0px;
-		background-color: #000000;
-		opacity: 0.5;
-	}
-	.pop-nav{
-		flex-direction: row;
-		justify-content: center;
-		align-items: center;
-		padding: 12px 32px;
-		position: relative;
-	}
-	.pop-tlt{
-		color: #0D1C40;
-		font-size: 15px;
-		text-align: center;
-		font-weight: bold;
-	}
-	.confirm{
-		position: absolute;
-		right: 23px;
-		color: #FA6F06;
-		font-size: 14px;
-	}
-	.cell{
-		flex-direction: row;
-		justify-content: space-between;
-		align-items: center;
-		padding: 10px 43px 10px 33px;
-	}
-	.cell-tlt{
-		color: #4D5660;
-		font-size: 14px;
-	}
-	.cell-money{
-		color: #101E3E;
-		font-size: 15px;
-		font-weight: bold;
-	}
+.box {
+  padding: 0px 33px;
+  background-color: white;
+}
+.pop {
+  position: fixed;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  height: 192px;
+  background-color: white;
+  border-top-left-radius: 13px;
+  border-top-right-radius: 13px;
+}
+.bg {
+  position: fixed;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  top: 0px;
+  background-color: #000000;
+  opacity: 0.5;
+}
+.pop-nav {
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 12px 32px;
+  position: relative;
+}
+.pop-tlt {
+  color: #0d1c40;
+  font-size: 15px;
+  text-align: center;
+  font-weight: bold;
+}
+.confirm {
+  position: absolute;
+  right: 23px;
+  color: #fa6f06;
+  font-size: 14px;
+}
+.cell {
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 43px 10px 33px;
+}
+.cell-tlt {
+  color: #4d5660;
+  font-size: 14px;
+}
+.cell-money {
+  color: #101e3e;
+  font-size: 15px;
+  font-weight: bold;
+}
 </style>

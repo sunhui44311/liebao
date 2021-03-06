@@ -19,6 +19,7 @@ page {
       font-size: 42upx;
       font-weight: 600;
       color: #0D1C40;
+      
     }
 
     .icon {
@@ -36,6 +37,7 @@ page {
   background-color: #FFFFFF;
   border-radius: 12upx 12upx 12upx 12upx;
   padding: 20upx;
+  margin-bottom: 20upx;
 
   .head {
     display: flex;
@@ -136,6 +138,7 @@ page {
       .icon {
         width: 52upx;
         height: 52upx;
+        margin-right: 10upx;
       }
 
       .text {

@@ -24,48 +24,149 @@ export default {
             }],
             current: 0,
             swiperCurrent: 0,
-            orderStatus: 1,
             wait: {
                 pageNum: 1,
                 pageSize: 10,
                 list: []
+            },
+            take: {
+                pageNum: 1,
+                pageSize: 10,
+                list: []
+            },
+            delivery: {
+                pageNum: 1,
+                pageSize: 10,
+                list: []
+            },
+            completed: {
+                pageNum: 1,
+                pageSize: 10,
+                list: []
+            },
+            cancel: {
+                pageNum: 1,
+                pageSize: 10,
+                list: []
+            },
+            staypay: {
+                pageNum: 1,
+                pageSize: 10,
+                list: []
             }
-
         };
     },
     methods: {
         // 用于初始化一些数据
         init() {
-            this.update();
+            this.wait_order()
+            this.take_order()
+            this.delivery_order()
+            this.completed_order()
+            this.cancel_order()
+            this.staypay_order()
         },
-
-        order_Click() {
+        order_Click(id) {
             uni.navigateTo({
-                url: '/pages/order/deliveryOrderDetail'
+                url: `/pages/order/deliveryOrderDetail?id=${id}`
             })
         },
         // 用于更新一些数据
-        async update() {
-            // const res = await this.$http.post('', {});
+        wait_order() {
             let params = {
                 url: "app/order/list",
                 method: "GET",
                 data: {
-                    status: this.orderStatus,
-                    pageNum: this.pageNum,
-                    pageSize: this.pageSize
+                    status: 1,
+                    pageNum: this.wait.pageNum,
+                    pageSize: this.wait.pageSize
                 },
                 callBack: (res) => {
-                    if (this.orderStatus == 1) {
-                        this.wait.list = res.data.data
-                    }
-                    this.pageNum++
-                    uni.hideLoading();
+                    this.wait.list = res.data.data
+                    this.wait.pageNum++
                 },
             };
-            uni.showLoading({
-                title: "加载中",
-            });
+            this.$http.request(params);
+        },
+        take_order() {
+            let params = {
+                url: "app/order/list",
+                method: "GET",
+                data: {
+                    status: 2,
+                    pageNum: this.take.pageNum,
+                    pageSize: this.take.pageSize
+                },
+                callBack: (res) => {
+
+                    this.take.list = res.data.data
+                    this.take.pageNum++
+                },
+            };
+            this.$http.request(params);
+        },
+        delivery_order() {
+            let params = {
+                url: "app/order/list",
+                method: "GET",
+                data: {
+                    status: 3,
+                    pageNum: this.delivery.pageNum,
+                    pageSize: this.delivery.pageSize
+                },
+                callBack: (res) => {
+                    this.delivery.list = res.data.data
+                    this.delivery.pageNum++
+                },
+            };
+            this.$http.request(params);
+        },
+        completed_order() {
+            let params = {
+                url: "app/order/list",
+                method: "GET",
+                data: {
+                    status: 4,
+                    pageNum: this.completed.pageNum,
+                    pageSize: this.completed.pageSize
+                },
+                callBack: (res) => {
+                    this.completed.list = res.data.data
+                    this.completed.pageNum++
+                },
+            };
+            this.$http.request(params);
+        },
+        cancel_order() {
+            let params = {
+                url: "app/order/list",
+                method: "GET",
+                data: {
+                    status: -1,
+                    pageNum: this.cancel.pageNum,
+                    pageSize: this.cancel.pageSize
+                },
+                callBack: (res) => {
+                    this.cancel.list = res.data.data
+                    this.cancel.pageNum++
+                },
+            };
+            this.$http.request(params);
+        },
+        staypay_order() {
+            let params = {
+                url: "app/order/list",
+                method: "GET",
+                data: {
+                    status: 0,
+                    pageNum: this.staypay.pageNum,
+                    pageSize: this.staypay.pageSize
+                },
+                callBack: (res) => {
+                    this.staypay.list = res.data.data
+                    this.staypay.pageNum++
+                },
+            };
             this.$http.request(params);
         },
         tabsChange(index) {
@@ -80,7 +181,6 @@ export default {
             this.orderStatus = this.tabs[e.detail.current].id
             this.$refs.uTabs.setFinishCurrent(current);
             this.current = current;
-            this.update()
         },
         onreachBottom() {
 
