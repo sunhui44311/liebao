@@ -58,7 +58,7 @@
 		</view>
 	</view>
 	<view v-if="userInfo.memberType==1?false:true" class="menu-list" :style="{'margin-top': (isLogin?98:85)+'px'}">
-		<view class="menu-item left-off" @click.stop="menu_Click(1)">
+		<view class="menu-item" @click.stop="menu_Click(1)">
 			<image src="../../../static/image/mendian@2x.png"></image>
 			<view>门店管理</view>
 		</view>
