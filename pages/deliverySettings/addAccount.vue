@@ -8,22 +8,24 @@
 			</view>
 			<view class="cell">
 				<text class="tlt">登录账号</text>
-				<input class="content"  placeholder="请输入"/>
+				<input v-model="dataForm.mobile" class="content"  placeholder="请输入"/>
 			</view>
 			<view class="cell">
 				<text class="tlt">登录密码</text>
-				<text class="content pwd">初始密码：123456</text>
+				<input v-if="id" v-model="dataForm.mobile" class="content"  placeholder="请输入"/>
+				<text v-else class="content pwd">初始密码：123456</text>
 			</view>
 			<view class="cell">
 				<text class="tlt">员工姓名</text>
-				<input class="content"  placeholder="请输入"/>
+				<input v-model="dataForm.name" class="content"  placeholder="请输入"/>
 			</view>
 			<view class="cell">
 				<text class="tlt">当前状态</text>
-				<u-switch></u-switch>
+				<u-switch active-color="#E95008" inactive-color="#F8F8F8" v-model="dataForm.status"></u-switch>
 			</view>
 		</view>
-		<view class="save">保存</view>
+		<u-picker mode="selector" v-model="show"  :default-selector="[0]"></u-picker>
+		<view class="save" @click.stop="save">保存</view>
 	</view>
 </template>
 
@@ -31,11 +33,24 @@
 	export default{
 		data(){
 			return{
-				
+				id:'',
+				dataForm:{
+					shopId:'',
+					name:'',
+					mobile:'',
+					password:'123456',
+					shopName:'',
+					status:0
+				}
 			}
 		},
+		onLoad(options) {
+			this.id=options.id
+		},
 		methods:{
-			
+			save(){
+				
+			}
 		}
 	}
 </script>

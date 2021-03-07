@@ -284,48 +284,51 @@
 				}
 			},
 			menu_Click(type){
-				if(type==1){
-					uni.navigateTo({
-						url:'/pages/shop/shopList'
-					})
-				}
-				else if(type==2){
-					uni.navigateTo({
-						url:'/pages/delivery/bindPlatformList'
-					})
-				}
-				else if(type==3){
-					uni.navigateTo({
-						url:'/pages/delivery/bindPlatform'
-					})
-				}
-				else if(type==4){
-					uni.navigateTo({
-						url:'/pages/delivery/guaranteedDelivery'
-					})
-				}
+				this.login(()=>{
+					if(type==1){
+						uni.navigateTo({
+							url:'/pages/shop/shopList'
+						})
+					}
+					else if(type==2){
+						uni.navigateTo({
+							url:'/pages/delivery/bindPlatformList'
+						})
+					}
+					else if(type==3){
+						uni.navigateTo({
+							url:'/pages/delivery/bindPlatform'
+						})
+					}
+					else if(type==4){
+						uni.navigateTo({
+							url:'/pages/delivery/guaranteedDelivery'
+						})
+					}
+				})
 			},
 			setting(type){
-				if(type==0){
-					console.log(this.userInfo)
-					let merchantId=this.userInfo.merchantId
-					uni.navigateTo({
-						url:'/pages/deliverySettings/applyForBusiness?merchantId='+merchantId
-					})
-				}
-				else if(type==2){
-					uni.navigateTo({
-						url:'/pages/deliverySettings/takeoutSetting'
-					})
-				}
-				else if(type==3){
-					this.$refs['showSetting'].init()
-				}
-				else if(type==4){
-					uni.navigateTo({
-						url:'/pages/deliverySettings/accountManager'
-					})
-				}
+				this.login(()=>{
+					if(type==0){
+						let merchantId=this.userInfo.merchantId
+						uni.navigateTo({
+							url:'/pages/deliverySettings/applyForBusiness?merchantId='+merchantId
+						})
+					}
+					else if(type==2){
+						uni.navigateTo({
+							url:'/pages/deliverySettings/takeoutSetting'
+						})
+					}
+					else if(type==3){
+						this.$refs['showSetting'].init()
+					}
+					else if(type==4){
+						uni.navigateTo({
+							url:'/pages/deliverySettings/accountManager'
+						})
+					}
+				})
 			},
 			visit(){
 				uni.navigateTo({
@@ -333,68 +336,73 @@
 				})
 			},
 			tool(type){
-				if(type==1){
-					uni.navigateTo({
-						url:'/pages/myTool/loudspeakerList'
-					})
-				}
-				else if(type==2){
-					uni.navigateTo({
-						url:'/pages/myTool/printList'
-					})
-				}
-				else if(type==3){
-					uni.navigateTo({
-						url:'/pages/myTool/addressList'
-					})
-				}
-				else if(type==4){
-					uni.navigateTo({
-						url:'/pages/visit/index'
-					})
-				}
-				else if(type==5){
-					uni.navigateTo({
-						url:'/pages/myTool/customerCenter'
-					})
-				}
-				else if(type==6){
-					uni.navigateTo({
-						url:'/pages/myTool/feedback'
-					})
-				}
-				else if(type==7){
-					uni.navigateTo({
-						url:'/pages/myTool/joinPartner'
-					})
-				}
-				else if(type==8){
-					uni.navigateTo({
-						url:'/pages/myTool/setting'
-					})
-				}
+				this.login(()=>{
+					console.log(111)
+					if(type==1){
+						uni.navigateTo({
+							url:'/pages/myTool/loudspeakerList'
+						})
+					}
+					else if(type==2){
+						uni.navigateTo({
+							url:'/pages/myTool/printList'
+						})
+					}
+					else if(type==3){
+						uni.navigateTo({
+							url:'/pages/myTool/addressList'
+						})
+					}
+					else if(type==4){
+						uni.navigateTo({
+							url:'/pages/visit/index'
+						})
+					}
+					else if(type==5){
+						uni.navigateTo({
+							url:'/pages/myTool/customerCenter'
+						})
+					}
+					else if(type==6){
+						uni.navigateTo({
+							url:'/pages/myTool/feedback'
+						})
+					}
+					else if(type==7){
+						uni.navigateTo({
+							url:'/pages/myTool/joinPartner'
+						})
+					}
+					else if(type==8){
+						uni.navigateTo({
+							url:'/pages/myTool/setting'
+						})
+					}
+				})
 			},
 			statics(type){
-				if(type==1){
-					uni.navigateTo({
-						url:'/pages/statics/shopStatistics'
-					})
-				}
-				else if(type==3){
-					uni.navigateTo({
-						url:'/pages/statics/deliveryStatistics'
-					})
-				}
-				else if(type==2){
-					uni.navigateTo({
-						url:'/pages/statics/takeoutStatistics'
-					})
-				}
-				else if(type==4){
-					uni.navigateTo({
-						url:'/pages/statics/payStatistics'
-					})
-				}
+				this.login(()=>{
+					if(type==1){
+						uni.navigateTo({
+							url:'/pages/statics/shopStatistics'
+						})
+					}
+					else if(type==3){
+						uni.navigateTo({
+							url:'/pages/statics/deliveryStatistics'
+						})
+					}
+					else if(type==2){
+						uni.navigateTo({
+							url:'/pages/statics/takeoutStatistics'
+						})
+					}
+					else if(type==4){
+						uni.navigateTo({
+							url:'/pages/statics/payStatistics'
+						})
+					}
+				})
 			},
 			    go(url) {
 			      uni.navigateTo({

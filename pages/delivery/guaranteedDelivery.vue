@@ -71,9 +71,10 @@
         <scroll-view scroll-y="true" style="height: 300rpx">
           <view class="minute-list">
             <view
-              :class="['minute', { xuzhon: times == item.value }]"
+              :class="['minute',{'item-right':index%3==2},{ xuzhon: times == item.value }]"
               v-for="(item, index) in minutes"
               :key="index"
+			   :style="{'width':itemWidth+'px'}"
               @click="setminute(item)"
             >
               {{ item.label }}
@@ -96,7 +97,8 @@
         <scroll-view scroll-y="true" style="height: 300rpx">
           <view class="minute-list">
             <view
-              :class="['minute', { xuzhon: times2 == item.value }]"
+              :class="['minute',index%3==2?'item-right':'',{ xuzhon: times2 == item.value }]"
+			   :style="{'width':itemWidth+'px'}"
               v-for="(item, index) in minutes"
               :key="index"
               @click="setminute2(item)"
@@ -122,8 +124,9 @@
         <scroll-view scroll-y="true" style="height: 300rpx">
           <view class="minute-list">
             <view
-              :class="['minute', { xuzhon: price == item.value }]"
+              :class="['minute',{'item-right':index%3==2},{ xuzhon: price == item.value }]"
               v-for="(item, index) in amounts"
+			  :style="{'width':itemWidth+'px'}"
               :key="index"
               @click="setprice(item)"
             >
@@ -138,12 +141,14 @@
 </template>
 
 <script>
+	import globalData from '@/common/js/globalData.js'
 export default {
   data() {
     return {
       showMinute: false,
       showAmount: false,
       showMinute2: false,
+	  itemWidth:0,
       minutes: [
         {
           label: "1分钟",
@@ -212,6 +217,7 @@ export default {
   onLoad() {
     this.http_delivery();
     this.updata();
+	this.itemWidth=(globalData.windowWidth-110)/3.0
   },
   methods: {
     http_delivery() {
@@ -401,7 +407,9 @@ page {
   justify-content: flex-start;
   flex-wrap: wrap;
   padding: 0px 37px;
-  .minute {
+}
+
+.minute {
     width: 90px;
     height: 30px;
     line-height: 30px;
@@ -418,7 +426,7 @@ page {
       border-color: rgba(219, 95, 41, 1);
     }
   }
-}
+
 .pop-input {
   text-align: center;
   margin: 5px 38px;
@@ -426,5 +434,8 @@ page {
   height: 35px;
   line-height: 35px;
   border-radius: 35px;
+}
+.item-right{
+	margin-right: 0px;
 }
 </style>
