@@ -1,9 +1,9 @@
 <template>
 	<view class="box">
 		<view class="section">
-			<view class="cell">
+			<view class="cell" @click.stop="show=true">
 				<text class="tlt">所属门店</text>
-				<text class="content" style="flex: 1;text-align: right;margin-right: 12px;">请选择</text>
+				<text :class="['content',dataForm.shopName?'shop-name':'shop-select-name']">{{dataForm.shopName?dataForm.shopName:'请选择'}}</text>
 				<image class="arrow" src="../../static/image/fj2.png"></image>
 			</view>
 			<view class="cell">
@@ -12,7 +12,7 @@
 			</view>
 			<view class="cell">
 				<text class="tlt">登录密码</text>
-				<input v-if="id" v-model="dataForm.mobile" class="content"  placeholder="请输入"/>
+				<input v-if="id" v-model="dataForm.password" class="content"  placeholder="请输入"/>
 				<text v-else class="content pwd">初始密码：123456</text>
 			</view>
 			<view class="cell">
@@ -21,10 +21,10 @@
 			</view>
 			<view class="cell">
 				<text class="tlt">当前状态</text>
-				<u-switch active-color="#E95008" inactive-color="#F8F8F8" v-model="dataForm.status"></u-switch>
+				<u-switch active-color="#E95008" inactive-color="#F8F8F8" v-model="status"></u-switch>
 			</view>
 		</view>
-		<u-picker mode="selector" v-model="show"  :default-selector="[0]"></u-picker>
+		<u-picker mode="selector" v-model="show"  :default-selector="[0]" range-key="name" @confirm="shopConfirm" :range="shopList"></u-picker>
 		<view class="save" @click.stop="save">保存</view>
 	</view>
 </template>
@@ -34,22 +34,121 @@
 		data(){
 			return{
 				id:'',
+				show:false,
+				status:true,
 				dataForm:{
 					shopId:'',
 					name:'',
 					mobile:'',
 					password:'123456',
-					shopName:'',
-					status:0
-				}
+					shopName:''
+				},
+				shopList:[]
 			}
 		},
 		onLoad(options) {
 			this.id=options.id
+			this.getShopList()
+			if(this.id){
+				this.getAccoutDetail()
+			}
 		},
 		methods:{
+			getShopList(){
+				let that=this
+				var params={
+					url:'app/shop/list',
+					method:'GET',
+					data:{},
+					callBack:function(res){
+						uni.hideLoading()
+						that.shopList=res.data
+					}
+				}
+				uni.showLoading({
+					title:'正在加载'
+				})
+				this.$http.request(params)
+			},
+			shopConfirm(e){
+				let shop=this.shopList[e[0]]
+				this.dataForm.shopId=shop.id
+				this.dataForm.shopName=shop.name
+			},
+			
+			getAccoutDetail(){
+				let that=this
+				var params={
+					url:'app/shop/user/detail',
+					method:'POST',
+					data:{
+						id:this.id
+					},
+					callBack:function(res){
+						uni.hideLoading()
+						console.log(res)
+						that.dataForm=res.data
+					}
+				}
+				uni.showLoading({
+					title:'正在加载'
+				})
+				this.$http.request(params)
+			},
+			
 			save(){
-				
+				if(!this.dataForm.shopId){
+					uni.showToast({
+						title:'请选择所属门店',
+						icon:'none'
+					})
+					return
+				}
+				if(!this.dataForm.mobile){
+					uni.showToast({
+						title:'请输入登录账号',
+						icon:'none'
+					})
+					return
+				}
+				if(!this.dataForm.name){
+					uni.showToast({
+						title:'请输入员工姓名',
+						icon:'none'
+					})
+					return
+				}
+				var params={
+					url:'app/shop/user/add',
+					method:'POST',
+					data:Object.assign(this.dataForm,{
+						status:this.status?1:0
+					}),
+					callBack:function(res){
+						uni.hideLoading()
+						console.log(res)
+						if(res.code==200){
+							uni.showToast({
+								title:'保存成功',
+							})
+							setTimeout(()=>{
+								uni.navigateBack({
+									delta:1
+								})
+							},1000)
+						}
+						else{
+							uni.showToast({
+								title:res.msg,
+								icon:'none'
+							})
+						}
+					}
+				}
+				uni.showLoading({
+					title:'正在提交'
+				})
+				this.$http.request(params)
 			}
 		}
 	}
@@ -87,6 +186,18 @@
 		display: 1;
 		text-align: right;
 		font-size: 14px;
+	}
+	
+	.shop-name{
+		flex: 1;
+		text-align: right;
+		margin-right: 12px;
+	}
+	.shop-select-name{
+		flex: 1;
+		text-align: right;
+		margin-right: 12px;
+		color: #9FA7B6;
 	}
 	.pwd{
 		color: #E95008;

@@ -28,6 +28,10 @@
 							<text :class="tabIndex==1?'active-tab':'inactive-tab'">帮我取</text>
 							<image v-if="tabIndex==1?true:false" class="tab-icon" src="../../static/image/tab-icon.png"></image>
 						</view>
+						<view class="send-order" v-if="(!userInfo||userInfo.memberType==1)?false:true">
+							<image class="send-order-icon" src="../../static/image/submit-order@2x.png"></image>
+							<text class="send-order-txt">一键发单</text>
+						</view>
 					</view>
 					<view v-if="tabIndex==0">
 						<view class="input-section">
@@ -96,7 +100,9 @@
 				tabIndex:0,
 				startAddress:'正在获取',
 				receiptName:null,
-				receiptPhone:null
+				receiptPhone:null,
+				isLogin:false,
+				userInfo:null
 			}
 		},
 		onLoad() {
@@ -217,23 +223,27 @@
 			},
 			
 			addBill(tab,type){
-				uni.navigateTo({
-					url:`/pages/bill/addBill?type=${type}&longitude=${this.centerPoint.longitude}&latitude=${this.centerPoint.latitude}`
+				this.login(()=>{
+					uni.navigateTo({
+						url:`/pages/bill/addBill?type=${type}&longitude=${this.centerPoint.longitude}&latitude=${this.centerPoint.latitude}`
+					})
 				})
 			},
 			
 			/*完善发件信息*/
 			perfectClick(tab,type){
 				if(type==2){
-					if(!this.receiptName){
-						uni.showToast({
-							title:'请完善发件信息',
-							icon:'none'
+					this.login(()=>{
+						if(!this.receiptName){
+							uni.showToast({
+								title:'请完善发件信息',
+								icon:'none'
+							})
+							return
+						}
+						uni.navigateTo({
+							url:`/pages/bill/addBill?type=${type}&longitude=${this.centerPoint.longitude}&latitude=${this.centerPoint.latitude}`
 						})
-						return
-					}
-					uni.navigateTo({
-						url:`/pages/bill/addBill?type=${type}&longitude=${this.centerPoint.longitude}&latitude=${this.centerPoint.latitude}`
 					})
 				}
 				else if(type==1){
@@ -247,6 +257,31 @@
 				this.centerPoint.longitude=this.userLocation.longitude
 
 				// this.mapCtx.setZoom(16)
+			},
+			login(callback){
+				this.isLogin=uni.getStorageSync('token')?true:false
+				if(!this.isLogin){
+					uni.navigateTo({
+						url:'/pages/login/loginHome'
+					})
+				}
+				else{
+					callback()
+				}
+			},
+			/*获取用户信息*/
+			getUserInfo(){
+				let that=this
+				let params={
+					url:'app/member/detail',
+					method:'get',
+					data:{},
+					callBack:function(res){
+						console.log(res)
+						that.userInfo=res.data
+					}
+				}
+				this.$http.request(params)
 			}
 		}
 	}
@@ -429,5 +464,23 @@
 	color: #9EA7B7;
 	font-size: 13px;
 	margin-left: 8px;
+}
+.send-order{
+	position: absolute;
+	right: 0px;
+	top: 8px;
+	width: 110px;
+	height: 10px;
+}
+.send-order-icon{
+	width: 110px;
+	height: 10px;
+}
+.send-order-txt{
+	color: #FA6F06;
+	font-size: 15px;
+	position: absolute;
+	top: -5px;
+	left: 24px;
 }
 </style>
