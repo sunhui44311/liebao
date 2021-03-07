@@ -206,66 +206,52 @@
 					})
 					return
 				}
-				
-				console.log(this.sendAddress)
-				console.log({
+				let requestData={
 						productId:this.selectProduct.id,
-						sendAddress:Object.assign(this.sendAddress,{
+						sendAddress:{
 							provinceName:this.sendAddress.province,
 							cityName:this.sendAddress.city,
 							districtName:this.sendAddress.district,
 							street:this.sendAddress.floor,
 							lat:this.sendAddress.lat+'',
 							lng:this.sendAddress.lng+'',
-						}),
-						receiptAddress:Object.assign(this.receiptAddress,{
+							phone:this.sendAddress.phone,
+							contact:this.sendAddress.contact,
+							street:this.sendAddress.floor,
+							address:this.sendAddress.address
+						},
+						receiptAddress:{
 							provinceName:this.receiptAddress.province,
 							cityName:this.receiptAddress.city,
 							districtName:this.receiptAddress.district,
 							street:this.receiptAddress.floor,
 							lat:this.receiptAddress.lat+'',
 							lng:this.receiptAddress.lng+'',
-						}),
+							phone:this.receiptAddress.phone,
+							contact:this.receiptAddress.contact,
+							street:this.receiptAddress.floor,
+							address:this.receiptAddress.address
+						},
 						takeTime:this.selectTime,
 						weight:this.weight
-					})
+					}
 				var params={
 					url:'app/order/valuation',
 					method:'POST',
-					data:{
-						productId:this.selectProduct.id,
-						sendAddress:Object.assign(this.sendAddress,{
-							provinceName:this.sendAddress.province,
-							cityName:this.sendAddress.city,
-							districtName:this.sendAddress.district,
-							street:this.sendAddress.floor,
-							lat:this.sendAddress.lat+'',
-							lng:this.sendAddress.lng+'',
-						}),
-						receiptAddress:Object.assign(this.receiptAddress,{
-							provinceName:this.receiptAddress.province,
-							cityName:this.receiptAddress.city,
-							districtName:this.receiptAddress.district,
-							street:this.receiptAddress.floor,
-							lat:this.receiptAddress.lat+'',
-							lng:this.receiptAddress.lng+'',
-						}),
-						takeTime:this.selectTime,
-						weight:this.weight
-					},
+					data:requestData,
 					callBack:function(res){
 						console.log(res)
 						uni.hideLoading()
 						if(res.code==200){
 							that.saveCache()
-							that.$refs['submitBill'].init()
+							that.$refs['submitBill'].init(res.data,requestData,that.remark)
 						}
 					}
 				}
 				uni.showLoading({
 					title:'正在计算'
 				})
-				this.$http.request(params)
+				this.$http.jsonRequest(params)
 			},
 			
 			saveCache(){

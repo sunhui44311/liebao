@@ -1,15 +1,15 @@
 <template>
 	<view class="box">
-		<view class="cell">
+		<view class="cell" v-for="(item,index) in dataList" :key="index">
 			<view class="item">
-				<view class="flag">默认</view>
-				<view class="address">苏州纳米科技园</view>
+				<view class="flag" v-if="item.isDefault==1?true:false">默认</view>
+				<view class="address">{{item.address}}{{item.street}}</view>
 			</view>
 			<view class="item info"> 
-				<text>张先生</text>
-				<text style="margin-left: 8px;">13815296639</text>
+				<text>{{item.contact}}</text>
+				<text style="margin-left: 8px;">{{item.phone}}</text>
 			</view>
-			<image class="edit" src="../../static/image/edit@2x.png"></image>
+			<image class="edit" src="../../static/image/edit@2x.png" @click.stop="edit(item)"></image>
 		</view>
 		<view class="btn" @click.stop="add">添加地址</view>
 	</view>
@@ -19,14 +19,40 @@
 	export default{
 		data(){
 			return{
-				
+				dataList:[]
 			}
+		},
+		onLoad() {
+			this.getDataList()
 		},
 		methods:{
 			add(){
 				uni.navigateTo({
-					url:'/pages/myTool/addAddress'
+					url:'/pages/myTool/addAddress?isEdit=0'
 				})
+			},
+			edit(item){
+				uni.navigateTo({
+					url:'/pages/myTool/addAddress?isEdit=1&id='+item.id
+				})
+			},
+			getDataList(){
+				let that=this
+				var params={
+					url:'app/address/detail',
+					method:'GET',
+					data:{
+						type:1
+					},
+					callBack:function(res){
+						uni.hideLoading()
+						that.dataList=res.data
+					}
+				}
+				uni.showLoading({
+					title:'正在加载'
+				})
+				this.$http.request(params)
 			}
 		}
 	}
@@ -44,6 +70,7 @@
 		padding: 28upx 42upx;
 		border-radius: 12upx;
 		position: relative;
+		margin-bottom: 10px;
 	}
 	.flag{
 		background-color: #FAEEE7;
@@ -54,6 +81,7 @@
 		line-height: 32upx;
 		border-radius: 4upx;
 		text-align: center;
+		margin-right: 8px;
 	}
 	.item{
 		display: flex;
@@ -62,7 +90,6 @@
 	.address{
 		color: #0D1C40;
 		font-size: 14px;
-		margin-left: 8px;
 		margin-top: -2px;
 	}
 	.info{
