@@ -24,6 +24,8 @@ export default {
             }],
             current: 0,
             swiperCurrent: 0,
+            show: false,
+            order: null,
             wait: {
                 pageNum: 1,
                 pageSize: 10,
@@ -181,6 +183,59 @@ export default {
             this.orderStatus = this.tabs[e.detail.current].id
             this.$refs.uTabs.setFinishCurrent(current);
             this.current = current;
+        },
+        cancelDd(item) {
+            this.show = true
+            this.order = item
+        },
+        qrcancel() {
+            let params = {
+                url: "app/order/cancel",
+                method: "POST",
+                data: {
+                    orderId: this.order.id,
+                },
+                callBack: (res) => {
+                    uni.showToast({
+                        title: "取消订单成功",
+                        icon: "none",
+                    });
+                    this.reset_updata()
+                    this.cancel.pageNum = 1
+                    this.cancel_order()
+                },
+            };
+            uni.showLoading({
+                title: "取消订单中",
+                mask: true,
+            });
+            this.$http.request(params);
+        },
+        reset_updata() {
+            if (this.current == 0) {
+                this.wait.pageNum = 1
+                this.wait_order()
+            }
+            if (this.current == 1) {
+                this.take.pageNum = 1
+                this.take_order()
+            }
+            if (this.current == 2) {
+                this.delivery.pageNum = 1
+                this.delivery_order()
+            }
+            if (this.current == 3) {
+                this.completed.pageNum = 1
+                this.completed_order()
+            }
+            if (this.current == 4) {
+                this.cancel.pageNum = 1
+                this.cancel_order()
+            }
+            if (this.current == 5) {
+                this.staypay.pageNum = 1
+                this.staypay_order()
+            }
         },
         onreachBottom() {
 

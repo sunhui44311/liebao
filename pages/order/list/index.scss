@@ -19,7 +19,7 @@ page {
       font-size: 42upx;
       font-weight: 600;
       color: #0D1C40;
-      
+
     }
 
     .icon {
@@ -162,6 +162,10 @@ page {
       }
     }
   }
+}
+
+.slot-content {
+  padding: 30upx;
 }
 
 #list /deep/ {}

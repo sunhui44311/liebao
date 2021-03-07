@@ -72,7 +72,12 @@
                 <view class="operation">
                   <view class="time">2021-01-25 20:30:05</view>
                   <view class="btn-box">
-                    <u-button class="btn" size="mini" plain shape="circle"
+                    <u-button
+                      class="btn"
+                      size="mini"
+                      plain
+                      shape="circle"
+                      @click="cancelDd(i)"
                       >取消订单</u-button
                     >
                     <u-button
@@ -142,7 +147,12 @@
                 <view class="operation">
                   <view class="time">2021-01-25 20:30:05</view>
                   <view class="btn-box">
-                    <u-button class="btn" size="mini" plain shape="circle"
+                    <u-button
+                      class="btn"
+                      size="mini"
+                      plain
+                      shape="circle"
+                      @click="cancelDd(i)"
                       >取消订单</u-button
                     >
                     <u-button
@@ -212,7 +222,12 @@
                 <view class="operation">
                   <view class="time">2021-01-25 20:30:05</view>
                   <view class="btn-box">
-                    <u-button class="btn" size="mini" plain shape="circle"
+                    <u-button
+                      class="btn"
+                      size="mini"
+                      plain
+                      shape="circle"
+                      @click="cancelDd(i)"
                       >取消订单</u-button
                     >
                     <u-button
@@ -282,7 +297,12 @@
                 <view class="operation">
                   <view class="time">2021-01-25 20:30:05</view>
                   <view class="btn-box">
-                    <u-button class="btn" size="mini" plain shape="circle"
+                    <u-button
+                      class="btn"
+                      size="mini"
+                      plain
+                      shape="circle"
+                      @click="cancelDd(i)"
                       >取消订单</u-button
                     >
                     <u-button
@@ -352,7 +372,12 @@
                 <view class="operation">
                   <view class="time">2021-01-25 20:30:05</view>
                   <view class="btn-box">
-                    <u-button class="btn" size="mini" plain shape="circle"
+                    <u-button
+                      class="btn"
+                      size="mini"
+                      plain
+                      shape="circle"
+                      @click="cancelDd(i)"
                       >取消订单</u-button
                     >
                     <u-button
@@ -422,7 +447,12 @@
                 <view class="operation">
                   <view class="time">2021-01-25 20:30:05</view>
                   <view class="btn-box">
-                    <u-button class="btn" size="mini" plain shape="circle"
+                    <u-button
+                      class="btn"
+                      size="mini"
+                      plain
+                      shape="circle"
+                      @click="cancelDd(i)"
                       >取消订单</u-button
                     >
                     <u-button
@@ -448,6 +478,11 @@
         </scroll-view>
       </swiper-item>
     </swiper>
+    <u-modal v-model="show" show-cancel-button @confirm="qrcancel">
+      <view class="slot-content" v-if="order">
+        取消编号 {{ order.orderSn }} 的订单？
+      </view>
+    </u-modal>
   </view>
 </template>
 <script src="./index.js"></script>
