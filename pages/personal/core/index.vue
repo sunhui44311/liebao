@@ -18,7 +18,7 @@
 		      class="img"
 		    ></image>
 		  </view>
-		  <view class="info" v-if="isLogin">
+		  <view class="info" v-if="isLogin" @click.stop="setting(0)">
 		    <view class="name">{{userInfo.nickname}}<view class="label">{{userInfo.memberType==1?'个人':'商家'}}</view></view>
 		    <view class="qm">欢迎你，来到猎豹Ai{{userInfo.memberType==1?'个人':'商家'}}版</view>
 		  </view>
@@ -307,8 +307,10 @@
 			},
 			setting(type){
 				if(type==0){
+					console.log(this.userInfo)
+					let merchantId=this.userInfo.merchantId
 					uni.navigateTo({
-						url:'/pages/deliverySettings/applyForBusiness'
+						url:'/pages/deliverySettings/applyForBusiness?merchantId='+merchantId
 					})
 				}
 				else if(type==2){

@@ -90,6 +90,7 @@
 				showActionSheet:false,
 				selectGood:null,
 				uploadIndex:1,
+				merchantId:'',
 				dataForm:{
 					categoryId:'',
 					merchantName:'',
@@ -119,8 +120,16 @@
 				]
 			}
 		},
-		onLoad() {
+		onLoad(options) {
 			_self=this
+			let merchantId=options.merchantId
+			if(merchantId){
+				uni.setNavigationBarTitle({
+					title:'编辑商家'
+				})
+				this.merchantId=merchantId
+				this.getMechantDetail()
+			}
 			uni.$on('selectAddress',(data)=>{
 				console.log(data)
 				_self.dataForm.address=data.address+data.street
@@ -147,9 +156,29 @@
 			},
 			
 			upload(index){
-				console.log(111)
 				this.uploadIndex=index
 				this.showActionSheet=true
+			},
+			
+			/*获取商家详情*/
+			getMechantDetail(){
+				console.log(this.merchantId)
+				var params={
+					url:'app/merchant/detail',
+					method:'GET',
+					data:{
+						merchantId:this.merchantId,
+					},
+					callBack:function(res){
+						uni.hideLoading()
+						console.log(res)
+						_self.dataForm=res.data
+					}
+				}
+				uni.showLoading({
+					title:'正在加载'
+				})
+				this.$http.request(params)
 			},
 			
 			click(index){
@@ -220,7 +249,7 @@
 					})
 					return
 				}
-				if(!this.selectGood){
+				if(!this.dataForm.categoryId){
 					uni.showToast({
 						title:'请选择主营业务',
 						icon:'none'
@@ -255,14 +284,12 @@
 					})
 					return
 				}
-				console.log(this.dataForm)
 				var params={
-					url:'app/merchant/add',
+					url:this.merchantId?'app/merchant/modify':'app/merchant/add',
 					method:'POST',
 					data:this.dataForm,
 					callBack:function(res){
 						uni.hideLoading()
-						console.log(res)
 						if(res.code==200){
 							uni.showToast({
 								title:'保存成功',

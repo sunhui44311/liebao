@@ -19,7 +19,7 @@
 				<input class="content"  placeholder="请输入"/>
 			</view>
 			<view class="cell">
-				<text class="tlt">员工姓名</text>
+				<text class="tlt">当前状态</text>
 				<u-switch></u-switch>
 			</view>
 		</view>
@@ -28,6 +28,16 @@
 </template>
 
 <script>
+	export default{
+		data(){
+			return{
+				
+			}
+		},
+		methods:{
+			
+		}
+	}
 </script>
 
 <style lang="scss">

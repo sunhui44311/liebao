@@ -61,9 +61,7 @@
                         "appkey_android" : "5b145cc49187d784042e5887d2e19ee7"
                     }
                 },
-                "oauth" : {
-                    "univerify" : {}
-                },
+                "oauth" : {},
                 "payment" : {
                     "weixin" : {
                         "__platform__" : [ "ios", "android" ],
