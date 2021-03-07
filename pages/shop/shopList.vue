@@ -41,24 +41,7 @@
 export default {
   data() {
     return {
-      list: [
-        {
-          id: 15,
-          code: 132213,
-          name: "猎豹演示门店",
-          address: "门店详细地址",
-          contactName: "闪先生",
-          mobile: "898832323",
-          deliveries: [
-            {
-              logo: "../../static/image/meituan@2x.png",
-            },
-            {
-              logo: "../../static/image/meituan@2x.png",
-            },
-          ],
-        },
-      ],
+      list: [],
     };
   },
   methods: {
@@ -68,7 +51,7 @@ export default {
         method: "GET",
         data: {},
         callBack: (res) => {
-          // this.list = res.data;
+          this.list = res.data;
         },
       };
       this.$http.request(params);
@@ -84,7 +67,7 @@ export default {
       });
     },
   },
-  onLoad(e) {
+  onShow(e) {
     this.http_store();
   },
 };

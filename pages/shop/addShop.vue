@@ -64,7 +64,7 @@
       </view>
     </view>
     <view class="bottom"></view>
-    <view class="save">保存</view>
+    <view class="save" @click="save">保存</view>
     <u-action-sheet
       :list="actionSheetList"
       v-model="showActionSheet"
@@ -86,6 +86,8 @@ export default {
         contactName: "",
         mobile: "",
         doorHeadPhoto: "",
+        lng: "",
+        lat: "",
       },
       showActionSheet: false,
       actionSheetList: [
@@ -108,9 +110,9 @@ export default {
       this.updata();
     }
     uni.$on("selectAddress", (data) => {
-      this.form.address = data.address + data.street;
-      this.form.lng = data.longitude;
-      this.form.lat = data.latitude;
+      this.form.address = data.address;
+      this.form.lng = data.lng;
+      this.form.lat = data.lat;
     });
   },
   methods: {
@@ -123,7 +125,9 @@ export default {
         },
         callBack: (res) => {
           uni.hideLoading();
+           console.warn(res);
           if (res.code == 200) {
+           
             this.form = res.data;
           }
         },
@@ -160,7 +164,7 @@ export default {
             title: "正在上传",
             mask: true,
           });
-          _self.$http.uploadImage(params);
+          this.$http.uploadImage(params);
         },
       });
     },
