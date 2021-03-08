@@ -235,6 +235,7 @@
 						takeTime:this.selectTime,
 						weight:this.weight
 					}
+					console.log(requestData)
 				var params={
 					url:'app/order/valuation',
 					method:'POST',

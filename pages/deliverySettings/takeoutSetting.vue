@@ -6,11 +6,7 @@
 			</view>
 			<view class="tip">用户选择非聚合配送发单时，优先将选中的运力置顶显示， 提高您的下单效率</view>
 			<view class="list">
-				<view class="item">美团</view>
-				<view class="item">达达</view>
-				<view class="item">蜂鸟</view>
-				<view class="item">闪送</view>
-				<view class="item">顺丰</view>
+				<view :class="['item',index%4==3?'off-right':'',item.select?'item-active':'']" v-for="(item,index) in billDeliverylist" @click.stop="selecItemChange(item)" :key="index">{{item.name}}</view>
 			</view>
 		</view>
 		<view class="section">
@@ -19,23 +15,128 @@
 			</view>
 			<view class="tip">用户选择非聚合配送发单时，屏蔽的运力将不再估价，提 高计价速度</view>
 			<view class="list">
-				<view class="item">美团</view>
-				<view class="item">达达</view>
-				<view class="item">蜂鸟</view>
-				<view class="item">闪送</view>
-				<view class="item">顺丰</view>
+				<view :class="['item',index%4==3?'off-right':'',item.select?'item-active':'']" v-for="(item,index) in shieldDeliverylist" @click.stop="selecItemChange(item)" :key="index">{{item.name}}</view>
 			</view>
 		</view>
 		<view class="bottom"></view>
-		<view class="save">保存</view>
+		<view class="save" @click.stop="modifyConfigRequest">保存</view>
 	</view>
 </template>
 
 <script>
+	import globalData from '@/common/js/globalData.js'
+	var _self
 	export default{
 		data(){
 			return{
-				
+				itemWidth:0,
+				billDeliverylist:[],
+				shieldDeliverylist:[],
+				billDeliveryIds:[],
+				shieldDeliveryIds:[]
+			}
+		},
+		onLoad() {
+			_self=this
+			this.itemWidth=(globalData.windowWidth-90)/4.0
+			this.getUserInfo()
+		},
+		methods:{
+			http_delivery() {
+			  let params = {
+			    url: "app/delivery/floor/list",
+			    method: "GET",
+			    data: {},
+			    callBack: (res) => {
+					console.log(res)
+			      this.billDeliverylist = JSON.parse(JSON.stringify(res.data));
+				  this.shieldDeliverylist = JSON.parse(JSON.stringify(res.data));
+				  this.setData(this.billDeliverylist,this.billDeliveryIds)
+				  this.setData(this.shieldDeliverylist,this.shieldDeliveryIds)
+			    },
+			  };
+			  this.$http.request(params);
+			},
+			/*获取用户信息*/
+			getUserInfo(){
+				let params={
+					url:'app/member/detail',
+					method:'get',
+					data:{},
+					callBack:function(res){
+						console.log(res)
+						_self.billDeliveryIds=res.data.billDeliveryIds
+						_self.shieldDeliveryIds=res.data.shieldDeliveryIds
+						_self.http_delivery()
+					}
+				}
+				this.$http.request(params)
+			},
+			
+			selecItemChange(item){
+				item.select=!item.select
+			},
+			
+			setData(dataList,list){
+				for(var i=0;i<dataList.length;i++){
+					var item=dataList[i]
+					let arr=[]
+					if(list&&list.length>0){
+						list.find((id)=>{
+							return id==item.id
+						})
+					}
+					if(arr.length>0){
+						this.$set(item,'select',true)
+					}
+					else{
+						this.$set(item,'select',false)
+					}
+				}
+			},
+			modifyConfigRequest(){
+				let billDeliveryID=[]
+				let shieldDeliveryID=[]
+				for(var i=0;i<this.billDeliverylist.length;i++){
+					var item=this.billDeliverylist[i]
+					billDeliveryID.push(item.id)
+				}
+				for(var i=0;i<this.shieldDeliverylist.length;i++){
+					var item=this.shieldDeliverylist[i]
+					shieldDeliveryID.push(item.id)
+				}
+				var params={
+					url:'app/member/config',
+					method:'POST',
+					data:{
+						billDeliveryIds:billDeliveryID,
+						shieldDeliveryIds:shieldDeliveryID
+					},
+					callBack:function(res){
+						uni.hideLoading()
+						if(res.code==200){
+							uni.showToast({
+								title:'保存成功',
+							})
+							setTimeout(()=>{
+								uni.navigateBack({
+									delta:1
+								})
+							},1000)
+						}
+						else{
+							uni.showToast({
+								title:res.msg,
+								icon:'none'
+							})
+						}
+					}
+				}
+				uni.showLoading({
+					title:'正在保存',
+					mask:true
+				})
+				this.$http.request(params)
 			}
 		}
 	}
@@ -73,19 +174,30 @@
 		display: flex;
 		justify-content: flex-start;
 		flex-wrap: wrap;
-	
-		.item {
-			height: 28px;
-			line-height: 28px;
-			padding: 0px 15px;
-			border: solid 1px #9EA7B7;
-			border-radius: 14px;
-			margin-right: 15px;
-			margin-top: 12px;
-			color: #0D1C40;
-			font-size: 13px;
-		}
 	}
+	
+	.item {
+		height: 28px;
+		line-height: 28px;
+		padding: 0px 15px;
+		border: solid 1px #9EA7B7;
+		border-radius: 14px;
+		margin-right: 15px;
+		margin-top: 12px;
+		color: #0D1C40;
+		font-size: 13px;
+	}
+	
+	.off-right{
+		margin-right: 0px;
+	}
+	
+	.item-active{
+		border: solid 1px #DB5F29;
+		background-color: #FDEEE7;
+		color: #DB5F29;
+	}
+	
 	.bottom{
 		height: 70px;
 	}
