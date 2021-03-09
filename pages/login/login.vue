@@ -19,10 +19,10 @@
       <view class="tlt">{{ showPwdLogin ? "密码登录" : "手机号登录" }}</view>
       <view class="cell">
         <text class="pre">+86</text>
-        <input v-model="mobile" style="flex: 1" placeholder="请输入手机号" />
+        <input v-model="mobile" style="flex: 1" type="number" maxlength="11" placeholder="请输入手机号" />
       </view>
       <view class="cell" v-if="!showPwdLogin">
-        <input v-model="code" style="flex: 1" placeholder="请输入验证码" />
+        <input v-model="code" style="flex: 1" maxlength="6" placeholder="请输入验证码" />
         <view class="send" @click.stop="send" v-if="show"> 获取验证码 </view>
         <view class="send" v-else> {{ count }}s </view>
       </view>
@@ -32,11 +32,11 @@
       <view class="forget" v-if="showPwdLogin" @click.stop="forget_Click"
         >忘记密码</view
       >
-      <view :class="['login', showPwdLogin ? 'pwdLogin' : '']" @click="sign"
+      <view :class="['login', showPwdLogin ? 'pwdLogin' : '']" :style="{'opacity':enableLogin?1:0.5}"  @click="sign"
         >登录</view
       >
-      <view class="footer">
-        <image src="../../static/image/weixuanzhong@2x.png"></image>
+      <view class="footer" @click.stop="isAgree=!isAgree">
+        <image :src="isAgree?'../../static/image/xuanzhong@2x.png':'../../static/image/weixuanzhong@2x.png'"></image>
         <view class="tip">登录注册即同意用户协议与隐私政策</view>
       </view>
     </view>
@@ -48,6 +48,7 @@ import globalData from "@/common/js/globalData.js";
 export default {
   data() {
     return {
+	  isAgree:false,
       showPwdLogin: false,
       mobile: "",
       code: "",
@@ -56,6 +57,9 @@ export default {
       timer: null,
       password: "",
     };
+  },
+  enableLogin(){
+  	return (!this.showPwdLogin&&this.mobile&&this.code)||(this.showPwdLogin&&this.mobile&&this.newPassword)
   },
   methods: {
     forget_Click() {
@@ -108,6 +112,13 @@ export default {
           });
           return;
         }
+		if(!this.isAgree){
+			uni.showToast({
+			  title: "请同意用户协议",
+			  icon: "none",
+			});
+			return;
+		}
         let params = {
           url: "app/login/verification",
           method: "POST",
@@ -137,6 +148,13 @@ export default {
           });
           return;
         }
+		if(!this.isAgree){
+			uni.showToast({
+			  title: "请同意用户协议",
+			  icon: "none",
+			});
+			return;
+		}
         let params = {
           url: "app/login/password",
           method: "POST",

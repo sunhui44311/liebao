@@ -7,9 +7,9 @@
 				<image class="arrow" src="../../static/image/fj2.png"></image>
 				<view class="line"></view>
 			</view>
-			<view class="cell" v-model="floor">
+			<view class="cell">
 				<image class="icon" src="../../static/image/bill_flower@2x.png"></image>
-				<input class="cell-content" placeholder="楼层、单元、门牌号(选填)" />
+				<input v-model="floor" class="cell-content" placeholder="楼层、单元、门牌号(选填)" />
 				<view class="line"></view>
 			</view>
 			<view class="cell">
@@ -23,6 +23,24 @@
 				<input v-model="phone" class="cell-content" type="number" maxlength="11" placeholder="手机号(必填)" />
 				<view class="verticl-line"></view>
 				<input class="cell-content" style="flex: 0.5;" placeholder="分手机号(选填)" />
+			</view>
+		</view>
+		<view class="section">
+			<view class="header">
+				<view class="header-left">
+					<image src="../../static/image/vertical-line@2x.png"></image>
+					<view>常用地址</view>
+				</view>
+			</view>
+			<view class="address-cell" v-for="(address,index) in addressList" :key="index" @click.stop="selectOftenAddress(address)">
+				<image class="address-icon" src="../../static/image/history_addr@2x.png"></image>
+				<view>
+					<view>{{address.address}}</view>
+					<view class="address-contact">
+						<text>{{address.contact}}</text>
+						<text style="margin-left: 8px;">{{address.phone}}</text>
+					</view>
+				</view>
 			</view>
 		</view>
 		<view class="section">
@@ -53,7 +71,6 @@
 </template>
 
 <script>
-	import { nativeCommon } from '@/common/js/nativeCommon.js'
 	export default {
 		data() {
 			return {
@@ -68,7 +85,9 @@
 				province:'',
 				district:'',
 				type:1,
-				historyAddressList:[]
+				historyAddressList:[],
+				addressList:[],
+				addressId:''
 			}
 		},
 		onLoad(options) {
@@ -78,11 +97,18 @@
 			this.type=options.type
 			this.getDetailAddress(options.longitude, options.latitude)
 			uni.$on('selectAddress',(data)=>{
-				console.log(data)
-				console.log()
 				that.selectHistoryAddress(data)
 				console.log(that.latitude)
 			})
+			uni.$on('selectContact',(data)=>{
+				that.contact=data.displayName
+				that.phone=data.phoneNumbers[0].value
+			})
+			this.getAddressDataList()
+		},
+		onUnload() {
+			uni.$off('selectAddress')
+			uni.$off('selectContact')
 		},
 		onShow() {
 			if(this.type==1){
@@ -131,6 +157,7 @@
 				})
 			},
 			
+			/*历史地址*/
 			selectHistoryAddress(address){
 				this.province=address.province
 				this.city=address.city
@@ -141,6 +168,21 @@
 				this.floor=address.floor
 				this.contact=address.contact
 				this.phone=address.phone
+				this.addressId=''
+			},
+			
+			/*常用地址*/
+			selectOftenAddress(address){
+				this.province=address.provinceName
+				this.city=address.cityName
+				this.district=address.districtName
+				this.startAddress=address.address
+				this.longitude=address.lng
+				this.latitude=address.lat
+				this.floor=address.street
+				this.contact=address.contact
+				this.phone=address.phone
+				this.addressId=address.id
 			},
 			
 			clear(){
@@ -195,6 +237,7 @@
 					getApp().globalData.sendAddress.floor=this.floor
 					getApp().globalData.sendAddress.contact=this.contact
 					getApp().globalData.sendAddress.phone=this.phone
+					getApp().globalData.sendAddress.id=this.addressId
 					uni.navigateBack({
 						delta:1
 					})
@@ -209,6 +252,7 @@
 					getApp().globalData.receiptAddress.floor=this.floor
 					getApp().globalData.receiptAddress.contact=this.contact
 					getApp().globalData.receiptAddress.phone=this.phone
+					getApp().globalData.receiptAddress.id=this.addressId
 					uni.navigateTo({
 						url:'/pages/bill/receiptBill'
 					})
@@ -216,49 +260,29 @@
 				}
 			},
 			
-			getContacts: function() {
+			getAddressDataList(){
 				let that=this
-				// #ifdef APP-PLUS
-				nativeCommon.contacts.getContact(function callBack(name, phoneNumber){
-				that.address.name = name;
-				that.address.mobile = phoneNumber.replace(/\s|-+/g,"");
-				});
-				// #endif
-				
-				// var that = this
-				// // 获取通讯录对象  
-				// plus.contacts.getAddressBook(plus.contacts.ADDRESSBOOK_PHONE, function(addressbook) {
-				// 	uni.showToast({
-				// 		title: '获取通讯录对象成功',
-				// 		duration: 2000
-				// 	})
-				// 	console.log('获取通讯录对象成功')
-				// 	console.log(addressbook)
-				// 	// 查找联系人  
-				// 	addressbook.find(["displayName", "phoneNumbers"], function(contacts) {
-				// 		uni.showToast({
-				// 			title: '获取联系人成功',
-				// 			duration: 2000
-				// 		})
-				// 		console.log('获取联系人成功')
-				// 		console.log(contacts)
-				// 		console.log(JSON.stringify(contacts))
-				// 		// console.log(contacts)
-				// 		// that.list = contacts
-				// 	}, function() {
-				// 		uni.showToast({
-				// 			title: '获取联系人失败',
-				// 			duration: 2000
-				// 		})
-				// 	}, {
-				// 		multiple: true
-				// 	});
-				// }, function(e) {
-				// 	uni.showToast({
-				// 		title: '获取通讯录对象失败:' + e.message,
-				// 		duration: 2000
-				// 	})
-				// });
+				var params={
+					url:'app/address/detail',
+					method:'GET',
+					data:{
+						type:1
+					},
+					callBack:function(res){
+						console.log(res)
+						uni.hideLoading()
+						that.addressList=res.data
+					}
+				}
+				uni.showLoading({
+					title:'正在加载'
+				})
+				this.$http.request(params)
+			},
+			getContacts(){
+				uni.navigateTo({
+					url:'/pages/bill/choiceContact'
+				})
 			}
 		}
 	}

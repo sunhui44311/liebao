@@ -329,7 +329,7 @@
 					}
 					else if(type==5){
 						uni.navigateTo({
-							url:'/pages/delivery/guaranteedDelivery?type=2'
+							url:'/pages/deliverySettings/setGuaranteedDelivery'
 						})
 					}
 				})

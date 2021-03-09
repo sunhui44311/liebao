@@ -65,8 +65,8 @@
 					data:{},
 					callBack:function(res){
 						console.log(res)
-						_self.billDeliveryIds=res.data.billDeliveryIds
-						_self.shieldDeliveryIds=res.data.shieldDeliveryIds
+						_self.billDeliveryIds=res.data.billDeliveryIds.split(',')
+						_self.shieldDeliveryIds=res.data.shieldDeliveryIds.split(',')
 						_self.http_delivery()
 					}
 				}
@@ -82,10 +82,11 @@
 					var item=dataList[i]
 					let arr=[]
 					if(list&&list.length>0){
-						list.find((id)=>{
+						arr=list.find((id)=>{
 							return id==item.id
 						})
 					}
+					
 					if(arr.length>0){
 						this.$set(item,'select',true)
 					}
@@ -109,8 +110,8 @@
 					url:'app/member/config',
 					method:'POST',
 					data:{
-						billDeliveryIds:billDeliveryID,
-						shieldDeliveryIds:shieldDeliveryID
+						billDeliveryIds:billDeliveryID.join(','),
+						shieldDeliveryIds:shieldDeliveryID.join(',')
 					},
 					callBack:function(res){
 						uni.hideLoading()

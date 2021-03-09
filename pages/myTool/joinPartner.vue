@@ -1,6 +1,6 @@
 <template>
 	<view class="box">
-		<web-view :src="html"></web-view>
+		<rich-text :nodes="html"></rich-text>
 	</view>
 </template>
 
