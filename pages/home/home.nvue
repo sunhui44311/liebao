@@ -28,7 +28,7 @@
 							<text :class="tabIndex==1?'active-tab':'inactive-tab'">帮我取</text>
 							<image v-if="tabIndex==1?true:false" class="tab-icon" src="../../static/image/tab-icon.png"></image>
 						</view>
-						<view class="send-order" v-if="(!userInfo||userInfo.memberType==1)?false:true">
+						<view class="send-order" v-if="(userInfo&&userInfo.memberType==2)?true:false">
 							<image class="send-order-icon" src="../../static/image/submit-order@2x.png"></image>
 							<text class="send-order-txt">一键发单</text>
 						</view>
@@ -121,6 +121,10 @@
 			this.startAddress=address?address:this.startAddress
 			this.receiptName=getApp({allowDefault: true}).globalData.sendAddress.contact
 			this.receiptPhone=getApp({allowDefault: true}).globalData.sendAddress.phone
+			let token=uni.getStorageSync('token')
+			if(token){
+				this.getUserInfo()
+			}
 		},
 		methods:{
 			init(){
@@ -281,7 +285,7 @@
 						that.userInfo=res.data
 					}
 				}
-				this.$http.request(params)
+				that.$http.request(params)
 			}
 		}
 	}
