@@ -9,15 +9,20 @@
       @change="change"
     ></u-tabs>
     <view class="content">
-      <view class="cell">
-        <view class="name">美团外卖前音响</view>
+      <view
+        class="cell"
+        v-for="(item, index) in devicelist"
+        :key="index"
+        @click="details(item.id)"
+      >
+        <view class="name">{{ item.name }}</view>
         <view class="item">
           <image src="../../static/image/voice-name@2x.png"></image>
-          <text>证通云音响</text>
+          <text>{{ item.deviceName }}</text>
         </view>
         <view class="item">
           <image src="../../static/image/voice-num@2x.png"></image>
-          <text style="font-size: 12px">GLNMSQ201102122</text>
+          <text style="font-size: 12px">{{ item.deviceSn }}</text>
         </view>
       </view>
     </view>
@@ -34,16 +39,19 @@ export default {
       devicelist: [],
     };
   },
-  onLoad() {
+  onShow() {
     this.http_shop();
   },
   methods: {
     change(index) {
       this.current = index;
+      this.http_device();
     },
     add() {
       uni.navigateTo({
-        url: "/pages/myTool/addLoudspeaker",
+        url: `/pages/myTool/addLoudspeaker?shopId=${
+          this.list[this.current].id
+        }`,
       });
     },
     http_shop() {
@@ -72,6 +80,11 @@ export default {
       };
       this.$http.request(params);
     },
+    details(id) {
+      uni.navigateTo({
+        url: `/pages/myTool/addLoudspeaker?id=${id}`,
+      });
+    },
   },
 };
 </script>
@@ -87,6 +100,7 @@ page {
   background-color: white;
   padding: 28upx 24upx;
   border-radius: 7px;
+  margin-bottom: 20upx;
 }
 .name {
   color: #0d1c40;
