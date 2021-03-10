@@ -64,7 +64,6 @@
 					method:'get',
 					data:{},
 					callBack:function(res){
-						console.log(res)
 						_self.billDeliveryIds=res.data.billDeliveryIds.split(',')
 						_self.shieldDeliveryIds=res.data.shieldDeliveryIds.split(',')
 						_self.http_delivery()
@@ -86,8 +85,7 @@
 							return id==item.id
 						})
 					}
-					
-					if(arr.length>0){
+					if(arr&&arr.length>0){
 						this.$set(item,'select',true)
 					}
 					else{
