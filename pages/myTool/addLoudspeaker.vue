@@ -8,7 +8,7 @@
             <view class="item" @click="choice(item)">
               <image
                 class="item-bg"
-                src="../../static/image/证通云音响@2x.png"
+                src="../../static/image/feier@2x.png"
               ></image>
               <view class="voice-name">{{ item.name }}</view>
               <image

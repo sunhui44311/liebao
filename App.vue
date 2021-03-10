@@ -1,7 +1,9 @@
 <script>
 	import globalData from "./common/js/globalData.js";
+	var http = require("utils/http.js");
 	export default {
 		globalData:{
+			http:http,
 			receiptAddress:{
 				id:'',
 				city:'',

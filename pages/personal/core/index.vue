@@ -229,7 +229,9 @@
 		onLoad() {
 			_self=this
 			this.isLogin=uni.getStorageSync('token')?true:false
-			this.getUserInfo()
+			if(this.isLogin){
+				this.getUserInfo()
+			}
 		},
 		onShow() {
 			this.isLogin=uni.getStorageSync('token')?true:false
