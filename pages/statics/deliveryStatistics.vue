@@ -100,6 +100,11 @@
 		align-items: center;
 		height: 60upx;
 		background-color: white;
+		position: fixed;
+		top: 0px;
+		left: 0px;
+		right:0px;
+		z-index: 999;
 	}
 	.tab{
 		flex: 1;
@@ -117,6 +122,7 @@
 	
 	.box{
 		padding: 10px;
+		margin-top: 30px;
 	}
 	
 	.section{
