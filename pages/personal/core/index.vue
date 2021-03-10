@@ -115,7 +115,7 @@
 			</view>
 		</view>
 	</view>
-	<view class="visit" @click="visit">
+	<view class="visit" @click.stop="visit">
 		<image class="visit-logo" src="../../../static/image/visit@2x.png"></image>
 		<view class="visit-title">邀请好友赚钱</view>
 		<view class="right">
