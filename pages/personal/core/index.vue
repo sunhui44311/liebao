@@ -29,8 +29,8 @@
             <image src="~static/image/fj2.png" class="img"></image>
           </view>
         </view>
-        <view class="wallet">
-          <view class="total" @click.stop="wallet">
+        <view class="wallet" @click.stop="wallet">
+          <view class="total">
             <view class="title"> 钱包余额 </view>
             <view class="num">{{userInfo.totalAmount}}</view>
           </view>
