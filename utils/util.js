@@ -63,10 +63,29 @@ function formatDecimal(num, decimal) {
 	return parseFloat(num).toFixed(decimal)
 }
 
+function fun_date(aa) {
+	var date1 = new Date(),
+		time1 = date1.getFullYear() + "-" + (date1.getMonth() + 1) + "-" + date1.getDate(); //time1表示当前时间
+	var date2 = new Date(date1);
+	date2.setDate(date1.getDate() + aa);
+	var time2 = date2.getFullYear() + "-" + (date2.getMonth() + 1) + "-" + date2.getDate();
+	return time2
+}
+
+function dateMinus(dateStart, dateEnd) {
+	var sdate = new Date(dateStart);
+	var now = new Date(dateEnd);
+	var days = now.getTime() - sdate.getTime();
+	var day = Math.floor(days / (1000 * 60 * 60 * 24));
+	return day;
+}
+
 module.exports = {
 	formatTime: formatTime,
 	formatHtml: formatHtml,
 	getQueryString: getQueryString,
 	clearNoNum: clearNoNum,
-	formatDecimal:formatDecimal
+	formatDecimal:formatDecimal,
+	fun_date: fun_date,
+	dateMinus:dateMinus
 }

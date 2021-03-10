@@ -2,19 +2,19 @@
 	<view>
 		<view class="nav" @click.stop="filter_Click">
 			<view class="tab">
-				<view>门店统计</view>
+				<view>{{shopName?shopName:'全部门店'}}</view>
 				<image src="../../static/image/dibiao2.png"></image>
 			</view>
 			<view class="tab">
-				<view>今日</view>
+				<view>{{timeName}}</view>
 				<image src="../../static/image/dibiao2.png"></image>
 			</view>
 		</view>
 		<view class="box">
-			<view class="section">
+			<view class="section" v-for="(item,index) in dataList" :key="index">
 				<view class="section-tlt">
-					<image src="../../static/image/static-meituan@2x.png"></image>
-					<view>美团配送</view>
+					<image :src="item.logo"></image>
+					<view>{{item.name}}</view>
 				</view>
 				<view class="list">
 					<view class="list-item">
@@ -22,19 +22,19 @@
 							<image src="../../static/image/statics-order@2x.png"></image>
 							<text>当日订单</text>
 						</view>
-						<view class="num">0</view>
+						<view class="num">{{item.orderNum}}</view>
 					</view>
 					<view class="list-item">
 						<view class="item">
 							<image src="../../static/image/statics-money@2x.png"></image>
 							<text>当日消费</text>
 						</view>
-						<view class="num" style="color: #DB5F29;">0.0</view>
+						<view class="num" style="color: #DB5F29;">{{item.consumption}}</view>
 					</view>
 				</view>
 			</view>
 		</view>
-		<statistics-filter ref="statisticsFilter"></statistics-filter>
+		<statistics-filter ref="statisticsFilter" @statistics="filerCallBack"></statistics-filter>
 	</view>
 </template>
 
@@ -46,12 +46,45 @@
 		},
 		data(){
 			return{
-				
+				shopName:'',
+				timeName:'今日',
+				dataForm: {
+					shopId: 0,
+					endTime: '',
+					startTime: '',
+					timeType: 1
+				},
+				dataList:[]
 			}
+		},
+		onLoad() {
+			this.getData()
 		},
 		methods:{
 			filter_Click(){
 				this.$refs['statisticsFilter'].init()
+			},
+			filerCallBack(data){
+				this.dataForm=data
+				this.shopName=data.shopName
+				this.timeName=data.timeName
+				this.getData()
+			},
+			getData() {
+				var params = {
+					url: 'app/statistics/delivery',
+					method: 'GET',
+					data: this.dataForm,
+					callBack: (res) => {
+						uni.hideLoading()
+						this.dataList = res.data
+					}
+				}
+				uni.showLoading({
+					title: '正在加载',
+					mask: true
+				})
+				this.$http.request(params)
 			}
 		}
 	}

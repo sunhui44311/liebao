@@ -6,38 +6,18 @@
 				<image class="logo" src="../../static/image/visit-bg-title@2x.png"></image>
 				<view class="title-txt">#赚钱攻略#</view>
 			</view>
-			<view class="card-list">
-				<view class="card">
+			<scroll-view :scroll-x="true" scroll-with-animation class="scroll-bar">
+				<view class="card" v-for="(item,index) in dataList" :key="index">
 					<image class="card-bg" src="../../static/image/card@2x.png"></image>
 					<view class="card-info">
 						<view>
 							<text style="font-size: 18px;">¥</text>
-							<text>15</text>
+							<text>{{item.money}}</text>
 						</view>
 					</view>
-					<view class="card-act">分享即得直减券</view>
+					<view class="card-act">{{item.name}}</view>
 				</view>
-				<view class="card">
-					<image class="card-bg" src="../../static/image/card@2x.png"></image>
-					<view class="card-info">
-						<view>
-							<text style="font-size: 18px;">¥</text>
-							<text>15</text>
-						</view>
-					</view>
-					<view class="card-act">分享即得直减券</view>
-				</view>
-				<view class="card">
-					<image class="card-bg" src="../../static/image/card@2x.png"></image>
-					<view class="card-info">
-						<view>
-							<text style="font-size: 18px;">¥</text>
-							<text>15</text>
-						</view>
-					</view>
-					<view class="card-act">分享即得直减券</view>
-				</view>
-			</view>
+			</scroll-view>
 			<view class="visit">立即邀请</view>
 			<view class="tip">被邀请新人得大礼包</view>
 		</view>
@@ -69,7 +49,28 @@
 	export default{
 		data(){
 			return{
-				
+				dataList:[]
+			}
+		},
+		onLoad() {
+			this.getInvistion()
+		},
+		methods:{
+			getInvistion(){
+				var params={
+					url:'app/member/invitation',
+					method:'GET',
+					data:{},
+					callBack:(res)=>{
+						console.log(res)
+						uni.hideLoading()
+						this.dataList=res.data
+					}
+				}
+				uni.showLoading({
+					title:'正在加载'
+				})
+				this.$http.request(params)
 			}
 		}
 	}
@@ -109,20 +110,29 @@
 			margin-left: 25px;
 		}
 	}
-	.card-list{
+	.scroll-bar{
+		white-space: nowrap;
 		display: flex;
-		justify-content: space-around;
+		justify-content: flex-start;
 		align-items: center;
 		margin-top: 41px;
+		margin-left: 18px;
+		width: calc(100% - 35px);
 		.card{
 			width: 200upx;
 			height: 160upx;
 			position: relative;
+			display: inline-block;
+			margin-right: 6px;
 		}
 		.card-bg{
 			width: 200upx;
 			height: 160upx;
 		}
+	}
+	.card-list{
+		
+		
 	}
 	.card-info{
 		position: absolute;
@@ -167,5 +177,6 @@
 		font-size: 12px;
 		line-height: 24px;
 		margin-left: 16px;
+		display: inline-block;
 	}
 </style>

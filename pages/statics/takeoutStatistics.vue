@@ -2,51 +2,51 @@
 	<view>
 		<view class="nav" @click.stop="filter_Click">
 			<view class="tab">
-				<view>门店统计</view>
+				<view>{{shopName?shopName:'全部门店'}}</view>
 				<image src="../../static/image/dibiao2.png"></image>
 			</view>
 			<view class="tab">
-				<view>今日</view>
+				<view>{{timeName}}</view>
 				<image src="../../static/image/dibiao2.png"></image>
 			</view>
 		</view>
 		<view class="box">
-			<view class="section">
-				<view class="section-tlt">外卖统计</view>
+			<view class="section" v-for="(item,index) in dataList" :key="index">
+				<view class="section-tlt">{{item.name}}</view>
 				<view class="list">
 					<view class="list-item">
 						<view class="item">
 							<image src="../../static/image/statics-order@2x.png"></image>
 							<text>当日订单</text>
 						</view>
-						<view class="num">0</view>
+						<view class="num">{{item.orderNum}}</view>
 					</view>
 					<view class="list-item">
 						<view class="item">
 							<image src="../../static/image/statics-money@2x.png"></image>
 							<text>当日收入</text>
 						</view>
-						<view class="num">0.0</view>
+						<view class="num">{{item.income}}</view>
 					</view>
 					<view class="list-item">
 						<view class="item">
 							<image src="../../static/image/statics-tui@2x.png"></image>
 							<text>当日退单</text>
 						</view>
-						<view class="num">0.0</view>
+						<view class="num">{{item.chargeback}}</view>
 					</view>
 					<view class="list-item">
 						<view class="item">
 							<image src="../../static/image/statics-shiji@2x.png"></image>
 							<text>当日实收</text>
 						</view>
-						<view class="num" style="color: #DD7E42;">0.0</view>
+						<view class="num" style="color: #DD7E42;">{{item.receipts}}</view>
 					</view>
 				</view>
-				<image class="logo" src="../../static/image/meituan-logo@2x.png"></image>
+				<image class="logo" :src="item.logo"></image>
 			</view>
 		</view>
-		<statistics-filter ref="statisticsFilter"></statistics-filter>
+		<statistics-filter ref="statisticsFilter" @statistics="filerCallBack"></statistics-filter>
 	</view>
 </template>
 
@@ -58,12 +58,45 @@
 		},
 		data(){
 			return{
-				
+				shopName:'',
+				timeName:'今日',
+				dataForm: {
+					shopId: 0,
+					endTime: '',
+					startTime: '',
+					timeType: 1
+				},
+				dataList:[]
 			}
+		},
+		onLoad() {
+			this.getData()
 		},
 		methods:{
 			filter_Click(){
 				this.$refs['statisticsFilter'].init()
+			},
+			filerCallBack(data){
+				this.dataForm=data
+				this.shopName=data.shopName
+				this.timeName=data.timeName
+				this.getData()
+			},
+			getData() {
+				var params = {
+					url: 'app/statistics/waimai',
+					method: 'GET',
+					data: this.dataForm,
+					callBack: (res) => {
+						uni.hideLoading()
+						this.dataList = res.data
+					}
+				}
+				uni.showLoading({
+					title: '正在加载',
+					mask: true
+				})
+				this.$http.request(params)
 			}
 		}
 	}
@@ -79,6 +112,11 @@
 		align-items: center;
 		height: 60upx;
 		background-color: white;
+		position: fixed;
+		top: 0px;
+		left: 0px;
+		right:0px;
+		z-index: 999;
 	}
 	.tab{
 		flex: 1;
@@ -96,6 +134,7 @@
 	
 	.box{
 		padding: 10px;
+		margin-top: 30px;
 	}
 	
 	.section{
