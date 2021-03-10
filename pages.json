@@ -297,6 +297,18 @@
 			"style": {
 				"navigationBarTitleText": "申请为商家"
 			}
+		},
+		{
+			"path": "pages/deliverySettings/setGuaranteedDelivery",
+			"style": {
+				"navigationBarTitleText": "自动配送"
+			}
+		},
+		{
+			"path": "pages/bill/choiceContact",
+			"style": {
+				"navigationBarTitleText": "通讯录"
+			}
 		}
 	],
 	"globalStyle": {

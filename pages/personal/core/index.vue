@@ -89,7 +89,7 @@
 				<image src="../../../static/image/xiadanshezhi@2x.png"></image>
 				<view>下单设置</view>
 			</view>
-			<view class="seting-item" @click.stop="setting(3)">
+			<view class="seting-item" @click.stop="setting(3,1)">
 				<image src="../../../static/image/xianshishezhi@2x.png"></image>
 				<view>显示设置</view>
 			</view>
@@ -97,19 +97,19 @@
 				<image src="../../../static/image/zhanghaoshezhi@2x.png"></image>
 				<view>账号设置</view>
 			</view>
-			<view class="seting-item">
+			<view class="seting-item" @click.stop="setting(3,2)">
 				<image src="../../../static/image/zidongjiedan@2x.png"></image>
 				<view>自动接单</view>
 			</view>
-			<view class="seting-item">
+			<view class="seting-item" @click.stop="setting(3,3)">
 				<image src="../../../static/image/zidongdayin@2x.png"></image>
 				<view>自动打印</view>
 			</view>
-			<view class="seting-item">
+			<view class="seting-item" @click.stop="setting(5)">
 				<image src="../../../static/image/zidongpeisong@2x.png"></image>
 				<view>自动配送</view>
 			</view>
-			<view class="seting-item">
+			<view class="seting-item" @click.stop="setting(3,4)">
 				<image src="../../../static/image/zidongtongbu@2x.png"></image>
 				<view>自动同步</view>
 			</view>
@@ -266,7 +266,6 @@
 					method:'get',
 					data:{},
 					callBack:function(res){
-						console.log(res)
 						_self.userInfo=res.data
 					}
 				}
@@ -302,12 +301,12 @@
 					}
 					else if(type==4){
 						uni.navigateTo({
-							url:'/pages/delivery/guaranteedDelivery'
+							url:'/pages/delivery/guaranteedDelivery?type=1'
 						})
 					}
 				})
 			},
-			setting(type){
+			setting(type,index){
 				this.login(()=>{
 					if(type==0){
 						let merchantId=this.userInfo.merchantId
@@ -321,11 +320,16 @@
 						})
 					}
 					else if(type==3){
-						this.$refs['showSetting'].init()
+						this.$refs['showSetting'].init(index)
 					}
 					else if(type==4){
 						uni.navigateTo({
 							url:'/pages/deliverySettings/accountManager'
+						})
+					}
+					else if(type==5){
+						uni.navigateTo({
+							url:'/pages/deliverySettings/setGuaranteedDelivery'
 						})
 					}
 				})

@@ -14,7 +14,7 @@
 						<text style="flex: 1;">{{item.name}}</text>
 						<view class="menu-list">
 							<view @click.stop="updateUserStatus(item)" :class="['menu',item.status==0?'stop':'on']">{{item.status==1?'禁用':'启用'}}</view>
-							<view class="menu reset">重置密码</view>
+							<view class="menu reset" @click.stop="resetPwd(item)">重置密码</view>
 						</view>
 					</view>
 				</view>
@@ -68,6 +68,11 @@
 					url: '/pages/deliverySettings/addAccount?id='+item.id
 				})
 			},
+			
+			refreshDataList(){
+				this.mescroll.resetUpScroll()
+			},
+			
 			getAccountList() {
 				let params = {
 					url: 'app/shop/user/list',
@@ -78,7 +83,6 @@
 						pageNum: this.currentPage
 					},
 					callBack: function(res) {
-						console.log(res)
 						let list = null;
 						_self.mescroll.endSuccess(res.data.data.length);
 						if (_self.currentPage == 1) {
@@ -115,6 +119,49 @@
 					title:'正在加载'
 				})
 				this.$http.request(params)
+			},
+			
+			resetPwdRequest(item){
+				var params={
+					url:'app/shop/user/psw',
+					method:'POST',
+					data:{
+						id:item.id,
+						password:'123456'
+					},
+					callBack:function(res){
+						uni.hideLoading()
+						if(res.code==200){
+							uni.showToast({
+								title:'重置成功'
+							})
+							item.status=item.status==1?0:1
+						}
+						else{
+							uni.showToast({
+								title:res.msg,
+								icon:'none'
+							})
+						}
+					}
+				}
+				uni.showLoading({
+					title:'正在加载'
+				})
+				this.$http.request(params)
+			},
+			
+			resetPwd(item){
+				let that=this
+				uni.showModal({
+					title:'提示',
+					content:'确定要重置密码',
+					success(res){
+						if(res.confirm){
+							that.resetPwdRequest(item)
+						}
+					}
+				})
 			},
 			
 			upCallback(page) {

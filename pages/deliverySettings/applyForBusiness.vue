@@ -26,7 +26,7 @@
 				</view>
 				<view class="item" @click.stop="showMainPop">
 					<text>主营业务</text>
-					<text v-if="selectGood?true:false" class="active-input" style="color:#13203C;">{{selectGood.name}}</text>
+					<text v-if="dataForm.categoryId?true:false" class="active-input" style="color:#13203C;">{{dataForm.categoryName}}</text>
 					<text v-else class="inactive-txt">点击选择</text>
 					<image class="item-arrow" src="../../static/image/enter@2x.png"></image>
 				</view>
@@ -93,6 +93,7 @@
 				merchantId:'',
 				dataForm:{
 					categoryId:'',
+					categoryName:'',
 					merchantName:'',
 					licenseType:'1',
 					merchantType:'1',
@@ -148,6 +149,7 @@
 			onSelectGood(data){
 				this.selectGood=data
 				this.dataForm.categoryId=data.id
+				this.dataForm.categoryName=data.name
 			},
 			choiceAddress() {
 				uni.navigateTo({

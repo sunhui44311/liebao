@@ -27,7 +27,7 @@
 					<text>物品信息</text>
 				</view>
 				<view class="cell-right">
-					<text class="active-txt" v-if="selectProduct?true:false">{{selectProduct.name}}/{{weight}}KG</text>
+					<text class="active-txt" v-if="selectProduct?true:false">{{selectProduct.name}}/{{weight/2.0}}KG</text>
 					<text class="bank" v-else>必填</text>
 					<image src="../../static/image/enter@2x.png"></image>
 				</view>
@@ -209,6 +209,7 @@
 				let requestData={
 						productId:this.selectProduct.id,
 						sendAddress:{
+							id:this.sendAddress.id,
 							provinceName:this.sendAddress.province,
 							cityName:this.sendAddress.city,
 							districtName:this.sendAddress.district,
@@ -221,6 +222,7 @@
 							address:this.sendAddress.address
 						},
 						receiptAddress:{
+							id:this.sendAddress.id,
 							provinceName:this.receiptAddress.province,
 							cityName:this.receiptAddress.city,
 							districtName:this.receiptAddress.district,
@@ -233,7 +235,7 @@
 							address:this.receiptAddress.address
 						},
 						takeTime:this.selectTime,
-						weight:this.weight
+						weight:this.weight/2.0
 					}
 				var params={
 					url:'app/order/valuation',

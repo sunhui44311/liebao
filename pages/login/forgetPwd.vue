@@ -14,7 +14,7 @@
       <view class="cell">
         <input v-model="newPassword" style="flex: 1" placeholder="请输入密码" />
       </view>
-      <view class="login" @click="submit">完成</view>
+      <view class="login" :style="{'opacity':enableLogin?1:0.5}" @click="submit">完成</view>
     </view>
   </view>
 </template>
@@ -28,7 +28,12 @@ export default {
       code: "",
       show: true,
       count: 0,
-    };
+    }
+  },
+  computed:{
+  	enableLogin(){
+  		return this.mobile&&this.code&&this.newPassword
+  	}
   },
   methods: {
     // 用于初始化一些数据

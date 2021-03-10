@@ -7,7 +7,7 @@
 					<image @click.stop="show=false" class="close" src="../../static/image/delete.png"></image>
 				</view>
 				<view class="content">
-					<web-view :src="data"></web-view>
+					<rich-text :nodes="data"></rich-text>
 					<!-- <view class="item">
 						2、优惠券不能转让，不能折现，不能退换；
 					</view>

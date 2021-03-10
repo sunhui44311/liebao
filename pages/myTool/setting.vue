@@ -3,14 +3,14 @@
 		<view class="section">
 			<view class="section-nav">
 				<text class="section-tlt">新消息通知</text>
-				<u-switch></u-switch>
+				<u-switch active-color="#E95008" inactive-color="#F8F8F8"></u-switch>
 			</view>
 			<view class="tip">关闭新消息通知，将无法收到订单状态通知</view>
 		</view>
 		<view class="section">
 			<view class="section-nav">
 				<text class="section-tlt">语音播报</text>
-				<u-switch></u-switch>
+				<u-switch active-color="#E95008" inactive-color="#F8F8F8"></u-switch>
 			</view>
 			<view class="tip">关闭新消息通知，将无法收到订单状态通知</view>
 		</view>

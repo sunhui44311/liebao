@@ -3,6 +3,7 @@
 	export default {
 		globalData:{
 			receiptAddress:{
+				id:'',
 				city:'',
 				province:'',
 				address:'',
@@ -14,6 +15,7 @@
 				district:''
 			},
 			sendAddress:{
+				id:'',
 				city:'',
 				province:'',
 				address:'',
