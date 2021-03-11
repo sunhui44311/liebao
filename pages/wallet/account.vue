@@ -93,11 +93,8 @@
 				})
 			},
 			tran_Click(){
-				// uni.navigateTo({
-				// 	url:'/pages/wallet/transactionDetail'
-				// })
 				uni.navigateTo({
-					url:'/pages/order/orderSearch'
+					url:'/pages/wallet/transactionDetail'
 				})
 			}
 		}
