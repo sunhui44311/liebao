@@ -342,15 +342,11 @@ module.exports = {
   },
   "u-padding-0": {
     "paddingTop": "0rpx",
-    "paddingRight": "0rpx",
-    "paddingBottom": "0rpx",
-    "paddingLeft": "0rpx"
+    "paddingBottom": "0rpx"
   },
   "u-p-0": {
     "paddingTop": "0rpx",
-    "paddingRight": "0rpx",
-    "paddingBottom": "0rpx",
-    "paddingLeft": "0rpx"
+    "paddingBottom": "0rpx"
   },
   "u-m-l-0": {
     "marginLeft": "0rpx"
@@ -414,15 +410,11 @@ module.exports = {
   },
   "u-padding-2": {
     "paddingTop": "2rpx",
-    "paddingRight": "2rpx",
-    "paddingBottom": "2rpx",
-    "paddingLeft": "2rpx"
+    "paddingBottom": "2rpx"
   },
   "u-p-2": {
     "paddingTop": "2rpx",
-    "paddingRight": "2rpx",
-    "paddingBottom": "2rpx",
-    "paddingLeft": "2rpx"
+    "paddingBottom": "2rpx"
   },
   "u-m-l-2": {
     "marginLeft": "2rpx"
@@ -486,15 +478,11 @@ module.exports = {
   },
   "u-padding-4": {
     "paddingTop": "4rpx",
-    "paddingRight": "4rpx",
-    "paddingBottom": "4rpx",
-    "paddingLeft": "4rpx"
+    "paddingBottom": "4rpx"
   },
   "u-p-4": {
     "paddingTop": "4rpx",
-    "paddingRight": "4rpx",
-    "paddingBottom": "4rpx",
-    "paddingLeft": "4rpx"
+    "paddingBottom": "4rpx"
   },
   "u-m-l-4": {
     "marginLeft": "4rpx"
@@ -558,15 +546,11 @@ module.exports = {
   },
   "u-padding-5": {
     "paddingTop": "5rpx",
-    "paddingRight": "5rpx",
-    "paddingBottom": "5rpx",
-    "paddingLeft": "5rpx"
+    "paddingBottom": "5rpx"
   },
   "u-p-5": {
     "paddingTop": "5rpx",
-    "paddingRight": "5rpx",
-    "paddingBottom": "5rpx",
-    "paddingLeft": "5rpx"
+    "paddingBottom": "5rpx"
   },
   "u-m-l-5": {
     "marginLeft": "5rpx"
@@ -630,15 +614,11 @@ module.exports = {
   },
   "u-padding-6": {
     "paddingTop": "6rpx",
-    "paddingRight": "6rpx",
-    "paddingBottom": "6rpx",
-    "paddingLeft": "6rpx"
+    "paddingBottom": "6rpx"
   },
   "u-p-6": {
     "paddingTop": "6rpx",
-    "paddingRight": "6rpx",
-    "paddingBottom": "6rpx",
-    "paddingLeft": "6rpx"
+    "paddingBottom": "6rpx"
   },
   "u-m-l-6": {
     "marginLeft": "6rpx"
@@ -702,15 +682,11 @@ module.exports = {
   },
   "u-padding-8": {
     "paddingTop": "8rpx",
-    "paddingRight": "8rpx",
-    "paddingBottom": "8rpx",
-    "paddingLeft": "8rpx"
+    "paddingBottom": "8rpx"
   },
   "u-p-8": {
     "paddingTop": "8rpx",
-    "paddingRight": "8rpx",
-    "paddingBottom": "8rpx",
-    "paddingLeft": "8rpx"
+    "paddingBottom": "8rpx"
   },
   "u-m-l-8": {
     "marginLeft": "8rpx"
@@ -774,15 +750,11 @@ module.exports = {
   },
   "u-padding-10": {
     "paddingTop": "10rpx",
-    "paddingRight": "10rpx",
-    "paddingBottom": "10rpx",
-    "paddingLeft": "10rpx"
+    "paddingBottom": "10rpx"
   },
   "u-p-10": {
     "paddingTop": "10rpx",
-    "paddingRight": "10rpx",
-    "paddingBottom": "10rpx",
-    "paddingLeft": "10rpx"
+    "paddingBottom": "10rpx"
   },
   "u-m-l-10": {
     "marginLeft": "10rpx"
@@ -846,15 +818,11 @@ module.exports = {
   },
   "u-padding-12": {
     "paddingTop": "12rpx",
-    "paddingRight": "12rpx",
-    "paddingBottom": "12rpx",
-    "paddingLeft": "12rpx"
+    "paddingBottom": "12rpx"
   },
   "u-p-12": {
     "paddingTop": "12rpx",
-    "paddingRight": "12rpx",
-    "paddingBottom": "12rpx",
-    "paddingLeft": "12rpx"
+    "paddingBottom": "12rpx"
   },
   "u-m-l-12": {
     "marginLeft": "12rpx"
@@ -918,15 +886,11 @@ module.exports = {
   },
   "u-padding-14": {
     "paddingTop": "14rpx",
-    "paddingRight": "14rpx",
-    "paddingBottom": "14rpx",
-    "paddingLeft": "14rpx"
+    "paddingBottom": "14rpx"
   },
   "u-p-14": {
     "paddingTop": "14rpx",
-    "paddingRight": "14rpx",
-    "paddingBottom": "14rpx",
-    "paddingLeft": "14rpx"
+    "paddingBottom": "14rpx"
   },
   "u-m-l-14": {
     "marginLeft": "14rpx"
@@ -990,15 +954,11 @@ module.exports = {
   },
   "u-padding-15": {
     "paddingTop": "15rpx",
-    "paddingRight": "15rpx",
-    "paddingBottom": "15rpx",
-    "paddingLeft": "15rpx"
+    "paddingBottom": "15rpx"
   },
   "u-p-15": {
     "paddingTop": "15rpx",
-    "paddingRight": "15rpx",
-    "paddingBottom": "15rpx",
-    "paddingLeft": "15rpx"
+    "paddingBottom": "15rpx"
   },
   "u-m-l-15": {
     "marginLeft": "15rpx"
@@ -1062,15 +1022,11 @@ module.exports = {
   },
   "u-padding-16": {
     "paddingTop": "16rpx",
-    "paddingRight": "16rpx",
-    "paddingBottom": "16rpx",
-    "paddingLeft": "16rpx"
+    "paddingBottom": "16rpx"
   },
   "u-p-16": {
     "paddingTop": "16rpx",
-    "paddingRight": "16rpx",
-    "paddingBottom": "16rpx",
-    "paddingLeft": "16rpx"
+    "paddingBottom": "16rpx"
   },
   "u-m-l-16": {
     "marginLeft": "16rpx"
@@ -1134,15 +1090,11 @@ module.exports = {
   },
   "u-padding-18": {
     "paddingTop": "18rpx",
-    "paddingRight": "18rpx",
-    "paddingBottom": "18rpx",
-    "paddingLeft": "18rpx"
+    "paddingBottom": "18rpx"
   },
   "u-p-18": {
     "paddingTop": "18rpx",
-    "paddingRight": "18rpx",
-    "paddingBottom": "18rpx",
-    "paddingLeft": "18rpx"
+    "paddingBottom": "18rpx"
   },
   "u-m-l-18": {
     "marginLeft": "18rpx"
@@ -1206,15 +1158,11 @@ module.exports = {
   },
   "u-padding-20": {
     "paddingTop": "20rpx",
-    "paddingRight": "20rpx",
-    "paddingBottom": "20rpx",
-    "paddingLeft": "20rpx"
+    "paddingBottom": "20rpx"
   },
   "u-p-20": {
     "paddingTop": "20rpx",
-    "paddingRight": "20rpx",
-    "paddingBottom": "20rpx",
-    "paddingLeft": "20rpx"
+    "paddingBottom": "20rpx"
   },
   "u-m-l-20": {
     "marginLeft": "20rpx"
@@ -1278,15 +1226,11 @@ module.exports = {
   },
   "u-padding-22": {
     "paddingTop": "22rpx",
-    "paddingRight": "22rpx",
-    "paddingBottom": "22rpx",
-    "paddingLeft": "22rpx"
+    "paddingBottom": "22rpx"
   },
   "u-p-22": {
     "paddingTop": "22rpx",
-    "paddingRight": "22rpx",
-    "paddingBottom": "22rpx",
-    "paddingLeft": "22rpx"
+    "paddingBottom": "22rpx"
   },
   "u-m-l-22": {
     "marginLeft": "22rpx"
@@ -1350,15 +1294,11 @@ module.exports = {
   },
   "u-padding-24": {
     "paddingTop": "24rpx",
-    "paddingRight": "24rpx",
-    "paddingBottom": "24rpx",
-    "paddingLeft": "24rpx"
+    "paddingBottom": "24rpx"
   },
   "u-p-24": {
     "paddingTop": "24rpx",
-    "paddingRight": "24rpx",
-    "paddingBottom": "24rpx",
-    "paddingLeft": "24rpx"
+    "paddingBottom": "24rpx"
   },
   "u-m-l-24": {
     "marginLeft": "24rpx"
@@ -1422,15 +1362,11 @@ module.exports = {
   },
   "u-padding-25": {
     "paddingTop": "25rpx",
-    "paddingRight": "25rpx",
-    "paddingBottom": "25rpx",
-    "paddingLeft": "25rpx"
+    "paddingBottom": "25rpx"
   },
   "u-p-25": {
     "paddingTop": "25rpx",
-    "paddingRight": "25rpx",
-    "paddingBottom": "25rpx",
-    "paddingLeft": "25rpx"
+    "paddingBottom": "25rpx"
   },
   "u-m-l-25": {
     "marginLeft": "25rpx"
@@ -1494,15 +1430,11 @@ module.exports = {
   },
   "u-padding-26": {
     "paddingTop": "26rpx",
-    "paddingRight": "26rpx",
-    "paddingBottom": "26rpx",
-    "paddingLeft": "26rpx"
+    "paddingBottom": "26rpx"
   },
   "u-p-26": {
     "paddingTop": "26rpx",
-    "paddingRight": "26rpx",
-    "paddingBottom": "26rpx",
-    "paddingLeft": "26rpx"
+    "paddingBottom": "26rpx"
   },
   "u-m-l-26": {
     "marginLeft": "26rpx"
@@ -1566,15 +1498,11 @@ module.exports = {
   },
   "u-padding-28": {
     "paddingTop": "28rpx",
-    "paddingRight": "28rpx",
-    "paddingBottom": "28rpx",
-    "paddingLeft": "28rpx"
+    "paddingBottom": "28rpx"
   },
   "u-p-28": {
     "paddingTop": "28rpx",
-    "paddingRight": "28rpx",
-    "paddingBottom": "28rpx",
-    "paddingLeft": "28rpx"
+    "paddingBottom": "28rpx"
   },
   "u-m-l-28": {
     "marginLeft": "28rpx"
@@ -1638,15 +1566,11 @@ module.exports = {
   },
   "u-padding-30": {
     "paddingTop": "30rpx",
-    "paddingRight": "30rpx",
-    "paddingBottom": "30rpx",
-    "paddingLeft": "30rpx"
+    "paddingBottom": "30rpx"
   },
   "u-p-30": {
     "paddingTop": "30rpx",
-    "paddingRight": "30rpx",
-    "paddingBottom": "30rpx",
-    "paddingLeft": "30rpx"
+    "paddingBottom": "30rpx"
   },
   "u-m-l-30": {
     "marginLeft": "30rpx"
@@ -1710,15 +1634,11 @@ module.exports = {
   },
   "u-padding-32": {
     "paddingTop": "32rpx",
-    "paddingRight": "32rpx",
-    "paddingBottom": "32rpx",
-    "paddingLeft": "32rpx"
+    "paddingBottom": "32rpx"
   },
   "u-p-32": {
     "paddingTop": "32rpx",
-    "paddingRight": "32rpx",
-    "paddingBottom": "32rpx",
-    "paddingLeft": "32rpx"
+    "paddingBottom": "32rpx"
   },
   "u-m-l-32": {
     "marginLeft": "32rpx"
@@ -1782,15 +1702,11 @@ module.exports = {
   },
   "u-padding-34": {
     "paddingTop": "34rpx",
-    "paddingRight": "34rpx",
-    "paddingBottom": "34rpx",
-    "paddingLeft": "34rpx"
+    "paddingBottom": "34rpx"
   },
   "u-p-34": {
     "paddingTop": "34rpx",
-    "paddingRight": "34rpx",
-    "paddingBottom": "34rpx",
-    "paddingLeft": "34rpx"
+    "paddingBottom": "34rpx"
   },
   "u-m-l-34": {
     "marginLeft": "34rpx"
@@ -1854,15 +1770,11 @@ module.exports = {
   },
   "u-padding-35": {
     "paddingTop": "35rpx",
-    "paddingRight": "35rpx",
-    "paddingBottom": "35rpx",
-    "paddingLeft": "35rpx"
+    "paddingBottom": "35rpx"
   },
   "u-p-35": {
     "paddingTop": "35rpx",
-    "paddingRight": "35rpx",
-    "paddingBottom": "35rpx",
-    "paddingLeft": "35rpx"
+    "paddingBottom": "35rpx"
   },
   "u-m-l-35": {
     "marginLeft": "35rpx"
@@ -1926,15 +1838,11 @@ module.exports = {
   },
   "u-padding-36": {
     "paddingTop": "36rpx",
-    "paddingRight": "36rpx",
-    "paddingBottom": "36rpx",
-    "paddingLeft": "36rpx"
+    "paddingBottom": "36rpx"
   },
   "u-p-36": {
     "paddingTop": "36rpx",
-    "paddingRight": "36rpx",
-    "paddingBottom": "36rpx",
-    "paddingLeft": "36rpx"
+    "paddingBottom": "36rpx"
   },
   "u-m-l-36": {
     "marginLeft": "36rpx"
@@ -1998,15 +1906,11 @@ module.exports = {
   },
   "u-padding-38": {
     "paddingTop": "38rpx",
-    "paddingRight": "38rpx",
-    "paddingBottom": "38rpx",
-    "paddingLeft": "38rpx"
+    "paddingBottom": "38rpx"
   },
   "u-p-38": {
     "paddingTop": "38rpx",
-    "paddingRight": "38rpx",
-    "paddingBottom": "38rpx",
-    "paddingLeft": "38rpx"
+    "paddingBottom": "38rpx"
   },
   "u-m-l-38": {
     "marginLeft": "38rpx"
@@ -2070,15 +1974,11 @@ module.exports = {
   },
   "u-padding-40": {
     "paddingTop": "40rpx",
-    "paddingRight": "40rpx",
-    "paddingBottom": "40rpx",
-    "paddingLeft": "40rpx"
+    "paddingBottom": "40rpx"
   },
   "u-p-40": {
     "paddingTop": "40rpx",
-    "paddingRight": "40rpx",
-    "paddingBottom": "40rpx",
-    "paddingLeft": "40rpx"
+    "paddingBottom": "40rpx"
   },
   "u-m-l-40": {
     "marginLeft": "40rpx"
@@ -2142,15 +2042,11 @@ module.exports = {
   },
   "u-padding-42": {
     "paddingTop": "42rpx",
-    "paddingRight": "42rpx",
-    "paddingBottom": "42rpx",
-    "paddingLeft": "42rpx"
+    "paddingBottom": "42rpx"
   },
   "u-p-42": {
     "paddingTop": "42rpx",
-    "paddingRight": "42rpx",
-    "paddingBottom": "42rpx",
-    "paddingLeft": "42rpx"
+    "paddingBottom": "42rpx"
   },
   "u-m-l-42": {
     "marginLeft": "42rpx"
@@ -2214,15 +2110,11 @@ module.exports = {
   },
   "u-padding-44": {
     "paddingTop": "44rpx",
-    "paddingRight": "44rpx",
-    "paddingBottom": "44rpx",
-    "paddingLeft": "44rpx"
+    "paddingBottom": "44rpx"
   },
   "u-p-44": {
     "paddingTop": "44rpx",
-    "paddingRight": "44rpx",
-    "paddingBottom": "44rpx",
-    "paddingLeft": "44rpx"
+    "paddingBottom": "44rpx"
   },
   "u-m-l-44": {
     "marginLeft": "44rpx"
@@ -2286,15 +2178,11 @@ module.exports = {
   },
   "u-padding-45": {
     "paddingTop": "45rpx",
-    "paddingRight": "45rpx",
-    "paddingBottom": "45rpx",
-    "paddingLeft": "45rpx"
+    "paddingBottom": "45rpx"
   },
   "u-p-45": {
     "paddingTop": "45rpx",
-    "paddingRight": "45rpx",
-    "paddingBottom": "45rpx",
-    "paddingLeft": "45rpx"
+    "paddingBottom": "45rpx"
   },
   "u-m-l-45": {
     "marginLeft": "45rpx"
@@ -2358,15 +2246,11 @@ module.exports = {
   },
   "u-padding-46": {
     "paddingTop": "46rpx",
-    "paddingRight": "46rpx",
-    "paddingBottom": "46rpx",
-    "paddingLeft": "46rpx"
+    "paddingBottom": "46rpx"
   },
   "u-p-46": {
     "paddingTop": "46rpx",
-    "paddingRight": "46rpx",
-    "paddingBottom": "46rpx",
-    "paddingLeft": "46rpx"
+    "paddingBottom": "46rpx"
   },
   "u-m-l-46": {
     "marginLeft": "46rpx"
@@ -2430,15 +2314,11 @@ module.exports = {
   },
   "u-padding-48": {
     "paddingTop": "48rpx",
-    "paddingRight": "48rpx",
-    "paddingBottom": "48rpx",
-    "paddingLeft": "48rpx"
+    "paddingBottom": "48rpx"
   },
   "u-p-48": {
     "paddingTop": "48rpx",
-    "paddingRight": "48rpx",
-    "paddingBottom": "48rpx",
-    "paddingLeft": "48rpx"
+    "paddingBottom": "48rpx"
   },
   "u-m-l-48": {
     "marginLeft": "48rpx"
@@ -2502,15 +2382,11 @@ module.exports = {
   },
   "u-padding-50": {
     "paddingTop": "50rpx",
-    "paddingRight": "50rpx",
-    "paddingBottom": "50rpx",
-    "paddingLeft": "50rpx"
+    "paddingBottom": "50rpx"
   },
   "u-p-50": {
     "paddingTop": "50rpx",
-    "paddingRight": "50rpx",
-    "paddingBottom": "50rpx",
-    "paddingLeft": "50rpx"
+    "paddingBottom": "50rpx"
   },
   "u-m-l-50": {
     "marginLeft": "50rpx"
@@ -2574,15 +2450,11 @@ module.exports = {
   },
   "u-padding-52": {
     "paddingTop": "52rpx",
-    "paddingRight": "52rpx",
-    "paddingBottom": "52rpx",
-    "paddingLeft": "52rpx"
+    "paddingBottom": "52rpx"
   },
   "u-p-52": {
     "paddingTop": "52rpx",
-    "paddingRight": "52rpx",
-    "paddingBottom": "52rpx",
-    "paddingLeft": "52rpx"
+    "paddingBottom": "52rpx"
   },
   "u-m-l-52": {
     "marginLeft": "52rpx"
@@ -2646,15 +2518,11 @@ module.exports = {
   },
   "u-padding-54": {
     "paddingTop": "54rpx",
-    "paddingRight": "54rpx",
-    "paddingBottom": "54rpx",
-    "paddingLeft": "54rpx"
+    "paddingBottom": "54rpx"
   },
   "u-p-54": {
     "paddingTop": "54rpx",
-    "paddingRight": "54rpx",
-    "paddingBottom": "54rpx",
-    "paddingLeft": "54rpx"
+    "paddingBottom": "54rpx"
   },
   "u-m-l-54": {
     "marginLeft": "54rpx"
@@ -2718,15 +2586,11 @@ module.exports = {
   },
   "u-padding-55": {
     "paddingTop": "55rpx",
-    "paddingRight": "55rpx",
-    "paddingBottom": "55rpx",
-    "paddingLeft": "55rpx"
+    "paddingBottom": "55rpx"
   },
   "u-p-55": {
     "paddingTop": "55rpx",
-    "paddingRight": "55rpx",
-    "paddingBottom": "55rpx",
-    "paddingLeft": "55rpx"
+    "paddingBottom": "55rpx"
   },
   "u-m-l-55": {
     "marginLeft": "55rpx"
@@ -2790,15 +2654,11 @@ module.exports = {
   },
   "u-padding-56": {
     "paddingTop": "56rpx",
-    "paddingRight": "56rpx",
-    "paddingBottom": "56rpx",
-    "paddingLeft": "56rpx"
+    "paddingBottom": "56rpx"
   },
   "u-p-56": {
     "paddingTop": "56rpx",
-    "paddingRight": "56rpx",
-    "paddingBottom": "56rpx",
-    "paddingLeft": "56rpx"
+    "paddingBottom": "56rpx"
   },
   "u-m-l-56": {
     "marginLeft": "56rpx"
@@ -2862,15 +2722,11 @@ module.exports = {
   },
   "u-padding-58": {
     "paddingTop": "58rpx",
-    "paddingRight": "58rpx",
-    "paddingBottom": "58rpx",
-    "paddingLeft": "58rpx"
+    "paddingBottom": "58rpx"
   },
   "u-p-58": {
     "paddingTop": "58rpx",
-    "paddingRight": "58rpx",
-    "paddingBottom": "58rpx",
-    "paddingLeft": "58rpx"
+    "paddingBottom": "58rpx"
   },
   "u-m-l-58": {
     "marginLeft": "58rpx"
@@ -2934,15 +2790,11 @@ module.exports = {
   },
   "u-padding-60": {
     "paddingTop": "60rpx",
-    "paddingRight": "60rpx",
-    "paddingBottom": "60rpx",
-    "paddingLeft": "60rpx"
+    "paddingBottom": "60rpx"
   },
   "u-p-60": {
     "paddingTop": "60rpx",
-    "paddingRight": "60rpx",
-    "paddingBottom": "60rpx",
-    "paddingLeft": "60rpx"
+    "paddingBottom": "60rpx"
   },
   "u-m-l-60": {
     "marginLeft": "60rpx"
@@ -3006,15 +2858,11 @@ module.exports = {
   },
   "u-padding-62": {
     "paddingTop": "62rpx",
-    "paddingRight": "62rpx",
-    "paddingBottom": "62rpx",
-    "paddingLeft": "62rpx"
+    "paddingBottom": "62rpx"
   },
   "u-p-62": {
     "paddingTop": "62rpx",
-    "paddingRight": "62rpx",
-    "paddingBottom": "62rpx",
-    "paddingLeft": "62rpx"
+    "paddingBottom": "62rpx"
   },
   "u-m-l-62": {
     "marginLeft": "62rpx"
@@ -3078,15 +2926,11 @@ module.exports = {
   },
   "u-padding-64": {
     "paddingTop": "64rpx",
-    "paddingRight": "64rpx",
-    "paddingBottom": "64rpx",
-    "paddingLeft": "64rpx"
+    "paddingBottom": "64rpx"
   },
   "u-p-64": {
     "paddingTop": "64rpx",
-    "paddingRight": "64rpx",
-    "paddingBottom": "64rpx",
-    "paddingLeft": "64rpx"
+    "paddingBottom": "64rpx"
   },
   "u-m-l-64": {
     "marginLeft": "64rpx"
@@ -3150,15 +2994,11 @@ module.exports = {
   },
   "u-padding-65": {
     "paddingTop": "65rpx",
-    "paddingRight": "65rpx",
-    "paddingBottom": "65rpx",
-    "paddingLeft": "65rpx"
+    "paddingBottom": "65rpx"
   },
   "u-p-65": {
     "paddingTop": "65rpx",
-    "paddingRight": "65rpx",
-    "paddingBottom": "65rpx",
-    "paddingLeft": "65rpx"
+    "paddingBottom": "65rpx"
   },
   "u-m-l-65": {
     "marginLeft": "65rpx"
@@ -3222,15 +3062,11 @@ module.exports = {
   },
   "u-padding-66": {
     "paddingTop": "66rpx",
-    "paddingRight": "66rpx",
-    "paddingBottom": "66rpx",
-    "paddingLeft": "66rpx"
+    "paddingBottom": "66rpx"
   },
   "u-p-66": {
     "paddingTop": "66rpx",
-    "paddingRight": "66rpx",
-    "paddingBottom": "66rpx",
-    "paddingLeft": "66rpx"
+    "paddingBottom": "66rpx"
   },
   "u-m-l-66": {
     "marginLeft": "66rpx"
@@ -3294,15 +3130,11 @@ module.exports = {
   },
   "u-padding-68": {
     "paddingTop": "68rpx",
-    "paddingRight": "68rpx",
-    "paddingBottom": "68rpx",
-    "paddingLeft": "68rpx"
+    "paddingBottom": "68rpx"
   },
   "u-p-68": {
     "paddingTop": "68rpx",
-    "paddingRight": "68rpx",
-    "paddingBottom": "68rpx",
-    "paddingLeft": "68rpx"
+    "paddingBottom": "68rpx"
   },
   "u-m-l-68": {
     "marginLeft": "68rpx"
@@ -3366,15 +3198,11 @@ module.exports = {
   },
   "u-padding-70": {
     "paddingTop": "70rpx",
-    "paddingRight": "70rpx",
-    "paddingBottom": "70rpx",
-    "paddingLeft": "70rpx"
+    "paddingBottom": "70rpx"
   },
   "u-p-70": {
     "paddingTop": "70rpx",
-    "paddingRight": "70rpx",
-    "paddingBottom": "70rpx",
-    "paddingLeft": "70rpx"
+    "paddingBottom": "70rpx"
   },
   "u-m-l-70": {
     "marginLeft": "70rpx"
@@ -3438,15 +3266,11 @@ module.exports = {
   },
   "u-padding-72": {
     "paddingTop": "72rpx",
-    "paddingRight": "72rpx",
-    "paddingBottom": "72rpx",
-    "paddingLeft": "72rpx"
+    "paddingBottom": "72rpx"
   },
   "u-p-72": {
     "paddingTop": "72rpx",
-    "paddingRight": "72rpx",
-    "paddingBottom": "72rpx",
-    "paddingLeft": "72rpx"
+    "paddingBottom": "72rpx"
   },
   "u-m-l-72": {
     "marginLeft": "72rpx"
@@ -3510,15 +3334,11 @@ module.exports = {
   },
   "u-padding-74": {
     "paddingTop": "74rpx",
-    "paddingRight": "74rpx",
-    "paddingBottom": "74rpx",
-    "paddingLeft": "74rpx"
+    "paddingBottom": "74rpx"
   },
   "u-p-74": {
     "paddingTop": "74rpx",
-    "paddingRight": "74rpx",
-    "paddingBottom": "74rpx",
-    "paddingLeft": "74rpx"
+    "paddingBottom": "74rpx"
   },
   "u-m-l-74": {
     "marginLeft": "74rpx"
@@ -3582,15 +3402,11 @@ module.exports = {
   },
   "u-padding-75": {
     "paddingTop": "75rpx",
-    "paddingRight": "75rpx",
-    "paddingBottom": "75rpx",
-    "paddingLeft": "75rpx"
+    "paddingBottom": "75rpx"
   },
   "u-p-75": {
     "paddingTop": "75rpx",
-    "paddingRight": "75rpx",
-    "paddingBottom": "75rpx",
-    "paddingLeft": "75rpx"
+    "paddingBottom": "75rpx"
   },
   "u-m-l-75": {
     "marginLeft": "75rpx"
@@ -3654,15 +3470,11 @@ module.exports = {
   },
   "u-padding-76": {
     "paddingTop": "76rpx",
-    "paddingRight": "76rpx",
-    "paddingBottom": "76rpx",
-    "paddingLeft": "76rpx"
+    "paddingBottom": "76rpx"
   },
   "u-p-76": {
     "paddingTop": "76rpx",
-    "paddingRight": "76rpx",
-    "paddingBottom": "76rpx",
-    "paddingLeft": "76rpx"
+    "paddingBottom": "76rpx"
   },
   "u-m-l-76": {
     "marginLeft": "76rpx"
@@ -3726,15 +3538,11 @@ module.exports = {
   },
   "u-padding-78": {
     "paddingTop": "78rpx",
-    "paddingRight": "78rpx",
-    "paddingBottom": "78rpx",
-    "paddingLeft": "78rpx"
+    "paddingBottom": "78rpx"
   },
   "u-p-78": {
     "paddingTop": "78rpx",
-    "paddingRight": "78rpx",
-    "paddingBottom": "78rpx",
-    "paddingLeft": "78rpx"
+    "paddingBottom": "78rpx"
   },
   "u-m-l-78": {
     "marginLeft": "78rpx"
@@ -3798,15 +3606,11 @@ module.exports = {
   },
   "u-padding-80": {
     "paddingTop": "80rpx",
-    "paddingRight": "80rpx",
-    "paddingBottom": "80rpx",
-    "paddingLeft": "80rpx"
+    "paddingBottom": "80rpx"
   },
   "u-p-80": {
     "paddingTop": "80rpx",
-    "paddingRight": "80rpx",
-    "paddingBottom": "80rpx",
-    "paddingLeft": "80rpx"
+    "paddingBottom": "80rpx"
   },
   "u-m-l-80": {
     "marginLeft": "80rpx"
@@ -3979,7 +3783,8 @@ module.exports = {
   },
   "nvue": {
     "fontSize": "24rpx"
-  }
+  },
+  "@VERSION": 2
 }
 
 /***/ }),
@@ -4227,7 +4032,9 @@ var render = function() {
                                     staticStyle: {
                                       color: "#0d1c40",
                                       fontSize: "16px"
-                                    }
+                                    },
+                                    appendAsTree: true,
+                                    attrs: { append: "tree" }
                                   },
                                   [
                                     _vm._v(
@@ -4247,7 +4054,9 @@ var render = function() {
                                     staticStyle: {
                                       color: "#0d1c40",
                                       fontSize: "16px"
-                                    }
+                                    },
+                                    appendAsTree: true,
+                                    attrs: { append: "tree" }
                                   },
                                   [_vm._v("待支付")]
                                 )
@@ -4260,12 +4069,24 @@ var render = function() {
                         2
                       ),
                       _c("view", { staticClass: ["time"] }, [
-                        _c("u-text", { staticClass: ["time-tlt"] }, [
-                          _vm._v("剩余支付时间")
-                        ]),
-                        _c("u-text", { staticClass: ["time-content"] }, [
-                          _vm._v("49:56")
-                        ])
+                        _c(
+                          "u-text",
+                          {
+                            staticClass: ["time-tlt"],
+                            appendAsTree: true,
+                            attrs: { append: "tree" }
+                          },
+                          [_vm._v("剩余支付时间")]
+                        ),
+                        _c(
+                          "u-text",
+                          {
+                            staticClass: ["time-content"],
+                            appendAsTree: true,
+                            attrs: { append: "tree" }
+                          },
+                          [_vm._v("49:56")]
+                        )
                       ]),
                       _c(
                         "view",
@@ -4279,6 +4100,8 @@ var render = function() {
                                   "u-text",
                                   {
                                     staticClass: ["btn"],
+                                    appendAsTree: true,
+                                    attrs: { append: "tree" },
                                     on: {
                                       click: function($event) {
                                         _vm.menu(1)
@@ -4289,14 +4112,26 @@ var render = function() {
                                 )
                               ]
                             : _vm._e(),
-                          _c("u-text", { staticClass: ["btn"] }, [
-                            _vm._v("再来一单")
-                          ]),
+                          _c(
+                            "u-text",
+                            {
+                              staticClass: ["btn"],
+                              appendAsTree: true,
+                              attrs: { append: "tree" }
+                            },
+                            [_vm._v("再来一单")]
+                          ),
                           _vm.orderinfo.status != 1
                             ? [
-                                _c("u-text", { staticClass: ["btn"] }, [
-                                  _vm._v("立即支付")
-                                ])
+                                _c(
+                                  "u-text",
+                                  {
+                                    staticClass: ["btn"],
+                                    appendAsTree: true,
+                                    attrs: { append: "tree" }
+                                  },
+                                  [_vm._v("立即支付")]
+                                )
                               ]
                             : _vm._e()
                         ],
@@ -4316,9 +4151,15 @@ var render = function() {
                                   src: "../../static/image/visit-bg@2x.png"
                                 }
                               }),
-                              _c("u-text", { staticClass: ["rider-name"] }, [
-                                _vm._v("何师傅")
-                              ])
+                              _c(
+                                "u-text",
+                                {
+                                  staticClass: ["rider-name"],
+                                  appendAsTree: true,
+                                  attrs: { append: "tree" }
+                                },
+                                [_vm._v("何师傅")]
+                              )
                             ],
                             1
                           ),
@@ -4337,11 +4178,19 @@ var render = function() {
                         staticStyle: { marginTop: "10px" }
                       },
                       [
-                        _c("u-text", { staticClass: ["tip"] }, [
-                          _vm._v(
-                            "此订单由闪送平台配送，如有订单相关问题可致电下方客服"
-                          )
-                        ]),
+                        _c(
+                          "u-text",
+                          {
+                            staticClass: ["tip"],
+                            appendAsTree: true,
+                            attrs: { append: "tree" }
+                          },
+                          [
+                            _vm._v(
+                              "此订单由闪送平台配送，如有订单相关问题可致电下方客服"
+                            )
+                          ]
+                        ),
                         _c(
                           "view",
                           { staticClass: ["platform"] },
@@ -4354,21 +4203,35 @@ var render = function() {
                               }
                             }),
                             _c("view", { staticClass: ["platform-info"] }, [
-                              _c("u-text", { staticClass: ["platform-name"] }, [
-                                _vm._v("美团001")
-                              ]),
+                              _c(
+                                "u-text",
+                                {
+                                  staticClass: ["platform-name"],
+                                  appendAsTree: true,
+                                  attrs: { append: "tree" }
+                                },
+                                [_vm._v("美团001")]
+                              ),
                               _c(
                                 "view",
                                 { staticClass: ["platform-tel-box"] },
                                 [
                                   _c(
                                     "u-text",
-                                    { staticClass: ["platform-tel-tlt"] },
+                                    {
+                                      staticClass: ["platform-tel-tlt"],
+                                      appendAsTree: true,
+                                      attrs: { append: "tree" }
+                                    },
                                     [_vm._v("客服电话")]
                                   ),
                                   _c(
                                     "u-text",
-                                    { staticClass: ["platform-tel"] },
+                                    {
+                                      staticClass: ["platform-tel"],
+                                      appendAsTree: true,
+                                      attrs: { append: "tree" }
+                                    },
                                     [_vm._v("400-612-6688")]
                                   )
                                 ]
@@ -4387,20 +4250,44 @@ var render = function() {
                       },
                       [
                         _c("view", { staticClass: ["start"] }, [
-                          _c("u-text", { staticClass: ["start-tlt"] }, [
-                            _vm._v("发")
-                          ]),
-                          _c("u-text", { staticClass: ["start-address"] }, [
-                            _vm._v(_vm._s(_vm.orderinfo.sendAddress))
-                          ])
+                          _c(
+                            "u-text",
+                            {
+                              staticClass: ["start-tlt"],
+                              appendAsTree: true,
+                              attrs: { append: "tree" }
+                            },
+                            [_vm._v("发")]
+                          ),
+                          _c(
+                            "u-text",
+                            {
+                              staticClass: ["start-address"],
+                              appendAsTree: true,
+                              attrs: { append: "tree" }
+                            },
+                            [_vm._v(_vm._s(_vm.orderinfo.sendAddress))]
+                          )
                         ]),
                         _c("view", { staticClass: ["start", "contact"] }, [
-                          _c("u-text", { staticClass: ["name"] }, [
-                            _vm._v(_vm._s(_vm.orderinfo.sendContactName))
-                          ]),
-                          _c("u-text", { staticClass: ["tel"] }, [
-                            _vm._v(_vm._s(_vm.orderinfo.sendPhone))
-                          ])
+                          _c(
+                            "u-text",
+                            {
+                              staticClass: ["name"],
+                              appendAsTree: true,
+                              attrs: { append: "tree" }
+                            },
+                            [_vm._v(_vm._s(_vm.orderinfo.sendContactName))]
+                          ),
+                          _c(
+                            "u-text",
+                            {
+                              staticClass: ["tel"],
+                              appendAsTree: true,
+                              attrs: { append: "tree" }
+                            },
+                            [_vm._v(_vm._s(_vm.orderinfo.sendPhone))]
+                          )
                         ]),
                         _c(
                           "view",
@@ -4413,22 +4300,42 @@ var render = function() {
                               "u-text",
                               {
                                 staticClass: ["start-tlt"],
-                                staticStyle: { backgroundColor: "#1087fe" }
+                                staticStyle: { backgroundColor: "#1087fe" },
+                                appendAsTree: true,
+                                attrs: { append: "tree" }
                               },
                               [_vm._v("收")]
                             ),
-                            _c("u-text", { staticClass: ["start-address"] }, [
-                              _vm._v(_vm._s(_vm.orderinfo.receiptAddress))
-                            ])
+                            _c(
+                              "u-text",
+                              {
+                                staticClass: ["start-address"],
+                                appendAsTree: true,
+                                attrs: { append: "tree" }
+                              },
+                              [_vm._v(_vm._s(_vm.orderinfo.receiptAddress))]
+                            )
                           ]
                         ),
                         _c("view", { staticClass: ["start", "contact"] }, [
-                          _c("u-text", { staticClass: ["name"] }, [
-                            _vm._v(_vm._s(_vm.orderinfo.receiptContactName))
-                          ]),
-                          _c("u-text", { staticClass: ["tel"] }, [
-                            _vm._v(_vm._s(_vm.orderinfo.receiptPhone))
-                          ])
+                          _c(
+                            "u-text",
+                            {
+                              staticClass: ["name"],
+                              appendAsTree: true,
+                              attrs: { append: "tree" }
+                            },
+                            [_vm._v(_vm._s(_vm.orderinfo.receiptContactName))]
+                          ),
+                          _c(
+                            "u-text",
+                            {
+                              staticClass: ["tel"],
+                              appendAsTree: true,
+                              attrs: { append: "tree" }
+                            },
+                            [_vm._v(_vm._s(_vm.orderinfo.receiptPhone))]
+                          )
                         ])
                       ]
                     ),
@@ -4440,59 +4347,137 @@ var render = function() {
                       },
                       [
                         _c("view", { staticClass: ["nav"] }, [
-                          _c("u-text", { staticClass: ["order-tlt"] }, [
-                            _vm._v("订单信息")
-                          ])
+                          _c(
+                            "u-text",
+                            {
+                              staticClass: ["order-tlt"],
+                              appendAsTree: true,
+                              attrs: { append: "tree" }
+                            },
+                            [_vm._v("订单信息")]
+                          )
                         ]),
                         _c("view", { staticClass: ["cell"] }, [
-                          _c("u-text", { staticClass: ["cell-tlt"] }, [
-                            _vm._v("订单编号")
-                          ]),
+                          _c(
+                            "u-text",
+                            {
+                              staticClass: ["cell-tlt"],
+                              appendAsTree: true,
+                              attrs: { append: "tree" }
+                            },
+                            [_vm._v("订单编号")]
+                          ),
                           _c("view", { staticClass: ["cell-right"] }, [
-                            _c("u-text", { staticClass: ["cell-content"] }, [
-                              _vm._v(_vm._s(_vm.orderinfo.orderSn))
-                            ]),
-                            _c("u-text", { staticClass: ["copy"] }, [
-                              _vm._v("复制")
-                            ])
+                            _c(
+                              "u-text",
+                              {
+                                staticClass: ["cell-content"],
+                                appendAsTree: true,
+                                attrs: { append: "tree" }
+                              },
+                              [_vm._v(_vm._s(_vm.orderinfo.orderSn))]
+                            ),
+                            _c(
+                              "u-text",
+                              {
+                                staticClass: ["copy"],
+                                appendAsTree: true,
+                                attrs: { append: "tree" }
+                              },
+                              [_vm._v("复制")]
+                            )
                           ])
                         ]),
                         _c("view", { staticClass: ["cell"] }, [
-                          _c("u-text", { staticClass: ["cell-tlt"] }, [
-                            _vm._v("订单距离")
-                          ]),
-                          _c("u-text", { staticClass: ["cell-content"] }, [
-                            _vm._v(_vm._s(_vm.orderinfo.orderDistance) + "KM")
-                          ])
+                          _c(
+                            "u-text",
+                            {
+                              staticClass: ["cell-tlt"],
+                              appendAsTree: true,
+                              attrs: { append: "tree" }
+                            },
+                            [_vm._v("订单距离")]
+                          ),
+                          _c(
+                            "u-text",
+                            {
+                              staticClass: ["cell-content"],
+                              appendAsTree: true,
+                              attrs: { append: "tree" }
+                            },
+                            [_vm._v(_vm._s(_vm.orderinfo.orderDistance) + "KM")]
+                          )
                         ]),
                         _c("view", { staticClass: ["cell"] }, [
-                          _c("u-text", { staticClass: ["cell-tlt"] }, [
-                            _vm._v("物品重量")
-                          ]),
-                          _c("u-text", { staticClass: ["cell-content"] }, [
-                            _vm._v(_vm._s(_vm.orderinfo.weight) + "KG")
-                          ])
+                          _c(
+                            "u-text",
+                            {
+                              staticClass: ["cell-tlt"],
+                              appendAsTree: true,
+                              attrs: { append: "tree" }
+                            },
+                            [_vm._v("物品重量")]
+                          ),
+                          _c(
+                            "u-text",
+                            {
+                              staticClass: ["cell-content"],
+                              appendAsTree: true,
+                              attrs: { append: "tree" }
+                            },
+                            [_vm._v(_vm._s(_vm.orderinfo.weight) + "KG")]
+                          )
                         ]),
                         _c("view", { staticClass: ["cell"] }, [
-                          _c("u-text", { staticClass: ["cell-tlt"] }, [
-                            _vm._v("物品类型")
-                          ]),
-                          _c("u-text", { staticClass: ["cell-content"] }, [
-                            _vm._v("文件证件")
-                          ])
+                          _c(
+                            "u-text",
+                            {
+                              staticClass: ["cell-tlt"],
+                              appendAsTree: true,
+                              attrs: { append: "tree" }
+                            },
+                            [_vm._v("物品类型")]
+                          ),
+                          _c(
+                            "u-text",
+                            {
+                              staticClass: ["cell-content"],
+                              appendAsTree: true,
+                              attrs: { append: "tree" }
+                            },
+                            [_vm._v("文件证件")]
+                          )
                         ]),
                         _c("view", { staticClass: ["cell"] }, [
-                          _c("u-text", { staticClass: ["cell-tlt"] }, [
-                            _vm._v("取件时间")
-                          ]),
-                          _c("u-text", { staticClass: ["cell-content"] }, [
-                            _vm._v(_vm._s(_vm.orderinfo.takeTime))
-                          ])
+                          _c(
+                            "u-text",
+                            {
+                              staticClass: ["cell-tlt"],
+                              appendAsTree: true,
+                              attrs: { append: "tree" }
+                            },
+                            [_vm._v("取件时间")]
+                          ),
+                          _c(
+                            "u-text",
+                            {
+                              staticClass: ["cell-content"],
+                              appendAsTree: true,
+                              attrs: { append: "tree" }
+                            },
+                            [_vm._v(_vm._s(_vm.orderinfo.takeTime))]
+                          )
                         ]),
                         _c("view", { staticClass: ["cell"] }, [
-                          _c("u-text", { staticClass: ["cell-tlt"] }, [
-                            _vm._v("订单总价")
-                          ]),
+                          _c(
+                            "u-text",
+                            {
+                              staticClass: ["cell-tlt"],
+                              appendAsTree: true,
+                              attrs: { append: "tree" }
+                            },
+                            [_vm._v("订单总价")]
+                          ),
                           _c(
                             "view",
                             {
@@ -4507,7 +4492,9 @@ var render = function() {
                                   staticStyle: {
                                     color: "#fa6f06",
                                     fontSize: "15px"
-                                  }
+                                  },
+                                  appendAsTree: true,
+                                  attrs: { append: "tree" }
                                 },
                                 [
                                   _vm._v(
@@ -4515,9 +4502,15 @@ var render = function() {
                                   )
                                 ]
                               ),
-                              _c("u-text", { staticClass: ["copy"] }, [
-                                _vm._v("明细")
-                              ])
+                              _c(
+                                "u-text",
+                                {
+                                  staticClass: ["copy"],
+                                  appendAsTree: true,
+                                  attrs: { append: "tree" }
+                                },
+                                [_vm._v("明细")]
+                              )
                             ]
                           )
                         ])
@@ -4629,18 +4622,42 @@ var render = function() {
           _c("view", [
             _vm._m(1),
             _c("view", { staticClass: ["cell"] }, [
-              _c("u-text", { staticClass: ["cell-tlt"] }, [_vm._v("小费")]),
-              _c("u-text", { staticClass: ["cell-money"] }, [
-                _vm._v("¥" + _vm._s(_vm.info.tipAmount))
-              ])
-            ]),
-            _c("view", { staticClass: ["cell"] }, [
-              _c("u-text", { staticClass: ["cell-tlt"] }, [_vm._v("合计")]),
+              _c(
+                "u-text",
+                {
+                  staticClass: ["cell-tlt"],
+                  appendAsTree: true,
+                  attrs: { append: "tree" }
+                },
+                [_vm._v("小费")]
+              ),
               _c(
                 "u-text",
                 {
                   staticClass: ["cell-money"],
-                  staticStyle: { color: "#fa6f06" }
+                  appendAsTree: true,
+                  attrs: { append: "tree" }
+                },
+                [_vm._v("¥" + _vm._s(_vm.info.tipAmount))]
+              )
+            ]),
+            _c("view", { staticClass: ["cell"] }, [
+              _c(
+                "u-text",
+                {
+                  staticClass: ["cell-tlt"],
+                  appendAsTree: true,
+                  attrs: { append: "tree" }
+                },
+                [_vm._v("合计")]
+              ),
+              _c(
+                "u-text",
+                {
+                  staticClass: ["cell-money"],
+                  staticStyle: { color: "#fa6f06" },
+                  appendAsTree: true,
+                  attrs: { append: "tree" }
                 },
                 [_vm._v("¥" + _vm._s(_vm.info.totalAmount))]
               )
@@ -4657,8 +4674,24 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("view", { staticClass: ["pop-nav"] }, [
-      _c("u-text", { staticClass: ["pop-tlt"] }, [_vm._v("显示设置")]),
-      _c("u-text", { staticClass: ["confirm"] }, [_vm._v("确定")])
+      _c(
+        "u-text",
+        {
+          staticClass: ["pop-tlt"],
+          appendAsTree: true,
+          attrs: { append: "tree" }
+        },
+        [_vm._v("显示设置")]
+      ),
+      _c(
+        "u-text",
+        {
+          staticClass: ["confirm"],
+          appendAsTree: true,
+          attrs: { append: "tree" }
+        },
+        [_vm._v("确定")]
+      )
     ])
   },
   function() {
@@ -4666,8 +4699,24 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("view", { staticClass: ["cell"] }, [
-      _c("u-text", { staticClass: ["cell-tlt"] }, [_vm._v("里程费")]),
-      _c("u-text", { staticClass: ["cell-money"] }, [_vm._v("¥5.00")])
+      _c(
+        "u-text",
+        {
+          staticClass: ["cell-tlt"],
+          appendAsTree: true,
+          attrs: { append: "tree" }
+        },
+        [_vm._v("里程费")]
+      ),
+      _c(
+        "u-text",
+        {
+          staticClass: ["cell-money"],
+          appendAsTree: true,
+          attrs: { append: "tree" }
+        },
+        [_vm._v("¥5.00")]
+      )
     ])
   }
 ]
@@ -4786,7 +4835,8 @@ module.exports = {
     "color": "#101e3e",
     "fontSize": "15",
     "fontWeight": "bold"
-  }
+  },
+  "@VERSION": 2
 }
 
 /***/ }),
@@ -4851,11 +4901,21 @@ var render = function() {
           { staticClass: ["pop"] },
           [
             _c("view", { staticClass: ["pop-nav"] }, [
-              _c("u-text", { staticClass: ["pop-tlt"] }, [_vm._v("取消订单")]),
+              _c(
+                "u-text",
+                {
+                  staticClass: ["pop-tlt"],
+                  appendAsTree: true,
+                  attrs: { append: "tree" }
+                },
+                [_vm._v("取消订单")]
+              ),
               _c(
                 "u-text",
                 {
                   staticClass: ["cancel"],
+                  appendAsTree: true,
+                  attrs: { append: "tree" },
                   on: { click: _vm.handletouchstart }
                 },
                 [_vm._v("取消")]
@@ -4866,7 +4926,9 @@ var render = function() {
                 "u-text",
                 {
                   staticClass: ["select-cell"],
-                  style: { width: _vm.itemW + "px" }
+                  style: { width: _vm.itemW + "px" },
+                  appendAsTree: true,
+                  attrs: { append: "tree" }
                 },
                 [_vm._v("无骑手接单")]
               ),
@@ -4874,46 +4936,69 @@ var render = function() {
                 "u-text",
                 {
                   staticClass: ["cell"],
-                  style: { width: _vm.itemW + "px", "margin-right": "0px" }
+                  style: { width: _vm.itemW + "px", "margin-right": "0px" },
+                  appendAsTree: true,
+                  attrs: { append: "tree" }
                 },
                 [_vm._v("骑手接单后不取货")]
               ),
               _c(
                 "u-text",
-                { staticClass: ["cell"], style: { width: _vm.itemW + "px" } },
+                {
+                  staticClass: ["cell"],
+                  style: { width: _vm.itemW + "px" },
+                  appendAsTree: true,
+                  attrs: { append: "tree" }
+                },
                 [_vm._v("骑手电车装载不下")]
               ),
               _c(
                 "u-text",
                 {
                   staticClass: ["cell"],
-                  style: { width: _vm.itemW + "px", "margin-right": "0px" }
+                  style: { width: _vm.itemW + "px", "margin-right": "0px" },
+                  appendAsTree: true,
+                  attrs: { append: "tree" }
                 },
                 [_vm._v("骑手服务态度恶劣")]
               ),
               _c(
                 "u-text",
-                { staticClass: ["cell"], style: { width: _vm.itemW + "px" } },
+                {
+                  staticClass: ["cell"],
+                  style: { width: _vm.itemW + "px" },
+                  appendAsTree: true,
+                  attrs: { append: "tree" }
+                },
                 [_vm._v("骑手要求取消订单")]
               ),
               _c(
                 "u-text",
                 {
                   staticClass: ["cell"],
-                  style: { width: _vm.itemW + "px", "margin-right": "0px" }
+                  style: { width: _vm.itemW + "px", "margin-right": "0px" },
+                  appendAsTree: true,
+                  attrs: { append: "tree" }
                 },
                 [_vm._v("信息填写错误")]
               ),
               _c(
                 "u-text",
-                { staticClass: ["cell"], style: { width: _vm.itemW + "px" } },
+                {
+                  staticClass: ["cell"],
+                  style: { width: _vm.itemW + "px" },
+                  appendAsTree: true,
+                  attrs: { append: "tree" }
+                },
                 [_vm._v("计划有变,不需要配送")]
               ),
               _c(
                 "u-text",
                 {
                   staticClass: ["cell"],
-                  style: { width: _vm.itemW + "px", "margin-right": "0px" }
+                  style: { width: _vm.itemW + "px", "margin-right": "0px" },
+                  appendAsTree: true,
+                  attrs: { append: "tree" }
                 },
                 [_vm._v("其他原因")]
               )
@@ -4922,7 +5007,15 @@ var render = function() {
               staticClass: ["txtarea"],
               attrs: { placeholder: "请输入其他原因" }
             }),
-            _c("u-text", { staticClass: ["submit"] }, [_vm._v("提交")])
+            _c(
+              "u-text",
+              {
+                staticClass: ["submit"],
+                appendAsTree: true,
+                attrs: { append: "tree" }
+              },
+              [_vm._v("提交")]
+            )
           ],
           1
         )
@@ -5085,7 +5178,8 @@ module.exports = {
     "marginRight": "30",
     "marginBottom": "12",
     "marginLeft": "30"
-  }
+  },
+  "@VERSION": 2
 }
 
 /***/ }),
@@ -5158,10 +5252,23 @@ var render = function() {
               ],
               1
             ),
-            _c("u-text", { staticClass: ["pop-tlt"] }, [_vm._v("订单状态")]),
             _c(
               "u-text",
-              { staticClass: ["confirm"], on: { click: _vm.close } },
+              {
+                staticClass: ["pop-tlt"],
+                appendAsTree: true,
+                attrs: { append: "tree" }
+              },
+              [_vm._v("订单状态")]
+            ),
+            _c(
+              "u-text",
+              {
+                staticClass: ["confirm"],
+                appendAsTree: true,
+                attrs: { append: "tree" },
+                on: { click: _vm.close }
+              },
               [_vm._v("确定")]
             )
           ]),
@@ -5180,26 +5287,86 @@ var staticRenderFns = [
       _c("view", { staticClass: ["cell"] }, [
         _c("view", { staticClass: ["cell-left"] }, [
           _c("view", { staticClass: ["firstLine"] }),
-          _c("u-text", { staticClass: ["dot"] }),
-          _c("u-text", { staticClass: ["cell-tlt"] }, [_vm._v("订单创建")])
+          _c("u-text", {
+            staticClass: ["dot"],
+            appendAsTree: true,
+            attrs: { append: "tree" }
+          }),
+          _c(
+            "u-text",
+            {
+              staticClass: ["cell-tlt"],
+              appendAsTree: true,
+              attrs: { append: "tree" }
+            },
+            [_vm._v("订单创建")]
+          )
         ]),
-        _c("u-text", { staticClass: ["cell-tlt"] }, [_vm._v("12:00")])
+        _c(
+          "u-text",
+          {
+            staticClass: ["cell-tlt"],
+            appendAsTree: true,
+            attrs: { append: "tree" }
+          },
+          [_vm._v("12:00")]
+        )
       ]),
       _c("view", { staticClass: ["cell"] }, [
         _c("view", { staticClass: ["cell-left"] }, [
           _c("view", { staticClass: ["line"] }),
-          _c("u-text", { staticClass: ["dot"] }),
-          _c("u-text", { staticClass: ["cell-tlt"] }, [_vm._v("待支付")])
+          _c("u-text", {
+            staticClass: ["dot"],
+            appendAsTree: true,
+            attrs: { append: "tree" }
+          }),
+          _c(
+            "u-text",
+            {
+              staticClass: ["cell-tlt"],
+              appendAsTree: true,
+              attrs: { append: "tree" }
+            },
+            [_vm._v("待支付")]
+          )
         ]),
-        _c("u-text", { staticClass: ["cell-tlt"] }, [_vm._v("12:00")])
+        _c(
+          "u-text",
+          {
+            staticClass: ["cell-tlt"],
+            appendAsTree: true,
+            attrs: { append: "tree" }
+          },
+          [_vm._v("12:00")]
+        )
       ]),
       _c("view", { staticClass: ["cell"] }, [
         _c("view", { staticClass: ["cell-left"] }, [
           _c("view", { staticClass: ["lastLine"] }),
-          _c("u-text", { staticClass: ["last-dot"] }),
-          _c("u-text", { staticClass: ["cell-tlt"] }, [_vm._v("订单已取消")])
+          _c("u-text", {
+            staticClass: ["last-dot"],
+            appendAsTree: true,
+            attrs: { append: "tree" }
+          }),
+          _c(
+            "u-text",
+            {
+              staticClass: ["cell-tlt"],
+              appendAsTree: true,
+              attrs: { append: "tree" }
+            },
+            [_vm._v("订单已取消")]
+          )
         ]),
-        _c("u-text", { staticClass: ["cell-tlt"] }, [_vm._v("12:00")])
+        _c(
+          "u-text",
+          {
+            staticClass: ["cell-tlt"],
+            appendAsTree: true,
+            attrs: { append: "tree" }
+          },
+          [_vm._v("12:00")]
+        )
       ])
     ])
   }
@@ -5380,7 +5547,8 @@ module.exports = {
     "color": "#101E3E",
     "fontSize": "15",
     "fontWeight": "bold"
-  }
+  },
+  "@VERSION": 2
 }
 
 /***/ }),
@@ -5620,7 +5788,8 @@ module.exports = {
     "color": "#3c88f6",
     "fontSize": "13",
     "marginLeft": "8"
-  }
+  },
+  "@VERSION": 2
 }
 
 /***/ })

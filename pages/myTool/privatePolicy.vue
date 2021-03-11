@@ -23,7 +23,7 @@
 					callBack:(res)=>{
 						console.log(res)
 						uni.hideLoading()
-						this.html=res.data[0].content
+						this.html=res.data
 					}
 				}
 				uni.showLoading({

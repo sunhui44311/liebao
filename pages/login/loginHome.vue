@@ -152,7 +152,7 @@
 		.line{
 			height: 1px;
 			background-color: #CCCCCC;
-			width: 100px;
+			width: 80px;
 			margin: 0px 20px;
 		}
 		.bar-tlt{

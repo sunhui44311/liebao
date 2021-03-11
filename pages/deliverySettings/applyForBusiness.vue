@@ -71,7 +71,6 @@
 				</view>
 			</view>
 		</view>
-		<view class="bottom"></view>
 		<view class="save" @click.stop="save">保存</view>
 		<main-bussiness-input ref="mainBussinessInput" @selectGood="onSelectGood"></main-bussiness-input>
 		<u-action-sheet :list="actionSheetList" v-model="showActionSheet" @click="click" :cancel-btn="true"></u-action-sheet>
@@ -386,10 +385,7 @@
 	}
 
 	.save {
-		position: fixed;
-		left: 50%;
-		transform: translateX(-50%);
-		bottom: 20px;
+		margin-left: 30px;
 		height: 45px;
 		line-height: 45px;
 		border-radius: 45px;

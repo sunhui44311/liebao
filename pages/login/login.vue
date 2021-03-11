@@ -58,8 +58,14 @@ export default {
       password: "",
     };
   },
-  enableLogin(){
-  	return (!this.showPwdLogin&&this.mobile&&this.code)||(this.showPwdLogin&&this.mobile&&this.newPassword)
+  computed:{
+	 enableLogin(){
+	 	return (!this.showPwdLogin&&this.mobile&&this.code)||(this.showPwdLogin&&this.mobile&&this.newPassword)
+	 }, 
+  },
+  onLoad() {
+  	let clientInfo = plus.push.getClientInfo();
+  	console.log('需要绑定的clientid为'+clientInfo.clientid);
   },
   methods: {
     forget_Click() {
@@ -128,12 +134,27 @@ export default {
             platform: globalData.platform == "ios" ? 2 : 1,
           },
           callBack: (res) => {
-            uni.setStorageSync("token", res.data.token);
-            uni.hideLoading();
-            uni.navigateBack({
-              delta: 2,
-            });
+			  uni.hideLoading();
+			  if(res.code==200){
+				  uni.setStorageSync("token", res.data.token);
+				  uni.navigateBack({
+				    delta: 2,
+				  });
+			  }
+			  else{
+				  uni.showToast({
+				  	title:res.msg,
+					icon:'none'
+				  })
+			  }
           },
+		  errCallBack:(err)=>{
+			  uni.hideLoading()
+			  uni.showToast({
+			  	title:res.msg,
+				icon:'none'
+			  })
+		  }
         };
         uni.showLoading({
           title: "正在登录",
@@ -164,11 +185,19 @@ export default {
             platform: globalData.platform == "ios" ? 2 : 1,
           },
           callBack: (res) => {
-            uni.setStorageSync("token", res.data.token);
-            uni.hideLoading();
-            uni.navigateBack({
-              delta: 2,
-            });
+			  uni.hideLoading();
+			  if(res.code==200){
+				  uni.setStorageSync("token", res.data.token);
+				  uni.navigateBack({
+				    delta: 2,
+				  });
+			  }
+			  else{
+				  uni.showToast({
+				  	title:res.msg,
+					icon:'none'
+				  })
+			  }
           },
         };
         uni.showLoading({

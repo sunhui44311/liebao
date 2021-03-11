@@ -1,30 +1,32 @@
 <script>
 	import globalData from "./common/js/globalData.js";
+	var http = require("utils/http.js");
 	export default {
-		globalData:{
-			receiptAddress:{
-				id:'',
-				city:'',
-				province:'',
-				address:'',
-				lat:0,
-				lng:0,
-				contact:'',
-				floor:'',
-				phone:'',
-				district:''
+		globalData: {
+			http: http,
+			receiptAddress: {
+				id: '',
+				city: '',
+				province: '',
+				address: '',
+				lat: 0,
+				lng: 0,
+				contact: '',
+				floor: '',
+				phone: '',
+				district: ''
 			},
-			sendAddress:{
-				id:'',
-				city:'',
-				province:'',
-				address:'',
-				lat:0,
-				lng:0,
-				contact:'',
-				floor:'',
-				phone:'',
-				district:''
+			sendAddress: {
+				id: '',
+				city: '',
+				province: '',
+				address: '',
+				lat: 0,
+				lng: 0,
+				contact: '',
+				floor: '',
+				phone: '',
+				district: ''
 			}
 		},
 		onLaunch: function() {
@@ -52,6 +54,15 @@
 			globalData.platform = res.platform;
 
 			// #ifdef APP-PLUS
+			const _self = this;
+			const _handlePush = function(message) {
+				console.log(message);
+				//跳转到某个指定的页面
+			};
+			//点击通知消息时执行的事件
+			plus.push.addEventListener('click', _handlePush);
+			//收到透传消息时执行的事件
+			plus.push.addEventListener('receive', _handlePush);
 			// 一键登录预登陆，可以显著提高登录速度
 			// uni.preLogin({
 			// 	provider: 'univerify',
@@ -76,4 +87,29 @@
 <style lang="scss">
 	/* 注意要写在第一行，同时给style标签加入lang="scss"属性 */
 	@import "uview-ui/index.scss";
+
+	/* 解决小程序和app滚动条的问题 */
+	/* #ifdef MP-WEIXIN || APP-PLUS||APP-PLUS-NVUE */
+	::-webkit-scrollbar {
+		width: 0 !important;
+		height: 0 !important;
+		-webkit-appearance: none;
+		background: transparent;
+		color: transparent;
+	}
+
+	/* #endif */
+	/* 解决H5 的问题 */
+	/* #ifdef H5 */
+	uni-scroll-view .uni-scroll-view::-webkit-scrollbar {
+		/* 隐藏滚动条，但依旧具备可以滚动的功能 */
+		display: none;
+		width: 0 !important;
+		height: 0 !important;
+		-webkit-appearance: none;
+		background: transparent;
+		color: transparent;
+	}
+
+	/* #endif */
 </style>

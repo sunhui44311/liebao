@@ -3,36 +3,35 @@
 		<u-popup mode="bottom" v-model="show" border-radius="26">
 			<view class="content">
 				<view class="pop-nav">
+					<image src="../../static/image/delete.png" @click.stop="show=false"></image>
 					<view class="pop-tlt">统计筛选</view>
-					<image src="../../static/image/delete.png"></image>
+					<view class="nav-confirm" @click.stop="confirm">确定</view>
 				</view>
 				<scroll-view scroll-y="true" style="height: 500upx;padding: 24upx 70upx;">
 					<view class="cell">
 						<view class="cell-tlt">门店</view>
 						<view class="shop-list">
-							<view class="select">门店1</view>
-							<view class="noselect">门店1</view>
-							<view class="noselect">门店1</view>
+							<view :class="item.id==selectShop.id?'select':'noselect'" v-for="(item,index) in shopList" :key="index" @click.stop="selectShop=item">{{item.name}}</view>
 						</view>
 					</view>
 					<view class="cell">
 						<view class="cell-tlt">时间</view>
 						<view class="shop-list">
-							<view class="select month" :style="{width:itemW+'px'}" style="border-radius: 28upx;">今日</view>
-							<view class="noselect month" :style="{width:itemW+'px'}" style="border-radius: 28upx;">昨日</view>
-							<view class="noselect month" :style="{width:itemW+'px'}" style="border-radius: 28upx;"> 本月</view>
+							<view :class="['month',timeType==1?'select':'noselect']" :style="{width:itemW+'px'}" @click.stop="timeType=1" style="border-radius: 28upx;">今日</view>
+							<view :class="['month',timeType==2?'select':'noselect']" :style="{width:itemW+'px'}" @click.stop="timeType=2" style="border-radius: 28upx;">昨日</view>
+							<view :class="['month',timeType==3?'select':'noselect']" :style="{width:itemW+'px'}" @click.stop="timeType=3" style="border-radius: 28upx;"> 本月</view>
 						</view>
 					</view>
 					<view class="cell">
 						<view class="cell-tlt">自定义时间</view>
 						<view class="date-list">
-							<view class="date-item" @click="selectDate(1)">
-								<view>{{startTime}}</view>
+							<view class="date-item" @click.stop="selectDate(1)">
+								<view :style="{'color':startTime?'#101E3E':'#A1A7B4'}">{{startTime?startTime:'选择开始时间'}}</view>
 								<image src="../../static/image/dibiao2.png"></image>
 							</view>
 							<view class="date-line"></view>
-							<view class="date-item" @click="selectDate(2)">
-								<view>{{endTime}}</view>
+							<view class="date-item" @click.stop="selectDate(2)">
+								<view :style="{'color':endTime?'#101E3E':'#A1A7B4'}">{{endTime?endTime:'选择结束时间'}}</view>
 								<image src="../../static/image/dibiao2.png"></image>
 							</view>
 						</view>
@@ -40,19 +39,34 @@
 				</scroll-view>
 			</view>
 		</u-popup>
+		<u-picker v-model="showDate" mode="time" :params="params" @confirm="timeConfirm"></u-picker>
 	</view>
 </template>
 
 <script>
 	import globalData from '@/common/js/globalData.js'
+	import{ fun_date,dateMinus } from '../../utils/util.js'
 	export default{
 		mame:'showSetting',
 		data(){
 			return{
 				show:false,
+				showDate:false,
+				showDateType:1,
 				itemW:0,
-				startTime:'选择开始时间',
-				endTime:'选择结束时间'
+				startTime:'',
+				endTime:'',
+				shopList:[],
+				selectShop:'',
+				timeType:1,
+				params: {
+					year: true,
+					month: true,
+					day: true,
+					hour: false,
+					minute: false,
+					second: false
+				}
 			}
 		},
 		onLoad() {
@@ -62,9 +76,61 @@
 			init(){
 				this.show=true
 				this.itemW=(globalData.windowWidth-105)/3.0
+				this.getShopList()
 			},
 			selectDate(type){
-				
+				this.showDateType=type
+				this.showDate=true
+			},
+			
+			timeConfirm(e){
+				if(this.showDateType==1){
+					let startTime=`${e.year}-${e.month}-${e.day}`
+					let days=dateMinus(startTime,this.endTime)
+					if(days<=-1){
+						uni.showToast({
+							title:'开始时间必须小于结束时间',
+							icon:'none'
+						})
+						return
+					}
+					this.startTime=startTime
+				}
+				else{
+					let endTime=`${e.year}-${e.month}-${e.day}`
+					let days=dateMinus(this.startTime,endTime)
+					if(days<=0){
+						uni.showToast({
+							title:'结束时间必须大于开始时间',
+							icon:'none'
+						})
+						return
+					}
+					this.endTime=endTime
+				}
+			},
+			getShopList(){
+				var params={
+					url:'app/shop/list',
+					method:'GET',
+					data:{},
+					callBack:(res)=>{
+						console.log(res)
+						this.shopList=res.data
+					}
+				}
+				this.$http.request(params)
+			},
+			confirm(){
+				this.show=false
+				this.$emit('statistics',{
+					shopId:this.selectShop?this.selectShop.id:0,
+					shopName:this.selectShop.name,
+					timeType:this.timeType,
+					timeName:this.timeType==1?'今日':(this.timeType==2?'昨日':'本月'),
+					startTime:this.startTime,
+					endTime:this.endTime
+				})
 			}
 		}
 	}
@@ -88,6 +154,10 @@
 		font-weight: bold;
 		flex: 1;
 		text-align: center;
+	}
+	.nav-confirm{
+		color: #FA6F06;
+		font-size: 14px;
 	}
 	.cell{
 		margin-bottom: 40upx;

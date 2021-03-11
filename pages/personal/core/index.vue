@@ -29,8 +29,8 @@
             <image src="~static/image/fj2.png" class="img"></image>
           </view>
         </view>
-        <view class="wallet">
-          <view class="total" @click.stop="wallet">
+        <view class="wallet" @click.stop="wallet">
+          <view class="total">
             <view class="title"> 钱包余额 </view>
             <view class="num">{{userInfo.totalAmount}}</view>
           </view>
@@ -115,7 +115,7 @@
 			</view>
 		</view>
 	</view>
-	<view class="visit" @click="visit">
+	<view class="visit" @click.stop="visit">
 		<image class="visit-logo" src="../../../static/image/visit@2x.png"></image>
 		<view class="visit-title">邀请好友赚钱</view>
 		<view class="right">
@@ -229,7 +229,9 @@
 		onLoad() {
 			_self=this
 			this.isLogin=uni.getStorageSync('token')?true:false
-			this.getUserInfo()
+			if(this.isLogin){
+				this.getUserInfo()
+			}
 		},
 		onShow() {
 			this.isLogin=uni.getStorageSync('token')?true:false
@@ -309,6 +311,7 @@
 			setting(type,index){
 				this.login(()=>{
 					if(type==0){
+						if(this.userInfo.memberType==1)return
 						let merchantId=this.userInfo.merchantId
 						uni.navigateTo({
 							url:'/pages/deliverySettings/applyForBusiness?merchantId='+merchantId

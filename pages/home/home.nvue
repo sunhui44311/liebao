@@ -106,7 +106,6 @@
 			}
 		},
 		onLoad() {
-			_self=this
 			this.init()
 			this.mapCtx=uni.createMapContext('map',this)
 			uni.$on('selectCity',(data)=>{
@@ -117,12 +116,14 @@
 			})
 		},
 		onShow() {
+			_self=this
 			let address=getApp({allowDefault: true}).globalData.sendAddress.address
 			this.startAddress=address?address:this.startAddress
 			this.receiptName=getApp({allowDefault: true}).globalData.sendAddress.contact
 			this.receiptPhone=getApp({allowDefault: true}).globalData.sendAddress.phone
 			let token=uni.getStorageSync('token')
 			if(token){
+				console.log(this)
 				this.getUserInfo()
 			}
 		},
@@ -281,11 +282,11 @@
 					method:'get',
 					data:{},
 					callBack:function(res){
-						console.log(res)
 						that.userInfo=res.data
 					}
 				}
-				that.$http.request(params)
+				let appGlobal=getApp({allowDefault: true}).globalData
+				appGlobal.http.request(params)
 			}
 		}
 	}
