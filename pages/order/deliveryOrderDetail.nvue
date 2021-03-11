@@ -179,7 +179,8 @@ export default {
           this.orderinfo = res.data;
         },
       };
-      this.$http.request(params);
+      let appGlobal = getApp({ allowDefault: true }).globalData;
+      appGlobal.http.request(params);
     },
     menu(index) {
       if (index == 1) {

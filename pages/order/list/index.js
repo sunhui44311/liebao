@@ -1,5 +1,6 @@
 import MescrollMixin from "../../../components/mescroll-uni/mescroll-mixins.js"
 import MescrollUni from "../../../components/mescroll-uni/mescroll-uni.vue"
+import orderStatus from "../orderStatus.nvue";
 export default {
     mixins: [MescrollMixin],
     data() {
@@ -18,7 +19,7 @@ export default {
                 id: 4
             }, {
                 name: '已取消',
-                id: '-1'
+                id: -1
             }, {
                 name: '待支付',
                 id: 0
@@ -103,8 +104,6 @@ export default {
                         icon: "none",
                     });
                     this.reset_updata()
-                    this.cancel.pageNum = 1
-                    this.cancel_order()
                 },
             };
             uni.showLoading({
@@ -195,7 +194,6 @@ export default {
     beforeMount() { },
     // el 被新创建的 vm.el 替换，并挂载到实例上去之后调用该钩子。
     mounted() {
-
         this.$nextTick(() => { });
     },
     // 数据更新时调用，发生在虚拟 DOM 打补丁之前。
@@ -216,6 +214,7 @@ export default {
     watch: {},
     // 组件列表
     components: {
-        MescrollUni
+        MescrollUni,
+        orderStatus
     },
 };

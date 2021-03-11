@@ -67,25 +67,34 @@
             <view class="operation">
               <view class="time">{{ item.createTime }}</view>
               <view class="btn-box">
-                <u-button
-                  class="btn"
-                  size="mini"
-                  plain
-                  shape="circle"
-                  @click="cancelDd(item)"
-                  >取消订单</u-button
+                <template
+                  v-if="
+                    item.deliveryStatus != 4 &&
+                    item.deliveryStatus != 3 &&
+                    item.deliveryStatus != -1
+                  "
                 >
-                <u-button
-                  class="btn"
-                  size="mini"
-                  shape="circle"
-                  v-if="!item.useTip"
-                  >加小费</u-button
-                >
+                  <u-button
+                    class="btn"
+                    size="mini"
+                    plain
+                    shape="circle"
+                    @click.stop="cancelDd(item)"
+                    >取消订单</u-button
+                  >
+                  <u-button
+                    class="btn"
+                    size="mini"
+                    shape="circle"
+                    v-if="!item.useTip"
+                    @click.stop="usertip"
+                    >加小费</u-button
+                  >
+                </template>
               </view>
             </view>
             <view class="news">
-              <image src="@/static/image/news.png" class="icon" />
+              <image :src="item.logo" class="icon" />
               <view class="text">{{
                 item.deliveryName ? item.deliveryName : "全网推单中..."
               }}</view>
@@ -98,10 +107,14 @@
         </view>
       </view>
     </mescroll-uni>
-    <u-modal v-model="show" show-cancel-button @confirm="qrcancel">
-      <view class="slot-content" v-if="order">
-        取消编号 {{ order.orderSn }} 的订单？
-      </view>
+    <order-status ref="orderStatus"></order-status>
+    <u-modal
+      v-model="show"
+      title="确定放弃吗？"
+      show-cancel-button
+      @confirm="qrcancel"
+    >
+      <view class="slot-content" v-if="order"> 您确定要放弃下单吗 </view>
     </u-modal>
   </view>
 </template>

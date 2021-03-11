@@ -6,10 +6,7 @@
         <u-row gutter="16">
           <u-col span="6" v-for="(item, index) in printList" :key="index">
             <view class="item" @click="choice(item)">
-              <image
-                class="item-bg"
-                src="../../static/image/zhengtongyun@2x.png"
-              ></image>
+              <image class="item-bg" :src="item.img"></image>
               <view class="voice-name">{{ item.name }}</view>
               <image
                 v-if="form.deviceId == item.id"
