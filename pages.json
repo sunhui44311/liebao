@@ -309,6 +309,12 @@
 			"style": {
 				"navigationBarTitleText": "通讯录"
 			}
+		},
+		{
+			"path": "pages/order/orderSearch",
+			"style": {
+				"navigationStyle": "custom"
+			}
 		}
 	],
 	"globalStyle": {

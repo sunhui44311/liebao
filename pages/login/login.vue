@@ -63,6 +63,10 @@ export default {
 	 	return (!this.showPwdLogin&&this.mobile&&this.code)||(this.showPwdLogin&&this.mobile&&this.newPassword)
 	 }, 
   },
+  onLoad() {
+  	let clientInfo = plus.push.getClientInfo();
+  	console.log('需要绑定的clientid为'+clientInfo.clientid);
+  },
   methods: {
     forget_Click() {
       uni.navigateTo({

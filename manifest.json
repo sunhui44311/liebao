@@ -88,8 +88,16 @@
                 }
             },
             "splashscreen" : {
-                "androidStyle" : "common",
-                "iosStyle" : "common"
+                "androidStyle" : "default",
+                "iosStyle" : "storyboard",
+                "ios" : {
+                    "storyboard" : "customerLaunch.zip"
+                },
+                "android" : {
+                    "hdpi" : "static/image/480.png",
+                    "xhdpi" : "static/image/720.png",
+                    "xxhdpi" : "static/image/1080.png"
+                }
             },
             "icons" : {
                 "android" : {

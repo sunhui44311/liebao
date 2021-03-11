@@ -311,6 +311,7 @@
 			setting(type,index){
 				this.login(()=>{
 					if(type==0){
+						if(this.userInfo.memberType==1)return
 						let merchantId=this.userInfo.merchantId
 						uni.navigateTo({
 							url:'/pages/deliverySettings/applyForBusiness?merchantId='+merchantId

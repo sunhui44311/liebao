@@ -32,13 +32,18 @@
 				</view>
 			</view>
 		</view>
+		<order-filter ref="orderFilter"></order-filter>
 	</view>
 </template>
 
 <script>
 	import globalData from '@/common/js/globalData.js'
+	import orderFilter from '../order/orderFilter.vue'
 	var _self
 	export default{
+		components:{
+			orderFilter
+		},
 		data(){
 			return{
 				currentPage:1,
@@ -88,8 +93,11 @@
 				})
 			},
 			tran_Click(){
+				// uni.navigateTo({
+				// 	url:'/pages/wallet/transactionDetail'
+				// })
 				uni.navigateTo({
-					url:'/pages/wallet/transactionDetail'
+					url:'/pages/order/orderSearch'
 				})
 			}
 		}
