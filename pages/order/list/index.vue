@@ -13,471 +13,91 @@
       active-color="#FA6F06"
       inactive-color="#9EA7B7"
     ></u-tabs-swiper>
-    <swiper
-      :current="swiperCurrent"
-      @transition="transition"
-      @animationfinish="animationfinish"
-      style="flex: 1"
+    <mescroll-uni
+      ref="mescrollRef"
+      :top="listTop"
+      :bottom="-64"
+      @down="downCallback"
+      :up="upOption"
+      @init="mescrollInit"
+      @up="upCallback"
     >
-      <swiper-item v-for="(item, index) in tabs" :key="index">
-        <scroll-view
-          style="height: 100%"
-          scroll-y
-          @scrolltolower="onreachBottom"
+      <view class="order-list">
+        <view
+          class="order"
+          v-for="(item, index) in list"
+          :key="index"
+          @click.stop="order_Click(item.id)"
         >
-          <view class="order-list" v-if="item.id == 1">
-            <view
-              class="order"
-              v-for="(i, j) in wait.list"
-              :key="j"
-              @click.stop="order_Click(i.id)"
-            >
-              <view class="head">
-                <view class="title">订单编号：#{{ i.orderSn }}</view>
-                <view class="state">{{ item.name }}</view>
+          <view class="head">
+            <view class="title">订单编号：#{{ item.orderSn }}</view>
+            <view class="state">{{ item.deliveryStatus | statetext }}</view>
+          </view>
+          <view class="order-info">
+            <view class="piece-info">
+              <view class="sou">
+                <view class="icon-box">
+                  <image src="@/static/image/sou.png" class="icon" />
+                </view>
+                <view class="user-info">
+                  <view class="address">
+                    {{ item.receiptAddress }}
+                  </view>
+                  <view style="display: flex">
+                    <view class="user-name">{{ item.receiptContactName }}</view>
+                    <view class="phone">{{ item.receiptPhone }}</view>
+                  </view>
+                </view>
               </view>
-              <view class="order-info">
-                <view class="piece-info">
-                  <view class="sou">
-                    <view class="icon-box">
-                      <image src="@/static/image/sou.png" class="icon" />
-                    </view>
-                    <view class="user-info">
-                      <view class="address">
-                        {{ i.receiptAddress }}
-                      </view>
-                      <view style="display: flex">
-                        <view class="user-name">{{
-                          i.receiptContactName
-                        }}</view>
-                        <view class="phone">{{ i.receiptPhone }}</view>
-                      </view>
-                    </view>
-                  </view>
-                  <view class="fa">
-                    <view class="icon-box">
-                      <image src="@/static/image/fa.png" class="icon" />
-                    </view>
-                    <view class="user-info">
-                      <view class="address">
-                        {{ i.sendAddress }}
-                      </view>
-                      <view style="display: flex">
-                        <view class="user-name">{{ i.sendContactName }}</view>
-                        <view class="phone">{{ i.sendPhone }}</view>
-                      </view>
-                    </view>
-                  </view>
+              <view class="fa">
+                <view class="icon-box">
+                  <image src="@/static/image/fa.png" class="icon" />
                 </view>
-                <view class="operation">
-                  <view class="time">2021-01-25 20:30:05</view>
-                  <view class="btn-box">
-                    <u-button
-                      class="btn"
-                      size="mini"
-                      plain
-                      shape="circle"
-                      @click="cancelDd(i)"
-                      >取消订单</u-button
-                    >
-                    <u-button
-                      class="btn"
-                      size="mini"
-                      shape="circle"
-                      v-if="!i.useTip"
-                      >加小费</u-button
-                    >
+                <view class="user-info">
+                  <view class="address">
+                    {{ item.sendAddress }}
                   </view>
-                </view>
-                <view class="news">
-                  <image src="@/static/image/news.png" class="icon" />
-                  <view class="text">全网推单中...</view>
-                  <view class="price">
-                    <view class="label">￥</view>
-                    {{ i.totalAmount }}
+                  <view style="display: flex">
+                    <view class="user-name">{{ item.sendContactName }}</view>
+                    <view class="phone">{{ item.sendPhone }}</view>
                   </view>
                 </view>
               </view>
             </view>
-          </view>
-          <view class="order-list" v-if="item.id == 2">
-            <view
-              class="order"
-              v-for="(i, j) in take.list"
-              :key="j"
-              @click.stop="order_Click(i.id)"
-            >
-              <view class="head">
-                <view class="title">订单编号：#{{ i.orderSn }}</view>
-                <view class="state">{{ item.name }}</view>
+            <view class="operation">
+              <view class="time">{{ item.createTime }}</view>
+              <view class="btn-box">
+                <u-button
+                  class="btn"
+                  size="mini"
+                  plain
+                  shape="circle"
+                  @click="cancelDd(item)"
+                  >取消订单</u-button
+                >
+                <u-button
+                  class="btn"
+                  size="mini"
+                  shape="circle"
+                  v-if="!item.useTip"
+                  >加小费</u-button
+                >
               </view>
-              <view class="order-info">
-                <view class="piece-info">
-                  <view class="sou">
-                    <view class="icon-box">
-                      <image src="@/static/image/sou.png" class="icon" />
-                    </view>
-                    <view class="user-info">
-                      <view class="address">
-                        {{ i.receiptAddress }}
-                      </view>
-                      <view style="display: flex">
-                        <view class="user-name">{{
-                          i.receiptContactName
-                        }}</view>
-                        <view class="phone">{{ i.receiptPhone }}</view>
-                      </view>
-                    </view>
-                  </view>
-                  <view class="fa">
-                    <view class="icon-box">
-                      <image src="@/static/image/fa.png" class="icon" />
-                    </view>
-                    <view class="user-info">
-                      <view class="address">
-                        {{ i.sendAddress }}
-                      </view>
-                      <view style="display: flex">
-                        <view class="user-name">{{ i.sendContactName }}</view>
-                        <view class="phone">{{ i.sendPhone }}</view>
-                      </view>
-                    </view>
-                  </view>
-                </view>
-                <view class="operation">
-                  <view class="time">2021-01-25 20:30:05</view>
-                  <view class="btn-box">
-                    <u-button
-                      class="btn"
-                      size="mini"
-                      plain
-                      shape="circle"
-                      @click="cancelDd(i)"
-                      >取消订单</u-button
-                    >
-                    <u-button
-                      class="btn"
-                      size="mini"
-                      shape="circle"
-                      v-if="!i.useTip"
-                      >加小费</u-button
-                    >
-                  </view>
-                </view>
-                <view class="news">
-                  <image src="@/static/image/news.png" class="icon" />
-                  <view class="text">全网推单中...</view>
-                  <view class="price">
-                    <view class="label">￥</view>
-                    {{ i.totalAmount }}
-                  </view>
-                </view>
+            </view>
+            <view class="news">
+              <image src="@/static/image/news.png" class="icon" />
+              <view class="text">{{
+                item.deliveryName ? item.deliveryName : "全网推单中..."
+              }}</view>
+              <view class="price">
+                <view class="label">￥</view>
+                {{ item.totalAmount }}
               </view>
             </view>
           </view>
-          <view class="order-list" v-if="item.id == 3">
-            <view
-              class="order"
-              v-for="(i, j) in delivery.list"
-              :key="j"
-              @click.stop="order_Click(i.id)"
-            >
-              <view class="head">
-                <view class="title">订单编号：#{{ i.orderSn }}</view>
-                <view class="state">{{ item.name }}</view>
-              </view>
-              <view class="order-info">
-                <view class="piece-info">
-                  <view class="sou">
-                    <view class="icon-box">
-                      <image src="@/static/image/sou.png" class="icon" />
-                    </view>
-                    <view class="user-info">
-                      <view class="address">
-                        {{ i.receiptAddress }}
-                      </view>
-                      <view style="display: flex">
-                        <view class="user-name">{{
-                          i.receiptContactName
-                        }}</view>
-                        <view class="phone">{{ i.receiptPhone }}</view>
-                      </view>
-                    </view>
-                  </view>
-                  <view class="fa">
-                    <view class="icon-box">
-                      <image src="@/static/image/fa.png" class="icon" />
-                    </view>
-                    <view class="user-info">
-                      <view class="address">
-                        {{ i.sendAddress }}
-                      </view>
-                      <view style="display: flex">
-                        <view class="user-name">{{ i.sendContactName }}</view>
-                        <view class="phone">{{ i.sendPhone }}</view>
-                      </view>
-                    </view>
-                  </view>
-                </view>
-                <view class="operation">
-                  <view class="time">2021-01-25 20:30:05</view>
-                  <view class="btn-box">
-                    <u-button
-                      class="btn"
-                      size="mini"
-                      plain
-                      shape="circle"
-                      @click="cancelDd(i)"
-                      >取消订单</u-button
-                    >
-                    <u-button
-                      class="btn"
-                      size="mini"
-                      shape="circle"
-                      v-if="!i.useTip"
-                      >加小费</u-button
-                    >
-                  </view>
-                </view>
-                <view class="news">
-                  <image src="@/static/image/news.png" class="icon" />
-                  <view class="text">全网推单中...</view>
-                  <view class="price">
-                    <view class="label">￥</view>
-                    {{ i.totalAmount }}
-                  </view>
-                </view>
-              </view>
-            </view>
-          </view>
-          <view class="order-list" v-if="item.id == 4">
-            <view
-              class="order"
-              v-for="(i, j) in completed.list"
-              :key="j"
-              @click.stop="order_Click(i.id)"
-            >
-              <view class="head">
-                <view class="title">订单编号：#{{ i.orderSn }}</view>
-                <view class="state">{{ item.name }}</view>
-              </view>
-              <view class="order-info">
-                <view class="piece-info">
-                  <view class="sou">
-                    <view class="icon-box">
-                      <image src="@/static/image/sou.png" class="icon" />
-                    </view>
-                    <view class="user-info">
-                      <view class="address">
-                        {{ i.receiptAddress }}
-                      </view>
-                      <view style="display: flex">
-                        <view class="user-name">{{
-                          i.receiptContactName
-                        }}</view>
-                        <view class="phone">{{ i.receiptPhone }}</view>
-                      </view>
-                    </view>
-                  </view>
-                  <view class="fa">
-                    <view class="icon-box">
-                      <image src="@/static/image/fa.png" class="icon" />
-                    </view>
-                    <view class="user-info">
-                      <view class="address">
-                        {{ i.sendAddress }}
-                      </view>
-                      <view style="display: flex">
-                        <view class="user-name">{{ i.sendContactName }}</view>
-                        <view class="phone">{{ i.sendPhone }}</view>
-                      </view>
-                    </view>
-                  </view>
-                </view>
-                <view class="operation">
-                  <view class="time">2021-01-25 20:30:05</view>
-                  <view class="btn-box">
-                    <u-button
-                      class="btn"
-                      size="mini"
-                      plain
-                      shape="circle"
-                      @click="cancelDd(i)"
-                      >取消订单</u-button
-                    >
-                    <u-button
-                      class="btn"
-                      size="mini"
-                      shape="circle"
-                      v-if="!i.useTip"
-                      >加小费</u-button
-                    >
-                  </view>
-                </view>
-                <view class="news">
-                  <image src="@/static/image/news.png" class="icon" />
-                  <view class="text">全网推单中...</view>
-                  <view class="price">
-                    <view class="label">￥</view>
-                    {{ i.totalAmount }}
-                  </view>
-                </view>
-              </view>
-            </view>
-          </view>
-          <view class="order-list" v-if="item.id == '-1'">
-            <view
-              class="order"
-              v-for="(i, j) in cancel.list"
-              :key="j"
-              @click.stop="order_Click(i.id)"
-            >
-              <view class="head">
-                <view class="title">订单编号：#{{ i.orderSn }}</view>
-                <view class="state">{{ item.name }}</view>
-              </view>
-              <view class="order-info">
-                <view class="piece-info">
-                  <view class="sou">
-                    <view class="icon-box">
-                      <image src="@/static/image/sou.png" class="icon" />
-                    </view>
-                    <view class="user-info">
-                      <view class="address">
-                        {{ i.receiptAddress }}
-                      </view>
-                      <view style="display: flex">
-                        <view class="user-name">{{
-                          i.receiptContactName
-                        }}</view>
-                        <view class="phone">{{ i.receiptPhone }}</view>
-                      </view>
-                    </view>
-                  </view>
-                  <view class="fa">
-                    <view class="icon-box">
-                      <image src="@/static/image/fa.png" class="icon" />
-                    </view>
-                    <view class="user-info">
-                      <view class="address">
-                        {{ i.sendAddress }}
-                      </view>
-                      <view style="display: flex">
-                        <view class="user-name">{{ i.sendContactName }}</view>
-                        <view class="phone">{{ i.sendPhone }}</view>
-                      </view>
-                    </view>
-                  </view>
-                </view>
-                <view class="operation">
-                  <view class="time">2021-01-25 20:30:05</view>
-                  <view class="btn-box">
-                    <u-button
-                      class="btn"
-                      size="mini"
-                      plain
-                      shape="circle"
-                      @click="cancelDd(i)"
-                      >取消订单</u-button
-                    >
-                    <u-button
-                      class="btn"
-                      size="mini"
-                      shape="circle"
-                      v-if="!i.useTip"
-                      >加小费</u-button
-                    >
-                  </view>
-                </view>
-                <view class="news">
-                  <image src="@/static/image/news.png" class="icon" />
-                  <view class="text">全网推单中...</view>
-                  <view class="price">
-                    <view class="label">￥</view>
-                    {{ i.totalAmount }}
-                  </view>
-                </view>
-              </view>
-            </view>
-          </view>
-          <view class="order-list" v-if="item.id == 0">
-            <view
-              class="order"
-              v-for="(i, j) in staypay.list"
-              :key="j"
-              @click.stop="order_Click(i.id)"
-            >
-              <view class="head">
-                <view class="title">订单编号：#{{ i.orderSn }}</view>
-                <view class="state">{{ item.name }}</view>
-              </view>
-              <view class="order-info">
-                <view class="piece-info">
-                  <view class="sou">
-                    <view class="icon-box">
-                      <image src="@/static/image/sou.png" class="icon" />
-                    </view>
-                    <view class="user-info">
-                      <view class="address">
-                        {{ i.receiptAddress }}
-                      </view>
-                      <view style="display: flex">
-                        <view class="user-name">{{
-                          i.receiptContactName
-                        }}</view>
-                        <view class="phone">{{ i.receiptPhone }}</view>
-                      </view>
-                    </view>
-                  </view>
-                  <view class="fa">
-                    <view class="icon-box">
-                      <image src="@/static/image/fa.png" class="icon" />
-                    </view>
-                    <view class="user-info">
-                      <view class="address">
-                        {{ i.sendAddress }}
-                      </view>
-                      <view style="display: flex">
-                        <view class="user-name">{{ i.sendContactName }}</view>
-                        <view class="phone">{{ i.sendPhone }}</view>
-                      </view>
-                    </view>
-                  </view>
-                </view>
-                <view class="operation">
-                  <view class="time">2021-01-25 20:30:05</view>
-                  <view class="btn-box">
-                    <u-button
-                      class="btn"
-                      size="mini"
-                      plain
-                      shape="circle"
-                      @click="cancelDd(i)"
-                      >取消订单</u-button
-                    >
-                    <u-button
-                      class="btn"
-                      size="mini"
-                      shape="circle"
-                      v-if="!i.useTip"
-                      >加小费</u-button
-                    >
-                  </view>
-                </view>
-                <view class="news">
-                  <image src="@/static/image/news.png" class="icon" />
-                  <view class="text">全网推单中...</view>
-                  <view class="price">
-                    <view class="label">￥</view>
-                    {{ i.totalAmount }}
-                  </view>
-                </view>
-              </view>
-            </view>
-          </view>
-        </scroll-view>
-      </swiper-item>
-    </swiper>
+        </view>
+      </view>
+    </mescroll-uni>
     <u-modal v-model="show" show-cancel-button @confirm="qrcancel">
       <view class="slot-content" v-if="order">
         取消编号 {{ order.orderSn }} 的订单？

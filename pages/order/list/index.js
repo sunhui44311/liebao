@@ -1,16 +1,17 @@
+import MescrollMixin from "../../../components/mescroll-uni/mescroll-mixins.js"
+import MescrollUni from "../../../components/mescroll-uni/mescroll-uni.vue"
 export default {
+    mixins: [MescrollMixin],
     data() {
         return {
             tabs: [{
                 name: '待接单',
-                count: 2,
                 id: 1
             }, {
                 name: '待取货',
                 id: 2
             }, {
                 name: '配送中',
-                count: 2,
                 id: 3
             }, {
                 name: '已完成',
@@ -23,50 +24,40 @@ export default {
                 id: 0
             }],
             current: 0,
-            swiperCurrent: 0,
             show: false,
             order: null,
-            wait: {
+            listTop: 210,
+            query: {
                 pageNum: 1,
                 pageSize: 10,
-                list: []
             },
-            take: {
-                pageNum: 1,
-                pageSize: 10,
-                list: []
+            upOption: {
+                page: {
+                    num: 0,
+                    size: 10 // 每页数据的数量
+                },
+                isBounce: true,
+                textNoMore: '没有更多数据',
+                noMoreSize: 0, //如果列表已无数据,可设置列表的总数量要大于半页才显示无更多数据;避免列表数据过少(比如只有一条数据),显示无更多数据会不好看; 默认5
+                empty: {
+                    use: true,
+                    icon: '../'
+                }
             },
-            delivery: {
-                pageNum: 1,
-                pageSize: 10,
-                list: []
-            },
-            completed: {
-                pageNum: 1,
-                pageSize: 10,
-                list: []
-            },
-            cancel: {
-                pageNum: 1,
-                pageSize: 10,
-                list: []
-            },
-            staypay: {
-                pageNum: 1,
-                pageSize: 10,
-                list: []
-            }
+            list: []
+
         };
     },
     methods: {
+        downCallback() {
+            this.reset_updata()
+        },
+        upCallback() {
+            this.updata()
+        },
         // 用于初始化一些数据
         init() {
-            this.wait_order()
-            this.take_order()
-            this.delivery_order()
-            this.completed_order()
-            this.cancel_order()
-            this.staypay_order()
+            this.http_marker()
         },
         order_Click(id) {
             uni.navigateTo({
@@ -74,115 +65,26 @@ export default {
             })
         },
         // 用于更新一些数据
-        wait_order() {
+        updata() {
             let params = {
                 url: "app/order/list",
                 method: "GET",
                 data: {
-                    status: 1,
-                    pageNum: this.wait.pageNum,
-                    pageSize: this.wait.pageSize
+                    status: this.tabs[this.current].id,
+                    pageNum: this.query.pageNum,
+                    pageSize: this.query.pageSize
                 },
                 callBack: (res) => {
-                    this.wait.list = res.data.data
-                    this.wait.pageNum++
-                },
-            };
-            this.$http.request(params);
-        },
-        take_order() {
-            let params = {
-                url: "app/order/list",
-                method: "GET",
-                data: {
-                    status: 2,
-                    pageNum: this.take.pageNum,
-                    pageSize: this.take.pageSize
-                },
-                callBack: (res) => {
-
-                    this.take.list = res.data.data
-                    this.take.pageNum++
-                },
-            };
-            this.$http.request(params);
-        },
-        delivery_order() {
-            let params = {
-                url: "app/order/list",
-                method: "GET",
-                data: {
-                    status: 3,
-                    pageNum: this.delivery.pageNum,
-                    pageSize: this.delivery.pageSize
-                },
-                callBack: (res) => {
-                    this.delivery.list = res.data.data
-                    this.delivery.pageNum++
-                },
-            };
-            this.$http.request(params);
-        },
-        completed_order() {
-            let params = {
-                url: "app/order/list",
-                method: "GET",
-                data: {
-                    status: 4,
-                    pageNum: this.completed.pageNum,
-                    pageSize: this.completed.pageSize
-                },
-                callBack: (res) => {
-                    this.completed.list = res.data.data
-                    this.completed.pageNum++
-                },
-            };
-            this.$http.request(params);
-        },
-        cancel_order() {
-            let params = {
-                url: "app/order/list",
-                method: "GET",
-                data: {
-                    status: -1,
-                    pageNum: this.cancel.pageNum,
-                    pageSize: this.cancel.pageSize
-                },
-                callBack: (res) => {
-                    this.cancel.list = res.data.data
-                    this.cancel.pageNum++
-                },
-            };
-            this.$http.request(params);
-        },
-        staypay_order() {
-            let params = {
-                url: "app/order/list",
-                method: "GET",
-                data: {
-                    status: 0,
-                    pageNum: this.staypay.pageNum,
-                    pageSize: this.staypay.pageSize
-                },
-                callBack: (res) => {
-                    this.staypay.list = res.data.data
-                    this.staypay.pageNum++
+                    this.list = [...this.list, ...res.data.data]
+                    this.mescroll.endSuccess(res.data.data.length);
+                    this.query.pageNum++
                 },
             };
             this.$http.request(params);
         },
         tabsChange(index) {
-            this.swiperCurrent = index;
-        },
-        transition(e) {
-            let dx = e.detail.dx;
-            this.$refs.uTabs.setDx(dx);
-        },
-        animationfinish(e) {
-            let current = e.detail.current;
-            this.orderStatus = this.tabs[e.detail.current].id
-            this.$refs.uTabs.setFinishCurrent(current);
-            this.current = current;
+            this.current = index;
+            this.reset_updata()
         },
         cancelDd(item) {
             this.show = true
@@ -212,33 +114,46 @@ export default {
             this.$http.request(params);
         },
         reset_updata() {
-            if (this.current == 0) {
-                this.wait.pageNum = 1
-                this.wait_order()
-            }
-            if (this.current == 1) {
-                this.take.pageNum = 1
-                this.take_order()
-            }
-            if (this.current == 2) {
-                this.delivery.pageNum = 1
-                this.delivery_order()
-            }
-            if (this.current == 3) {
-                this.completed.pageNum = 1
-                this.completed_order()
-            }
-            if (this.current == 4) {
-                this.cancel.pageNum = 1
-                this.cancel_order()
-            }
-            if (this.current == 5) {
-                this.staypay.pageNum = 1
-                this.staypay_order()
-            }
+            this.query.pageNum = 1
+            this.list = []
+            this.updata()
         },
-        onreachBottom() {
-
+        http_marker() {
+            let params = {
+                url: "app/order/marker",
+                method: "GET",
+                data: {
+                },
+                callBack: (res) => {
+                    let arr = [{
+                        name: '待接单',
+                        count: res.data.toBeReceivedNum,
+                        id: 1
+                    }, {
+                        name: '待取货',
+                        count: res.data.toBePickedNum,
+                        id: 2
+                    }, {
+                        name: '配送中',
+                        count: res.data.inDeliveryNum,
+                        id: 3
+                    }, {
+                        name: '已完成',
+                        count: res.data.completedNum,
+                        id: 4
+                    }, {
+                        name: '已取消',
+                        count: res.data.cancelNum,
+                        id: '-1'
+                    }, {
+                        name: '待支付',
+                        count: res.data.toBePaid,
+                        id: 0
+                    }]
+                    this.tabs = arr
+                },
+            };
+            this.$http.request(params);
         }
     },
     onShow() {
@@ -247,7 +162,33 @@ export default {
     // 计算属性
     computed: {},
     // 包含 Vue 实例可用过滤器的哈希表。
-    filters: {},
+    filters: {
+        statetext(e) {
+            let arr = [{
+                key: 1,
+                title: '待接单'
+            }, {
+                key: 2,
+                title: '待取货'
+            }, {
+                key: 3,
+                title: '配送中'
+            }, {
+                key: 4,
+                title: '已完成'
+            }, {
+                key: '-1',
+                title: '已取消'
+            }, {
+                key: 0,
+                title: '待支付'
+            },]
+            if (!e) return ''
+            let obj = arr.find(i => i.key == e)
+            return obj.title
+
+        }
+    },
     // 在实例创建完成后被立即调用
     created() { },
     // 在挂载开始之前被调用：相关的 render 函数首次被调用。
@@ -274,5 +215,7 @@ export default {
     // 一个对象，键是需要观察的表达式，值是对应回调函数。
     watch: {},
     // 组件列表
-    components: {},
+    components: {
+        MescrollUni
+    },
 };
