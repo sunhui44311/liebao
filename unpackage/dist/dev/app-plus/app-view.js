@@ -13066,7 +13066,12 @@ var render = function() {
                   "v-uni-view",
                   {
                     staticClass: _vm._$g("15-" + $30, "sc"),
-                    attrs: { _i: "15-" + $30 }
+                    attrs: { _i: "15-" + $30 },
+                    on: {
+                      click: function($event) {
+                        return _vm.$handleViewEvent($event)
+                      }
+                    }
                   },
                   [_vm._v("删除")]
                 )

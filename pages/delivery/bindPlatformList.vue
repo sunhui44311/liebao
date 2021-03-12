@@ -29,7 +29,7 @@
       </view>
       <view class="menu-list">
         <view class="menu bind" @click="unbundling(item)">解绑</view>
-        <view class="menu delete">删除</view>
+        <view class="menu delete" @click="del(item)">删除</view>
       </view>
     </view>
     <view class="wcell" v-for="(item, index) in waimailist" :key="index">
@@ -120,6 +120,38 @@ export default {
             };
             uni.showLoading({
               title: "解绑中",
+              mask: true,
+            });
+            this.$http.request(params);
+          }
+        },
+      });
+    },
+    del(e) {
+      uni.showModal({
+        title: "提示",
+        content: "是否删除该外卖平台",
+        success: (res) => {
+          if (res.confirm) {
+            let params = {
+              url: "app/waimai/delete",
+              method: "POST",
+              data: {
+                id: e.id,
+              },
+              callBack: (res) => {
+                uni.hideLoading();
+                if (res.code == 200) {
+                  uni.showToast({
+                    title: "删除成功",
+                    icon: "none",
+                  });
+                  this.http_waimai();
+                }
+              },
+            };
+            uni.showLoading({
+              title: "删除中",
               mask: true,
             });
             this.$http.request(params);
