@@ -3,14 +3,14 @@
 		<view class="section">
 			<view class="section-nav">
 				<text class="section-tlt">新消息通知</text>
-				<u-switch active-color="#E95008" inactive-color="#F8F8F8"></u-switch>
+				<u-switch active-color="#E95008" v-model="enableNotification" inactive-color="#F8F8F8" @change="change"></u-switch>
 			</view>
 			<view class="tip">关闭新消息通知，将无法收到订单状态通知</view>
 		</view>
 		<view class="section">
 			<view class="section-nav">
 				<text class="section-tlt">语音播报</text>
-				<u-switch active-color="#E95008" inactive-color="#F8F8F8"></u-switch>
+				<u-switch v-model="enableVoice" active-color="#E95008" inactive-color="#F8F8F8" @change="voiceChange"></u-switch>
 			</view>
 			<view class="tip">关闭新消息通知，将无法收到订单状态通知</view>
 		</view>
@@ -38,10 +38,44 @@
 </template>
 
 <script>
+	import globalData from '@/common/js/globalData.js'
 	export default{
 		data(){
 			return{
-				
+				enableNotification:false,
+				enableVoice:true
+			}
+		},
+		onLoad() {
+			let enableVoice=uni.getStorageSync('enableVoice')
+			if(enableVoice&&enableVoice==1){
+				this.enableVoice=true
+			}
+			else{
+				this.enableVoice=false
+			}
+		},
+		onShow() {
+			if(globalData.platform=='ios'){
+				var UIApplication = plus.ios.import("UIApplication");
+				var app = UIApplication.sharedApplication();  
+				var enabledTypes  = 0;  
+				if (app.currentUserNotificationSettings) {  
+				    var settings = app.currentUserNotificationSettings();  
+				    enabledTypes = settings.plusGetAttribute("types");  
+				} else {  
+				    //针对低版本ios系统  
+				    enabledTypes = app.enabledRemoteNotificationTypes();  
+				}  
+				plus.ios.deleteObject(app); 
+				this.enableNotification=enabledTypes==0?false:true
+			}
+			else{
+				var main = plus.android.runtimeMainActivity();  
+				var pkName = main.getPackageName();  
+				var NotificationManagerCompat = plus.android.importClass("android.support.v4.app.NotificationManagerCompat");  
+				var packageNames = NotificationManagerCompat.from(main);  
+				this.enableNotification=packageNames.areNotificationsEnabled()?true:false
 			}
 		},
 		methods:{
@@ -60,6 +94,27 @@
 					uni.navigateTo({
 						url:'/pages/myTool/privatePolicy'
 					})
+				}
+			},
+			voiceChange(){
+				let enableVoice=this.enableVoice?1:0
+				uni.setStorageSync('enableVoice',enableVoice)
+			},
+			change(){ 
+				if(globalData.platform=='ios'){
+					var UIApplication = plus.ios.import("UIApplication");
+					var NSURL = plus.ios.import("NSURL");  
+					var setting = NSURL.URLWithString("app-settings:");  
+					var application = UIApplication.sharedApplication();  
+					application.openURL(setting);  
+					plus.ios.deleteObject(setting);  
+					plus.ios.deleteObject(application); 
+				}
+				else{
+					var Intent = plus.android.importClass('android.content.Intent');  
+					var intent = new Intent('android.settings.APP_NOTIFICATION_SETTINGS');//可设置表中所有Action字段  
+					intent.putExtra('android.provider.extra.APP_PACKAGE', pkName);  
+					main.startActivity(intent);  
 				}
 			}
 		}

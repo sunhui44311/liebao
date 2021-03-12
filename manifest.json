@@ -22,7 +22,9 @@
             "Contacts" : {},
             "Geolocation" : {},
             "Payment" : {},
-            "Push" : {}
+            "Push" : {},
+            "Share" : {},
+            "OAuth" : {}
         },
         /* 应用发布信息 */
         "distribute" : {
@@ -63,18 +65,30 @@
                         "appkey_android" : "5bebed98488db32e78eab5c2ab9dc29a"
                     }
                 },
-                "oauth" : {},
+                "oauth" : {
+                    "weixin" : {
+                        "appid" : "wx962c307ce15af77c",
+                        "appsecret" : "0e30b781327387105468c5c22b919376",
+                        "UniversalLinks" : "https://token.chengbai-tech.com/liebao/"
+                    },
+                    "univerify" : {}
+                },
                 "payment" : {
                     "weixin" : {
                         "__platform__" : [ "ios", "android" ],
-                        "appid" : "1212121212",
+                        "appid" : "wx962c307ce15af77c",
                         "UniversalLinks" : "https://token.chengbai-tech.com/liebao/"
                     },
                     "alipay" : {
                         "__platform__" : [ "ios", "android" ]
                     }
                 },
-                "share" : {},
+                "share" : {
+                    "weixin" : {
+                        "appid" : "wx962c307ce15af77c",
+                        "UniversalLinks" : "https://token.chengbai-tech.com/liebao/"
+                    }
+                },
                 "geolocation" : {
                     "amap" : {
                         "__platform__" : [ "ios", "android" ],

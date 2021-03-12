@@ -1,8 +1,5 @@
 export default {
     user:{
-        uuid:'',
-		openId:'',
-		merchant:'1',
 		latitude:'',
 		longitude:'',
 		appType:3,

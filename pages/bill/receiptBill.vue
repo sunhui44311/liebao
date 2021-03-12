@@ -222,7 +222,7 @@
 							address:this.sendAddress.address
 						},
 						receiptAddress:{
-							id:this.sendAddress.id,
+							id:this.receiptAddress.id,
 							provinceName:this.receiptAddress.province,
 							cityName:this.receiptAddress.city,
 							districtName:this.receiptAddress.district,
@@ -237,6 +237,7 @@
 						takeTime:this.selectTime,
 						weight:this.weight/2.0
 					}
+					console.log(requestData)
 				var params={
 					url:'app/order/valuation',
 					method:'POST',
