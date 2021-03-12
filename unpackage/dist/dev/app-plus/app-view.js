@@ -12957,90 +12957,166 @@ var render = function() {
           }
         }
       }),
-      _c(
-        "v-uni-view",
-        { staticClass: _vm._$g(2, "sc"), attrs: { _i: 2 } },
-        [
-          _c(
-            "v-uni-view",
-            { staticClass: _vm._$g(3, "sc"), attrs: { _i: 3 } },
-            [
-              _c("v-uni-image", {
-                staticClass: _vm._$g(4, "sc"),
-                attrs: { src: _vm._$g(4, "a-src"), _i: 4 }
-              }),
-              _c(
-                "v-uni-text",
-                { staticClass: _vm._$g(5, "sc"), attrs: { _i: 5 } },
-                [_vm._v("美团")]
-              ),
-              _c(
-                "v-uni-text",
-                { staticClass: _vm._$g(6, "sc"), attrs: { _i: 6 } },
-                [_vm._v("已绑定")]
-              )
-            ],
-            1
-          ),
-          _c(
-            "v-uni-view",
-            { staticClass: _vm._$g(7, "sc"), attrs: { _i: 7 } },
-            [
-              _c("v-uni-image", {
-                staticClass: _vm._$g(8, "sc"),
-                attrs: { src: _vm._$g(8, "a-src"), _i: 8 }
-              }),
-              _c(
-                "v-uni-view",
-                { attrs: { _i: 9 } },
-                [
-                  _c(
-                    "v-uni-view",
-                    { staticClass: _vm._$g(10, "sc"), attrs: { _i: 10 } },
-                    [_vm._v("美团店铺名称")]
-                  ),
-                  _c(
-                    "v-uni-view",
-                    {
-                      staticClass: _vm._$g(11, "sc"),
-                      staticStyle: { "margin-top": "8px" },
-                      attrs: { _i: 11 }
-                    },
-                    [_vm._v("店铺ID：32323")]
-                  ),
-                  _c(
-                    "v-uni-view",
-                    { staticClass: _vm._$g(12, "sc"), attrs: { _i: 12 } },
-                    [_vm._v("账户余额：32元")]
-                  )
-                ],
-                1
-              )
-            ],
-            1
-          ),
-          _c(
-            "v-uni-view",
-            { staticClass: _vm._$g(13, "sc"), attrs: { _i: 13 } },
-            [
-              _c(
-                "v-uni-view",
-                { staticClass: _vm._$g(14, "sc"), attrs: { _i: 14 } },
-                [_vm._v("解绑")]
-              ),
-              _c(
-                "v-uni-view",
-                { staticClass: _vm._$g(15, "sc"), attrs: { _i: 15 } },
-                [_vm._v("删除")]
-              )
-            ],
-            1
-          )
-        ],
-        1
-      )
+      _vm._l(_vm._$g(2, "f"), function(item, index, $20, $30) {
+        return _c(
+          "v-uni-view",
+          {
+            key: item,
+            staticClass: _vm._$g("2-" + $30, "sc"),
+            attrs: { _i: "2-" + $30 }
+          },
+          [
+            _c(
+              "v-uni-view",
+              {
+                staticClass: _vm._$g("3-" + $30, "sc"),
+                attrs: { _i: "3-" + $30 }
+              },
+              [
+                _c("v-uni-image", {
+                  staticClass: _vm._$g("4-" + $30, "sc"),
+                  attrs: { src: _vm._$g("4-" + $30, "a-src"), _i: "4-" + $30 }
+                }),
+                _c(
+                  "v-uni-text",
+                  {
+                    staticClass: _vm._$g("5-" + $30, "sc"),
+                    attrs: { _i: "5-" + $30 }
+                  },
+                  [_vm._v(_vm._$g("5-" + $30, "t0-0"))]
+                ),
+                _c(
+                  "v-uni-text",
+                  {
+                    staticClass: _vm._$g("6-" + $30, "sc"),
+                    attrs: { _i: "6-" + $30 }
+                  },
+                  [_vm._v("已绑定")]
+                )
+              ],
+              1
+            ),
+            _c(
+              "v-uni-view",
+              {
+                staticClass: _vm._$g("7-" + $30, "sc"),
+                attrs: { _i: "7-" + $30 }
+              },
+              [
+                _c("v-uni-image", {
+                  staticClass: _vm._$g("8-" + $30, "sc"),
+                  attrs: { src: _vm._$g("8-" + $30, "a-src"), _i: "8-" + $30 }
+                }),
+                _c(
+                  "v-uni-view",
+                  { attrs: { _i: "9-" + $30 } },
+                  [
+                    _c(
+                      "v-uni-view",
+                      {
+                        staticClass: _vm._$g("10-" + $30, "sc"),
+                        attrs: { _i: "10-" + $30 }
+                      },
+                      [_vm._v(_vm._$g("10-" + $30, "t0-0"))]
+                    ),
+                    _c(
+                      "v-uni-view",
+                      {
+                        staticClass: _vm._$g("11-" + $30, "sc"),
+                        staticStyle: { "margin-top": "8px" },
+                        attrs: { _i: "11-" + $30 }
+                      },
+                      [_vm._v("店铺ID：" + _vm._$g("11-" + $30, "t0-0"))]
+                    ),
+                    _c(
+                      "v-uni-view",
+                      {
+                        staticClass: _vm._$g("12-" + $30, "sc"),
+                        attrs: { _i: "12-" + $30 }
+                      },
+                      [_vm._v("账户余额：32元")]
+                    )
+                  ],
+                  1
+                )
+              ],
+              1
+            ),
+            _c(
+              "v-uni-view",
+              {
+                staticClass: _vm._$g("13-" + $30, "sc"),
+                attrs: { _i: "13-" + $30 }
+              },
+              [
+                _c(
+                  "v-uni-view",
+                  {
+                    staticClass: _vm._$g("14-" + $30, "sc"),
+                    attrs: { _i: "14-" + $30 },
+                    on: {
+                      click: function($event) {
+                        return _vm.$handleViewEvent($event)
+                      }
+                    }
+                  },
+                  [_vm._v("解绑")]
+                ),
+                _c(
+                  "v-uni-view",
+                  {
+                    staticClass: _vm._$g("15-" + $30, "sc"),
+                    attrs: { _i: "15-" + $30 }
+                  },
+                  [_vm._v("删除")]
+                )
+              ],
+              1
+            )
+          ],
+          1
+        )
+      }),
+      _vm._l(_vm._$g(16, "f"), function(item, index, $21, $31) {
+        return _c(
+          "v-uni-view",
+          {
+            key: item,
+            staticClass: _vm._$g("16-" + $31, "sc"),
+            attrs: { _i: "16-" + $31 }
+          },
+          [
+            _c("v-uni-image", {
+              staticClass: _vm._$g("17-" + $31, "sc"),
+              attrs: { src: _vm._$g("17-" + $31, "a-src"), _i: "17-" + $31 }
+            }),
+            _c(
+              "v-uni-text",
+              {
+                staticClass: _vm._$g("18-" + $31, "sc"),
+                attrs: { _i: "18-" + $31 }
+              },
+              [_vm._v(_vm._$g("18-" + $31, "t0-0"))]
+            ),
+            _c(
+              "v-uni-view",
+              {
+                staticClass: _vm._$g("19-" + $31, "sc"),
+                attrs: { _i: "19-" + $31 },
+                on: {
+                  click: function($event) {
+                    return _vm.$handleViewEvent($event)
+                  }
+                }
+              },
+              [_vm._v("去绑定")]
+            )
+          ],
+          1
+        )
+      })
     ],
-    1
+    2
   )
 }
 var recyclableRender = false
@@ -13131,7 +13207,7 @@ if(false) {}
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ./node_modules/css-loader/dist/runtime/api.js */ 13);
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, "@charset \"UTF-8\";\r\n/**\r\n * 这里是uni-app内置的常用样式变量\r\n *\r\n * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量\r\n * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App\r\n *\r\n */\r\n/**\r\n * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能\r\n *\r\n * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件\r\n */\r\n/* 颜色变量 */\r\n/* 行为相关颜色 */\r\n/* 文字基本颜色 */\r\n/* 背景颜色 */\r\n/* 边框颜色 */\r\n/* 尺寸变量 */\r\n/* 文字尺寸 */\r\n/* 图片尺寸 */\r\n/* Border Radius */\r\n/* 水平间距 */\r\n/* 垂直间距 */\r\n/* 透明度 */\r\n/* 文章场景相关 */\nbody {\r\n  background-color: #f6f7f9;\n}\n.cell {\r\n  background-color: white;\r\n  margin: 10px;\r\n  padding: 10px 8px;\r\n  border-radius: 7px;\n}\n.nav {\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  -webkit-box-pack: justify;\r\n  -webkit-justify-content: space-between;\r\n          justify-content: space-between;\r\n  -webkit-box-align: center;\r\n  -webkit-align-items: center;\r\n          align-items: center;\n}\n.nav .logo {\r\n  width: 22px;\r\n  height: 22px;\n}\n.nav .tlt {\r\n  color: #0d1c40;\r\n  font-size: 17px;\r\n  -webkit-box-flex: 1;\r\n  -webkit-flex: 1;\r\n          flex: 1;\r\n  margin-left: 7px;\n}\n.nav .status {\r\n  color: #33bb66;\r\n  font-size: 12px;\r\n  height: 43px;\r\n  height: 16px;\r\n  text-align: center;\r\n  line-height: 16px;\r\n  background-color: #effdee;\n}\n.info {\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  -webkit-box-pack: start;\r\n  -webkit-justify-content: flex-start;\r\n          justify-content: flex-start;\r\n  margin-top: 12px;\r\n  padding-bottom: 13px;\r\n  border-bottom: solid 1px #eeeeee;\n}\n.info .name {\r\n  color: #0d1c40;\r\n  font-size: 14px;\n}\n.shop-img {\r\n  width: 90px;\r\n  height: 62px;\r\n  margin-right: 11px;\n}\n.sub-name {\r\n  color: #9fa7b6;\r\n  font-size: 12px;\n}\n.menu-list {\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  -webkit-box-pack: end;\r\n  -webkit-justify-content: flex-end;\r\n          justify-content: flex-end;\r\n  -webkit-box-align: center;\r\n  -webkit-align-items: center;\r\n          align-items: center;\r\n  margin-top: 10px;\n}\n.menu-list .menu {\r\n  width: 60px;\r\n  height: 24px;\r\n  line-height: 24px;\r\n  text-align: center;\r\n  border-radius: 12px;\r\n  font-size: 13px;\n}\n.menu-list .bind {\r\n  border: solid 1px #e95008;\r\n  color: #e95008;\r\n  margin-right: 10px;\n}\n.menu-list .delete {\r\n  background-color: #db5f29;\r\n  color: white;\n}\r\n", ""]);
+exports.push([module.i, "@charset \"UTF-8\";\r\n/**\r\n * 这里是uni-app内置的常用样式变量\r\n *\r\n * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量\r\n * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App\r\n *\r\n */\r\n/**\r\n * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能\r\n *\r\n * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件\r\n */\r\n/* 颜色变量 */\r\n/* 行为相关颜色 */\r\n/* 文字基本颜色 */\r\n/* 背景颜色 */\r\n/* 边框颜色 */\r\n/* 尺寸变量 */\r\n/* 文字尺寸 */\r\n/* 图片尺寸 */\r\n/* Border Radius */\r\n/* 水平间距 */\r\n/* 垂直间距 */\r\n/* 透明度 */\r\n/* 文章场景相关 */\nbody {\r\n  background-color: #f6f7f9;\n}\n.cell {\r\n  background-color: white;\r\n  margin: 10px;\r\n  padding: 10px 8px;\r\n  border-radius: 7px;\n}\n.wcell {\r\n  margin: 10px;\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  -webkit-box-pack: justify;\r\n  -webkit-justify-content: space-between;\r\n          justify-content: space-between;\r\n  -webkit-box-align: center;\r\n  -webkit-align-items: center;\r\n          align-items: center;\r\n  background-color: white;\r\n  padding: 14px 24px;\r\n  border-radius: 7px;\r\n  margin-bottom: 20upx;\n}\n.wcell:last-child {\r\n  margin-bottom: 0;\n}\n.wcell .logo {\r\n  width: 32px;\r\n  height: 32px;\n}\n.wcell .name {\r\n  -webkit-box-flex: 1;\r\n  -webkit-flex: 1;\r\n          flex: 1;\r\n  color: #0d1c40;\r\n  font-size: 17px;\r\n  margin-left: 18px;\n}\n.bind {\r\n  width: 60px;\r\n  height: 24px;\r\n  line-height: 24px;\r\n  text-align: center;\r\n  color: #e95008;\r\n  font-size: 13px;\r\n  border: solid 1px #e95008;\r\n  border-radius: 12px;\n}\n.nav {\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  -webkit-box-pack: justify;\r\n  -webkit-justify-content: space-between;\r\n          justify-content: space-between;\r\n  -webkit-box-align: center;\r\n  -webkit-align-items: center;\r\n          align-items: center;\n}\n.nav .logo {\r\n  width: 22px;\r\n  height: 22px;\n}\n.nav .tlt {\r\n  color: #0d1c40;\r\n  font-size: 17px;\r\n  -webkit-box-flex: 1;\r\n  -webkit-flex: 1;\r\n          flex: 1;\r\n  margin-left: 7px;\n}\n.nav .status {\r\n  color: #33bb66;\r\n  font-size: 12px;\r\n  height: 43px;\r\n  height: 16px;\r\n  text-align: center;\r\n  line-height: 16px;\r\n  background-color: #effdee;\n}\n.info {\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  -webkit-box-pack: start;\r\n  -webkit-justify-content: flex-start;\r\n          justify-content: flex-start;\r\n  margin-top: 12px;\r\n  padding-bottom: 13px;\r\n  border-bottom: solid 1px #eeeeee;\n}\n.info .name {\r\n  color: #0d1c40;\r\n  font-size: 14px;\n}\n.shop-img {\r\n  width: 90px;\r\n  height: 62px;\r\n  margin-right: 11px;\n}\n.sub-name {\r\n  color: #9fa7b6;\r\n  font-size: 12px;\n}\n.menu-list {\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  -webkit-box-pack: end;\r\n  -webkit-justify-content: flex-end;\r\n          justify-content: flex-end;\r\n  -webkit-box-align: center;\r\n  -webkit-align-items: center;\r\n          align-items: center;\r\n  margin-top: 10px;\n}\n.menu-list .menu {\r\n  width: 60px;\r\n  height: 24px;\r\n  line-height: 24px;\r\n  text-align: center;\r\n  border-radius: 12px;\r\n  font-size: 13px;\n}\n.menu-list .bind {\r\n  border: solid 1px #e95008;\r\n  color: #e95008;\r\n  margin-right: 10px;\n}\n.menu-list .delete {\r\n  background-color: #db5f29;\r\n  color: white;\n}\r\n", ""]);
 // Exports
 module.exports = exports;
 

@@ -119,12 +119,14 @@ export default {
                     cancelReason: this.cancelReason == '其他原因' ? this.cancelReason2 : this.cancelReason
                 },
                 callBack: (res) => {
-                    uni.showToast({
-                        title: "取消订单成功",
-                        icon: "none",
-                    });
-                    this.handletouchstart()
-                    this.reset_updata()
+                    if (res.code == 200) {
+                        uni.showToast({
+                            title: "取消订单成功",
+                            icon: "none",
+                        });
+                        this.handletouchstart()
+                        this.reset_updata()
+                    }
                 },
             };
             uni.showLoading({

@@ -43,18 +43,6 @@
         </view>
         <view class="content">
           <rich-text :nodes="explain"></rich-text>
-          <!-- <view class="item">
-						2、优惠券不能转让，不能折现，不能退换；
-					</view>
-					<view class="item">
-						3、优惠券不能与其他官方优惠活动同时使用， 官方活动期间以官方活动为准；
-					</view>
-					<view class="item">
-						4、优惠券只折扣订单里程费，不包括溢价与 用户加价的折扣；
-					</view>
-					<view class="item">
-						6、优惠券在特殊节假日期间不可使用，包括 : 春节、214情人节、母亲节、农历七夕、 圣诞节、春节、情人节；
-					</view> -->
         </view>
       </view>
     </u-popup>
