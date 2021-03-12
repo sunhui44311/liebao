@@ -1,138 +1,213 @@
 <template>
-	<div v-if="show">
-		<view class="bg" @touchstart="handletouchstart">
-		</view>
-		<view class="pop">
-			<view class="pop-nav">
-				<text class="pop-tlt">取消订单</text>
-				<text class="cancel" @click.stop="handletouchstart">取消</text>
-			</view>
-			<view class="menu-list">
-				<text class="select-cell" :style="{'width':itemW+'px'}">无骑手接单</text>
-				<text class="cell" :style="{'width':itemW+'px','margin-right': '0px'}">骑手接单后不取货</text>
-				<text class="cell" :style="{'width':itemW+'px'}">骑手电车装载不下</text>
-				<text class="cell" :style="{'width':itemW+'px','margin-right': '0px'}">骑手服务态度恶劣</text>
-				<text class="cell" :style="{'width':itemW+'px'}">骑手要求取消订单</text>
-				<text class="cell" :style="{'width':itemW+'px','margin-right': '0px'}">信息填写错误</text>
-				<text class="cell" :style="{'width':itemW+'px'}">计划有变,不需要配送</text>
-				<text class="cell" :style="{'width':itemW+'px','margin-right': '0px'}">其他原因</text>
-			</view>
-			<textarea class="txtarea" placeholder="请输入其他原因"></textarea>
-			<text class="submit">提交</text>
-		</view>
-	</div>
+  <div v-if="show">
+    <view class="bg" @touchstart="handletouchstart"> </view>
+    <view class="pop">
+      <view class="pop-nav">
+        <text class="pop-tlt">取消订单</text>
+        <text class="cancel" @click.stop="handletouchstart">取消</text>
+      </view>
+      <view class="menu-list">
+        <text
+          :class="cancelReason == '无骑手接单' ? 'select-cell' : 'cell'"
+          :style="{ width: itemW + 'px' }"
+          @click="cancelReason = '无骑手接单'"
+          >无骑手接单</text
+        >
+        <text
+          :class="cancelReason == '骑手接单后不取货' ? 'select-cell' : 'cell'"
+          :style="{ width: itemW + 'px', 'margin-right': '0px' }"
+          @click="cancelReason = '骑手接单后不取货'"
+          >骑手接单后不取货</text
+        >
+        <text
+          :class="cancelReason == '骑手电车装载不下' ? 'select-cell' : 'cell'"
+          :style="{ width: itemW + 'px' }"
+          @click="cancelReason = '骑手电车装载不下'"
+          >骑手电车装载不下</text
+        >
+        <text
+          :class="cancelReason == '骑手服务态度恶劣' ? 'select-cell' : 'cell'"
+          :style="{ width: itemW + 'px', 'margin-right': '0px' }"
+          @click="cancelReason = '骑手服务态度恶劣'"
+          >骑手服务态度恶劣</text
+        >
+        <text
+          :class="cancelReason == '骑手要求取消订单' ? 'select-cell' : 'cell'"
+          :style="{ width: itemW + 'px' }"
+          @click="cancelReason = '骑手要求取消订单'"
+          >骑手要求取消订单</text
+        >
+        <text
+          :class="cancelReason == '信息填写错误' ? 'select-cell' : 'cell'"
+          :style="{ width: itemW + 'px', 'margin-right': '0px' }"
+          @click="cancelReason = '信息填写错误'"
+          >信息填写错误</text
+        >
+        <text
+          :class="
+            cancelReason == '计划有变,不需要配送' ? 'select-cell' : 'cell'
+          "
+          :style="{ width: itemW + 'px' }"
+          @click="cancelReason = '计划有变,不需要配送'"
+          >计划有变,不需要配送</text
+        >
+        <text
+          :class="cancelReason == '其他原因' ? 'select-cell' : 'cell'"
+          :style="{ width: itemW + 'px', 'margin-right': '0px' }"
+          @click="cancelReason = '其他原因'"
+          >其他原因</text
+        >
+      </view>
+      <textarea class="txtarea" placeholder="请输入其他原因"></textarea>
+      <text class="submit" @click="submit">提交</text>
+    </view>
+  </div>
 </template>
 
 <script>
-	export default {
-		data(){
-			return{
-				show:false,
-				itemW:0
-			}
-		},
-		methods:{
-			open(){
-				this.show=true
-				const res = uni.getSystemInfoSync();
-				this.itemW=(res.windowWidth-85)/2.0;
-			},
-			handletouchstart(){
-				this.show=false
-			}
-		}
-	}
+export default {
+  data() {
+    return {
+      show: false,
+      itemW: 0,
+      cancelReason: "",
+      cancelReason2: "",
+    };
+  },
+  props: {
+    oId: Number,
+  },
+  methods: {
+    open() {
+      this.show = true;
+      const res = uni.getSystemInfoSync();
+      this.itemW = (res.windowWidth - 85) / 2.0;
+    },
+    handletouchstart() {
+      this.show = false;
+    },
+    submit() {
+      let params = {
+        url: "app/order/cancel",
+        method: "POST",
+        data: {
+          orderId: this.oId,
+          cancelReason:
+            this.cancelReason == "其他原因"
+              ? this.cancelReason2
+              : this.cancelReason,
+        },
+        callBack: (res) => {
+          uni.showToast({
+            title: "取消订单成功",
+            icon: "none",
+          });
+          if (res.code == 200) {
+            this.handletouchstart();
+            this.$emit("updata");
+          }
+        },
+      };
+      uni.showLoading({
+        title: "取消订单中",
+        mask: true,
+      });
+      let appGlobal = getApp({ allowDefault: true }).globalData;
+      appGlobal.http.request(params);
+    },
+  },
+};
 </script>
 
 <style>
-	.bg{
-		position: fixed;
-		left: 0px;
-		right: 0px;
-		bottom: 0px;
-		top: 0px;
-		background-color: #000000;
-		opacity: 0.5;
-	}
-	.pop{
-		position: fixed;
-		left: 0px;
-		right: 0px;
-		bottom: 0px;
-		height: 420px;
-		background-color: white;
-		border-top-left-radius: 13px;
-		border-top-right-radius: 13px;
-	}
-	.pop-nav{
-		flex-direction: row;
-		justify-content: center;
-		align-items: center;
-		padding: 12px 32px;
-		position: relative;
-	}
-	.pop-tlt{
-		color: #0D1C40;
-		font-size: 15px;
-		text-align: center;
-		font-weight: bold;
-	}
-	.cancel{
-		position: absolute;
-		left: 23px;
-		color: #4E565F;
-		font-size: 14px;
-	}
-	.menu-list{
-		flex-direction: row;
-		justify-content: flex-start;
-		flex-wrap: wrap;
-		padding: 30px 30px 0px 30px;
-	}
-	.cell{
-		width: 100px;
-		margin-right: 25px;
-		border-style: solid;
-		border-width: 1px;
-		border-color: #9EA7B7;
-		color: #0D1C40;
-		font-size: 13px;
-		height: 28px;
-		line-height: 28px;
-		text-align: center;
-		border-radius: 2px;
-		margin-bottom: 16px;
-	}
-	.select-cell{
-		width: 100px;
-		margin-right: 25px;
-		border-style: solid;
-		border-width: 1px;
-		border-color: #E95008;
-		background-color: #FDEEE7;
-		color: #E95008;
-		font-size: 13px;
-		height: 28px;
-		line-height: 28px;
-		text-align: center;
-		border-radius: 2px;
-		margin-bottom: 16px;
-	}
-	.txtarea{
-		background-color: #F5F5F7;
-		height: 90px;
-		margin: 0 30px;
-		font-size: 13px;
-		padding: 12px;
-	}
-	.submit{
-		background-color: #E95008;
-		height: 45px;
-		line-height: 45px;
-		text-align: center;
-		color: white;
-		font-size: 16px;
-		border-radius: 45px;
-		margin: 12px 30px;
-	}
+.bg {
+  position: fixed;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  top: 0px;
+  background-color: #000000;
+  opacity: 0.5;
+}
+.pop {
+  position: fixed;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  height: 420px;
+  background-color: white;
+  border-top-left-radius: 13px;
+  border-top-right-radius: 13px;
+}
+.pop-nav {
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 12px 32px;
+  position: relative;
+}
+.pop-tlt {
+  color: #0d1c40;
+  font-size: 15px;
+  text-align: center;
+  font-weight: bold;
+}
+.cancel {
+  position: absolute;
+  left: 23px;
+  color: #4e565f;
+  font-size: 14px;
+}
+.menu-list {
+  flex-direction: row;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  padding: 30px 30px 0px 30px;
+}
+.cell {
+  width: 100px;
+  margin-right: 25px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #9ea7b7;
+  color: #0d1c40;
+  font-size: 13px;
+  height: 28px;
+  line-height: 28px;
+  text-align: center;
+  border-radius: 2px;
+  margin-bottom: 16px;
+}
+.select-cell {
+  width: 100px;
+  margin-right: 25px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #e95008;
+  background-color: #fdeee7;
+  color: #e95008;
+  font-size: 13px;
+  height: 28px;
+  line-height: 28px;
+  text-align: center;
+  border-radius: 2px;
+  margin-bottom: 16px;
+}
+.txtarea {
+  background-color: #f5f5f7;
+  height: 90px;
+  margin: 0 30px;
+  font-size: 13px;
+  padding: 12px;
+}
+.submit {
+  background-color: #e95008;
+  height: 45px;
+  line-height: 45px;
+  text-align: center;
+  color: white;
+  font-size: 16px;
+  border-radius: 45px;
+  margin: 12px 30px;
+}
 </style>

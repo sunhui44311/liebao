@@ -1,6 +1,5 @@
 import MescrollMixin from "../../../components/mescroll-uni/mescroll-mixins.js"
 import MescrollUni from "../../../components/mescroll-uni/mescroll-uni.vue"
-import orderStatus from "../orderStatus.nvue";
 export default {
     mixins: [MescrollMixin],
     data() {
@@ -24,6 +23,8 @@ export default {
                 name: '待支付',
                 id: 0
             }],
+            cancelReason: '',
+            cancelReason2: '',
             current: 0,
             show: false,
             order: null,
@@ -58,7 +59,22 @@ export default {
         },
         // 用于初始化一些数据
         init() {
-            this.http_marker()
+            let dlzt = uni.getStorageSync('token') ? true : false
+            if (!dlzt) {
+                uni.showModal({
+                    title: '提示',
+                    content: '请先登录',
+                    success: function (res) {
+                        if (res.confirm) {
+                            uni.navigateTo({
+                                url: '/pages/login/loginHome'
+                            });
+                        }
+                    }
+                });
+            } else {
+                this.http_marker()
+            }
         },
         order_Click(id) {
             uni.navigateTo({
@@ -80,6 +96,9 @@ export default {
                     this.mescroll.endSuccess(res.data.data.length);
                     this.query.pageNum++
                 },
+                errCallBack: (error) => {
+                    this.mescroll.endErr();
+                }
             };
             this.$http.request(params);
         },
@@ -97,12 +116,14 @@ export default {
                 method: "POST",
                 data: {
                     orderId: this.order.id,
+                    cancelReason: this.cancelReason == '其他原因' ? this.cancelReason2 : this.cancelReason
                 },
                 callBack: (res) => {
                     uni.showToast({
                         title: "取消订单成功",
                         icon: "none",
                     });
+                    this.handletouchstart()
                     this.reset_updata()
                 },
             };
@@ -111,6 +132,11 @@ export default {
                 mask: true,
             });
             this.$http.request(params);
+        },
+        handletouchstart() {
+            this.cancelReason = ''
+            this.cancelReason2 = ''
+            this.show = false
         },
         reset_updata() {
             this.query.pageNum = 1
@@ -215,6 +241,5 @@ export default {
     // 组件列表
     components: {
         MescrollUni,
-        orderStatus
     },
 };

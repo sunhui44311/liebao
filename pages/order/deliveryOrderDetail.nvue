@@ -136,7 +136,11 @@
       </view>
     </scroll-view>
     <price-detail :info="orderinfo" ref="priceDetail"></price-detail>
-    <cancel-order ref="cancelOrder"></cancel-order>
+    <cancel-order
+      :o-id="orderId"
+      @updata="updata"
+      ref="cancelOrder"
+    ></cancel-order>
     <order-status ref="orderStatus"></order-status>
   </view>
 </template>
