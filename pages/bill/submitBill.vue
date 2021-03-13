@@ -128,6 +128,7 @@
 			return{
 				show:false,
 				deliveryType:'',
+				deliveryId:'',
 				selectDelivery:null,
 				needGuaranteed:false,
 				selectAutoDeliveryList:[],
@@ -235,7 +236,9 @@
 				
 			},
 			deliveryType_Click(){
+				console.log(this.model)
 				this.deliveryType=1
+				this.deliveryId=this.model.deliveryId
 				this.needGuaranteed=false
 				for(var i=0;i<this.model.optionals.length;i++){
 					var item=this.model.optionals[i]
@@ -271,15 +274,13 @@
 						return
 					}
 				}
-				console.log(3333)
 				let orderParams=Object.assign(this.order,{
 					deliveryType:this.deliveryType,
 					tipAmount:this.tipAmount,
 					takeRemark:this.takeRemark,
-					preDeliveryIds:preDeliveryIds,
+					preDeliveryIds:this.deliveryType==1?this.deliveryId:preDeliveryIds,
 					couponId:this.coupon.id
 				})
-				console.log(orderParams)
 				let that=this
 				var requestParams={
 					url:'app/order/create',
@@ -298,6 +299,12 @@
 									delta:10
 								})
 							},1000)
+						}
+						else{
+							uni.showToast({
+								title:res.msg,
+								icon:'none'
+							})
 						}
 					}
 				}

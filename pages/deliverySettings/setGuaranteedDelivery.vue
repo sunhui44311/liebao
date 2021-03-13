@@ -12,11 +12,8 @@
 				<text class="tlt">保底运力</text>
 			</view>
 			<view class="list">
-				<view :class="[
-            'item',
-            { xuzhon: info.guaranteeDeliveryIds.includes(item.id) },
-          ]"
-				 v-for="(item, index) in deliverylist" :key="index" @click="tjpt(item.id)">{{ item.name }}</view>
+				<view :class="['item',{ xuzhon: isSelect(item)}]"
+				 v-for="(item, index) in deliverylist" :key="index" @click="tjpt(item.deliveryId)">{{ item.name }}</view>
 			</view>
 		</view>
 		<view class="section">
@@ -193,6 +190,7 @@
 					method: "GET",
 					data: {},
 					callBack: (res) => {
+						console.log(res)
 						this.deliverylist = res.data;
 					},
 				};
@@ -218,16 +216,23 @@
 			},
 			tjpt(id) {
 				try {
-					if (this.info.guaranteeDeliveryIds.includes(id)) {
+					if (this.info.guaranteeDeliveryIds.indexOf(id+'')>=0) {
 						let arr = this.info.guaranteeDeliveryIds;
-						this.info.guaranteeDeliveryIds = arr.filter((e) => e != id);
+						this.info.guaranteeDeliveryIds = arr.filter((e) => {
+							return e != id
+						});
 					} else {
-						this.info.guaranteeDeliveryIds.push(id);
+						this.info.guaranteeDeliveryIds.push(id+'');
 					}
 				} catch (error) {
-					console.warn(error);
 				}
 			},
+			
+			isSelect(item){
+				let flag=this.info.guaranteeDeliveryIds.indexOf(item.deliveryId+'')
+				return flag==-1?false:true
+			},
+			
 			setminute(item) {
 				this.times = item.value;
 			},
@@ -255,7 +260,7 @@
 					url:'app/delivery/floor/add',
 					method:'POST',
 					data:{
-						guaranteeDeliveryIds:this.info.guaranteeDeliveryIds,
+						guaranteeDeliveryIds:this.info.guaranteeDeliveryIds.join(','),
 						openGuarantee:this.info.openGuarantee?1:0,
 						tipAmount:this.info.tipAmount,
 						guaranteeOrderTime:this.info.guaranteeOrderTime*60,
@@ -273,6 +278,12 @@
 									delta:1
 								})
 							},1000)
+						}
+						else{
+							uni.showToast({
+								title:res.msg,
+								icon:'none'
+							})
 						}
 					}
 				}

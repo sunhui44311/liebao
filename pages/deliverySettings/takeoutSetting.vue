@@ -48,7 +48,6 @@
 			    method: "GET",
 			    data: {},
 			    callBack: (res) => {
-					console.log(res)
 			      this.billDeliverylist = JSON.parse(JSON.stringify(res.data));
 				  this.shieldDeliverylist = JSON.parse(JSON.stringify(res.data));
 				  this.setData(this.billDeliverylist,this.billDeliveryIds)
@@ -82,7 +81,7 @@
 					let arr=[]
 					if(list&&list.length>0){
 						arr=list.find((id)=>{
-							return id==item.id
+							return id==item.deliveryId
 						})
 					}
 					if(arr&&arr.length>0){
@@ -98,14 +97,17 @@
 				let shieldDeliveryID=[]
 				for(var i=0;i<this.billDeliverylist.length;i++){
 					var item=this.billDeliverylist[i]
-					billDeliveryID.push(item.id)
+					if(item.select){
+						billDeliveryID.push(item.deliveryId)
+					}
 				}
 				console.log(this.shieldDeliverylist)
 				for(var i=0;i<this.shieldDeliverylist.length;i++){
 					var item=this.shieldDeliverylist[i]
-					shieldDeliveryID.push(item.id)
+					if(item.select){
+						shieldDeliveryID.push(item.deliveryId)
+					}
 				}
-				console.log(shieldDeliveryID)
 				var params={
 					url:'app/member/config',
 					method:'POST',
