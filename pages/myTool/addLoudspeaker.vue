@@ -169,7 +169,7 @@ export default {
         ordercancelReminderCount: 0,
       },
       kg: false,
-      yunid: null,
+      yunid: null
     };
   },
   methods: {

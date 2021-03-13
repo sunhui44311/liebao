@@ -99,7 +99,7 @@
 					this.setModel=this.set1
 				}
 				else if(type==2){
-					this.setModel=this.set3
+					this.setModel=this.set2
 				}
 				else if(type==3){
 					this.setModel=this.set3

@@ -5,7 +5,7 @@
 		<view class="header" :style="{'margin-top':-navHeight+''}">
 			<view class="money">
 				<view class="header-tlt">账户余额</view>
-				<view class="total">{{userInfo.totalAmount}}</view>
+				<view class="total">{{userInfo.amount}}</view>
 			</view>
 		</view>
 		<view class="menu">

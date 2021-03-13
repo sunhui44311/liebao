@@ -85,6 +85,7 @@
 				province:'',
 				district:'',
 				type:1,
+				cityCode:'',
 				historyAddressList:[],
 				addressList:[],
 				addressId:''
@@ -147,6 +148,7 @@
 						console.log(data)
 						let addressComponent = data.regeocode.addressComponent
 						that.city=addressComponent.city.length==0?addressComponent.province:addressComponent.city
+						that.cityCode=addressComponent.citycode
 						let aois = data.regeocode.aois.length > 0 ? data.regeocode.aois[0] : ''
 						let aoi = aois ? aois.name : ''
 						that.startAddress = addressComponent.streetNumber.street + addressComponent.streetNumber.number + aoi
@@ -169,6 +171,7 @@
 				this.floor=address.floor
 				this.contact=address.contact
 				this.phone=address.phone
+				this.cityCode=address.cityCode
 				this.addressId=''
 			},
 			
@@ -184,6 +187,7 @@
 				this.contact=address.contact
 				this.phone=address.phone
 				this.addressId=address.id
+				this.cityCode=address.cityCode
 			},
 			
 			clear(){
@@ -239,6 +243,7 @@
 					getApp().globalData.sendAddress.contact=this.contact
 					getApp().globalData.sendAddress.phone=this.phone
 					getApp().globalData.sendAddress.id=this.addressId
+					getApp().globalData.sendAddress.cityCode=this.cityCode
 					uni.navigateBack({
 						delta:1
 					})
@@ -254,6 +259,7 @@
 					getApp().globalData.receiptAddress.contact=this.contact
 					getApp().globalData.receiptAddress.phone=this.phone
 					getApp().globalData.receiptAddress.id=this.addressId
+					getApp().globalData.receiptAddress.cityCode=this.cityCode
 					uni.navigateTo({
 						url:'/pages/bill/receiptBill'
 					})
