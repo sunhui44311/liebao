@@ -62,7 +62,6 @@
 									type: 3
 								},
 								callBack: (res) => {
-									console.log(res)
 									if(res.code==200){
 										if(res.data.hasMobile==0){
 											setTimeout(()=>{
