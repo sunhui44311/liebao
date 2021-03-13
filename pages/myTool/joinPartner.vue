@@ -19,8 +19,8 @@
 				var params={
 					url:'app/common/explain',
 					method:'GET',
-					data:{type:3},
-					callBack:function(res){
+					data:{type:1},
+					callBack:(res)=>{
 						console.log(res)
 						uni.hideLoading()
 						this.html=res.data

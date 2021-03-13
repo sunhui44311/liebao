@@ -32,7 +32,7 @@
         <view class="wallet" @click.stop="wallet">
           <view class="total">
             <view class="title"> 钱包余额 </view>
-            <view class="num">{{userInfo.totalAmount}}</view>
+            <view class="num">{{userInfo.amount}}</view>
           </view>
           <view class="recharge">
             <div class="btn">

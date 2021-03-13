@@ -254,7 +254,7 @@
 					})
 					return
 				}
-				var preDeliveryIds=[]
+				var preDeliveryIds=''
 				if(this.deliveryType==2){
 					for(var i=0;i<this.model.optionals.length;i++){
 						var item=this.model.optionals[i]
@@ -279,12 +279,14 @@
 					preDeliveryIds:preDeliveryIds,
 					couponId:this.coupon.id
 				})
+				console.log(orderParams)
 				let that=this
 				var requestParams={
 					url:'app/order/create',
 					method:'POST',
 					data:orderParams,
 					callBack:function(res){
+						console.log(res)
 						uni.hideLoading()
 						if(res.code==200){
 							that.show=false,

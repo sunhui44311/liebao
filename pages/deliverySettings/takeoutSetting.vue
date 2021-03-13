@@ -100,10 +100,12 @@
 					var item=this.billDeliverylist[i]
 					billDeliveryID.push(item.id)
 				}
+				console.log(this.shieldDeliverylist)
 				for(var i=0;i<this.shieldDeliverylist.length;i++){
 					var item=this.shieldDeliverylist[i]
 					shieldDeliveryID.push(item.id)
 				}
+				console.log(shieldDeliveryID)
 				var params={
 					url:'app/member/config',
 					method:'POST',
