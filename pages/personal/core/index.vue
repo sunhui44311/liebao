@@ -23,9 +23,8 @@
 		    <view class="qm">欢迎你，来到猎豹Ai{{userInfo.memberType==1?'个人':'商家'}}版</view>
 		  </view>
           <view v-if="!isLogin" class="no-sign" @click="go('/pages/login/loginHome')"
-            >请登录</view
-          >
-          <view class="icon">
+            >请登录</view>
+          <view class="icon" v-if="userInfo.memberType==1?false:true">
             <image src="~static/image/fj2.png" class="img"></image>
           </view>
         </view>
@@ -129,7 +128,7 @@
 			<view></view>
 		</view>
 		<view class="seting-list">
-			<view class="seting-item" @click.stop="setting(0)" v-if="userInfo.memberType==1">
+			<view class="seting-item" @click.stop="tool(10)" v-if="userInfo.memberType==1">
 				<image src="../../../static/image/yijianfadan@2x.png"></image>
 				<view>申请为商家</view>
 			</view>
@@ -307,8 +306,8 @@
 			setting(type,index){
 				this.login(()=>{
 					if(type==0){
-						if(this.userInfo.memberType==1)return
 						let merchantId=this.userInfo.merchantId
+						if(this.userInfo.memberType==1)return
 						uni.navigateTo({
 							url:'/pages/deliverySettings/applyForBusiness?merchantId='+merchantId
 						})
@@ -379,6 +378,12 @@
 					else if(type==8){
 						uni.navigateTo({
 							url:'/pages/myTool/setting'
+						})
+					}
+					else if(type==10){
+						let merchantId=this.userInfo.merchantId
+						uni.navigateTo({
+							url:'/pages/deliverySettings/applyForBusiness?merchantId='+merchantId
 						})
 					}
 				})
