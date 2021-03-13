@@ -81,7 +81,8 @@
 				weight:1,
 				remark:'',
 				formatter_time:'',
-				selectTime:''
+				selectTime:'',
+				takeType:''
 			}
 		},
 		onLoad() {
@@ -114,8 +115,12 @@
 						value:nowDate,
 						children:[{
 							label:'立即取件',
-							value:time
-						}].concat(this.getHoursList(date.getHours()+1))
+							value:time,
+							children:[{
+								label:'',
+								value:'00'
+							}]
+						}].concat(this.getHoursList(date.getHours()+2))
 					}
 					this.dateList.push(dic)
 				}
@@ -178,16 +183,37 @@
 					let value=i<10?('0'+i):i
 					var dic={
 						label:i+'时',
-						value:value+':00:00'
+						value:value,
+						children:this.getMinutesList()
 					}
 					list.push(dic)
 				}
 				return list
 			},
+			
+			getMinutesList(){
+				var list=[]
+				for(var i=0;i<=11;i++){
+					let value=i*5<10?('0'+i*5):i*5
+					var dic={
+						label:i*5<10?('0'+i*5):(i*5)+'分',
+						value:value+':00',
+					}
+					list.push(dic)
+				}
+				return list
+			},
+			
 			confirm(e){
-				console.log(e)
 				let time=e[1].label
-				this.selectTime=`${e[0].value} ${e[1].value}`
+				if(time=='立即取件'){
+					this.selectTime=`${e[0].value} ${e[1].value}`
+					this.takeType=0
+				}
+				else{
+					this.selectTime=`${e[0].value} ${e[1].value}:${e[2].value}`
+					this.takeType=1
+				}
 				this.formatter_time=time=='立即取件'?time:this.selectTime
 			},
 			eveluatePrice(){
@@ -219,10 +245,11 @@
 							phone:this.sendAddress.phone,
 							contact:this.sendAddress.contact,
 							street:this.sendAddress.floor,
-							address:this.sendAddress.address
+							address:this.sendAddress.address,
+							cityCode:this.sendAddress.cityCode
 						},
 						receiptAddress:{
-							id:this.sendAddress.id,
+							id:this.receiptAddress.id,
 							provinceName:this.receiptAddress.province,
 							cityName:this.receiptAddress.city,
 							districtName:this.receiptAddress.district,
@@ -232,11 +259,15 @@
 							phone:this.receiptAddress.phone,
 							contact:this.receiptAddress.contact,
 							street:this.receiptAddress.floor,
-							address:this.receiptAddress.address
+							address:this.receiptAddress.address,
+							cityCode:this.receiptAddress.cityCode
 						},
 						takeTime:this.selectTime,
-						weight:this.weight/2.0
+						weight:this.weight/2.0,
+						takeType:this.takeType,
+						type:1
 					}
+					console.log(requestData)
 				var params={
 					url:'app/order/valuation',
 					method:'POST',

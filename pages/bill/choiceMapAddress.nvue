@@ -94,6 +94,7 @@
 						that.poiModel.province=addressComponent.province
 						that.poiModel.district=addressComponent.district
 						that.poiModel.street=addressComponent.streetNumber.street+addressComponent.streetNumber.number
+						that.poiModel.cityCode=addressComponent.citycode
 					}
 				})
 			},

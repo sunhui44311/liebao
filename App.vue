@@ -8,6 +8,7 @@
 				id: '',
 				city: '',
 				province: '',
+				cityCode:'',
 				address: '',
 				lat: 0,
 				lng: 0,
@@ -20,6 +21,7 @@
 				id: '',
 				city: '',
 				province: '',
+				cityCode:'',
 				address: '',
 				lat: 0,
 				lng: 0,
@@ -64,15 +66,15 @@
 			//收到透传消息时执行的事件
 			plus.push.addEventListener('receive', _handlePush);
 			// 一键登录预登陆，可以显著提高登录速度
-			// uni.preLogin({
-			// 	provider: 'univerify',
-			// 	success: (res) => {
-			// 		console.log("preLogin success: ", res);
-			// 	},
-			// 	fail: (err) => {
-			// 		console.log("preLogin fail: ", err);
-			// 	}
-			// })
+			uni.preLogin({
+				provider: 'univerify',
+				success: (res) => {
+					console.log("preLogin success: ", res);
+				},
+				fail: (err) => {
+					console.log("preLogin fail: ", err);
+				}
+			})
 			// #endif
 		},
 		onShow: function() {

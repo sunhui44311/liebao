@@ -189,10 +189,6 @@
 				<image src="../../../static/image/peisongtongji@2x.png"></image>
 				<view>配送统计</view>
 			</view>
-			<view class="seting-item" @click.stop="statics(4)">
-				<image src="../../../static/image/zhifutongji@2x.png"></image>
-				<view>支付统计</view>
-			</view>
 		</view>
 	</view>
 	<show-setting ref='showSetting'></show-setting>
