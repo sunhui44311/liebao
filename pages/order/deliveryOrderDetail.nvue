@@ -26,7 +26,7 @@
           </view>
           <view class="time">
             <text class="time-tlt">剩余支付时间</text>
-            <text class="time-content">49:56</text>
+            <text class="time-content">{{ orderinfo.leftTime }}</text>
           </view>
           <view class="btns">
             <template
@@ -49,10 +49,11 @@
                 class="header-img"
                 src="../../static/image/visit-bg@2x.png"
               ></image>
-              <text class="rider-name">何师傅</text>
+              <text class="rider-name">{{ orderinfo.shipperName }}</text>
             </view>
             <image
               class="rider-tel"
+              @click="tel"
               src="../../static/image/tel@2x.png"
             ></image>
           </view>
@@ -63,15 +64,12 @@
             >此订单由闪送平台配送，如有订单相关问题可致电下方客服</text
           >
           <view class="platform">
-            <image
-              class="platform-logo"
-              src="../../static/image/order-meituan-order@2x.png"
-            ></image>
+            <image class="platform-logo" :src="orderinfo.logo"></image>
             <view class="platform-info">
-              <text class="platform-name">美团001</text>
+              <text class="platform-name">{{ orderinfo.deliveryName }}</text>
               <view class="platform-tel-box">
                 <text class="platform-tel-tlt">客服电话</text>
-                <text class="platform-tel">400-612-6688</text>
+                <text class="platform-tel">{{ orderinfo.customerPhone }}</text>
               </view>
             </view>
           </view>
@@ -196,6 +194,11 @@ export default {
     },
     status_Click() {
       this.$refs["orderStatus"].init();
+    },
+    tel() {
+      uni.makePhoneCall({
+        phoneNumber: this.orderinfo.shipperPhone, //仅为示例
+      });
     },
   },
   filters: {

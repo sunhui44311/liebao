@@ -237,4 +237,52 @@ page {
   }
 }
 
+.pop-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 32px;
+
+  image {
+    width: 12px;
+    height: 12px;
+  }
+}
+
+.minute-list {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  padding: 0px 37px;
+
+  .minute {
+    line-height: 30px;
+    border-radius: 15px;
+    color: #0D1C40;
+    font-size: 13px;
+    border: solid 1px #9EA7B7;
+    text-align: center;
+    margin-bottom: 17upx;
+  }
+
+  .item-right {
+    margin-right: 0px;
+  }
+
+  .active {
+    border: solid 1px #E95008;
+    color: #E95008;
+    background-color: #FDEEE7;
+  }
+}
+
+.pop-input {
+  text-align: center;
+  margin: 0 38px 10px 30px;
+  border: solid 1px #9EA7B7;
+  height: 35px;
+  line-height: 35px;
+  border-radius: 35px;
+}
+
 #list /deep/ {}

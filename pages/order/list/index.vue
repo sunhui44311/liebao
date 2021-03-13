@@ -87,7 +87,7 @@
                     size="mini"
                     shape="circle"
                     v-if="!item.useTip"
-                    @click.stop="usertip"
+                    @click.stop="usertip(item)"
                     >加小费</u-button
                   >
                 </template>
@@ -202,6 +202,34 @@
         placeholder="请输入其他原因"
       ></textarea>
       <view class="submit" @click="qrcancel">提交</view>
+    </u-popup>
+    <u-popup mode="bottom" v-model="showAmount" border-radius="26">
+      <view class="content">
+        <view class="pop-nav">
+          <image src="@/static/image/delete.png" @click.stop="cancelxf"></image>
+          <view class="pop-tlt">加小费</view>
+          <view class="confirm" @click.stop="confirm_tip">确定</view>
+        </view>
+        <view class="minute-list">
+          <u-row gutter="16">
+            <u-col span="4" v-for="(item, index) in amounts" :key="index">
+              <view
+                :class="['minute', { active: item.value == selectAmount }]"
+                @click.stop="minute_Click(item)"
+              >
+                {{ item.label }}
+              </view>
+            </u-col>
+          </u-row>
+        </view>
+        <input
+          v-model="selectAmount2"
+          v-if="showAmountInput"
+          type="digit"
+          class="pop-input"
+          placeholder="其他金额"
+        />
+      </view>
     </u-popup>
   </view>
 </template>

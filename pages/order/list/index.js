@@ -27,6 +27,48 @@ export default {
             cancelReason2: '',
             current: 0,
             show: false,
+            showAmount: false,
+            selectAmount2: '',
+            showAmountInput: false,
+            selectAmount: '',
+            amounts: [
+                {
+                    label: '1元',
+                    value: 1
+                },
+                {
+                    label: '2元',
+                    value: 2
+                },
+                {
+                    label: '5元',
+                    value: 5
+                },
+                {
+                    label: '10元',
+                    value: 10
+                },
+                {
+                    label: '15元',
+                    value: 15
+                },
+                {
+                    label: '20元',
+                    value: 20
+                },
+                {
+                    label: '30元',
+                    value: 30
+                },
+                {
+                    label: '50元',
+                    value: 50
+                },
+                {
+                    label: '其他金额',
+                    value: '其他'
+                }
+            ],
             order: null,
             listTop: 210,
             query: {
@@ -61,16 +103,8 @@ export default {
         init() {
             let dlzt = uni.getStorageSync('token') ? true : false
             if (!dlzt) {
-                uni.showModal({
-                    title: '提示',
-                    content: '请先登录',
-                    success: function (res) {
-                        if (res.confirm) {
-                            uni.navigateTo({
-                                url: '/pages/login/loginHome'
-                            });
-                        }
-                    }
+                uni.navigateTo({
+                    url: '/pages/login/loginHome'
                 });
             } else {
                 this.http_marker()
@@ -181,6 +215,49 @@ export default {
                 },
             };
             this.$http.request(params);
+        },
+        usertip(item) {
+            this.showAmount = true
+            this.order = item
+        },
+        confirm_tip() {
+            let params = {
+                url: "app/order/tips",
+                method: "POST",
+                data: {
+                    orderId: this.order.id,
+                    cancelReason: this.selectAmount == '其他' ? this.selectAmount2 : this.selectAmount
+                },
+                callBack: (res) => {
+                    if (res.code == 200) {
+                        uni.showToast({
+                            title: "加小费成功",
+                            icon: "none",
+                        });
+                        this.handletouchstart()
+                        this.reset_updata()
+                    }
+                },
+            };
+            uni.showLoading({
+                title: "加小费中",
+                mask: true,
+            });
+            this.$http.request(params);
+        },
+        minute_Click(item) {
+            this.selectAmount = item.value
+            if (item.value == '其他') {
+                this.showAmountInput = true
+            } else {
+                this.showAmountInput = false
+            }
+        },
+        cancelxf() {
+            this.showAmount = false
+            this.showAmountInput = false
+            this.selectAmount = ''
+            this.selectAmount2 = ''
         }
     },
     onShow() {

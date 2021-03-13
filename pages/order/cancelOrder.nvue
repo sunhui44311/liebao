@@ -75,7 +75,7 @@ export default {
     };
   },
   props: {
-    oId: Number,
+    oId: String,
   },
   methods: {
     open() {
