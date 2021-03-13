@@ -109,10 +109,13 @@
 			this.init()
 			this.mapCtx=uni.createMapContext('map',this)
 			uni.$on('selectCity',(data)=>{
+				console.log(data)
 				_self.city=data.name
-				_self.centerPoint.latitude=data.latitude
-				_self.centerPoint.longitude=data.longitude
-				_self.reverseGeoCode(_self.centerPoint)
+				_self.getLocationByCity(data.name,(lat,lng)=>{
+					_self.centerPoint.latitude=lat
+					_self.centerPoint.longitude=lng
+					_self.reverseGeoCode(_self.centerPoint)
+				})
 			})
 		},
 		onShow() {
@@ -211,6 +214,24 @@
 						let aois=data.regeocode.aois.length>0?data.regeocode.aois[0]:''
 						let aoi=aois?aois.name:''
 						that.startAddress=addressComponent.streetNumber.street+addressComponent.streetNumber.number+aoi
+					}
+				})
+			},
+			
+			getLocationByCity(city,callBack){
+				let that=this
+				let params={
+					key:'5ae8644771ef9abf9cfb3ea23b1df6ca',
+					address:city
+				}
+				uni.request({
+					url:'https://restapi.amap.com/v3/geocode/geo',
+					method:'GET',
+					data:params,
+					dataType:'json',
+					success({data}) {
+						let locations=data.geocodes[0].location.split(',')
+						callBack(locations[1],locations[0])
 					}
 				})
 			},

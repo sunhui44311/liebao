@@ -32,8 +32,7 @@
 				<image class="arrow" src="../../static/image/fj2.png"></image>
 			</view>
 		</view>
-		<view class="btn">确定</view>
-		<view class="delete">切换账号登录</view>
+		<view class="delete" @click="logut">切换账号登录</view>
 	</view>
 </template>
 
@@ -116,6 +115,21 @@
 					intent.putExtra('android.provider.extra.APP_PACKAGE', pkName);  
 					main.startActivity(intent);  
 				}
+			},
+			//退出登录
+			logut(){
+				uni.showModal({
+					title:'提示',
+					content:'确定要退出登录？',
+					success(res) {
+						if(res.confirm){
+							uni.clearStorageSync('token')
+							uni.navigateBack({
+								delta:1
+							})
+						}
+					}
+				})
 			}
 		}
 	}

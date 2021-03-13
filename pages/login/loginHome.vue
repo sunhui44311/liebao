@@ -4,8 +4,8 @@
 		<view class="tip" style="margin-top: 10px;">中国移动提供认证服务</view>
 		<view class="btn" style="margin-top: 32px;" @click.stop="loginPhone">一键登录</view>
 		<view class="btn other" @click.stop="login">使用其他手机号</view>
-		<view class="footer">
-			<image src="../../static/image/weixuanzhong@2x.png"></image>
+		<view class="footer" @click.stop="isAgree=!isAgree">
+			<image :src="isAgree?'../../static/image/xuanzhong@2x.png':'../../static/image/weixuanzhong@2x.png'"></image>
 			<view class="tip">登录注册即同意用户协议与隐私政策</view>
 		</view>
 		<view class="third-login">
@@ -25,7 +25,8 @@
 			return {
 				access_token: '',
 				openid: '',
-				phoneNumber: ''
+				phoneNumber: '',
+				isAgree:false
 			}
 		},
 		methods: {
@@ -33,49 +34,6 @@
 				uni.navigateTo({
 					url: '/pages/login/login'
 				})
-			},
-
-			appLogin: function() {
-				console.log(1111)
-				let that = this
-				uni.getProvider({
-					service: 'oauth',
-					success: function(res) {
-						console.log(res.provider);
-						//支持微信、qq和微博等
-						if (~res.provider.indexOf('weixin')) {
-							uni.login({
-								provider: 'weixin',
-								success: function(loginRes) {
-									console.log('-------获取openid(unionid)-----');
-									console.log(JSON.stringify(loginRes));
-									var params = {
-										url: 'app/login/wechat',
-										method: 'POST',
-										data: {
-											code: loginRes.code,
-											type: 3
-										},
-										callBack: (res) => {
-											console.log(res)
-										}
-									}
-									that.$http.request(params)
-
-									// 获取用户信息
-									// uni.getUserInfo({
-									// 	provider: 'weixin',
-									// 	success: function(infoRes) {
-									// 		console.log('-------获取微信用户所有-----');
-									// 		console.log(JSON.stringify(infoRes
-									// 			.userInfo));
-									// 	}
-									// });
-								}
-							});
-						}
-					}
-				});
 			},
 
 			toWechatLogin: function() {
@@ -140,6 +98,13 @@
 
 			/*一键登录*/
 			loginPhone() {
+				if(!this.isAgree){
+					uni.showToast({
+						title:'请先同意并勾选用户协议',
+						icon:'none'
+					})
+					return
+				}
 				let that = this
 				uni.login({
 					provider: 'univerify',
@@ -189,34 +154,53 @@
 						uni.closeAuthView()
 						that.openid = res.authResult.openid;
 						that.access_token = res.authResult.access_token;
-						var params = {
-							url: 'app/login/phone/onekey',
-							method: 'POST',
+						uni.showLoading({
+							title:'正在登录'
+						})
+						uniCloud.callFunction({
+							name: 'login',
 							data: {
-								accessToken: that.access_token,
-								platform: 3
-							},
-							callBack: (res) => {
-								console.log(res)
+								access_token: that.access_token, // 客户端一键登录接口返回的access_token
+								openid: that.openid, // 客户端一键登录接口返回的openid
 							}
-						}
-						that.$http.request(params)
-						// uniCloud.callFunction({
-						// 	name: 'login',
-						// 	data: {
-						// 		access_token: this.access_token, // 客户端一键登录接口返回的access_token
-						// 		openid: this.openid, // 客户端一键登录接口返回的openid
-						// 	}
-						// }).then(res => {
-						// 	console.log(res)
-						// 	uni.closeAuthView()
-						// 	this.phoneNumber = res.result.data.phoneNumber;
-						// }).catch(err => {
-						// 	uni.closeAuthView()
-						// 	console.log(err)
-						// })
+						}).then(res => {
+							uni.hideLoading()
+							uni.closeAuthView()
+							that.phoneNumber = res.result.data.phoneNumber;
+							that.loginPhoneRequest(that.phoneNumber)
+						}).catch(err => {
+							uni.closeAuthView()
+							console.log(err)
+						})
 					}
 				})
+			},
+			loginPhoneRequest(phone){
+				var params={
+					url:'app/login/phone/onekey',
+					method:'POST',
+					data:{
+						mobile:phone,
+						platform:3
+					},
+					callBack:(res)=>{
+						uni.hideLoading()
+						if(res.code==200){
+							uni.setStorageSync("token", res.data.token);
+							uni.navigateBack({
+							  delta: 1,
+							});
+						}
+						else{
+							uni.showToast({
+								title:res.msg,
+								icon:'none'
+							})
+						}
+					}
+				}
+				uni.hideLoading()
+				this.$http.request(params)
 			}
 		}
 	}

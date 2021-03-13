@@ -5,6 +5,7 @@
       <image src="@/static/image/sousuo.png" class="icon" />
     </view>
     <u-tabs-swiper
+	  :is-fixed="true"
       ref="uTabs"
       :list="tabs"
       :current="current"
@@ -16,7 +17,7 @@
     <mescroll-uni
       ref="mescrollRef"
       :top="listTop"
-      :bottom="-64"
+      :bottom="-20"
       @down="downCallback"
       :up="upOption"
       @init="mescrollInit"

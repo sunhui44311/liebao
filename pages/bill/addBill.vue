@@ -144,6 +144,7 @@
 					success({
 						data
 					}) {
+						console.log(data)
 						let addressComponent = data.regeocode.addressComponent
 						that.city=addressComponent.city.length==0?addressComponent.province:addressComponent.city
 						let aois = data.regeocode.aois.length > 0 ? data.regeocode.aois[0] : ''

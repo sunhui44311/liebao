@@ -13,9 +13,12 @@
 							<view class="platform-tip">{{model.desc}}</view>
 						</view>
 						<view class="price-box">
-							<text class="price-unit">预估</text>
-							<text class="price">{{model.deliveryAmount}}</text>
-							<text class="price-unit">元</text>
+							<view :class="couponPrice>0?'juhe-price':''">
+								<text class="price-unit">预估</text>
+								<text class="price">{{computePrice(model.deliveryAmount,tipAmount,couponPrice)}}</text>
+								<text class="price-unit">元</text>
+							</view>
+							<view class="couponPrice" v-if="couponPrice>0?true:false">已优惠<text style="font-size: 14px;margin-left: 4px;margin-right: 4px;">{{couponPrice}}</text>元</view>
 						</view>
 						<image class="flag" :src="deliveryType==1?'../../static/image/voice-select-yes@2x.png':'../../static/image/no-select@2x.png'"></image>
 					</view>
@@ -37,7 +40,7 @@
 						</view>
 						<view class="price-box">
 							<text class="price-unit">预估</text>
-							<text class="price">{{item.deliveryAmount}}</text>
+							<text class="price">{{computePrice(item.deliveryAmount,tipAmount,couponPrice)}}</text>
 							<text class="price-unit">元</text>
 						</view>
 						<image class="thirty-flag" :src="item.select?'../../static/image/bill-selected@2x.png':'../../static/image/bill-no-selected@2x.png'"></image>
@@ -47,7 +50,7 @@
 							<image src="../../static/image/vertical-line@2x.png"></image>
 							<text>余额不足导致以下运力不可用</text>
 						</view>
-						<view class="recharge">
+						<view class="recharge" @click.stop="recharge_Click">
 							<image src="../../static/image/submit-order@2x.png"></image>
 							<view class="recharge-tlt">立即充值</view>
 						</view>
@@ -106,7 +109,7 @@
 							{{item.label}}
 						</view>
 					</view>
-					<input v-if="showAmountInput" type="digit" class="pop-input" placeholder="其他金额" />
+					<input v-if="showAmountInput" v-model="tipAmount" type="digit" class="pop-input" placeholder="其他金额" />
 				</scroll-view>
 			</view>
 		</u-popup>
@@ -125,6 +128,7 @@
 			return{
 				show:false,
 				deliveryType:'',
+				selectDelivery:null,
 				needGuaranteed:false,
 				selectAutoDeliveryList:[],
 				showAmount:false,
@@ -189,9 +193,11 @@
 				this.order=order
 				this.takeRemark=takeRemark
 				console.log(data)
-				for(var i=0;i<this.model.optionals.length;i++){
-					var item=this.model.optionals[i]
-					this.$set(item,'select',false)
+				if(this.model.optionals){
+					for(var i=0;i<this.model.optionals.length;i++){
+						var item=this.model.optionals[i]
+						this.$set(item,'select',false)
+					}
 				}
 				this.itemWidth=(globalData.windowWidth-115)/3.0
 				this.screenWidth=globalData.windowWidth/2.0+80
@@ -205,12 +211,28 @@
 				this.showAmountHeight=item.value?300:400
 			},
 			confirm_tip(){
-				this.tipAmount=this.selectAmount.value
+				if(this.selectAmount.value){
+					this.tipAmount=this.selectAmount.value
+				}
 				this.showAmount=false
 			},
 			autoDeliveryClick(item){
 				this.deliveryType=2
-				item.select=!item.select
+				for(var i=0;i<this.model.optionals.length;i++){
+					var tempItem=this.model.optionals[i]
+					if(tempItem.id==item.id){
+						if(tempItem.select){
+							this.$set(tempItem,'select',false)
+						}
+						else{
+							this.$set(tempItem,'select',true)
+						}
+					}
+					else{
+						this.$set(tempItem,'select',false)
+					}
+				}
+				
 			},
 			deliveryType_Click(){
 				this.deliveryType=1
@@ -237,10 +259,11 @@
 					for(var i=0;i<this.model.optionals.length;i++){
 						var item=this.model.optionals[i]
 						if(item.select){
-							preDeliveryIds.push(item.deliveryId)
+							preDeliveryIds=item.deliveryId
+							break
 						}
 					}
-					if(preDeliveryIds.length==0){
+					if(!preDeliveryIds||preDeliveryIds.length==0){
 						uni.showToast({
 							title:'请选择运力',
 							icon:'none'
@@ -253,7 +276,7 @@
 					deliveryType:this.deliveryType,
 					tipAmount:this.tipAmount,
 					takeRemark:this.takeRemark,
-					preDeliveryIds:preDeliveryIds.join(','),
+					preDeliveryIds:preDeliveryIds,
 					couponId:this.coupon.id
 				})
 				let that=this
@@ -281,6 +304,16 @@
 					mask:true
 				})
 				this.$http.jsonRequest(requestParams)
+			},
+			recharge_Click(){
+				uni.navigateTo({
+					url:'/pages/wallet/index'
+				})
+			},
+			computePrice(cost,tipPrice,couponPrice){
+				let price=cost+parseFloat(tipPrice)-couponPrice
+				console.log(tipPrice)
+				return price<0?0:price
 			}
 		}
 	}
@@ -593,5 +626,12 @@
 		border: solid 1px #E95008;
 		color: #E95008;
 		background-color: #FDEEE7;
+	}
+	.juhe-price{
+		margin-top: -8px;
+	}
+	.couponPrice{
+		color: #E95008;
+		font-size: 11px;
 	}
 </style>

@@ -18,7 +18,7 @@
 					<view class="card-act">{{item.name}}</view>
 				</view>
 			</scroll-view>
-			<view class="visit">立即邀请</view>
+			<view class="visit" @click.stop="visit">立即邀请</view>
 			<view class="tip">被邀请新人得大礼包</view>
 		</view>
 		<view class="content rule">
@@ -42,11 +42,16 @@
 			5、本活动解释权归本公司所有；
 			</view>
 		</view>
+		<share-pop ref="sharePop"></share-pop>
 	</view>
 </template>
 
 <script>
+	import sharePop from'./sharePop.vue'
 	export default{
+		components:{
+			sharePop
+		},
 		data(){
 			return{
 				dataList:[]
@@ -71,6 +76,9 @@
 					title:'正在加载'
 				})
 				this.$http.request(params)
+			},
+			visit(){
+				this.$refs['sharePop'].init()
 			}
 		}
 	}
