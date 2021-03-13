@@ -59,7 +59,11 @@
           </view>
         </view>
 
-        <view class="section" style="margin-top: 10px">
+        <view
+          class="section"
+          v-if="orderinfo.status != 1 && orderinfo.status != '-1'"
+          style="margin-top: 10px"
+        >
           <text class="tip"
             >此订单由闪送平台配送，如有订单相关问题可致电下方客服</text
           >
@@ -115,7 +119,7 @@
           </view>
           <view class="cell">
             <text class="cell-tlt">物品类型</text>
-            <text class="cell-content">文件证件</text>
+            <text class="cell-content">{{ orderinfo.productName }}</text>
           </view>
           <view class="cell">
             <text class="cell-tlt">取件时间</text>
@@ -224,6 +228,9 @@ export default {
 </script>
 
 <style>
+page {
+  background-color: rgba(246, 247, 249, 1);
+}
 .container {
   position: relative;
   margin-top: -30px;
