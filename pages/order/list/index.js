@@ -18,11 +18,13 @@ export default {
                 id: 4
             }, {
                 name: '已取消',
-                id: '-1'
+                id: -1
             }, {
                 name: '待支付',
                 id: 0
             }],
+            cancelReason: '',
+            cancelReason2: '',
             current: 0,
             show: false,
             order: null,
@@ -57,7 +59,22 @@ export default {
         },
         // 用于初始化一些数据
         init() {
-            this.http_marker()
+            let dlzt = uni.getStorageSync('token') ? true : false
+            if (!dlzt) {
+                uni.showModal({
+                    title: '提示',
+                    content: '请先登录',
+                    success: function (res) {
+                        if (res.confirm) {
+                            uni.navigateTo({
+                                url: '/pages/login/loginHome'
+                            });
+                        }
+                    }
+                });
+            } else {
+                this.http_marker()
+            }
         },
         order_Click(id) {
             uni.navigateTo({
@@ -79,6 +96,9 @@ export default {
                     this.mescroll.endSuccess(res.data.data.length);
                     this.query.pageNum++
                 },
+                errCallBack: (error) => {
+                    this.mescroll.endErr();
+                }
             };
             this.$http.request(params);
         },
@@ -96,15 +116,17 @@ export default {
                 method: "POST",
                 data: {
                     orderId: this.order.id,
+                    cancelReason: this.cancelReason == '其他原因' ? this.cancelReason2 : this.cancelReason
                 },
                 callBack: (res) => {
-                    uni.showToast({
-                        title: "取消订单成功",
-                        icon: "none",
-                    });
-                    this.reset_updata()
-                    this.cancel.pageNum = 1
-                    this.cancel_order()
+                    if (res.code == 200) {
+                        uni.showToast({
+                            title: "取消订单成功",
+                            icon: "none",
+                        });
+                        this.handletouchstart()
+                        this.reset_updata()
+                    }
                 },
             };
             uni.showLoading({
@@ -112,6 +134,11 @@ export default {
                 mask: true,
             });
             this.$http.request(params);
+        },
+        handletouchstart() {
+            this.cancelReason = ''
+            this.cancelReason2 = ''
+            this.show = false
         },
         reset_updata() {
             this.query.pageNum = 1
@@ -195,7 +222,6 @@ export default {
     beforeMount() { },
     // el 被新创建的 vm.el 替换，并挂载到实例上去之后调用该钩子。
     mounted() {
-
         this.$nextTick(() => { });
     },
     // 数据更新时调用，发生在虚拟 DOM 打补丁之前。
@@ -216,6 +242,6 @@ export default {
     watch: {},
     // 组件列表
     components: {
-        MescrollUni
+        MescrollUni,
     },
 };

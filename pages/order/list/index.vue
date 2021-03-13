@@ -68,25 +68,34 @@
             <view class="operation">
               <view class="time">{{ item.createTime }}</view>
               <view class="btn-box">
-                <u-button
-                  class="btn"
-                  size="mini"
-                  plain
-                  shape="circle"
-                  @click="cancelDd(item)"
-                  >取消订单</u-button
+                <template
+                  v-if="
+                    item.deliveryStatus != 4 &&
+                    item.deliveryStatus != 3 &&
+                    item.deliveryStatus != -1
+                  "
                 >
-                <u-button
-                  class="btn"
-                  size="mini"
-                  shape="circle"
-                  v-if="!item.useTip"
-                  >加小费</u-button
-                >
+                  <u-button
+                    class="btn"
+                    size="mini"
+                    plain
+                    shape="circle"
+                    @click.stop="cancelDd(item)"
+                    >取消订单</u-button
+                  >
+                  <u-button
+                    class="btn"
+                    size="mini"
+                    shape="circle"
+                    v-if="!item.useTip"
+                    @click.stop="usertip"
+                    >加小费</u-button
+                  >
+                </template>
               </view>
             </view>
             <view class="news">
-              <image src="@/static/image/news.png" class="icon" />
+              <image :src="item.logo" class="icon" />
               <view class="text">{{
                 item.deliveryName ? item.deliveryName : "全网推单中..."
               }}</view>
@@ -99,11 +108,102 @@
         </view>
       </view>
     </mescroll-uni>
-    <u-modal v-model="show" show-cancel-button @confirm="qrcancel">
-      <view class="slot-content" v-if="order">
-        取消编号 {{ order.orderSn }} 的订单？
+    <u-popup
+      v-model="show"
+      mode="bottom"
+      border-radius="14"
+      :mask-close-able="false"
+      :closeable="false"
+    >
+      <view class="pop-nav">
+        <view class="pop-tlt">取消订单</view>
+        <text class="cancel" @click.stop="handletouchstart">取消</text>
       </view>
-    </u-modal>
+      <view class="menu-list">
+        <u-row gutter="30">
+          <u-col span="6">
+            <view
+              :class="['cell', { 'select-cell': cancelReason == '无骑手接单' }]"
+              @click="cancelReason = '无骑手接单'"
+              >无骑手接单</view
+            >
+          </u-col>
+          <u-col span="6">
+            <view
+              :class="[
+                'cell',
+                { 'select-cell': cancelReason == '骑手接单后不取货' },
+              ]"
+              @click="cancelReason = '骑手接单后不取货'"
+              >骑手接单后不取货</view
+            >
+          </u-col>
+          <u-col span="6">
+            <view
+              :class="[
+                'cell',
+                { 'select-cell': cancelReason == '骑手电车装载不下' },
+              ]"
+              @click="cancelReason = '骑手电车装载不下'"
+              >骑手电车装载不下</view
+            >
+          </u-col>
+          <u-col span="6">
+            <view
+              :class="[
+                'cell',
+                { 'select-cell': cancelReason == '骑手服务态度恶劣' },
+              ]"
+              @click="cancelReason = '骑手服务态度恶劣'"
+              >骑手服务态度恶劣</view
+            >
+          </u-col>
+          <u-col span="6">
+            <view
+              :class="[
+                'cell',
+                { 'select-cell': cancelReason == '骑手要求取消订单' },
+              ]"
+              @click="cancelReason = '骑手要求取消订单'"
+              >骑手要求取消订单</view
+            >
+          </u-col>
+          <u-col span="6">
+            <view
+              :class="[
+                'cell',
+                { 'select-cell': cancelReason == '信息填写错误' },
+              ]"
+              @click="cancelReason = '信息填写错误'"
+              >信息填写错误</view
+            >
+          </u-col>
+          <u-col span="6">
+            <view
+              :class="[
+                'cell',
+                { 'select-cell': cancelReason == '计划有变,不需要配送' },
+              ]"
+              @click="cancelReason = '计划有变,不需要配送'"
+              >计划有变,不需要配送</view
+            >
+          </u-col>
+          <u-col span="6">
+            <view
+              :class="['cell', { 'select-cell': cancelReason == '其他原因' }]"
+              @click="cancelReason = '其他原因'"
+              >其他原因</view
+            >
+          </u-col>
+        </u-row>
+      </view>
+      <textarea
+        class="txtarea"
+        v-model="cancelReason2"
+        placeholder="请输入其他原因"
+      ></textarea>
+      <view class="submit" @click="qrcancel">提交</view>
+    </u-popup>
   </view>
 </template>
 <script src="./index.js"></script>

@@ -7,6 +7,7 @@ page {
   display: flex;
   flex-direction: column;
   height: 100%;
+  position: relative;
 
   .nav {
     display: flex;
@@ -166,6 +167,74 @@ page {
 
 .slot-content {
   padding: 30upx;
+}
+
+.menu-list {
+  flex-direction: row;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  padding: 30px 30px 0px 30px;
+
+  .cell {
+    border-style: solid;
+    border-width: 1px;
+    border-color: #9EA7B7;
+    color: #0D1C40;
+    font-size: 13px;
+    height: 28px;
+    line-height: 28px;
+    text-align: center;
+    border-radius: 2px;
+    margin-bottom: 16px;
+
+    &.select-cell {
+      border-color: #E95008;
+      background-color: #FDEEE7;
+      color: #E95008;
+    }
+  }
+}
+
+.txtarea {
+  background-color: #F5F5F7;
+  height: 90px;
+  margin: 0 30px;
+  font-size: 13px;
+  padding: 12px;
+}
+
+.submit {
+  background-color: #E95008;
+  height: 45px;
+  line-height: 45px;
+  text-align: center;
+  color: white;
+  font-size: 16px;
+  border-radius: 45px;
+  margin: 12px 30px;
+}
+
+.pop-nav {
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 12px 32px;
+  position: relative;
+
+  .pop-tlt {
+    color: #0D1C40;
+    font-size: 15px;
+    text-align: center;
+    font-weight: bold;
+  }
+
+  .cancel {
+    position: absolute;
+    left: 23px;
+    color: #4E565F;
+    font-size: 14px;
+    top: 25upx;
+  }
 }
 
 #list /deep/ {}
