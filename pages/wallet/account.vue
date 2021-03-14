@@ -2,8 +2,8 @@
 	<view>
 		<u-navbar :is-back="true" :is-fixed="true" :border-bottom="false" title-size="36" back-icon-color="#FFFFFF" title-color="#FFFFFF" title="我的钱包" :background="{background:navBarbgColor}">
 		</u-navbar>
-		<view class="header" :style="{'margin-top':-navHeight+''}">
-			<view class="money">
+		<view class="header" :style="{'margin-top':-navHeight+'px','height':146+statusHeight+'px'}">
+			<view class="money" :style="{'top':40+statusHeight+'px'}">
 				<view class="header-tlt">账户余额</view>
 				<view class="total">{{userInfo.amount}}</view>
 			</view>
@@ -49,17 +49,20 @@
 				currentPage:1,
 				navBarbgColor:'#FC720000',
 				navHeight:64,
+				statusHeight:20,
 				userInfo:{}
 			}
 		},
 		onLoad() {
 			_self=this
 			this.getUserInfo()
-			this.navHeight=globalData.naviBarHeight
+			this.navHeight=globalData.titleHeight
+			this.statusHeight=globalData.statusBarHeight
+			console.log(this.navHeight)
 		},
 		methods:{
 			onPageScroll: function(Object) {
-			  let alpha=Object.scrollTop/globalData.naviBarHeight
+			  let alpha=Object.scrollTop/globalData.titleHeight
 			  if(alpha>=1){
 				  this.navBarbgColor='#FC7200FF'
 			  }
@@ -106,7 +109,6 @@
 		background-color: #F6F7F9;
 	}
 	.header{
-		margin-top: -64px;
 		height: 166px;
 		background-color: #FC7200;
 	}

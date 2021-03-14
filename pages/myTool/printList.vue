@@ -15,7 +15,7 @@
 		<mescroll-uni ref="mescrollRef" @init="mescrollInit" :top="0" :bottom="0" @down="downCallback" :up="upOption"
 			:down="{use:true}" @up="upCallback" @emptyclick="emptyClick">
 			<view class="content">
-				<view class="header">
+				<view class="header" v-if="list.length>0?true:false">
 					<view class="status-list">
 						<view class="status" style="color: #5ab46e">
 							<view style="font-size: 20px">1</view>
