@@ -92,6 +92,9 @@ export default {
 
         };
     },
+    onBackPress(){
+        console.warn(111);
+    },
     methods: {
         downCallback() {
             this.reset_updata()
@@ -108,6 +111,9 @@ export default {
                 });
             } else {
                 this.http_marker()
+            }
+            if(this.mescroll){
+                this.mescroll.resetUpScroll()
             }
         },
         order_Click(id) {
@@ -290,7 +296,6 @@ export default {
             if (!e) return ''
             let obj = arr.find(i => i.key == e)
             return obj.title
-
         }
     },
     // 在实例创建完成后被立即调用
