@@ -5,153 +5,25 @@
 				title-color="#FFFFFF" title="" :background="{background:'#FFFFFF'}">
 				<view class="slot-wrap">
 					<view class="title">订单</view>
-					<image class="right-icon" src="@/static/image/sousuo.png"></image>
+					<image class="right-icon" src="@/static/image/sousuo.png" @click.stop="search_Click"></image>
 				</view>
 			</u-navbar>
 			<view v-if="isLogin">
 				<view class="tab-bar">
-					<u-tabs :list="tabs" :is-scroll="false" active-color="#FA6F06" inactive-color="#9EA7B7" :current="current"
-						@change="tabsChange"></u-tabs>
+					<u-tabs :list="tabs" :is-scroll="false" active-color="#FA6F06" inactive-color="#9EA7B7"
+						:current="current" @change="tabsChange"></u-tabs>
 				</view>
-				<mescroll-uni ref="mescrollRef" :top="listTop" :bottom="20" @down="downCallback" :up="upOption"
+				<mescroll-uni ref="mescrollRef" :top="listTop" :bottom="0" @down="downCallback" :up="upOption"
 					@init="mescrollInit" @up="upCallback">
 					<view class="order-list">
-						<view class="order" v-for="(item, index) in list" :key="index" @click.stop="order_Click(item.id)">
-							<view class="head">
-								<view class="title">订单编号：#{{ item.orderSn }}</view>
-								<view class="state">{{ item.deliveryStatus | statetext }}</view>
-							</view>
-							<view class="order-info">
-								<view class="piece-info">
-									<view class="sou">
-										<view class="icon-box">
-											<image src="@/static/image/sou.png" class="icon" />
-										</view>
-										<view class="user-info">
-											<view class="address">
-												{{ item.receiptAddress }}
-											</view>
-											<view style="display: flex">
-												<view class="user-name">{{ item.receiptContactName }}</view>
-												<view class="phone">{{ item.receiptPhone }}</view>
-											</view>
-										</view>
-									</view>
-									<view class="fa">
-										<view class="icon-box">
-											<image src="@/static/image/fa.png" class="icon" />
-										</view>
-										<view class="user-info">
-											<view class="address">
-												{{ item.sendAddress }}
-											</view>
-											<view style="display: flex">
-												<view class="user-name">{{ item.sendContactName }}</view>
-												<view class="phone">{{ item.sendPhone }}</view>
-											</view>
-										</view>
-									</view>
-								</view>
-								<view class="operation">
-									<view class="time">{{ item.createTime }}</view>
-									<view class="btn-box">
-										<template v-if="item.deliveryStatus != 4 &&item.deliveryStatus != 3 &&item.deliveryStatus != -1">
-											<u-button class="btn" size="mini" plain shape="circle" @click.stop="cancelDd(item)">
-												取消订单</u-button>
-											<u-button class="btn" size="mini" shape="circle" v-if="!item.useTip"
-												@click.stop="usertip(item)">加小费</u-button>
-										</template>
-									</view>
-								</view>
-								<view class="news">
-									<image :src="item.logo" class="icon" />
-									<view class="text">{{item.deliveryName ? item.deliveryName : "全网推单中..."}}</view>
-									<view class="price">
-										<view class="label">￥</view>
-										{{ item.totalAmount }}
-									</view>
-								</view>
-							</view>
+						<view v-for="(item,index) in list" :key="index">
+							<order-cell :model="item" @click.native="order_Click(item.id)" @cancel="cancelDd"
+								@usertip="usertip"></order-cell>
 						</view>
 					</view>
 				</mescroll-uni>
-				<u-popup v-model="show" mode="bottom" border-radius="14" :mask-close-able="false" :closeable="false">
-					<view class="pop-nav">
-						<view class="pop-tlt">取消订单</view>
-						<text class="cancel" @click.stop="handletouchstart">取消</text>
-					</view>
-					<view class="menu-list">
-						<u-row gutter="30">
-							<u-col span="6">
-								<view :class="['cell', { 'select-cell': cancelReason == '无骑手接单' }]"
-									@click="cancelReason = '无骑手接单'">无骑手接单</view>
-							</u-col>
-							<u-col span="6">
-								<view :class="[
-				        'cell',
-				        { 'select-cell': cancelReason == '骑手接单后不取货' },
-				      ]" @click="cancelReason = '骑手接单后不取货'">骑手接单后不取货</view>
-							</u-col>
-							<u-col span="6">
-								<view :class="[
-				        'cell',
-				        { 'select-cell': cancelReason == '骑手电车装载不下' },
-				      ]" @click="cancelReason = '骑手电车装载不下'">骑手电车装载不下</view>
-							</u-col>
-							<u-col span="6">
-								<view :class="[
-				        'cell',
-				        { 'select-cell': cancelReason == '骑手服务态度恶劣' },
-				      ]" @click="cancelReason = '骑手服务态度恶劣'">骑手服务态度恶劣</view>
-							</u-col>
-							<u-col span="6">
-								<view :class="[
-				        'cell',
-				        { 'select-cell': cancelReason == '骑手要求取消订单' },
-				      ]" @click="cancelReason = '骑手要求取消订单'">骑手要求取消订单</view>
-							</u-col>
-							<u-col span="6">
-								<view :class="[
-				        'cell',
-				        { 'select-cell': cancelReason == '信息填写错误' },
-				      ]" @click="cancelReason = '信息填写错误'">信息填写错误</view>
-							</u-col>
-							<u-col span="6">
-								<view :class="[
-				        'cell',
-				        { 'select-cell': cancelReason == '计划有变,不需要配送' },
-				      ]" @click="cancelReason = '计划有变,不需要配送'">计划有变,不需要配送</view>
-							</u-col>
-							<u-col span="6">
-								<view :class="['cell', { 'select-cell': cancelReason == '其他原因' }]"
-									@click="cancelReason = '其他原因'">其他原因</view>
-							</u-col>
-						</u-row>
-					</view>
-					<textarea class="txtarea" v-model="cancelReason2" placeholder="请输入其他原因"></textarea>
-					<view class="submit" @click="qrcancel">提交</view>
-				</u-popup>
-				<u-popup mode="bottom" v-model="showAmount" border-radius="26">
-					<view class="content">
-						<view class="pop-nav">
-							<image src="@/static/image/delete.png" @click.stop="cancelxf"></image>
-							<view class="pop-tlt">加小费</view>
-							<view class="confirm" @click.stop="confirm_tip">确定</view>
-						</view>
-						<view class="minute-list">
-							<u-row gutter="16">
-								<u-col span="4" v-for="(item, index) in amounts" :key="index">
-									<view :class="['minute', { active: item.value == selectAmount }]"
-										@click.stop="minute_Click(item)">
-										{{ item.label }}
-									</view>
-								</u-col>
-							</u-row>
-						</view>
-						<input v-model="selectAmount2" v-if="showAmountInput" type="digit" class="pop-input"
-							placeholder="其他金额" />
-					</view>
-				</u-popup>
+				<can-order-vue ref="canOrderVue" @cancel="qrcancel"></can-order-vue>
+				<add-tip-vue ref="addTipVue" @confirm_tip="confirm_tip"></add-tip-vue>
 			</view>
 			<view v-else>
 				<view class="no-login">
@@ -161,7 +33,301 @@
 		</view>
 	</view>
 </template>
-<script src="./index.js"></script>
+<script>
+	import MescrollMixin from "../../../components/mescroll-uni/mescroll-mixins.js"
+	import MescrollUni from "../../../components/mescroll-uni/mescroll-uni.vue"
+	import canOrderVue from './canOrderVue.vue'
+	import orderCell from './orderCell.vue'
+	import addTipVue from './addTipVue.vue'
+	export default {
+		mixins: [MescrollMixin],
+		data() {
+			return {
+				tabs: [{
+					name: '待接单',
+					id: 1
+				}, {
+					name: '待取货',
+					id: 2
+				}, {
+					name: '配送中',
+					id: 3
+				}, {
+					name: '已完成',
+					id: 4
+				}, {
+					name: '已取消',
+					id: -1
+				}, {
+					name: '待支付',
+					id: 0
+				}],
+				current: 0,
+				order: null,
+				listTop: 210,
+				query: {
+					pageNum: 1,
+					pageSize: 10,
+				},
+				upOption: {
+					page: {
+						num: 0,
+						size: 10 // 每页数据的数量
+					},
+					isBounce: true,
+					textNoMore: '没有更多数据',
+					noMoreSize: 0, //如果列表已无数据,可设置列表的总数量要大于半页才显示无更多数据;避免列表数据过少(比如只有一条数据),显示无更多数据会不好看; 默认5
+					empty: {
+						use: true,
+						tip: "暂无相关数据~",
+						icon: 'https://ecloud-cdn.51sssd.com/20210313/bdb9f357839e4575b3cdbc20e12f3511.png'
+					}
+				},
+				list: [],
+				isLogin: true
+
+			};
+		},
+		methods: {
+			downCallback() {
+				this.reset_updata()
+			},
+			upCallback() {
+				this.updata()
+			},
+			// 用于初始化一些数据
+			init() {
+				if (this.isLogin) {
+					this.http_marker()
+				}
+			},
+			order_Click(id) {
+				uni.navigateTo({
+					url: `/pages/order/deliveryOrderDetail?id=${id}`
+				})
+			},
+			login() {
+				uni.navigateTo({
+					url: '/pages/login/loginHome'
+				})
+			},
+			search_Click() {
+				uni.navigateTo({
+					url: '/pages/order/orderSearch'
+				})
+			},
+			// 用于更新一些数据
+			updata() {
+				let params = {
+					url: "app/order/list",
+					method: "GET",
+					data: {
+						status: this.tabs[this.current].id,
+						pageNum: this.query.pageNum,
+						pageSize: this.query.pageSize
+					},
+					callBack: (res) => {
+						this.list = [...this.list, ...res.data.data]
+						this.mescroll.endSuccess(res.data.data.length);
+						this.query.pageNum++
+					},
+					errCallBack: (error) => {
+						this.mescroll.endErr();
+					}
+				};
+				this.$http.request(params);
+			},
+			tabsChange(index) {
+				this.current = index;
+				this.reset_updata()
+			},
+
+			reset_updata() {
+				this.query.pageNum = 1
+				this.list = []
+				this.updata()
+			},
+			http_marker() {
+				let params = {
+					url: "app/order/marker",
+					method: "GET",
+					data: {},
+					callBack: (res) => {
+						let arr = [{
+							name: '待接单',
+							count: res.data.toBeReceivedNum,
+							id: 1
+						}, {
+							name: '待取货',
+							count: res.data.toBePickedNum,
+							id: 2
+						}, {
+							name: '配送中',
+							count: res.data.inDeliveryNum,
+							id: 3
+						}, {
+							name: '已完成',
+							count: res.data.completedNum,
+							id: 4
+						}, {
+							name: '已取消',
+							count: res.data.cancelNum,
+							id: '-1'
+						}, {
+							name: '待支付',
+							count: res.data.toBePaid,
+							id: 0
+						}]
+						this.tabs = arr
+					},
+				};
+				this.$http.request(params);
+			},
+
+			/*取消订单*/
+			cancelDd(item) {
+				this.order = item
+				this.$refs['canOrderVue'].init()
+			},
+			qrcancel() {
+				let params = {
+					url: "app/order/cancel",
+					method: "POST",
+					data: {
+						orderId: this.order.id,
+						cancelReason: this.cancelReason == '其他原因' ? this.cancelReason2 : this.cancelReason
+					},
+					callBack: (res) => {
+						if (res.code == 200) {
+							uni.showToast({
+								title: "取消订单成功",
+								icon: "none",
+							});
+							this.mescroll.resetUpScroll()
+						}
+					},
+				};
+				uni.showLoading({
+					title: "取消订单中",
+					mask: true,
+				});
+				this.$http.request(params);
+			},
+
+			/*加小费*/
+			usertip(item) {
+				this.showAmount = true
+				this.order = item
+			},
+			confirm_tip(data) {
+				let params = {
+					url: "app/order/tips",
+					method: "POST",
+					data: {
+						orderId: this.order.id,
+						cancelReason: data.amount
+					},
+					callBack: (res) => {
+						if (res.code == 200) {
+							uni.showToast({
+								title: "加小费成功",
+								icon: "none",
+							});
+							this.handletouchstart()
+							this.reset_updata()
+						}
+					},
+				};
+				uni.showLoading({
+					title: "加小费中",
+					mask: true,
+				});
+				this.$http.request(params);
+			}
+		},
+		onLoad() {
+			this.init()
+		},
+		onShow() {
+			this.isLogin = uni.getStorageSync('token') ? true : false
+		},
+		// 组件列表
+		components: {
+			MescrollUni,
+			canOrderVue,
+			orderCell,
+			addTipVue
+		},
+	}
+</script>
 <style lang="scss">
-	@import "index.scss";
+	page {
+		background-color: #F6F7F9;
+		height: 100%;
+	}
+
+	#list {
+		display: flex;
+		flex-direction: column;
+		height: 100%;
+		position: relative;
+	}
+
+	.right-icon {
+		width: 20px;
+		height: 20px;
+	}
+
+	.slot-wrap {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		flex: 1;
+		padding-right: 15px;
+		padding-left: 15px;
+	}
+
+	.title {
+		font-size: 42upx;
+		font-weight: 600;
+		color: #0D1C40;
+	}
+
+	.tab-bar {
+		position: fixed;
+		top: 64px;
+		left: 0px;
+		right: 0px;
+		height: 30px;
+		z-index: 999;
+		background-color: white;
+		background-color: red;
+	}
+
+	.order-list {
+		padding: 20upx;
+	}
+
+	.txtarea {
+		background-color: #F5F5F7;
+		height: 90px;
+		margin: 0 30px;
+		font-size: 13px;
+		padding: 12px;
+	}
+
+	.no-login {
+		position: relative;
+		margin-top: 60%;
+		color: #606266;
+		font-size: 14px;
+		text-align: center;
+
+		.login-text {
+			color: '#E95008';
+			margin-left: 8px;
+		}
+	}
+
+	#list /deep/ {}
 </style>
