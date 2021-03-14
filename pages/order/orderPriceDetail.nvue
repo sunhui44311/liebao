@@ -4,12 +4,18 @@
     <div class="pop">
       <view class="pop-nav">
         <text class="pop-tlt">显示设置</text>
-        <text class="confirm">确定</text>
+        <text class="confirm" @click="handletouchstart">确定</text>
       </view>
       <view>
         <view class="cell">
+          <text class="cell-tlt">优惠金额</text>
+          <text class="cell-money">¥{{ info.couponAmount }}</text>
+        </view>
+        <view class="cell">
           <text class="cell-tlt">里程费</text>
-          <text class="cell-money">¥5.00</text>
+          <text class="cell-money"
+            >¥{{ info.totalAmount - info.tipAmount }}</text
+          >
         </view>
         <view class="cell">
           <text class="cell-tlt">小费</text>
@@ -62,7 +68,6 @@ export default {
   left: 0px;
   right: 0px;
   bottom: 0px;
-  height: 192px;
   background-color: white;
   border-top-left-radius: 13px;
   border-top-right-radius: 13px;
