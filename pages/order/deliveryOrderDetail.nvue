@@ -61,11 +61,15 @@
 
         <view
           class="section"
-          v-if="orderinfo.status != 1 && orderinfo.status != '-1'"
+          v-if="
+            orderinfo.deliveryStatus != 1 && orderinfo.deliveryStatus != '-1'
+          "
           style="margin-top: 10px"
         >
           <text class="tip"
-            >此订单由闪送平台配送，如有订单相关问题可致电下方客服</text
+            >此订单由{{
+              orderinfo.deliveryName
+            }}平台配送，如有订单相关问题可致电下方客服</text
           >
           <view class="platform">
             <image class="platform-logo" :src="orderinfo.logo"></image>
