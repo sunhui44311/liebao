@@ -3,8 +3,8 @@
 		<u-navbar :is-back="true" :is-fixed="true" :border-bottom="false" title-size="36" back-icon-color="#FFFFFF"
 			title-color="#FFFFFF" title="账户充值" :background="{background:'#FC720000'}">
 		</u-navbar>
-		<view class="header">
-			<view class="account">
+		<view class="header" :style="{'margin-top':-navHeight+'px','height':146+statusHeight+'px'}">
+			<view class="account" :style="{'top':40+statusHeight+'px'}">
 				<view>充值账号</view>
 				<view class="tel">{{userInfo.mobile}}</view>
 			</view>
@@ -49,9 +49,12 @@
 </template>
 
 <script>
+	import globalData from '@/common/js/globalData.js'
 	export default {
 		data() {
 			return {
+				navHeight:64,
+				statusHeight:20,
 				dataList: [],
 				userInfo: {},
 				selectItem: {},
@@ -60,6 +63,8 @@
 			}
 		},
 		onLoad() {
+			this.navHeight=globalData.titleHeight
+			this.statusHeight=globalData.statusBarHeight
 			this.getRechargeList()
 			this.getUserInfo()
 		},

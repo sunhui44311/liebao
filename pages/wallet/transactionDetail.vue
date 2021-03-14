@@ -2,7 +2,6 @@
 	<view>
 		<u-navbar :is-back="true" :is-fixed="true" :border-bottom="false" title-size="36" back-icon-color="#333333"
 			title-color="#333333" title="交易明细" :background="{background:'#FFFFFF'}">
-			
 		</u-navbar>
 		<view class="tab-bar">
 			<u-tabs :list="list" :is-scroll="false" active-color="#FA6F06" inactive-color="#4D5660" :current="current"
@@ -10,7 +9,7 @@
 		</view>
 		<mescroll-uni ref="mescrollRef" @init="mescrollInit" :top="listTop" :bottom="0" @down="downCallback"
 			:up="upOption" @up="upCallback" @emptyclick="emptyClick">
-			<view class="content">
+			<view class="content" :style="{'margin-top':statusHeight+30+'px'}">
 				<view class="cell" v-for="(item,index) in dataList" :key="index">
 					<view class="left">
 						<view class="type">{{item.remark}}</view>
@@ -29,6 +28,7 @@
 	var _self
 	import MescrollMixin from "../../components/mescroll-uni/mescroll-mixins.js"
 	import MescrollUni from "../../components/mescroll-uni/mescroll-uni.vue"
+	import globalData from '@/common/js/globalData.js'
 	export default {
 		mixins: [MescrollMixin],
 		components: {
@@ -36,6 +36,7 @@
 		},
 		data() {
 			return {
+				statusHeight:20,
 				list: [{
 					name: '全部'
 				}, {
@@ -67,6 +68,7 @@
 		},
 		onLoad() {
 			_self = this
+			this.statusHeight=globalData.statusBarHeight
 		},
 		methods: {
 			change(index) {
