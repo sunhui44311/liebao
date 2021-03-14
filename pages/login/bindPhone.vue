@@ -70,8 +70,7 @@ export default {
           type: 2,
         },
         callBack: (res) => {
-			console.log(res)
-			this.code=res.data.code
+		   uni.hideLoading();
           this.show = false;
           this.count = 59;
           this.timer = setInterval(() => {
@@ -81,7 +80,6 @@ export default {
               clearInterval(this.timer);
             }
           }, 1000);
-          uni.hideLoading();
         },
       };
       uni.showLoading({
